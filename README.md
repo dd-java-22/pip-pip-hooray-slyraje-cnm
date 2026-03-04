@@ -1,15 +1,10 @@
-# Personal Android Project Template
-
-[//]: # (TODO Update title.  )
+# Pip Pip Hooray
 
 ## Summary
 
-[//]: # (TODO Provide project summary.)
+Pip Pip Hooray is a chicken egg incubation logbook for Android that lets users define incubators,
+create batches, track per‑egg candling and hatch results, and export records for printing.
 
 ## Credits, copyrights, and license information
 
-[//]: # (TODO Include author)
-
-&copy; 2026 by (_author_).
-
-[//]: # (TODO Add license info)
+&copy; 2026 by _Michael Sylvester. All rights reserved._
