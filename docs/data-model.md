@@ -15,3 +15,5 @@ order: 10
 ## UML class diagram
 
 [//]: # (TODO Use Markdown or Liquid include to show UML class diagram in SVG format, linking to PDF format. )
+
+[![UML Class Diagram](img/pip-pip-hooray-uml.png)](pdf/pip-pip-hooray-uml.pdf)
