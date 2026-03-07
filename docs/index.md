@@ -79,23 +79,24 @@ All of this data is stored locally on the device using SQLite so that users can 
 
 - **Device location and elevation (optional helper data)**
     - Service/source name: Android location services for approximate elevation
+    - URL: https://developer.android.com/develop/sensors-and-location/location
     - How Pip Pip Hooray uses it:
       - The app can optionally read the user’s coarse location once (for example, via a location picker or last known location) and use that to look up an approximate elevation. Elevation is stored with batches as reference context, helping users correlate hatch results with broad environmental conditions (lowland vs. high‑altitude incubation) without requiring precise or continuous tracking.
     - Dependence:  
       - Elevation support is optional. If location permissions are denied or unavailable, the app still fully supports defining incubators, recording batches and eggs, logging candling, and viewing summaries; elevation is simply omitted from batch records.
 
-- **Android notifications (AlarmManager and NotificationManager)**
+- **Android notifications (AlarmManager and NotificationManager)** (Stretch goal)
     - Service/source name: Android notification scheduling via AlarmManager and NotificationManager
     - URL: https://developer.android.com/training/notify-user/build-notification
     - How Pip Pip Hooray uses it:
-      - The app schedules simple time‑based notifications for key incubation milestones, such as lockdown date and expected hatch date. When a notification is tapped, the app opens the associated batch detail screen so the user can quickly check status or update candling and hatch information
+      - The app schedules simple time‑based notifications for key incubation milestones, such as lockdown date and expected hatch date. When a notification is tapped, the app opens the associated batch detail screen so the user can quickly check status or update candling and hatch information.
     - Dependence:  
-      - Notifications are optional. Users can disable them in settings, and the app’s core data entry and review features continue to work fully without notification permissions or background scheduling.
+      - Notifications are optional and are currently planned as a stretch goal; if they are not implemented, the app’s core data entry and review features still work fully without notification permissions or background scheduling.
 
 ## Stretch goals and possible enhancements
 
 - **Time‑based notifications for incubation milestones**
-    - Use Android’s notification APIs to remind users of upcoming lockdown and expected hatch dates, and navigate into the relevant batch when a notification is tapped.
+    - Implement time‑based notifications for incubation milestones using Android’s AlarmManager and NotificationManager APIs, reminding users of upcoming lockdown and expected hatch dates and navigating into the relevant batch when a notification is tapped.
 
 - **Richer daily environmental logging**
     - Add a daily log feature to record incubator temperature, humidity, and turning activity by date, complementing the per‑egg candling record and giving users a more detailed picture of each hatch.
