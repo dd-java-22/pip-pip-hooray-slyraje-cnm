@@ -69,14 +69,28 @@ All of this data is stored locally on the device using SQLite so that users can 
 
 ## Device/external services
 
-- **Android external storage (Storage Access Framework)**
-    - Used to let the user choose a location (such as the Downloads folder) and write CSV exports of batch and egg data for printing or long‑term storage.
-    - The app remains functional without export, but this integration provides a better match to how many incubators are currently tracked on paper.
+- **Android external storage (via Storage Access Framework)**
+    - Service/source name: Android external storage via Storage Access Framework (SAF)
+    - URL: https://developer.android.com/training/data-storage
+    - How Pip Pip Hooray uses it:  
+      - The app exports a selected incubation batch’s data—batch metadata and per‑egg records—as a CSV file to user‑accessible storage (for example, the Downloads folder or a user‑chosen directory) using the Storage Access Framework. This lets users print or archive their incubation records in a spreadsheet‑friendly format that matches common hatch record sheets.
+    - Dependence:
+      -  CSV export is an optional convenience feature. The core functionality of Pip Pip Hooray remains fully usable without access to external storage.
 
-- **Public weather or elevation API**
-    - A simple, freely accessible web API that returns basic environmental information (such as outside temperature or elevation for a given location).
-    - Used to display environmental context alongside incubator targets, so that users can compare their indoor incubator environment with outdoor conditions and consider how differences might affect incubation.
-    - If network access is unavailable or the API changes, the app still functions as a local logbook; these lookups are optional.
+- **Device location and elevation (optional helper data)**
+    - Service/source name: Android location services for approximate elevation
+    - How Pip Pip Hooray uses it:
+      - The app can optionally read the user’s coarse location once (for example, via a location picker or last known location) and use that to look up an approximate elevation. Elevation is stored with batches as reference context, helping users correlate hatch results with broad environmental conditions (lowland vs. high‑altitude incubation) without requiring precise or continuous tracking.
+    - Dependence:  
+      - Elevation support is optional. If location permissions are denied or unavailable, the app still fully supports defining incubators, recording batches and eggs, logging candling, and viewing summaries; elevation is simply omitted from batch records.
+
+- **Android notifications (AlarmManager and NotificationManager)**
+    - Service/source name: Android notification scheduling via AlarmManager and NotificationManager
+    - URL: https://developer.android.com/training/notify-user/build-notification
+    - How Pip Pip Hooray uses it:
+      - The app schedules simple time‑based notifications for key incubation milestones, such as lockdown date and expected hatch date. When a notification is tapped, the app opens the associated batch detail screen so the user can quickly check status or update candling and hatch information
+    - Dependence:  
+      - Notifications are optional. Users can disable them in settings, and the app’s core data entry and review features continue to work fully without notification permissions or background scheduling.
 
 ## Stretch goals and possible enhancements
 
