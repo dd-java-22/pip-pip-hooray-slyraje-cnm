@@ -7,10 +7,11 @@ order: 10
 {% include ddc-abbreviations.md %}
 
 ## Page contents
+
 {:.no_toc:}
 
 - ToC
-  {:toc}
+{:toc}
 
 ## Wireframe diagram
 
