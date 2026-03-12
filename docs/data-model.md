@@ -15,7 +15,3 @@ order: 10
 ## UML class diagram
 
 [![UML Class Diagram](img/pip-pip-hooray-uml.svg)](pdf/pip-pip-hooray-uml.pdf)
-
-## Wireframe diagram
-
-[![Wireframe Diagram](img/pip-pip-hooray-wireframe.svg)](pdf/pip-pip-hooray-wireframe.pdf)
