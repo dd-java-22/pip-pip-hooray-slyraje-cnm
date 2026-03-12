@@ -7,7 +7,6 @@ order: 0
 {% include ddc-abbreviations.md %}
 
 ## Page contents
-
 {:.no_toc:}
 
 - ToC
