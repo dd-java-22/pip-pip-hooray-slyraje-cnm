@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.pippiphooray.model.entity;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -15,7 +14,8 @@ import java.time.LocalDate;
         @ForeignKey(
             entity = Incubator.class,
             parentColumns = "incubator_id",
-            childColumns = "incubator_id"
+            childColumns = "incubator_id",
+            onDelete = ForeignKey.SET_NULL
         )
     },
     indices = {
@@ -30,10 +30,7 @@ public class Batch {
   private long id;
 
   @ColumnInfo(name = "incubator_id")
-  private long incubatorId;
-
-  @NonNull
-  private String breed;
+  private Long incubatorId;
 
   @ColumnInfo(name = "date_set")
   private LocalDate dateSet;
@@ -47,6 +44,12 @@ public class Batch {
   @ColumnInfo(name = "num_eggs_set")
   private int numEggsSet;
 
+  private String notes;
+
+  @ColumnInfo(name = "batch_status")
+  private String batchStatus;  // future enum candidate, same pattern as hatchStatus on Egg
+
+
   public long getId() {
     return id;
   }
@@ -55,21 +58,12 @@ public class Batch {
     this.id = id;
   }
 
-  public long getIncubatorId() {
+  public Long getIncubatorId() {
     return incubatorId;
   }
 
-  public void setIncubatorId(long incubatorId) {
+  public void setIncubatorId(Long incubatorId) {
     this.incubatorId = incubatorId;
-  }
-
-  @NonNull
-  public String getBreed() {
-    return breed;
-  }
-
-  public void setBreed(@NonNull String breed) {
-    this.breed = breed;
   }
 
   public LocalDate getDateSet() {
@@ -103,4 +97,22 @@ public class Batch {
   public void setNumEggsSet(int numEggsSet) {
     this.numEggsSet = numEggsSet;
   }
+
+  public String getNotes() {
+    return notes;
+  }
+
+  public void setNotes(String notes) {
+    this.notes = notes;
+  }
+
+  public String getBatchStatus() {
+    return batchStatus;
+  }
+
+  public void setBatchStatus(String batchStatus) {
+    this.batchStatus = batchStatus;
+  }
 }
+
+

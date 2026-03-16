@@ -10,15 +10,15 @@ import androidx.room.PrimaryKey;
     tableName = "egg",
     foreignKeys = {
         @ForeignKey(
-            entity = Batch.class,
-            parentColumns = "batch_id",
-            childColumns = "batch_id",
+            entity = EggGroup.class,
+            parentColumns = "egg_group_id",
+            childColumns = "egg_group_id",
             onDelete = ForeignKey.CASCADE
         )
 
     },
     indices = {
-        @Index(value = {"batch_id"}),
+        @Index(value = {"egg_group_id"}),
     }
 )
 
@@ -28,8 +28,8 @@ public class Egg {
   @ColumnInfo(name = "egg_id")
   private long id;
 
-  @ColumnInfo(name = "batch_id")
-  private long batchId;
+  @ColumnInfo(name = "egg_group_id")
+  private long eggGroupId;
 
   @ColumnInfo(name = "hatch_status")
   private String hatchStatus;
@@ -45,12 +45,12 @@ public class Egg {
     this.id = id;
   }
 
-  public long getBatchId() {
-    return batchId;
+  public long getEggGroupId() {
+    return eggGroupId;
   }
 
-  public void setBatchId(long batchId) {
-    this.batchId = batchId;
+  public void setEggGroupId(long eggGroupId) {
+    this.eggGroupId = eggGroupId;
   }
 
   public String getHatchStatus() {

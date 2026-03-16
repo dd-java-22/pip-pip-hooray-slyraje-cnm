@@ -5,7 +5,6 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-import edu.cnm.deepdive.pippiphooray.model.entity.Batch;
 import edu.cnm.deepdive.pippiphooray.model.entity.Egg;
 import java.util.List;
 
@@ -18,11 +17,11 @@ public interface EggDao {
   @Update
   void update(Egg egg);
 
-  @Query("SELECT * FROM egg WHERE batch_id = :batch_id")
-  LiveData<List<Egg>> selectByBatch(long batch_id);
+  @Query("SELECT * FROM egg WHERE egg_group_id = :eggGroupId")
+  LiveData<List<Egg>> selectByEggGroup(long eggGroupId);
 
-  @Query("SELECT * FROM egg ORDER BY egg_id")
-  LiveData<Egg> select(long egg_id);
+  @Query("SELECT * FROM egg WHERE egg_id = :eggId")
+  LiveData<Egg> select(long eggId);
 
 
 }
