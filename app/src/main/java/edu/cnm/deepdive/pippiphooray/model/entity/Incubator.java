@@ -82,4 +82,7 @@ public class Incubator {
     this.notes = notes;
   }
 
+  @ColumnInfo(name = "active", defaultValue = "1")
+  private boolean active;
+
 }
