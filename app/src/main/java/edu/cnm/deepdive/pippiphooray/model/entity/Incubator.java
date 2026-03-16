@@ -32,6 +32,9 @@ public class Incubator {
 
   private String notes;
 
+  @ColumnInfo(name = "active", defaultValue = "1")
+  private boolean active;
+
   public long getId() {
     return id;
   }
@@ -82,7 +85,11 @@ public class Incubator {
     this.notes = notes;
   }
 
-  @ColumnInfo(name = "active", defaultValue = "1")
-  private boolean active;
+  public boolean isActive() {
+    return active;
+  }
 
+  public void setActive(boolean active) {
+    this.active = active;
+  }
 }
