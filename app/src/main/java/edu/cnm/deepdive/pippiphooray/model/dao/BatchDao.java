@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.pippiphooray.model.entity.Batch;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithEggGroups;
 import java.util.List;
 
 @Dao
@@ -26,4 +28,7 @@ public interface BatchDao {
   @Query("SELECT * FROM batch WHERE incubator_id = :incubatorId ORDER by date_set DESC")
   LiveData<List<Batch>> selectByIncubator(long incubatorId);
 
+  @Transaction
+  @Query("SELECT * FROM batch WHERE batch_id = :id")
+  LiveData<BatchWithEggGroups> selectWithGroups(long id);
 }
