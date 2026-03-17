@@ -11,7 +11,7 @@ import java.util.List;
 public interface CandlingObservationDao {
 
   @Insert
-  long insert(long candling_observation_id);
+  long insert(CandlingObservation candling_observation_id);
 
   @Query("SELECT * FROM candling_observation WHERE egg_id = :eggId ORDER BY day_number ASC")
   LiveData<List<CandlingObservation>> selectByEgg(long eggId);

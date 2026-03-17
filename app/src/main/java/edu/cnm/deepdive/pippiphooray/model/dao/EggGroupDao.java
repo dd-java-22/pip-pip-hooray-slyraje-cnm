@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.pippiphooray.model.entity.EggGroup;
 import edu.cnm.deepdive.pippiphooray.model.pojo.EggGroupWithBatch;
@@ -24,6 +25,7 @@ public interface EggGroupDao {
   @Query("SELECT * FROM egg_group WHERE egg_group_id = :id")
   LiveData<EggGroup> select(long id);
 
+  @Transaction
   @Query("SELECT * FROM egg_group WHERE egg_group_id = :id")
   LiveData<EggGroupWithBatch> selectWithBatch(long id);
 

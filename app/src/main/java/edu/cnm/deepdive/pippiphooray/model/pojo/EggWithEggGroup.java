@@ -7,21 +7,22 @@ import androidx.room.DatabaseView;
 @DatabaseView(
     viewName = "egg_with_egg_group",
     value = """
-    SELECT
-      e.egg_id,
-      e.hatch_status,
-      e.final_notes,
-      g.egg_group_id,
-      g.breed
-    FROM
-      egg AS e
-      INNER JOIN egg_group AS g
-        ON e.egg_group_id = g.egg_group_id
-    ORDER BY
-      g.egg_group_id,
-      e.egg_id
-    
-    """
+        SELECT
+          e.egg_id,
+          e.hatch_status,
+          e.final_notes,
+          g.egg_group_id,
+          g.breed,
+          g.batch_id
+        FROM
+          egg AS e
+          INNER JOIN egg_group AS g
+            ON e.egg_group_id = g.egg_group_id
+        ORDER BY
+          g.egg_group_id,
+          e.egg_id
+        
+        """
 )
 public class EggWithEggGroup {
 
@@ -39,6 +40,17 @@ public class EggWithEggGroup {
 
   @NonNull
   private String breed = "";
+
+  @ColumnInfo(name = "batch_id")
+  private long batchId;
+
+  public long getBatchId() {
+    return batchId;
+  }
+
+  public void setBatchId(long batchId) {
+    this.batchId = batchId;
+  }
 
   public long getId() {
     return id;
@@ -80,4 +92,5 @@ public class EggWithEggGroup {
   public void setBreed(@NonNull String breed) {
     this.breed = breed;
   }
+
 }

@@ -17,7 +17,7 @@ public interface BatchDao {
   long insert(Batch batch);
 
   @Update
-  long update(Batch batch);
+  void update(Batch batch);
 
   @Query("SELECT * FROM batch ORDER BY date_set DESC")
   LiveData<List<Batch>> selectAll();

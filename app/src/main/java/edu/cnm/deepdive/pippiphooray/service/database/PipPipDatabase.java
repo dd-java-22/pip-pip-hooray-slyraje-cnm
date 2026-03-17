@@ -1,9 +1,9 @@
 package edu.cnm.deepdive.pippiphooray.service.database;
 
-import android.os.Build.VERSION;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 import edu.cnm.deepdive.pippiphooray.model.dao.BatchDao;
 import edu.cnm.deepdive.pippiphooray.model.dao.CandlingObservationDao;
 import edu.cnm.deepdive.pippiphooray.model.dao.EggDao;
@@ -18,6 +18,7 @@ import edu.cnm.deepdive.pippiphooray.model.pojo.EggWithEggGroup;
 import java.time.Instant;
 import java.time.LocalDate;
 
+@TypeConverters(PipPipDatabase.Converters.class)
 @Database(
     entities = {
         Egg.class,
@@ -48,7 +49,7 @@ public abstract class PipPipDatabase extends RoomDatabase {
   public static class Converters {
 
     @TypeConverter
-    public static Long toLong(Instant value) {
+    public static Long toLongFromInstant(Instant value) {
       return (value != null) ? value.toEpochMilli() : null;
     }
 

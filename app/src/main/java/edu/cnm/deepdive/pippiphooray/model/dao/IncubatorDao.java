@@ -15,7 +15,7 @@ public interface IncubatorDao {
   long insert(Incubator incubator);
 
   @Update
-  long update(Incubator incubator);
+  void update(Incubator incubator);
 
   // No @Delete — use @Update to set active=0 for soft deletion.
 
