@@ -8,6 +8,7 @@ import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.pippiphooray.model.entity.Batch;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithEggGroups;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithIncubator;
 import java.util.List;
 
 @Dao
@@ -31,4 +32,7 @@ public interface BatchDao {
   @Transaction
   @Query("SELECT * FROM batch WHERE batch_id = :id")
   LiveData<BatchWithEggGroups> selectWithGroups(long id);
+
+  @Query("SELECT * FROM batch_with_incubator")
+  LiveData<List<BatchWithIncubator>> selectAllWithIncubator();
 }

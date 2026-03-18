@@ -6,7 +6,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.pippiphooray.model.entity.Egg;
-import edu.cnm.deepdive.pippiphooray.model.pojo.EggWithEggGroup;
 import java.util.List;
 
 @Dao
@@ -23,9 +22,4 @@ public interface EggDao {
 
   @Query("SELECT * FROM egg WHERE egg_id = :eggId")
   LiveData<Egg> select(long eggId);
-
-  @Query("SELECT * FROM egg_with_egg_group WHERE breed = :breed")
-  LiveData<EggWithEggGroup> selectByBreed(String breed);
-
-
 }
