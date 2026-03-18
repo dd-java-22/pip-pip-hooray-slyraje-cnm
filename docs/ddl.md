@@ -1,17 +1,16 @@
 ---
-title: UI/UX
-description: "User interface and wireframe."
+title: Database DDL
+description: "Database DDL"
 order: 15
 ---
 
 {% include ddc-abbreviations.md %}
 
 ## Page contents
-
 {:.no_toc:}
 
 - ToC
-  {:toc}
+{:toc}
 
 ## Database DDL
 
