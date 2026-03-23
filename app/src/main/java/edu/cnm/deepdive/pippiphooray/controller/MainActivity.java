@@ -22,7 +22,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
       return insets;
     });
     setSupportActionBar(binding.toolbar);
-    NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+    NavHostFragment navHostFragment = (NavHostFragment)
+        getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+    NavController navController = navHostFragment.getNavController();
     appBarConfiguration = new AppBarConfiguration.Builder(
         R.id.batch_list_fragment,
         R.id.incubators_fragment,
@@ -58,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   public boolean onSupportNavigateUp() {
-    NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+    NavHostFragment navHostFragment = (NavHostFragment)
+        getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+    NavController navController = navHostFragment.getNavController();
     return NavigationUI.navigateUp(navController, appBarConfiguration)
         || super.onSupportNavigateUp();
   }
