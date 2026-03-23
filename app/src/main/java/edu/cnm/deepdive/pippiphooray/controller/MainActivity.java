@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         R.id.settings_fragment
     ).build();
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
   }
 
   @Override
