@@ -1,6 +1,6 @@
 ---
 title: UML
-Description: All domain model classes and their relationships.
+description: All domain model classes and their relationships.
 order: 11
 ---
 
