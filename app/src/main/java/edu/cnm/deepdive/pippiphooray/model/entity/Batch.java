@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.pippiphooray.model.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -32,7 +33,9 @@ public class Batch {
   @ColumnInfo(name = "incubator_id")
   private Long incubatorId;
 
+  @SuppressWarnings("NotNullFieldNotInitialized")
   @ColumnInfo(name = "date_set")
+  @NonNull
   private LocalDate dateSet;
 
   @ColumnInfo(name = "lockdown_date")
@@ -66,11 +69,12 @@ public class Batch {
     this.incubatorId = incubatorId;
   }
 
+  @NonNull
   public LocalDate getDateSet() {
     return dateSet;
   }
 
-  public void setDateSet(LocalDate dateSet) {
+  public void setDateSet(@NonNull LocalDate dateSet) {
     this.dateSet = dateSet;
   }
 

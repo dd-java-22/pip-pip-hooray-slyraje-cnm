@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.pippiphooray.model.entity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
@@ -18,9 +19,11 @@ public class Incubator {
   @ColumnInfo(name = "incubator_id")
   private long id;
 
+  @SuppressWarnings("NotNullFieldNotInitialized")
   @NonNull
   private String name;
 
+  @SuppressWarnings("NotNullFieldNotInitialized")
   @NonNull
   private String model;
 
@@ -30,6 +33,7 @@ public class Incubator {
   @ColumnInfo(name = "target_humidity")
   private double targetHumidity;
 
+  @Nullable
   private String notes;
 
   @ColumnInfo(name = "active", defaultValue = "1")
@@ -77,11 +81,12 @@ public class Incubator {
     this.targetHumidity = targetHumidity;
   }
 
+  @Nullable
   public String getNotes() {
     return notes;
   }
 
-  public void setNotes(String notes) {
+  public void setNotes(@Nullable String notes) {
     this.notes = notes;
   }
 

@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS batch
 (
     batch_id            INTEGER PRIMARY KEY AUTOINCREMENT,
     incubator_id        INTEGER,
-    date_set            INTEGER,
+    date_set            INTEGER NOT NULL,
     lockdown_date       INTEGER,
     expected_hatch_date INTEGER,
     num_eggs_set        INTEGER NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS candling_observation
     day_number         INTEGER NOT NULL,
     development_status TEXT,
     notes              TEXT,
-    timestamp          INTEGER,
+    timestamp          INTEGER NOT NULL,
     FOREIGN KEY (egg_id) REFERENCES egg (egg_id)
         ON DELETE CASCADE
 );

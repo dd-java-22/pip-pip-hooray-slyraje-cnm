@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.pippiphooray.model.entity;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -32,9 +33,11 @@ public class Egg {
   private long eggGroupId;
 
   @ColumnInfo(name = "hatch_status")
+  @Nullable
   private String hatchStatus;
 
   @ColumnInfo(name = "final_notes")
+  @Nullable
   private String finalNotes;
 
   public long getId() {
@@ -53,19 +56,21 @@ public class Egg {
     this.eggGroupId = eggGroupId;
   }
 
+  @Nullable
   public String getHatchStatus() {
     return hatchStatus;
   }
 
-  public void setHatchStatus(String hatchStatus) {
+  public void setHatchStatus(@Nullable String hatchStatus) {
     this.hatchStatus = hatchStatus;
   }
 
+  @Nullable
   public String getFinalNotes() {
     return finalNotes;
   }
 
-  public void setFinalNotes(String finalNotes) {
+  public void setFinalNotes(@Nullable String finalNotes) {
     this.finalNotes = finalNotes;
   }
 
