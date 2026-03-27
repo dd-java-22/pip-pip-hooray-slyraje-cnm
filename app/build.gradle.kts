@@ -43,7 +43,7 @@ android {
             "de.mannodermaus.junit5.AndroidJUnit5Builder"
 
         resValue("string", "app_name", project.property("appName") as String)
-//        resValue("string", "client_id", getLocalProperty("clientId") as String)
+        resValue("string", "client_id", getLocalProperty("clientId"))
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -119,6 +119,9 @@ dependencies {
 
     // Google Sign-in library
     implementation(libs.play.auth)
+    implementation("androidx.credentials:credentials:1.3.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+
 
     // Retrofit (REST client) with Gson integration
     implementation(libs.retrofit.core)

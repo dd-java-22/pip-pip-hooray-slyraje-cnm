@@ -31,4 +31,9 @@ public abstract class RepositoryModule {
   public abstract CandlingObservationRepository bindCandlingObservationRepository(
       CandlingObservationRepositoryImpl impl);
 
+  @Binds
+  @Singleton
+  public abstract GoogleAuthRepository bindGoogleAuthRepository(
+      GoogleAuthRepositoryImpl impl);
+
 }
