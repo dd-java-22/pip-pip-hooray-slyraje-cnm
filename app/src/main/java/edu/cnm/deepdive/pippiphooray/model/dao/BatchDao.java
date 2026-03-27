@@ -2,6 +2,7 @@ package edu.cnm.deepdive.pippiphooray.model.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
@@ -19,6 +20,9 @@ public interface BatchDao {
 
   @Update
   void update(Batch batch);
+
+  @Delete
+  void delete(Batch batch);
 
   @Query("SELECT * FROM batch ORDER BY date_set DESC")
   LiveData<List<Batch>> selectAll();

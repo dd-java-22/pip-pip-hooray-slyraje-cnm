@@ -22,15 +22,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentBatchDetailBinding;
+import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
 
 @AndroidEntryPoint
 public class BatchDetailFragment extends Fragment {
 
   private FragmentBatchDetailBinding binding;
+  private BatchViewModel batchViewModel;
 
   @Nullable
   @Override
@@ -43,6 +46,22 @@ public class BatchDetailFragment extends Fragment {
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    batchViewModel = new ViewModelProvider(requireActivity())
+        .get(BatchViewModel.class);
+
+    long batchId = BatchDetailFragmentArgs.fromBundle(getArguments()).getBatchId();
+
+    if (batchId != 0L) {
+      batchViewModel.get(batchId).observe(getViewLifecycleOwner(), (batch) -> {
+        if (batch != null) {
+          // TODO: populate views from batch fields
+        }
+      });
+    } else {
+      // TODO: prepare UI for creating a new batch
+    }
+
     binding.placeholder.setOnClickListener((v) -> {
       NavDirections action = BatchDetailFragmentDirections.navigateToEggDetailFragment(0L);
       Navigation.findNavController(v).navigate(action);

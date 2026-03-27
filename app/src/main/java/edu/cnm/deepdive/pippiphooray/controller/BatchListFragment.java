@@ -22,15 +22,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentBatchListBinding;
+import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
 
 @AndroidEntryPoint
 public class BatchListFragment extends Fragment {
 
   private FragmentBatchListBinding binding;
+  private BatchViewModel batchViewModel;
 
   @Nullable
   @Override
@@ -43,8 +46,17 @@ public class BatchListFragment extends Fragment {
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    batchViewModel = new ViewModelProvider(requireActivity())
+        .get(BatchViewModel.class);
+
+    batchViewModel.getAll().observe(getViewLifecycleOwner(), (batches) -> {
+      // TODO: submit to RecyclerView adapter, update empty state, etc.
+    });
+
     binding.addBatch.setOnClickListener((v) -> {
-      NavDirections action = BatchListFragmentDirections.navigateToBatchDetailFragment(0L);
+      NavDirections action =
+          BatchListFragmentDirections.navigateToBatchDetailFragment(0L);
       Navigation.findNavController(v).navigate(action);
     });
   }
