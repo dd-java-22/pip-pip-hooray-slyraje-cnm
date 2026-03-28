@@ -8,17 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.R;
-import edu.cnm.deepdive.pippiphooray.databinding.FragmentSettingsBinding;
+import edu.cnm.deepdive.pippiphooray.databinding.FragmentSignInBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.SignInViewModel;
 
 @AndroidEntryPoint
-public class SettingsFragment extends Fragment {
+public class SignInFragment extends Fragment {
 
-  private FragmentSettingsBinding binding;
+  private FragmentSignInBinding binding;
   private SignInViewModel signInViewModel;
 
   @Nullable
@@ -28,33 +27,29 @@ public class SettingsFragment extends Fragment {
       @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState
   ) {
-    binding = FragmentSettingsBinding.inflate(inflater, container, false);
+    binding = FragmentSignInBinding.inflate(inflater, container, false);
+    binding.signInButton.setOnClickListener(
+        (v) -> {
+          binding.signInButton.setEnabled(false);
+          signInViewModel.signIn(requireActivity());
+        });
     return binding.getRoot();
   }
 
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-
     signInViewModel = new ViewModelProvider(requireActivity())
         .get(SignInViewModel.class);
-
-    binding.signOutButton.setOnClickListener((v) -> {
-      binding.signOutButton.setEnabled(false);
-      signInViewModel.signOut();
-    });
 
     signInViewModel
         .getCredential()
         .observe(getViewLifecycleOwner(), (credential) -> {
-          if (credential == null) {
-            NavOptions options = new NavOptions.Builder()
-                .setPopUpTo(R.id.sign_in_fragment, true)
-                .build();
+          if (credential != null) {
             Navigation.findNavController(binding.getRoot())
-                .navigate(R.id.sign_in_fragment, null, options);
+                .navigate(R.id.navigate_to_batch_list_fragment);
           } else {
-            binding.signOutButton.setEnabled(true);
+            binding.signInButton.setEnabled(true);
           }
         });
 
@@ -62,10 +57,14 @@ public class SettingsFragment extends Fragment {
         .getThrowable()
         .observe(getViewLifecycleOwner(), (throwable) -> {
           if (throwable != null) {
-            binding.signOutButton.setEnabled(true);
-            // TODO show a Snackbar or error text.
+            binding.signInButton.setEnabled(true);
+            binding.signInButton.setVisibility(View.VISIBLE);
+            // TODO: show a Snackbar or error text here.
           }
         });
+
+    // Attempt silent sign-in similar to capstone's signInQuickly.
+    signInViewModel.signInQuickly(requireActivity());
   }
 
   @Override

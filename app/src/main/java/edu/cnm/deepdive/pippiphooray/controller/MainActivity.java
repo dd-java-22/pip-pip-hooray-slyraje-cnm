@@ -16,6 +16,7 @@
 package edu.cnm.deepdive.pippiphooray.controller;
 
 import android.os.Bundle;
+import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -52,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
     NavController navController = navHostFragment.getNavController();
     appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+    NavigationUI.setupWithNavController(binding.bottomNav, navController);
+    navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+      if (destination.getId() == R.id.sign_in_fragment) {
+        binding.bottomNav.setVisibility(View.GONE);
+      } else {
+        binding.bottomNav.setVisibility(View.VISIBLE);
+      }
+    });
 
   }
 

@@ -18,7 +18,16 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/nav_graph"
-  app:startDestination="@id/batch_list_fragment">
+  app:startDestination="@id/sign_in_fragment">
+
+  <fragment
+    android:id="@+id/sign_in_fragment"
+    android:name="edu.cnm.deepdive.pippiphooray.controller.SignInFragment"
+    android:label="@string/label_sign_in">
+    <action
+      android:id="@+id/navigate_to_batch_list_fragment"
+      app:destination="@id/batch_list_fragment" />
+  </fragment>
 
   <fragment
     android:id="@+id/batch_list_fragment"
