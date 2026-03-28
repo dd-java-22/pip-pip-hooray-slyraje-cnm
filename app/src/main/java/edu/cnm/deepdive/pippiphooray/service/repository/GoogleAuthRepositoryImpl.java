@@ -2,20 +2,25 @@ package edu.cnm.deepdive.pippiphooray.service.repository;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.CancellationSignal;
 import android.util.Base64;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.credentials.ClearCredentialStateRequest;
 import androidx.credentials.Credential;
 import androidx.credentials.CredentialManager;
+import androidx.credentials.CredentialManagerCallback;
 import androidx.credentials.CustomCredential;
 import androidx.credentials.GetCredentialRequest;
 import androidx.credentials.GetCredentialResponse;
+import androidx.credentials.exceptions.ClearCredentialException;
+import androidx.credentials.exceptions.GetCredentialException;
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption;
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential;
 import dagger.hilt.android.qualifiers.ApplicationContext;
 import edu.cnm.deepdive.pippiphooray.R;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import org.json.JSONObject;
@@ -27,6 +32,7 @@ public class GoogleAuthRepositoryImpl implements GoogleAuthRepository {
 
   private final CredentialManager credentialManager;
   private final String clientId;
+  private final Executor directExecutor = Runnable::run;
 
   @Inject
   GoogleAuthRepositoryImpl(@ApplicationContext Context context) {
@@ -56,12 +62,25 @@ public class GoogleAuthRepositoryImpl implements GoogleAuthRepository {
   @Override
   public CompletableFuture<Void> signOut() {
     return CompletableFuture.runAsync(() -> {
-      try {
-        credentialManager.clearCredentialState(
-            new ClearCredentialStateRequest());
-      } catch (Exception e) {
-        Log.e(TAG, "Error clearing credential state", e);
-      }
+      ClearCredentialStateRequest request = new ClearCredentialStateRequest();
+      CancellationSignal cancellationSignal = new CancellationSignal();
+
+      credentialManager.clearCredentialStateAsync(
+          request,
+          cancellationSignal,               // or null
+          directExecutor,                   // run callbacks on caller thread
+          new CredentialManagerCallback<Void, ClearCredentialException>() {
+            @Override
+            public void onResult(@NonNull Void result) {
+              Log.d(TAG, "Credential state cleared.");
+            }
+
+            @Override
+            public void onError(@NonNull ClearCredentialException e) {
+              Log.e(TAG, "Error clearing credential state", e);
+            }
+          }
+      );
     });
   }
 
@@ -70,4 +89,72 @@ public class GoogleAuthRepositoryImpl implements GoogleAuthRepository {
 
     CompletableFuture<GoogleIdTokenCredential> future = new CompletableFuture<>();
 
-    GetGoogleIdOption googleIdOption
+    GetGoogleIdOption googleIdOption = new GetGoogleIdOption.Builder()
+        .setFilterByAuthorizedAccounts(filterByAuthorizedAccounts)
+        .setAutoSelectEnabled(autoSelect)
+        .setServerClientId(clientId)
+        .build();
+
+    GetCredentialRequest request = new GetCredentialRequest.Builder()
+        .addCredentialOption(googleIdOption)
+        .build();
+
+    CancellationSignal cancellationSignal = new CancellationSignal();
+
+    credentialManager.getCredentialAsync(
+        activity,                        // Context
+        request,                         // GetCredentialRequest
+        cancellationSignal,              // or null
+        directExecutor,                  // Executor
+        new CredentialManagerCallback<GetCredentialResponse, GetCredentialException>() {
+          @Override
+          public void onResult(@NonNull GetCredentialResponse response) {
+            try {
+              Credential credential = response.getCredential();
+              if (credential instanceof CustomCredential
+                  && GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL
+                  .equals(credential.getType())) {
+                GoogleIdTokenCredential idTokenCredential =
+                    GoogleIdTokenCredential.createFrom(
+                        ((CustomCredential) credential).getData());
+                future.complete(idTokenCredential);
+              } else {
+                future.completeExceptionally(
+                    new IllegalStateException(
+                        "Credential is not a Google ID token credential"));
+              }
+            } catch (Exception e) {
+              future.completeExceptionally(
+                  new SignInRequiredException("Google Sign In required", e));
+            }
+          }
+
+          @Override
+          public void onError(@NonNull GetCredentialException e) {
+            future.completeExceptionally(
+                new SignInRequiredException("Google Sign In failed", e));
+          }
+        }
+    );
+
+    return future;
+  }
+
+  private boolean isTokenExpired(@NonNull String idToken) {
+    try {
+      String[] parts = idToken.split("\\.");
+      if (parts.length < 2) {
+        return true;
+      }
+      String payloadJson =
+          new String(Base64.decode(parts[1], Base64.URL_SAFE | Base64.NO_WRAP));
+      JSONObject payload = new JSONObject(payloadJson);
+      long expiration = payload.getLong("exp");
+      long nowPlusSkew = System.currentTimeMillis() / 1000L + 5 * 60;
+      return expiration < nowPlusSkew;
+    } catch (Exception e) {
+      Log.e(TAG, "Failed to parse ID token", e);
+      return true;
+    }
+  }
+}
