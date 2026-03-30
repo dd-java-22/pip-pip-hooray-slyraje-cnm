@@ -8,4 +8,4 @@ order: 20
 
 ## Database definition language (DDL)
 
-beep boop
+{% include linked-file.md type="sqlite" file="ddl.sql" %}

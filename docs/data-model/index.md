@@ -8,4 +8,4 @@ order: 0
 
 ## UML class diagram
 
-[![UML Class Diagram](img/pip-pip-hooray-uml.svg)](pdf/pip-pip-hooray-uml.pdf)
+[![UML Class Diagram](../img/pip-pip-hooray-uml.svg)](../pdf/pip-pip-hooray-uml.pdf)

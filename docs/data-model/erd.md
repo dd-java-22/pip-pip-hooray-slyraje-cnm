@@ -8,4 +8,4 @@ order: 10
 
 ## Entity Relationship Diagram
 
-[![Entity_Relationship Diagram](img/pip-pip-hooray-erd.svg)](pdf/pip-pip-hooray-erd.pdf)
+[![Entity_Relationship Diagram](../img/pip-pip-hooray-erd.svg)](../pdf/pip-pip-hooray-erd.pdf)
