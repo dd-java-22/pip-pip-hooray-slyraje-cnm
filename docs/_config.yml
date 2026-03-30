@@ -7,7 +7,6 @@ titles_from_headings:
   enabled: false
 prev_next_navigation:
   - bottom
-  - top
 
 title: "Pip Pip Hooray"
 description: "Chicken Incubation Log for Backyard Keepers and Breeders"
