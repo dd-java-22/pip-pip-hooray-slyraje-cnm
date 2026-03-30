@@ -1,7 +1,7 @@
 ---
 title: UML
 description: All domain model classes and their relationships.
-order: 11
+order: 0
 ---
 
 {% include ddc-abbreviations.md %}
