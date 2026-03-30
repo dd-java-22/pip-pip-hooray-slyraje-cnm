@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.pippiphooray.model.entity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -30,12 +31,14 @@ public class EggGroup {
   @ColumnInfo(name = "batch_id")
   private long batchId;
 
+  @SuppressWarnings("NotNullFieldNotInitialized")
   @NonNull
   private String breed;
 
   @ColumnInfo(name = "initial_egg_count")
   private int initialEggCount;
 
+  @Nullable
   private String notes;
 
   public long getId() {
@@ -71,11 +74,12 @@ public class EggGroup {
     this.initialEggCount = initialEggCount;
   }
 
+  @Nullable
   public String getNotes() {
     return notes;
   }
 
-  public void setNotes(String notes) {
+  public void setNotes(@Nullable String notes) {
     this.notes = notes;
   }
 }

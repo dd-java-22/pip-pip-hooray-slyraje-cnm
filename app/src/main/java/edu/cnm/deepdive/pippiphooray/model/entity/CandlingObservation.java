@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.pippiphooray.model.entity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -36,11 +38,17 @@ public class CandlingObservation {
   private int dayNumber;
 
   @ColumnInfo(name = "development_status")
+  @Nullable
   private String developmentStatus;
 
   @ColumnInfo(name = "notes")
+  @Nullable
   private String notes;
 
+
+  @SuppressWarnings("NotNullFieldNotInitialized")
+  @ColumnInfo(name = "timestamp")
+  @NonNull
   private Instant timestamp;
 
   public long getId() {
@@ -67,27 +75,30 @@ public class CandlingObservation {
     this.dayNumber = dayNumber;
   }
 
+  @Nullable
   public String getDevelopmentStatus() {
     return developmentStatus;
   }
 
-  public void setDevelopmentStatus(String developmentStatus) {
+  public void setDevelopmentStatus(@Nullable String developmentStatus) {
     this.developmentStatus = developmentStatus;
   }
 
+  @Nullable
   public String getNotes() {
     return notes;
   }
 
-  public void setNotes(String notes) {
+  public void setNotes(@Nullable String notes) {
     this.notes = notes;
   }
 
+  @NonNull
   public Instant getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(Instant timestamp) {
+  public void setTimestamp(@NonNull Instant timestamp) {
     this.timestamp = timestamp;
   }
 }
