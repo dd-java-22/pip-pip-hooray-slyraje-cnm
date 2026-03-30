@@ -1,7 +1,7 @@
 ---
 title: Entity-Relationship Diagram
 description: Persistent model classes and their relationships
-order: 12
+order: 10
 ---
 
 {% include ddc-abbreviations.md %}
