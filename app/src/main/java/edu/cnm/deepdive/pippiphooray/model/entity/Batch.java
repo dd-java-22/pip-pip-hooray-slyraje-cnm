@@ -30,9 +30,9 @@ public class Batch {
   @ColumnInfo(name = "batch_id")
   private long id;
 
-  @SuppressWarnings("NotNullFieldNotInitialized")
+  // TODO: 3/30/2026 Set this field to @NotNull in the future when the UI is set up to require
+  //  incubator selection. The ERD reflects this intent currently.
   @ColumnInfo(name = "incubator_id")
-  @NonNull
   private Long incubatorId;
 
   @SuppressWarnings("NotNullFieldNotInitialized")
@@ -63,12 +63,11 @@ public class Batch {
     this.id = id;
   }
 
-  @NonNull
   public Long getIncubatorId() {
     return incubatorId;
   }
 
-  public void setIncubatorId(@NonNull Long incubatorId) {
+  public void setIncubatorId(Long incubatorId) {
     this.incubatorId = incubatorId;
   }
 
