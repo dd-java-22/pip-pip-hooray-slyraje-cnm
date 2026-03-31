@@ -30,7 +30,9 @@ public class Batch {
   @ColumnInfo(name = "batch_id")
   private long id;
 
+  @SuppressWarnings("NotNullFieldNotInitialized")
   @ColumnInfo(name = "incubator_id")
+  @NonNull
   private Long incubatorId;
 
   @SuppressWarnings("NotNullFieldNotInitialized")
@@ -61,11 +63,12 @@ public class Batch {
     this.id = id;
   }
 
+  @NonNull
   public Long getIncubatorId() {
     return incubatorId;
   }
 
-  public void setIncubatorId(Long incubatorId) {
+  public void setIncubatorId(@NonNull Long incubatorId) {
     this.incubatorId = incubatorId;
   }
 
