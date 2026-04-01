@@ -1,0 +1,68 @@
+package edu.cnm.deepdive.pippiphooray.controller;
+
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
+import edu.cnm.deepdive.pippiphooray.databinding.ItemIncubatorBinding;
+import edu.cnm.deepdive.pippiphooray.model.entity.Incubator;
+import java.util.Locale;
+
+public class BatchAdapter extends ListAdapter<Incubator, BatchAdapter.ViewHolder> {
+
+  public BatchAdapter() {
+    super(DIFF_CALLBACK);
+  }
+
+  @NonNull
+  @Override
+  public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    ItemIncubatorBinding binding = ItemIncubatorBinding.inflate(
+        LayoutInflater.from(parent.getContext()), parent, false);
+    return new ViewHolder(binding);
+  }
+
+  @Override
+  public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    holder.bind(getItem(position));
+  }
+
+  static class ViewHolder extends RecyclerView.ViewHolder {
+
+    private final ItemIncubatorBinding binding;
+
+    ViewHolder(@NonNull ItemIncubatorBinding binding) {
+      super(binding.getRoot());
+      this.binding = binding;
+    }
+
+    void bind(@NonNull Incubator incubator) {
+      binding.incubatorName.setText(incubator.getName());
+      binding.incubatorModel.setText(incubator.getModel());
+      binding.incubatorTemp.setText(
+          String.format(Locale.getDefault(), "Temp: %.1f\u00B0F", incubator.getTargetTemperature()));
+      binding.incubatorHumidity.setText(
+          String.format(Locale.getDefault(), "Humidity: %.0f%%", incubator.getTargetHumidity()));
+    }
+  }
+
+  private static final DiffUtil.ItemCallback<Incubator> DIFF_CALLBACK =
+      new DiffUtil.ItemCallback<>() {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull Incubator oldItem, @NonNull Incubator newItem) {
+          return oldItem.getId() == newItem.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Incubator oldItem, @NonNull Incubator newItem) {
+          return oldItem.getName().equals(newItem.getName())
+              && oldItem.getModel().equals(newItem.getModel())
+              && oldItem.getTargetTemperature() == newItem.getTargetTemperature()
+              && oldItem.getTargetHumidity() == newItem.getTargetHumidity();
+        }
+      };
+
+}

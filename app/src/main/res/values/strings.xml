@@ -30,4 +30,8 @@
   <string name="hint_incubator_model">Model</string>
   <string name="hint_target_temperature">Target Temperature (\u00B0F)</string>
   <string name="hint_target_humidity">Target Humidity (%)</string>
+  <string name="date_set">Date Set</string>
+  <string name="lockdown_date">Lockdown Date</string>
+  <string name="expected_hatch_date">Expected Hatch Date</string>
+  <string name="number_of_eggs_set">Number of eggs set</string>
 </resources>

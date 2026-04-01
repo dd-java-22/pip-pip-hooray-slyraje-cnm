@@ -26,39 +26,67 @@
     android:layout_marginTop="8dp">
 
     <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/incubator_model"
+      android:id="@+id/date_set"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:hint="@string/hint_incubator_model"
+      android:hint="@string/date_set"
+      android:inputType="date" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/lockdown_date"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/lockdown_date"
+      android:inputType="date" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/expected_hatch_date"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/expected_hatch_date"
+      android:inputType="date" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/numm_eggs_set"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/number_of_eggs_set"
+      android:inputType="number" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/notes"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Notes"
       android:inputType="text" />
-
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <com.google.android.material.textfield.TextInputLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/target_temperature"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/hint_target_temperature"
-      android:inputType="numberDecimal" />
-
-  </com.google.android.material.textfield.TextInputLayout>
-
-  <com.google.android.material.textfield.TextInputLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/target_humidity"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/hint_target_humidity"
-      android:inputType="numberDecimal" />
 
   </com.google.android.material.textfield.TextInputLayout>
 
