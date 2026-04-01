@@ -66,6 +66,9 @@ public class AddIncubatorDialogFragment extends DialogFragment {
             return;
           }
           Incubator incubator = new Incubator();
+          if (editing) {
+            incubator.setId(incubatorId);
+          }
           incubator.setName(name);
           incubator.setModel(getText(binding.incubatorModel));
           incubator.setActive(true);
