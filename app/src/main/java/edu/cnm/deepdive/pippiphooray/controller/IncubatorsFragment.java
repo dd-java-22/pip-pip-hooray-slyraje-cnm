@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import android.widget.Toast;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentIncubatorsBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.IncubatorViewModel;
@@ -27,7 +26,8 @@ public class IncubatorsFragment extends Fragment {
       @Nullable Bundle savedInstanceState) {
     binding = FragmentIncubatorsBinding.inflate(inflater, container, false);
     adapter = new IncubatorAdapter((incubator) ->
-        Toast.makeText(requireContext(), "Edit: " + incubator.getName(), Toast.LENGTH_SHORT).show()
+        AddIncubatorDialogFragment.newInstance(incubator.getId())
+            .show(getChildFragmentManager(), null)
     );
     binding.incubatorList.setLayoutManager(new LinearLayoutManager(requireContext()));
     binding.incubatorList.setAdapter(adapter);

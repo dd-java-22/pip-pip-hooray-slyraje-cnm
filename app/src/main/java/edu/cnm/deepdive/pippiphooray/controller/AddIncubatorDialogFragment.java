@@ -18,6 +18,16 @@ import edu.cnm.deepdive.pippiphooray.viewmodel.IncubatorViewModel;
 @AndroidEntryPoint
 public class AddIncubatorDialogFragment extends DialogFragment {
 
+  static final String INCUBATOR_ID_KEY = "incubator_id";
+
+  public static AddIncubatorDialogFragment newInstance(long incubatorId) {
+    AddIncubatorDialogFragment fragment = new AddIncubatorDialogFragment();
+    Bundle args = new Bundle();
+    args.putLong(INCUBATOR_ID_KEY, incubatorId);
+    fragment.setArguments(args);
+    return fragment;
+  }
+
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
