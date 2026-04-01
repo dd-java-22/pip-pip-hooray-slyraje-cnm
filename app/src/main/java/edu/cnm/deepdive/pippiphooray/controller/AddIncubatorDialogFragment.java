@@ -14,6 +14,8 @@ import edu.cnm.deepdive.pippiphooray.R;
 import edu.cnm.deepdive.pippiphooray.databinding.DialogAddIncubatorBinding;
 import edu.cnm.deepdive.pippiphooray.model.entity.Incubator;
 import edu.cnm.deepdive.pippiphooray.viewmodel.IncubatorViewModel;
+import java.util.List;
+import java.util.Locale;
 
 @AndroidEntryPoint
 public class AddIncubatorDialogFragment extends DialogFragment {
@@ -34,8 +36,28 @@ public class AddIncubatorDialogFragment extends DialogFragment {
     DialogAddIncubatorBinding binding = DialogAddIncubatorBinding.inflate(
         LayoutInflater.from(requireContext()));
 
+    long incubatorId = getArguments() != null
+        ? getArguments().getLong(INCUBATOR_ID_KEY, 0) : 0;
+    boolean editing = incubatorId > 0;
+
+    if (editing) {
+      Incubator existing = findIncubatorById(incubatorId);
+      if (existing != null) {
+        binding.incubatorName.setText(existing.getName());
+        binding.incubatorModel.setText(existing.getModel());
+        if (existing.getTargetTemperature() != 0) {
+          binding.targetTemperature.setText(
+              String.format(Locale.getDefault(), "%.1f", existing.getTargetTemperature()));
+        }
+        if (existing.getTargetHumidity() != 0) {
+          binding.targetHumidity.setText(
+              String.format(Locale.getDefault(), "%.0f", existing.getTargetHumidity()));
+        }
+      }
+    }
+
     return new MaterialAlertDialogBuilder(requireContext())
-        .setTitle(R.string.title_add_incubator)
+        .setTitle(editing ? R.string.title_edit_incubator : R.string.title_add_incubator)
         .setView(binding.getRoot())
         .setNegativeButton(android.R.string.cancel, (dialog, which) -> {})
         .setPositiveButton(R.string.action_save, (dialog, which) -> {
@@ -74,6 +96,21 @@ public class AddIncubatorDialogFragment extends DialogFragment {
   @NonNull
   private String getText(@NonNull View view) {
     return ((android.widget.EditText) view).getText().toString().trim();
+  }
+
+  @Nullable
+  private Incubator findIncubatorById(long id) {
+    IncubatorViewModel viewModel = new ViewModelProvider(requireActivity())
+        .get(IncubatorViewModel.class);
+    List<Incubator> incubators = viewModel.getActiveIncubators().getValue();
+    if (incubators != null) {
+      for (Incubator incubator : incubators) {
+        if (incubator.getId() == id) {
+          return incubator;
+        }
+      }
+    }
+    return null;
   }
 
 }

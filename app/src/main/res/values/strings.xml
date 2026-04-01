@@ -25,6 +25,7 @@
   <string name="sign_in_button">Sign In</string>
   <string name="sign_out">Sign Out</string>
   <string name="title_add_incubator">Add Incubator</string>
+  <string name="title_edit_incubator">Edit Incubator</string>
   <string name="action_save">Save</string>
   <string name="hint_incubator_name">Name</string>
   <string name="hint_incubator_model">Model</string>
