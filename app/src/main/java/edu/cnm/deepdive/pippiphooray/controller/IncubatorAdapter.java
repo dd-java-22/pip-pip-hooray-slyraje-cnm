@@ -12,8 +12,11 @@ import java.util.Locale;
 
 public class IncubatorAdapter extends ListAdapter<Incubator, IncubatorAdapter.ViewHolder> {
 
-  public IncubatorAdapter() {
+  private final OnIncubatorClickListener listener;
+
+  public IncubatorAdapter(OnIncubatorClickListener listener) {
     super(DIFF_CALLBACK);
+    this.listener = listener;
   }
 
   @NonNull
@@ -26,7 +29,15 @@ public class IncubatorAdapter extends ListAdapter<Incubator, IncubatorAdapter.Vi
 
   @Override
   public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    holder.bind(getItem(position));
+    Incubator incubator = getItem(position);
+    holder.bind(incubator);
+    holder.itemView.setOnClickListener((v) -> listener.onIncubatorClick(incubator));
+  }
+
+  @FunctionalInterface
+  public interface OnIncubatorClickListener {
+
+    void onIncubatorClick(Incubator incubator);
   }
 
   static class ViewHolder extends RecyclerView.ViewHolder {

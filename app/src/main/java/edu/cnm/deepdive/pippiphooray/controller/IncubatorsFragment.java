@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import android.widget.Toast;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentIncubatorsBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.IncubatorViewModel;
@@ -25,7 +26,9 @@ public class IncubatorsFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     binding = FragmentIncubatorsBinding.inflate(inflater, container, false);
-    adapter = new IncubatorAdapter();
+    adapter = new IncubatorAdapter((incubator) ->
+        Toast.makeText(requireContext(), "Edit: " + incubator.getName(), Toast.LENGTH_SHORT).show()
+    );
     binding.incubatorList.setLayoutManager(new LinearLayoutManager(requireContext()));
     binding.incubatorList.setAdapter(adapter);
     return binding.getRoot();
