@@ -1,3 +1,18 @@
+/*
+ *  Copyright 2026 CNM Ingenuity, Inc.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
 package edu.cnm.deepdive.pippiphooray.controller;
 
 import android.os.Bundle;
@@ -10,7 +25,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentBatchListBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
@@ -20,16 +34,12 @@ public class BatchListFragment extends Fragment {
 
   private FragmentBatchListBinding binding;
   private BatchViewModel batchViewModel;
-  private BatchAdapter adapter;
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     binding = FragmentBatchListBinding.inflate(inflater, container, false);
-    adapter = new BatchAdapter();
-    binding.batchList.setLayoutManager(new LinearLayoutManager(requireContext()));
-    binding.batchList.setAdapter(adapter);
     return binding.getRoot();
   }
 
@@ -40,11 +50,9 @@ public class BatchListFragment extends Fragment {
     batchViewModel = new ViewModelProvider(requireActivity())
         .get(BatchViewModel.class);
 
-    batchViewModel.getAll().observe(getViewLifecycleOwner(), list -> adapter.submitList(list));
-
-    binding.addBatch.setOnClickListener((v -> {
-      new AddBatchDialogFragment().show(getChildFragmentManager(), null);
-    }));
+    batchViewModel.getAll().observe(getViewLifecycleOwner(), (batches) -> {
+      // TODO: submit to RecyclerView adapter, update empty state, etc.
+    });
 
     binding.addBatch.setOnClickListener((v) -> {
       NavDirections action =

@@ -62,7 +62,8 @@
   <fragment
     android:id="@+id/incubators_fragment"
     android:name="edu.cnm.deepdive.pippiphooray.controller.IncubatorsFragment"
-    android:label="@string/label_incubators" />
+    android:label="@string/label_incubators" >
+  </fragment>
 
   <fragment
     android:id="@+id/settings_fragment"
