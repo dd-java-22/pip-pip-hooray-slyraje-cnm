@@ -27,6 +27,7 @@
   <string name="title_add_incubator">Add Incubator</string>
   <string name="title_edit_incubator">Edit Incubator</string>
   <string name="action_save">Save</string>
+  <string name="action_deactivate">Deactivate</string>
   <string name="hint_incubator_name">Name</string>
   <string name="hint_incubator_model">Model</string>
   <string name="hint_target_temperature">Target Temperature (\u00B0F)</string>

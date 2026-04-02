@@ -56,7 +56,7 @@ public class AddIncubatorDialogFragment extends DialogFragment {
       }
     }
 
-    return new MaterialAlertDialogBuilder(requireContext())
+    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext())
         .setTitle(editing ? R.string.title_edit_incubator : R.string.title_add_incubator)
         .setView(binding.getRoot())
         .setNegativeButton(android.R.string.cancel, (dialog, which) -> {})
@@ -92,8 +92,20 @@ public class AddIncubatorDialogFragment extends DialogFragment {
           IncubatorViewModel viewModel = new ViewModelProvider(requireActivity())
               .get(IncubatorViewModel.class);
           viewModel.save(incubator);
-        })
-        .create();
+        });
+
+    if (editing) {
+      builder.setNeutralButton(R.string.action_deactivate, (dialog, which) -> {
+        Incubator existing = findIncubatorById(incubatorId);
+        if (existing != null) {
+          IncubatorViewModel viewModel = new ViewModelProvider(requireActivity())
+              .get(IncubatorViewModel.class);
+          viewModel.deactivate(existing);
+        }
+      });
+    }
+
+    return builder.create();
   }
 
   @NonNull
