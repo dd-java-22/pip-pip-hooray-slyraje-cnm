@@ -24,6 +24,8 @@
   <string name="sign_in_message">Sign In</string>
   <string name="sign_in_button">Sign In</string>
   <string name="sign_out">Sign Out</string>
+  <string name="title_add_batch">Add Batch</string>
+  <string name="breed">Breed(s)</string>
   <string name="title_add_incubator">Add Incubator</string>
   <string name="title_edit_incubator">Edit Incubator</string>
   <string name="action_save">Save</string>
@@ -36,4 +38,5 @@
   <string name="lockdown_date">Lockdown Date</string>
   <string name="expected_hatch_date">Expected Hatch Date</string>
   <string name="number_of_eggs_set">Number of eggs set</string>
+  <string name="notes">Notes</string>
 </resources>

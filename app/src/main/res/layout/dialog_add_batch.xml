@@ -12,10 +12,10 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/incubator_name"
+      android:id="@+id/breed"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:hint="@string/hint_incubator_name"
+      android:hint="@string/breed"
       android:inputType="text" />
 
   </com.google.android.material.textfield.TextInputLayout>
@@ -68,7 +68,7 @@
     android:layout_marginTop="8dp">
 
     <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/numm_eggs_set"
+      android:id="@+id/num_eggs_set"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:hint="@string/number_of_eggs_set"
@@ -85,7 +85,7 @@
       android:id="@+id/notes"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:hint="Notes"
+      android:hint="@string/notes"
       android:inputType="text" />
 
   </com.google.android.material.textfield.TextInputLayout>
