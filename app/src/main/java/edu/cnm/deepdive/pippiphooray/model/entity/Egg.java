@@ -32,6 +32,9 @@ public class Egg {
   @ColumnInfo(name = "egg_group_id")
   private long eggGroupId;
 
+  @ColumnInfo(name = "egg_number")
+  private int eggNumber;
+
   @ColumnInfo(name = "hatch_status")
   @Nullable
   private String hatchStatus;
@@ -54,6 +57,14 @@ public class Egg {
 
   public void setEggGroupId(long eggGroupId) {
     this.eggGroupId = eggGroupId;
+  }
+
+  public int getEggNumber() {
+    return eggNumber;
+  }
+
+  public void setEggNumber(int eggNumber) {
+    this.eggNumber = eggNumber;
   }
 
   @Nullable

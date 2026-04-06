@@ -31,6 +31,9 @@ public class BatchWithIncubator {
   @ColumnInfo(name = "incubator_id")
   private Long incubatorId;
 
+  @ColumnInfo(name = "batch_number")
+  private int batchNumber;
+
   @ColumnInfo(name = "date_set")
   private LocalDate dateSet;
 
@@ -65,6 +68,14 @@ public class BatchWithIncubator {
 
   public void setIncubatorId(Long incubatorId) {
     this.incubatorId = incubatorId;
+  }
+
+  public int getBatchNumber() {
+    return batchNumber;
+  }
+
+  public void setBatchNumber(int batchNumber) {
+    this.batchNumber = batchNumber;
   }
 
   public LocalDate getDateSet() {

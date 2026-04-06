@@ -44,6 +44,21 @@ public class BatchRepositoryImpl implements BatchRepository {
   }
 
   @Override
+  public LiveData<List<BatchWithIncubator>> getAllWithIncubatorOrderByExpectedHatch() {
+    return batchDao.selectAllWithIncubatorOrderByExpectedHatch();
+  }
+
+  @Override
+  public LiveData<List<BatchWithIncubator>> getAllWithIncubatorOrderByIncubator() {
+    return batchDao.selectAllWithIncubatorOrderByIncubator();
+  }
+
+  @Override
+  public LiveData<List<BatchWithIncubator>> getAllWithIncubatorOrderByBatchNumber() {
+    return batchDao.selectAllWithIncubatorOrderByBatchNumber();
+  }
+
+  @Override
   public CompletableFuture<Long> save(Batch batch) {
     return CompletableFuture.supplyAsync(() -> {
       if (batch.getId() == 0L) {

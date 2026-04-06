@@ -19,6 +19,12 @@ public interface BatchRepository {
 
   LiveData<List<BatchWithIncubator>> getAllWithIncubator();
 
+  LiveData<List<BatchWithIncubator>> getAllWithIncubatorOrderByExpectedHatch();
+
+  LiveData<List<BatchWithIncubator>> getAllWithIncubatorOrderByIncubator();
+
+  LiveData<List<BatchWithIncubator>> getAllWithIncubatorOrderByBatchNumber();
+
   CompletableFuture<Long> save(Batch batch);
 
   CompletableFuture<Void> delete(Batch batch); // if you choose to support deletion
