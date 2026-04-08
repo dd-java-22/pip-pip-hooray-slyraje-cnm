@@ -11,6 +11,7 @@ import java.time.LocalDate;
         SELECT
           b.batch_id,
           b.incubator_id,
+          b.batch_number,
           b.date_set,
           b.expected_hatch_date,
           b.num_eggs_set,
@@ -32,7 +33,7 @@ public class BatchWithIncubator {
   private Long incubatorId;
 
   @ColumnInfo(name = "batch_number")
-  private int batchNumber;
+  private Integer batchNumber;
 
   @ColumnInfo(name = "date_set")
   private LocalDate dateSet;
@@ -70,11 +71,11 @@ public class BatchWithIncubator {
     this.incubatorId = incubatorId;
   }
 
-  public int getBatchNumber() {
+  public Integer getBatchNumber() {
     return batchNumber;
   }
 
-  public void setBatchNumber(int batchNumber) {
+  public void setBatchNumber(Integer batchNumber) {
     this.batchNumber = batchNumber;
   }
 
