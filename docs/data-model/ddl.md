@@ -1,7 +1,7 @@
 ---
 title: DDL
 description: SQL database definition
-order: 20
+order: 30
 ---
 
 {% include ddc-abbreviations.md %}

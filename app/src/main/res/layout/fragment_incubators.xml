@@ -20,14 +20,35 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <TextView
-    android:id="@+id/placeholder"
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_bottom"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/label_incubators"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent=".85"/>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/incubator_list"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent">
+
+  </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/add_incubator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:contentDescription="@string/title_add_incubator"
+    app:srcCompat="@drawable/ic_add"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/guideline_bottom"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,4 +24,26 @@
   <string name="sign_in_message">Sign In</string>
   <string name="sign_in_button">Sign In</string>
   <string name="sign_out">Sign Out</string>
+  <string name="title_add_batch">Add Batch</string>
+  <string name="breed">Breed(s)</string>
+  <string name="title_add_incubator">Add Incubator</string>
+  <string name="title_edit_incubator">Edit Incubator</string>
+  <string name="action_save">Save</string>
+  <string name="action_deactivate">Deactivate</string>
+  <string name="hint_incubator_name">Name</string>
+  <string name="hint_incubator_model">Model</string>
+  <string name="hint_target_temperature">Target Temperature (\u00B0F)</string>
+  <string name="hint_target_humidity">Target Humidity (%)</string>
+  <string name="date_set">Date Set</string>
+  <string name="lockdown_date">Lockdown Date</string>
+  <string name="expected_hatch_date">Expected Hatch Date</string>
+  <string name="number_of_eggs_set">Number of eggs set</string>
+  <string name="notes">Notes</string>
+  <string name="label_incubator_prefix">Incubator:</string>
+  <string name="label_unassigned_incubator">Incubator: Unassigned</string>
+  <string name="label_viable_format">%1$d/%2$d viable (%3$.1f%%)</string>
+  <string name="label_next_expected_hatch">Next: Expected Hatch Day</string>
+  <string name="label_batch_fallback">Batch</string>
+  <string name="label_batch_number_format">Batch #%1$d</string>
+  <string name="action_add_batch">add_batch</string>
 </resources>

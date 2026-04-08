@@ -35,6 +35,9 @@ public class Batch {
   @ColumnInfo(name = "incubator_id")
   private Long incubatorId;
 
+  @ColumnInfo(name = "batch_number")
+  private Integer batchNumber;
+
   @SuppressWarnings("NotNullFieldNotInitialized")
   @ColumnInfo(name = "date_set")
   @NonNull
@@ -69,6 +72,14 @@ public class Batch {
 
   public void setIncubatorId(Long incubatorId) {
     this.incubatorId = incubatorId;
+  }
+
+  public Integer getBatchNumber() {
+    return batchNumber;
+  }
+
+  public void setBatchNumber(Integer batchNumber) {
+    this.batchNumber = batchNumber;
   }
 
   @NonNull

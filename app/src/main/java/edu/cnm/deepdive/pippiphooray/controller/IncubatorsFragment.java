@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentIncubatorsBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.IncubatorViewModel;
@@ -17,12 +18,19 @@ public class IncubatorsFragment extends Fragment {
 
   private FragmentIncubatorsBinding binding;
   private IncubatorViewModel incubatorViewModel;
+  private IncubatorAdapter adapter;
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     binding = FragmentIncubatorsBinding.inflate(inflater, container, false);
+    adapter = new IncubatorAdapter((incubator) ->
+        AddIncubatorDialogFragment.newInstance(incubator.getId())
+            .show(getChildFragmentManager(), null)
+    );
+    binding.incubatorList.setLayoutManager(new LinearLayoutManager(requireContext()));
+    binding.incubatorList.setAdapter(adapter);
     return binding.getRoot();
   }
 
@@ -34,12 +42,11 @@ public class IncubatorsFragment extends Fragment {
         .get(IncubatorViewModel.class);
 
     incubatorViewModel.getActiveIncubators()
-        .observe(getViewLifecycleOwner(), (incubators) -> {
-          // TODO: update RecyclerView/list, or at least stub some display.
-          // e.g., show count or names in a TextView for now.
-        });
+        .observe(getViewLifecycleOwner(), adapter::submitList);
 
-    // TODO: set up click handlers to add/edit incubators, calling incubatorViewModel.save(...)
+    binding.addIncubator.setOnClickListener((v) -> {
+      new AddIncubatorDialogFragment().show(getChildFragmentManager(), null);
+    });
   }
 
   @Override

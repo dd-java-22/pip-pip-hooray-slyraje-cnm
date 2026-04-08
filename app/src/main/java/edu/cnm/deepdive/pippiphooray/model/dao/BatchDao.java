@@ -39,4 +39,13 @@ public interface BatchDao {
 
   @Query("SELECT * FROM batch_with_incubator")
   LiveData<List<BatchWithIncubator>> selectAllWithIncubator();
+
+  @Query("SELECT * FROM batch_with_incubator ORDER BY expected_hatch_date ASC")
+  LiveData<List<BatchWithIncubator>> selectAllWithIncubatorOrderByExpectedHatch();
+
+  @Query("SELECT * FROM batch_with_incubator ORDER BY incubator_name ASC, date_set DESC")
+  LiveData<List<BatchWithIncubator>> selectAllWithIncubatorOrderByIncubator();
+
+  @Query("SELECT * FROM batch_with_incubator ORDER BY batch_number IS NULL, batch_number ASC, date_set DESC")
+  LiveData<List<BatchWithIncubator>> selectAllWithIncubatorOrderByBatchNumber();
 }
