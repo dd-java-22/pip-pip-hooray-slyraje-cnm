@@ -2,14 +2,44 @@
 
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:orientation="vertical"
-  android:padding="24dp">
+  android:orientation="vertical">
 
   <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/batch_number_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/batch_number"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/batch_number"
+      android:inputType="number" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/incubator_layout"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/half_dynamic_spacing">
+
+    <AutoCompleteTextView
+      android:id="@+id/incubator"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/hint_incubator_name"
+      android:inputType="none" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/breed_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/half_dynamic_spacing">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/breed"
@@ -17,10 +47,10 @@
       android:layout_height="wrap_content"
       android:hint="@string/breed"
       android:inputType="text" />
-
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/date_set_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp">
@@ -30,42 +60,54 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:hint="@string/date_set"
-      android:inputType="date" />
-
+      android:focusable="false"
+      android:focusableInTouchMode="false"
+      android:clickable="true"
+      android:cursorVisible="false"
+      android:inputType="none" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/lockdown_date_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="@dimen/half_dynamic_spacing">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/lockdown_date"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:hint="@string/lockdown_date"
-      android:inputType="date" />
-
+      android:focusable="false"
+      android:focusableInTouchMode="false"
+      android:clickable="true"
+      android:cursorVisible="false"
+      android:inputType="none" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/expected_hatch_date_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="@dimen/half_dynamic_spacing">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/expected_hatch_date"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:hint="@string/expected_hatch_date"
-      android:inputType="date" />
-
+      android:focusable="false"
+      android:focusableInTouchMode="false"
+      android:clickable="true"
+      android:cursorVisible="false"
+      android:inputType="none" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/num_eggs_set_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="@dimen/half_dynamic_spacing">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/num_eggs_set"
@@ -73,20 +115,28 @@
       android:layout_height="wrap_content"
       android:hint="@string/number_of_eggs_set"
       android:inputType="number" />
-
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/notes_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="@dimen/half_dynamic_spacing"
+    app:hintAnimationEnabled="true"
+    app:hintEnabled="true">
+
+<!--    TODO: Notes field is not rendering properly in app-->
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/notes"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:hint="@string/notes"
-      android:inputType="text" />
+      android:inputType="textMultiLine"
+      android:minLines="2"
+      android:maxLines="2"
+      android:gravity="top|start"
+      android:scrollbars="vertical" />
 
   </com.google.android.material.textfield.TextInputLayout>
 

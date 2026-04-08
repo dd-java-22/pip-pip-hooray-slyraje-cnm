@@ -8,7 +8,7 @@
   android:padding="16dp">
 
   <TextView
-    android:id="@+id/breed"
+    android:id="@+id/incubator_name"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -23,7 +23,7 @@
     android:textAppearance="?attr/textAppearanceBodyMedium"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/breed" />
+    app:layout_constraintTop_toBottomOf="@id/incubator_name" />
 
   <TextView
     android:id="@+id/incubator_temp"
@@ -38,7 +38,7 @@
     android:id="@+id/incubator_humidity"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceBodySmall"
+    android:textAppearance="?attr/textAppearanceBodySmall"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/incubator_temp" />

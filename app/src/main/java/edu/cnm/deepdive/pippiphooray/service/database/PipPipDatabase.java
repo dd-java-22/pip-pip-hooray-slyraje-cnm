@@ -36,7 +36,7 @@ import java.time.LocalDate;
 public abstract class PipPipDatabase extends RoomDatabase {
 
   static final String NAME = "pip_pip_hooray_db";
-  static final int VERSION = 1;
+  static final int VERSION = 2;
 
   public abstract BatchDao getBatchDao();
 

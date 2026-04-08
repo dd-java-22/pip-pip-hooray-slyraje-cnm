@@ -30,14 +30,14 @@
   <string name="title_edit_incubator">Edit Incubator</string>
   <string name="action_save">Save</string>
   <string name="action_deactivate">Deactivate</string>
-  <string name="hint_incubator_name">Name</string>
-  <string name="hint_incubator_model">Model</string>
+  <string name="hint_incubator_name">Incubator Name</string>
+  <string name="hint_incubator_model">Incubator Model</string>
   <string name="hint_target_temperature">Target Temperature (\u00B0F)</string>
   <string name="hint_target_humidity">Target Humidity (%)</string>
   <string name="date_set">Date Set</string>
   <string name="lockdown_date">Lockdown Date</string>
   <string name="expected_hatch_date">Expected Hatch Date</string>
-  <string name="number_of_eggs_set">Number of eggs set</string>
+  <string name="number_of_eggs_set">Egg Count</string>
   <string name="notes">Notes</string>
   <string name="label_incubator_prefix">Incubator:</string>
   <string name="label_unassigned_incubator">Incubator: Unassigned</string>
@@ -46,4 +46,13 @@
   <string name="label_batch_fallback">Batch</string>
   <string name="label_batch_number_format">Batch #%1$d</string>
   <string name="action_add_batch">add_batch</string>
+  <string name="batch_number">Batch Number</string>
+  <string name="error_batch_number_required">Enter a batch number.</string>
+  <string name="error_breed_required">Enter a breed.</string>
+  <string name="error_incubator_required">Select an incubator.</string>
+  <string name="error_date_required">Select a date.</string>
+  <string name="error_egg_count_required">Enter a valid egg count.</string>
+  <string name="error_lockdown_before_set">Lockdown date must be on or after date set.</string>
+  <string name="error_hatch_before_lockdown">Expected hatch date must be on or after lockdown date.</string>
+  <string name="error_save_batch">Unable to save batch right now.</string>
 </resources>
