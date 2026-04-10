@@ -19,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.R;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentBatchDetailBinding;
 import edu.cnm.deepdive.pippiphooray.model.entity.Batch;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchViabilitySummary;
 import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -31,6 +32,7 @@ public class BatchDetailFragment extends Fragment {
 
   private FragmentBatchDetailBinding binding;
   private BatchViewModel batchViewModel;
+  private long batchId;
 
   @Nullable
   @Override
@@ -51,7 +53,14 @@ public class BatchDetailFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
 
     batchViewModel = new ViewModelProvider(requireActivity()).get(BatchViewModel.class);
-    long batchId = BatchDetailFragmentArgs.fromBundle(requireArguments()).getBatchId();
+    batchId = BatchDetailFragmentArgs.fromBundle(requireArguments()).getBatchId();
+
+    batchViewModel.setSelectedBatchId(batchId);
+    batchViewModel.getSelectedBatchViability().observe(getViewLifecycleOwner(), summary -> {
+      if (summary != null) {
+        bindViability(summary);
+      }
+    });
 
     installMenu();
 
@@ -60,6 +69,19 @@ public class BatchDetailFragment extends Fragment {
         bindBatch(batch);
       }
     });
+
+    binding.bulkCandlingButton.setOnClickListener(v ->
+        BulkCandlingDialogFragment.newInstance(batchId)
+            .show(getChildFragmentManager(), BulkCandlingDialogFragment.class.getSimpleName())
+    );
+
+    binding.perEggCandlingButton.setOnClickListener(v ->
+        Toast.makeText(
+            requireContext(),
+            R.string.message_per_egg_candling_placeholder,
+            Toast.LENGTH_SHORT
+        ).show()
+    );
   }
 
   private void installMenu() {
@@ -109,15 +131,6 @@ public class BatchDetailFragment extends Fragment {
 
     binding.eggsSetValue.setText(String.valueOf(batch.getNumEggsSet()));
 
-    // Viable: placeholder until candling data exists.
-    int eggsSet = batch.getNumEggsSet();
-    if (eggsSet > 0) {
-      binding.viableValue.setText(
-          getString(R.string.value_viability_placeholder, eggsSet, eggsSet));
-    } else {
-      binding.viableValue.setText(R.string.value_viability_zero);
-    }
-
     binding.dateSetValue.setText(formatDate(batch.getDateSet()));
     binding.lockdownDateValue.setText(formatDate(getLockdownDate(batch)));
     binding.expectedHatchDateValue.setText(formatDate(batch.getExpectedHatchDate()));
@@ -151,6 +164,19 @@ public class BatchDetailFragment extends Fragment {
     return (date != null)
         ? DATE_FORMATTER.format(date)
         : getString(R.string.value_unknown);
+  }
+
+  private void bindViability(@NonNull edu.cnm.deepdive.pippiphooray.model.pojo.BatchViabilitySummary summary) {
+    int total = summary.getTotalCount();
+    int viable = summary.getViableCount();
+
+    if (total > 0) {
+      binding.viableValue.setText(
+          getString(R.string.value_viability_dynamic, viable, total, summary.getViableRate() * 100.0)
+      );
+    } else {
+      binding.viableValue.setText(R.string.value_viability_zero);
+    }
   }
 
   @Override

@@ -27,6 +27,11 @@ public class EggRepositoryImpl implements EggRepository {
   }
 
   @Override
+  public CompletableFuture<List<Egg>> fetchByEggGroupId(long eggGroupId) {
+    return CompletableFuture.supplyAsync(() -> eggDao.fetchByEggGroup(eggGroupId));
+  }
+
+  @Override
   public CompletableFuture<Long> save(Egg egg) {
     return CompletableFuture.supplyAsync(() -> {
       if (egg.getId() == 0L) {
@@ -38,5 +43,10 @@ public class EggRepositoryImpl implements EggRepository {
         return egg.getId();
       }
     });
+  }
+
+  @Override
+  public CompletableFuture<Void> saveAll(List<Egg> eggs) {
+    return CompletableFuture.runAsync(() -> eggDao.update(eggs));
   }
 }

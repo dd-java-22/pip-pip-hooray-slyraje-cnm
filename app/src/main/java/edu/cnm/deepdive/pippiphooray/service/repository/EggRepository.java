@@ -11,6 +11,10 @@ public interface EggRepository {
 
   LiveData<Egg> get(long id);
 
+  CompletableFuture<List<Egg>> fetchByEggGroupId(long eggGroupId);
+
   CompletableFuture<Long> save(Egg egg);
+
+  CompletableFuture<Void> saveAll(List<Egg> eggs);
 
 }

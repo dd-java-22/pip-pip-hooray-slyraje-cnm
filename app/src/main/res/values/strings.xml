@@ -89,4 +89,29 @@
     Edit batch metadata not implemented yet.
   </string>
 
+  <!-- Batch detail: candling observation buttons -->
+  <string name="action_bulk_candling">Bulk candling by group</string>
+  <string name="action_per_egg_candling">Per-egg candling</string>
+  <string name="message_bulk_candling_placeholder">
+  Bulk candling workflow not implemented yet.
+</string>
+  <string name="message_per_egg_candling_placeholder">
+  Per-egg candling workflow not implemented yet.
+</string>
+
+  <string name="title_bulk_candling">Bulk Candling</string>
+  <string name="message_bulk_candling_instructions">
+  Enter the number of currently viable eggs for each breed-defined group.
+</string>
+  <string name="message_no_egg_groups">No egg groups found for this batch.</string>
+  <string name="label_group_egg_count">Eggs in group: %1$d</string>
+  <string name="hint_viable_count">Viable egg count</string>
+
+  <string name="message_bulk_candling_invalid_input">
+  Enter a viable count between 0 and the group egg count.
+</string>
+  <string name="message_bulk_candling_saved">Bulk candling saved.</string>
+  <string name="message_bulk_candling_save_failed">Unable to save bulk candling.</string>
+  <string name="value_viability_dynamic">%1$d/%2$d viable (%.1f%%)</string>
+
 </resources>
