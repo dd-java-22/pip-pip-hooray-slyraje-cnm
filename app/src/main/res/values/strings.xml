@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  Copyright 2026 CNM Ingenuity, Inc.
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <resources>
+
+  <!-- Navigation labels -->
   <string name="label_batch_list">Batches</string>
   <string name="label_batch_detail">Batch Detail</string>
   <string name="label_egg_detail">Egg Detail</string>
   <string name="label_incubators">Incubators</string>
   <string name="label_settings">Settings</string>
   <string name="label_sign_in">Sign In</string>
+
+  <!-- Sign-in -->
   <string name="sign_in_message">Sign In</string>
   <string name="sign_in_button">Sign In</string>
   <string name="sign_out">Sign Out</string>
+
+  <!-- Batch dialogs & actions -->
   <string name="title_add_batch">Add Batch</string>
+  <string name="action_add_batch">add_batch</string>
+  <string name="batch_number">Batch Number</string>
   <string name="breed">Breed(s)</string>
+
+  <!-- Incubator dialogs & actions -->
   <string name="title_add_incubator">Add Incubator</string>
   <string name="title_edit_incubator">Edit Incubator</string>
   <string name="action_save">Save</string>
@@ -34,19 +30,23 @@
   <string name="hint_incubator_model">Incubator Model</string>
   <string name="hint_target_temperature">Target Temperature (\u00B0F)</string>
   <string name="hint_target_humidity">Target Humidity (%)</string>
+
+  <!-- Batch form fields -->
   <string name="date_set">Date Set</string>
   <string name="lockdown_date">Lockdown Date</string>
   <string name="expected_hatch_date">Expected Hatch Date</string>
   <string name="number_of_eggs_set">Egg Count</string>
   <string name="notes">Notes</string>
+
+  <!-- Batch list formatting -->
   <string name="label_incubator_prefix">Incubator:</string>
   <string name="label_unassigned_incubator">Incubator: Unassigned</string>
   <string name="label_viable_format">%1$d/%2$d viable (%3$.1f%%)</string>
   <string name="label_next_expected_hatch">Next: Expected Hatch Day</string>
   <string name="label_batch_fallback">Batch</string>
   <string name="label_batch_number_format">Batch #%1$d</string>
-  <string name="action_add_batch">add_batch</string>
-  <string name="batch_number">Batch Number</string>
+
+  <!-- Validation errors -->
   <string name="error_batch_number_required">Enter a batch number.</string>
   <string name="error_breed_required">Enter a breed.</string>
   <string name="error_incubator_required">Select an incubator.</string>
@@ -55,4 +55,38 @@
   <string name="error_lockdown_before_set">Lockdown date must be on or after date set.</string>
   <string name="error_hatch_before_lockdown">Expected hatch date must be on or after lockdown date.</string>
   <string name="error_save_batch">Unable to save batch right now.</string>
+
+  <!-- Batch detail: summary labels -->
+  <string name="label_summary">Summary</string>
+  <string name="label_batch_number">Batch number</string>
+  <string name="label_breeds">Breed(s)</string>
+  <string name="label_incubator">Incubator</string>
+  <string name="label_eggs_set">Eggs set</string>
+  <string name="label_viable">Viable count/rate</string>
+  <string name="label_date_set">Date set</string>
+  <string name="label_lockdown_date">Lockdown date</string>
+  <string name="label_expected_hatch_date">Expected hatch date</string>
+
+  <!-- Batch detail: milestones -->
+  <string name="label_milestones">Milestones</string>
+  <string name="label_day_7_candling">Day 7 Candling Observation</string>
+  <string name="label_day_14_candling">Day 14 Candling Observation</string>
+  <string name="label_day_18_lockdown">Day 18 Candling Observation / Lockdown</string>
+  <string name="label_expected_hatch_day">Expected Hatch Day</string>
+
+  <!-- Batch detail: values & formatting -->
+  <string name="format_batch_title">Batch #%1$d</string>
+  <string name="value_unknown">—</string>
+  <string name="value_pending">Pending</string>
+  <string name="value_incubator_selected">Incubator selected</string>
+  <string name="value_unassigned">Unassigned</string>
+  <string name="value_viability_zero">0/0 viable</string>
+  <string name="value_viability_placeholder">%1$d/%2$d viable</string>
+
+  <!-- Batch detail: edit action -->
+  <string name="action_edit_batch">Edit</string>
+  <string name="message_edit_batch_placeholder">
+    Edit batch metadata not implemented yet.
+  </string>
+
 </resources>
