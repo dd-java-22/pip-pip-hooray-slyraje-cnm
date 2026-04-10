@@ -47,6 +47,9 @@ public class BatchViewModel extends ViewModel {
       new MediatorLiveData<>();
   private final MediatorLiveData<BatchViabilitySummary> selectedBatchViability =
       new MediatorLiveData<>();
+  private LiveData<BatchWithEggGroups> selectedBatchSource;
+  private final Map<Long, LiveData<List<Egg>>> viabilitySources = new HashMap<>();
+  private final Map<Long, List<Egg>> eggsByGroup = new HashMap<>();
 
   @Inject
   BatchViewModel(BatchRepository batchRepository, EggRepository eggRepository) {
@@ -60,9 +63,15 @@ public class BatchViewModel extends ViewModel {
         recomputeSortedBatches(allWithIncubator.getValue(), order));
 
     selectedBatchWithGroups.addSource(selectedBatchId, id -> {
+      if (selectedBatchSource != null) {
+        selectedBatchWithGroups.removeSource(selectedBatchSource);
+        selectedBatchSource = null;
+      }
+      clearViabilitySources();
+
       if (id != null) {
-        LiveData<BatchWithEggGroups> source = batchRepository.getWithGroups(id);
-        selectedBatchWithGroups.addSource(source, batchWithGroups -> {
+        selectedBatchSource = batchRepository.getWithGroups(id);
+        selectedBatchWithGroups.addSource(selectedBatchSource, batchWithGroups -> {
           selectedBatchWithGroups.setValue(batchWithGroups);
           attachViabilitySources(batchWithGroups);
         });
@@ -193,16 +202,17 @@ public class BatchViewModel extends ViewModel {
   }
 
   private void attachViabilitySources(BatchWithEggGroups batchWithGroups) {
+    clearViabilitySources();
     selectedBatchViability.setValue(new BatchViabilitySummary(0, 0));
 
     if (batchWithGroups == null || batchWithGroups.getGroups() == null) {
       return;
     }
 
-    Map<Long, List<Egg>> eggsByGroup = new HashMap<>();
-
     for (EggGroup group : batchWithGroups.getGroups()) {
       LiveData<List<Egg>> eggSource = eggRepository.getByEggGroupId(group.getId());
+      viabilitySources.put(group.getId(), eggSource);
+
       selectedBatchViability.addSource(eggSource, eggs -> {
         eggsByGroup.put(group.getId(), eggs);
         recomputeViability(eggsByGroup);
@@ -227,6 +237,7 @@ public class BatchViewModel extends ViewModel {
     }
 
     selectedBatchViability.setValue(new BatchViabilitySummary(viable, total));
+    android.util.Log.d("BatchViewModel", "viability = " + viable + "/" + total);
   }
 
   private boolean isViable(Egg egg) {
@@ -236,6 +247,14 @@ public class BatchViewModel extends ViewModel {
 
   public LiveData<BatchViabilitySummary> getSelectedBatchViability() {
     return selectedBatchViability;
+  }
+
+  private void clearViabilitySources() {
+    for (LiveData<List<Egg>> source : viabilitySources.values()) {
+      selectedBatchViability.removeSource(source);
+    }
+    viabilitySources.clear();
+    eggsByGroup.clear();
   }
 
 }
