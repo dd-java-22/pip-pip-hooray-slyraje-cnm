@@ -3,6 +3,7 @@ package edu.cnm.deepdive.pippiphooray.service.repository;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.pippiphooray.model.dao.EggGroupDao;
 import edu.cnm.deepdive.pippiphooray.model.entity.EggGroup;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
@@ -37,6 +38,24 @@ public class EggGroupRepositoryImpl implements EggGroupRepository {
         eggGroupDao.update(eggGroup);
         return eggGroup.getId();
       }
+    });
+  }
+
+  @Override
+  public CompletableFuture<List<Long>> saveAll(List<EggGroup> eggGroups) {
+    return CompletableFuture.supplyAsync(() -> {
+      if (eggGroups == null || eggGroups.isEmpty()) {
+        return Collections.emptyList();
+      }
+
+      List<Long> ids = eggGroupDao.insertAll(eggGroups);
+      for (int i = 0; i < eggGroups.size() && i < ids.size(); i++) {
+        Long id = ids.get(i);
+        if (id != null) {
+          eggGroups.get(i).setId(id);
+        }
+      }
+      return ids;
     });
   }
 

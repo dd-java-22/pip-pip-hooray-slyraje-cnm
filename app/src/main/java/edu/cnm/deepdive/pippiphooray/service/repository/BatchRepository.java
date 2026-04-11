@@ -27,5 +27,7 @@ public interface BatchRepository {
 
   CompletableFuture<Long> save(Batch batch);
 
-  CompletableFuture<Void> delete(Batch batch); // if you choose to support deletion
+  CompletableFuture<Long> saveWithInitialEggGroups(Batch batch, String breed);
+
+  CompletableFuture<Void> delete(Batch batch);
 }

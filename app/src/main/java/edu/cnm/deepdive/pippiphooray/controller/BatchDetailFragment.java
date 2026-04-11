@@ -19,10 +19,13 @@ import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.R;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentBatchDetailBinding;
 import edu.cnm.deepdive.pippiphooray.model.entity.Batch;
+import edu.cnm.deepdive.pippiphooray.model.entity.EggGroup;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchViabilitySummary;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithEggGroups;
 import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @AndroidEntryPoint
 public class BatchDetailFragment extends Fragment {
@@ -59,6 +62,12 @@ public class BatchDetailFragment extends Fragment {
     batchViewModel.getSelectedBatchViability().observe(getViewLifecycleOwner(), summary -> {
       if (summary != null) {
         bindViability(summary);
+      }
+    });
+
+    batchViewModel.getSelectedBatchWithGroups().observe(getViewLifecycleOwner(), batchWithGroups -> {
+      if (batchWithGroups != null) {
+        bindBatchWithGroups(batchWithGroups);
       }
     });
 
@@ -108,7 +117,6 @@ public class BatchDetailFragment extends Fragment {
   }
 
   private void bindBatch(@NonNull Batch batch) {
-    // Title
     if (batch.getBatchNumber() != null) {
       binding.batchTitle.setText(
           getString(R.string.format_batch_title, batch.getBatchNumber()));
@@ -116,14 +124,11 @@ public class BatchDetailFragment extends Fragment {
       binding.batchTitle.setText(R.string.label_batch_detail);
     }
 
-    // Summary fields
     binding.batchNumberValue.setText(
         (batch.getBatchNumber() != null)
             ? String.valueOf(batch.getBatchNumber())
             : getString(R.string.value_unknown));
 
-    // Breed(s) & incubator: not yet available via Batch alone → placeholder for now.
-    binding.breedsValue.setText(R.string.value_pending);
     binding.incubatorValue.setText(
         (batch.getIncubatorId() != null)
             ? getString(R.string.value_incubator_selected)
@@ -135,12 +140,15 @@ public class BatchDetailFragment extends Fragment {
     binding.lockdownDateValue.setText(formatDate(getLockdownDate(batch)));
     binding.expectedHatchDateValue.setText(formatDate(batch.getExpectedHatchDate()));
 
-    // Milestones (non-interactive)
     LocalDate dateSet = batch.getDateSet();
     binding.day7Date.setText(formatDate(offsetDays(dateSet, 7)));
     binding.day14Date.setText(formatDate(offsetDays(dateSet, 14)));
     binding.day18Date.setText(formatDate(getLockdownDate(batch)));
     binding.hatchDate.setText(formatDate(batch.getExpectedHatchDate()));
+  }
+
+  private void bindBatchWithGroups(@NonNull BatchWithEggGroups batchWithGroups) {
+    binding.breedsValue.setText(formatBreedSummary(batchWithGroups.getGroups()));
   }
 
   @Nullable
@@ -166,7 +174,30 @@ public class BatchDetailFragment extends Fragment {
         : getString(R.string.value_unknown);
   }
 
-  private void bindViability(@NonNull edu.cnm.deepdive.pippiphooray.model.pojo.BatchViabilitySummary summary) {
+  @NonNull
+  private String formatBreedSummary(@Nullable List<EggGroup> groups) {
+    if (groups == null || groups.isEmpty()) {
+      return getString(R.string.value_unknown);
+    }
+
+    StringBuilder summary = new StringBuilder();
+    for (int i = 0; i < groups.size(); i++) {
+      EggGroup group = groups.get(i);
+      if (group.getBreed() == null || group.getBreed().isBlank()) {
+        continue;
+      }
+      if (summary.length() > 0) {
+        summary.append(", ");
+      }
+      summary.append(group.getBreed());
+    }
+
+    return (summary.length() > 0)
+        ? summary.toString()
+        : getString(R.string.value_unknown);
+  }
+
+  private void bindViability(@NonNull BatchViabilitySummary summary) {
     int total = summary.getTotalCount();
     int viable = summary.getViableCount();
 

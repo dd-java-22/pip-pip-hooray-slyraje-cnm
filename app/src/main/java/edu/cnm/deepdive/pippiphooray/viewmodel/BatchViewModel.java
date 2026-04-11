@@ -114,6 +114,10 @@ public class BatchViewModel extends ViewModel {
     return batchRepository.save(batch);
   }
 
+  public CompletableFuture<Long> saveWithInitialEggGroups(Batch batch, String breed) {
+    return batchRepository.saveWithInitialEggGroups(batch, breed);
+  }
+
   public CompletableFuture<Void> delete(Batch batch) {
     return batchRepository.delete(batch);
   }

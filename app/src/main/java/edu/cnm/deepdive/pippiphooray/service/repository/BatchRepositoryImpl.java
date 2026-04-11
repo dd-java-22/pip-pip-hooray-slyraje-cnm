@@ -3,8 +3,10 @@ package edu.cnm.deepdive.pippiphooray.service.repository;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.pippiphooray.model.dao.BatchDao;
 import edu.cnm.deepdive.pippiphooray.model.entity.Batch;
+import edu.cnm.deepdive.pippiphooray.model.entity.EggGroup;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithEggGroups;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithIncubator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
@@ -12,10 +14,12 @@ import javax.inject.Inject;
 public class BatchRepositoryImpl implements BatchRepository {
 
   private final BatchDao batchDao;
+  private final EggGroupRepository eggGroupRepository;
 
   @Inject
-  BatchRepositoryImpl(BatchDao batchDao) {
+  BatchRepositoryImpl(BatchDao batchDao, EggGroupRepository eggGroupRepository) {
     this.batchDao = batchDao;
+    this.eggGroupRepository = eggGroupRepository;
   }
 
   @Override
@@ -73,9 +77,30 @@ public class BatchRepositoryImpl implements BatchRepository {
   }
 
   @Override
+  public CompletableFuture<Long> saveWithInitialEggGroups(Batch batch, String breed) {
+    return save(batch)
+        .thenCompose(batchId -> eggGroupRepository
+            .saveAll(buildInitialEggGroups(batchId, breed, batch.getNumEggsSet()))
+            .thenApply(ids -> batchId));
+  }
+
+  @Override
   public CompletableFuture<Void> delete(Batch batch) {
     return CompletableFuture.runAsync(() -> {
       batchDao.delete(batch);
     });
+  }
+
+  private List<EggGroup> buildInitialEggGroups(long batchId, String breed, int eggCount) {
+    List<EggGroup> groups = new ArrayList<>();
+
+    EggGroup group = new EggGroup();
+    group.setBatchId(batchId);
+    group.setBreed(breed);
+    group.setInitialEggCount(eggCount);
+    group.setNotes(null);
+
+    groups.add(group);
+    return groups;
   }
 }

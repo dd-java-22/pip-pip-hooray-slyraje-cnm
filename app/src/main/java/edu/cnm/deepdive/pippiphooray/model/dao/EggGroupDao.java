@@ -14,6 +14,9 @@ public interface EggGroupDao {
   @Insert
   long insert(EggGroup eggGroup);
 
+  @Insert
+  List<Long> insertAll(List<EggGroup> eggGroups);
+
   @Update
   void update(EggGroup eggGroup);
 

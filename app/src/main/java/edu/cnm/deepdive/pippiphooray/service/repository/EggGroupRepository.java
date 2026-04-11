@@ -13,4 +13,6 @@ public interface EggGroupRepository {
 
   CompletableFuture<Long> save(EggGroup eggGroup);
 
+  CompletableFuture<List<Long>> saveAll(List<EggGroup> eggGroups);
+
 }
