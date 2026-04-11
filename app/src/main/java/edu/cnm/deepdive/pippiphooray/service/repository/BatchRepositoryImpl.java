@@ -15,11 +15,17 @@ public class BatchRepositoryImpl implements BatchRepository {
 
   private final BatchDao batchDao;
   private final EggGroupRepository eggGroupRepository;
+  private final EggRepository eggRepository;
 
   @Inject
-  BatchRepositoryImpl(BatchDao batchDao, EggGroupRepository eggGroupRepository) {
+  BatchRepositoryImpl(
+      BatchDao batchDao,
+      EggGroupRepository eggGroupRepository,
+      EggRepository eggRepository
+  ) {
     this.batchDao = batchDao;
     this.eggGroupRepository = eggGroupRepository;
+    this.eggRepository = eggRepository;
   }
 
   @Override
@@ -79,9 +85,12 @@ public class BatchRepositoryImpl implements BatchRepository {
   @Override
   public CompletableFuture<Long> saveWithInitialEggGroups(Batch batch, String breed) {
     return save(batch)
-        .thenCompose(batchId -> eggGroupRepository
-            .saveAll(buildInitialEggGroups(batchId, breed, batch.getNumEggsSet()))
-            .thenApply(ids -> batchId));
+        .thenCompose(batchId -> {
+          List<EggGroup> groups = buildInitialEggGroups(batchId, breed, batch.getNumEggsSet());
+          return eggGroupRepository.saveAll(groups)
+              .thenCompose(ids -> seedEggsForGroups(groups))
+              .thenApply(ignored -> batchId);
+        });
   }
 
   @Override
@@ -102,5 +111,17 @@ public class BatchRepositoryImpl implements BatchRepository {
 
     groups.add(group);
     return groups;
+  }
+
+  private CompletableFuture<Void> seedEggsForGroups(List<EggGroup> groups) {
+    CompletableFuture<Void> chain = CompletableFuture.completedFuture(null);
+
+    for (EggGroup group : groups) {
+      chain = chain.thenCompose(ignored ->
+          eggRepository.seedEggsForGroup(group.getId(), group.getInitialEggCount())
+      );
+    }
+
+    return chain;
   }
 }

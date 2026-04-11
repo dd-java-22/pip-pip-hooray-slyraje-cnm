@@ -17,4 +17,6 @@ public interface EggRepository {
 
   CompletableFuture<Void> saveAll(List<Egg> eggs);
 
+  CompletableFuture<Void> seedEggsForGroup(long eggGroupId, int initialEggCount);
+
 }

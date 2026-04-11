@@ -14,6 +14,9 @@ public interface EggDao {
   @Insert
   long insert(Egg egg);
 
+  @Insert
+  List<Long> insertAll(List<Egg> eggs);
+
   @Update
   void update(Egg egg);
 
