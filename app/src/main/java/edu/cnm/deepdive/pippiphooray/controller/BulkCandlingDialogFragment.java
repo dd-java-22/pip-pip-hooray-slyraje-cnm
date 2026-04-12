@@ -21,6 +21,7 @@ import edu.cnm.deepdive.pippiphooray.model.entity.EggGroup;
 import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @AndroidEntryPoint
 public class BulkCandlingDialogFragment extends DialogFragment {
@@ -59,8 +60,7 @@ public class BulkCandlingDialogFragment extends DialogFragment {
     adapter = new BulkCandlingGroupAdapter(this::focusAndShowKeyboard);
     binding.groupList.setLayoutManager(new LinearLayoutManager(requireContext()));
     binding.groupList.setAdapter(adapter);
-
-    batchViewModel.setSelectedBatchId(batchId);
+    
     batchViewModel.getSelectedBatchWithGroups().observe(getViewLifecycleOwner(), batchWithGroups -> {
       List<EggGroup> groups = (batchWithGroups != null && batchWithGroups.getGroups() != null)
           ? batchWithGroups.getGroups()
@@ -81,11 +81,18 @@ public class BulkCandlingDialogFragment extends DialogFragment {
         return;
       }
 
+      if (!adapter.hasAnyEnteredValue()) {
+        dismiss();
+        return;
+      }
+
+      Map<Long, Integer> viableCountsByGroupId = adapter.collectValidCounts();
+
       binding.progressBar.setVisibility(View.VISIBLE);
       binding.saveButton.setEnabled(false);
       binding.cancelButton.setEnabled(false);
 
-      batchViewModel.applyBulkCandling(adapter.collectValidCounts())
+      batchViewModel.applyBulkCandling(viableCountsByGroupId)
           .whenComplete((result, throwable) -> requireActivity().runOnUiThread(() -> {
             binding.progressBar.setVisibility(View.GONE);
             binding.saveButton.setEnabled(true);

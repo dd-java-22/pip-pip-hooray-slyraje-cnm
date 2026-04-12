@@ -171,7 +171,8 @@ public class BatchViewModel extends ViewModel {
 
   public CompletableFuture<Void> applyBulkCandling(Map<Long, Integer> viableCountsByGroupId) {
     BatchWithEggGroups batchWithGroups = selectedBatchWithGroups.getValue();
-    if (batchWithGroups == null || batchWithGroups.getGroups() == null) {
+    if (batchWithGroups == null || batchWithGroups.getGroups() == null
+        || viableCountsByGroupId == null || viableCountsByGroupId.isEmpty()) {
       return CompletableFuture.completedFuture(null);
     }
 
@@ -185,6 +186,8 @@ public class BatchViewModel extends ViewModel {
 
       CompletableFuture<Void> future = eggRepository.fetchByEggGroupId(group.getId())
           .thenCompose(eggs -> {
+            eggs.sort(Comparator.comparingInt(Egg::getEggNumber));
+
             int clampedViableCount = Math.max(0, Math.min(viableCount, eggs.size()));
 
             for (int i = 0; i < eggs.size(); i++) {
@@ -246,7 +249,7 @@ public class BatchViewModel extends ViewModel {
 
   private boolean isViable(Egg egg) {
     String status = egg.getHatchStatus();
-    return status == null || status.isBlank() || "VIABLE".equals(status);
+    return STATUS_VIABLE.equals(status);
   }
 
   public LiveData<BatchViabilitySummary> getSelectedBatchViability() {

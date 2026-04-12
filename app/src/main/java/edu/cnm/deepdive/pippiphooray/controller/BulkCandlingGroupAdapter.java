@@ -1,11 +1,10 @@
 package edu.cnm.deepdive.pippiphooray.controller;
 
-import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.inputmethod.InputMethodManager;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
@@ -21,7 +20,7 @@ public class BulkCandlingGroupAdapter
     extends ListAdapter<EggGroup, BulkCandlingGroupAdapter.ViewHolder> {
 
   public interface OnInputFocusListener {
-    void onInputFocused(@NonNull android.widget.EditText editText);
+    void onInputFocused(@NonNull EditText editText);
   }
 
   private final Map<Long, String> enteredValues = new HashMap<>();
@@ -45,15 +44,28 @@ public class BulkCandlingGroupAdapter
     holder.bind(getItem(position));
   }
 
+  public boolean hasAnyEnteredValue() {
+    for (EggGroup group : getCurrentList()) {
+      String raw = enteredValues.get(group.getId());
+      if (raw != null && !raw.isBlank()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @NonNull
   public Map<Long, Integer> collectValidCounts() {
     Map<Long, Integer> counts = new HashMap<>();
     for (EggGroup group : getCurrentList()) {
       String raw = enteredValues.get(group.getId());
       if (raw == null || raw.isBlank()) {
-        counts.put(group.getId(), group.getInitialEggCount());
-      } else {
-        counts.put(group.getId(), Integer.parseInt(raw));
+        continue;
       }
+
+      int value = Integer.parseInt(raw);
+      int clamped = Math.max(0, Math.min(value, group.getInitialEggCount()));
+      counts.put(group.getId(), clamped);
     }
     return counts;
   }
@@ -91,7 +103,8 @@ public class BulkCandlingGroupAdapter
     void bind(@NonNull EggGroup group) {
       binding.breedName.setText(group.getBreed());
       binding.groupEggCount.setText(
-          itemView.getContext().getString(R.string.label_group_egg_count, group.getInitialEggCount())
+          itemView.getContext().getString(
+              R.string.label_group_egg_count, group.getInitialEggCount())
       );
 
       if (watcher != null) {
@@ -119,7 +132,8 @@ public class BulkCandlingGroupAdapter
       };
       binding.viableCountInput.addTextChangedListener(watcher);
 
-      binding.viableCountInput.setOnClickListener(v -> focusListener.onInputFocused(binding.viableCountInput));
+      binding.viableCountInput.setOnClickListener(
+          v -> focusListener.onInputFocused(binding.viableCountInput));
 
       binding.viableCountInput.setOnFocusChangeListener((v, hasFocus) -> {
         if (hasFocus) {
@@ -144,5 +158,4 @@ public class BulkCandlingGroupAdapter
               && Objects.equals(oldItem.getNotes(), newItem.getNotes());
         }
       };
-
 }
