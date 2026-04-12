@@ -17,6 +17,8 @@ public interface BatchRepository {
 
   LiveData<BatchWithEggGroups> getWithGroups(long id);
 
+  LiveData<List<BatchWithEggGroups>> getAllWithGroups();
+
   LiveData<List<BatchWithIncubator>> getAllWithIncubator();
 
   LiveData<List<BatchWithIncubator>> getAllWithIncubatorOrderByExpectedHatch();

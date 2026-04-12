@@ -8,6 +8,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 import edu.cnm.deepdive.pippiphooray.model.entity.Batch;
 import edu.cnm.deepdive.pippiphooray.model.entity.Egg;
 import edu.cnm.deepdive.pippiphooray.model.entity.EggGroup;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchCardSummary;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchCardSummaryFormatter;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchViabilitySummary;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithEggGroups;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithIncubator;
@@ -39,6 +41,7 @@ public class BatchViewModel extends ViewModel {
   private final EggRepository eggRepository;
 
   private final LiveData<List<BatchWithIncubator>> allWithIncubator;
+  private final LiveData<List<BatchWithEggGroups>> allWithGroups;
   private final MutableLiveData<SortOrder> sortOrder = new MutableLiveData<>(
       SortOrder.NEXT_MILESTONE);
   private final MediatorLiveData<List<BatchWithIncubator>> sortedBatches = new MediatorLiveData<>();
@@ -47,20 +50,34 @@ public class BatchViewModel extends ViewModel {
       new MediatorLiveData<>();
   private final MediatorLiveData<BatchViabilitySummary> selectedBatchViability =
       new MediatorLiveData<>();
-  private LiveData<BatchWithEggGroups> selectedBatchSource;
+  private final MediatorLiveData<List<BatchCardSummary>> batchCardSummaries =
+      new MediatorLiveData<>();
   private final Map<Long, LiveData<List<Egg>>> viabilitySources = new HashMap<>();
   private final Map<Long, List<Egg>> eggsByGroup = new HashMap<>();
+  private LiveData<BatchWithEggGroups> selectedBatchSource;
+
 
   @Inject
   BatchViewModel(BatchRepository batchRepository, EggRepository eggRepository) {
     this.batchRepository = batchRepository;
-    this.allWithIncubator = batchRepository.getAllWithIncubator();
     this.eggRepository = eggRepository;
+    this.allWithIncubator = batchRepository.getAllWithIncubator();
+    this.allWithGroups = batchRepository.getAllWithGroups();
 
     sortedBatches.addSource(allWithIncubator, batches ->
         recomputeSortedBatches(batches, sortOrder.getValue()));
     sortedBatches.addSource(sortOrder, order ->
         recomputeSortedBatches(allWithIncubator.getValue(), order));
+
+    batchCardSummaries.addSource(allWithIncubator, ignored ->
+        recomputeBatchCardSummaries(
+            allWithIncubator.getValue(), allWithGroups.getValue(), sortOrder.getValue()));
+    batchCardSummaries.addSource(allWithGroups, ignored ->
+        recomputeBatchCardSummaries(
+            allWithIncubator.getValue(), allWithGroups.getValue(), sortOrder.getValue()));
+    batchCardSummaries.addSource(sortOrder, ignored ->
+        recomputeBatchCardSummaries(
+            allWithIncubator.getValue(), allWithGroups.getValue(), sortOrder.getValue()));
 
     selectedBatchWithGroups.addSource(selectedBatchId, id -> {
       if (selectedBatchSource != null) {
@@ -104,6 +121,10 @@ public class BatchViewModel extends ViewModel {
 
   public LiveData<List<BatchWithIncubator>> getBatchSummaries() {
     return sortedBatches;
+  }
+
+  public LiveData<List<BatchCardSummary>> getBatchCardSummaries() {
+    return batchCardSummaries;
   }
 
   public void setSortOrder(SortOrder order) {
@@ -208,6 +229,10 @@ public class BatchViewModel extends ViewModel {
     return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
   }
 
+  public LiveData<BatchViabilitySummary> getSelectedBatchViability() {
+    return selectedBatchViability;
+  }
+
   private void attachViabilitySources(BatchWithEggGroups batchWithGroups) {
     clearViabilitySources();
     selectedBatchViability.setValue(new BatchViabilitySummary(0, 0));
@@ -252,8 +277,67 @@ public class BatchViewModel extends ViewModel {
     return STATUS_VIABLE.equals(status);
   }
 
-  public LiveData<BatchViabilitySummary> getSelectedBatchViability() {
-    return selectedBatchViability;
+  private void recomputeBatchCardSummaries(
+      List<BatchWithIncubator> incubatorBatches,
+      List<BatchWithEggGroups> groupBatches,
+      SortOrder order
+  ) {
+    if (incubatorBatches == null) {
+      batchCardSummaries.setValue(null);
+      return;
+    }
+
+    Map<Long, BatchWithEggGroups> groupsByBatchId = new HashMap<>();
+    if (groupBatches != null) {
+      for (BatchWithEggGroups batchWithGroups : groupBatches) {
+        if (batchWithGroups != null && batchWithGroups.getBatch() != null) {
+          groupsByBatchId.put(batchWithGroups.getBatch().getId(), batchWithGroups);
+        }
+      }
+    }
+
+    List<BatchCardSummary> summaries = new ArrayList<>();
+    for (BatchWithIncubator batch : incubatorBatches) {
+      BatchWithEggGroups withGroups = groupsByBatchId.get(batch.getId());
+      String breedSummary = (withGroups != null)
+          ? BatchCardSummaryFormatter.buildBreedSummary(withGroups.getGroups())
+          : "Breed pending";
+
+      summaries.add(new BatchCardSummary(
+          batch.getId(),
+          batch.getBatchNumber(),
+          batch.getIncubatorName(),
+          breedSummary,
+          batch.getNumEggsSet(),
+          batch.getExpectedHatchDate()
+      ));
+    }
+
+    if (order != null) {
+      Comparator<BatchCardSummary> comparator = switch (order) {
+        case EXPECTED_HATCH_DATE, NEXT_MILESTONE -> Comparator.comparing(
+            BatchCardSummary::getExpectedHatchDate,
+            Comparator.nullsLast(Comparator.naturalOrder())
+        );
+        case BATCH_NUMBER -> Comparator.comparing(
+            BatchCardSummary::getBatchNumber,
+            Comparator.nullsLast(Comparator.naturalOrder())
+        ).thenComparing(
+            BatchCardSummary::getExpectedHatchDate,
+            Comparator.nullsLast(Comparator.reverseOrder())
+        );
+        case INCUBATOR -> Comparator.comparing(
+            BatchCardSummary::getIncubatorName,
+            Comparator.nullsLast(String::compareToIgnoreCase)
+        ).thenComparing(
+            BatchCardSummary::getExpectedHatchDate,
+            Comparator.nullsLast(Comparator.reverseOrder())
+        );
+      };
+      summaries.sort(comparator);
+    }
+
+    batchCardSummaries.setValue(summaries);
   }
 
   private void clearViabilitySources() {

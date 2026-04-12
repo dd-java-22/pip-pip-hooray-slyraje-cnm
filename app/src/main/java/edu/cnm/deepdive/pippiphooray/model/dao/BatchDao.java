@@ -37,6 +37,10 @@ public interface BatchDao {
   @Query("SELECT * FROM batch WHERE batch_id = :id")
   LiveData<BatchWithEggGroups> selectWithGroups(long id);
 
+  @Transaction
+  @Query("SELECT * FROM batch ORDER BY date_set DESC")
+  LiveData<List<BatchWithEggGroups>> selectAllWithGroups();
+
   @Query("SELECT * FROM batch_with_incubator")
   LiveData<List<BatchWithIncubator>> selectAllWithIncubator();
 
@@ -48,4 +52,6 @@ public interface BatchDao {
 
   @Query("SELECT * FROM batch_with_incubator ORDER BY batch_number IS NULL, batch_number ASC, date_set DESC")
   LiveData<List<BatchWithIncubator>> selectAllWithIncubatorOrderByBatchNumber();
+
+
 }

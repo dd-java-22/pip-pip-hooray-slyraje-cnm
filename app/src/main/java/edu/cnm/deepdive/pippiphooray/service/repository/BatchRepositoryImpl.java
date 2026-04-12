@@ -49,6 +49,11 @@ public class BatchRepositoryImpl implements BatchRepository {
   }
 
   @Override
+  public LiveData<List<BatchWithEggGroups>> getAllWithGroups() {
+    return batchDao.selectAllWithGroups();
+  }
+
+  @Override
   public LiveData<List<BatchWithIncubator>> getAllWithIncubator() {
     return batchDao.selectAllWithIncubator();
   }
