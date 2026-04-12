@@ -15,6 +15,7 @@ import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithEggGroups;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithIncubator;
 import edu.cnm.deepdive.pippiphooray.service.repository.BatchRepository;
 import edu.cnm.deepdive.pippiphooray.service.repository.EggRepository;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -297,11 +298,16 @@ public class BatchViewModel extends ViewModel {
     }
 
     List<BatchCardSummary> summaries = new ArrayList<>();
+    LocalDate today = LocalDate.now();
+
     for (BatchWithIncubator batch : incubatorBatches) {
       BatchWithEggGroups withGroups = groupsByBatchId.get(batch.getId());
       String breedSummary = (withGroups != null)
           ? BatchCardSummaryFormatter.buildBreedSummary(withGroups.getGroups())
           : "Breed pending";
+
+      String nextMilestoneLabel = computeNextMilestoneLabel(batch, today);
+      LocalDate nextMilestoneDate = computeNextMilestoneDate(batch, today);
 
       summaries.add(new BatchCardSummary(
           batch.getId(),
@@ -309,14 +315,20 @@ public class BatchViewModel extends ViewModel {
           batch.getIncubatorName(),
           breedSummary,
           batch.getNumEggsSet(),
-          batch.getExpectedHatchDate()
+          batch.getExpectedHatchDate(),
+          nextMilestoneLabel,
+          nextMilestoneDate
       ));
     }
 
     if (order != null) {
       Comparator<BatchCardSummary> comparator = switch (order) {
-        case EXPECTED_HATCH_DATE, NEXT_MILESTONE -> Comparator.comparing(
+        case EXPECTED_HATCH_DATE -> Comparator.comparing(
             BatchCardSummary::getExpectedHatchDate,
+            Comparator.nullsLast(Comparator.naturalOrder())
+        );
+        case NEXT_MILESTONE -> Comparator.comparing(
+            BatchCardSummary::getNextMilestoneDate,
             Comparator.nullsLast(Comparator.naturalOrder())
         );
         case BATCH_NUMBER -> Comparator.comparing(
@@ -338,6 +350,63 @@ public class BatchViewModel extends ViewModel {
     }
 
     batchCardSummaries.setValue(summaries);
+  }
+
+  private String computeNextMilestoneLabel(BatchWithIncubator batch, LocalDate today) {
+    LocalDate day7 = offsetDays(batch.getDateSet(), 7);
+    if (day7 != null && !day7.isBefore(today)) {
+      return "Next: Day 7 Candling Observation";
+    }
+
+    LocalDate day14 = offsetDays(batch.getDateSet(), 14);
+    if (day14 != null && !day14.isBefore(today)) {
+      return "Next: Day 14 Candling Observation";
+    }
+
+    LocalDate day18 = getLockdownDate(batch);
+    if (day18 != null && !day18.isBefore(today)) {
+      return "Next: Day 18 Candling / Lockdown";
+    }
+
+    LocalDate hatch = batch.getExpectedHatchDate();
+    if (hatch != null) {
+      return "Next: Expected Hatch Day";
+    }
+
+    return "Next milestone unavailable";
+  }
+
+  private LocalDate computeNextMilestoneDate(BatchWithIncubator batch, LocalDate today) {
+    LocalDate day7 = offsetDays(batch.getDateSet(), 7);
+    if (day7 != null && !day7.isBefore(today)) {
+      return day7;
+    }
+
+    LocalDate day14 = offsetDays(batch.getDateSet(), 14);
+    if (day14 != null && !day14.isBefore(today)) {
+      return day14;
+    }
+
+    LocalDate day18 = getLockdownDate(batch);
+    if (day18 != null && !day18.isBefore(today)) {
+      return day18;
+    }
+
+    return batch.getExpectedHatchDate();
+  }
+
+  private LocalDate getLockdownDate(BatchWithIncubator batch) {
+    if (batch.getLockdownDate() != null) {
+      return batch.getLockdownDate();
+    }
+    if (batch.getExpectedHatchDate() != null) {
+      return batch.getExpectedHatchDate().minusDays(3);
+    }
+    return offsetDays(batch.getDateSet(), 18);
+  }
+
+  private LocalDate offsetDays(LocalDate date, long days) {
+    return (date != null) ? date.plusDays(days) : null;
   }
 
   private void clearViabilitySources() {

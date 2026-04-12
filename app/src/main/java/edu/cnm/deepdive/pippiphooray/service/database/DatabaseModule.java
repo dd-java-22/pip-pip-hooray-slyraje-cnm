@@ -26,6 +26,7 @@ public class DatabaseModule {
             PipPipDatabase.class,
             PipPipDatabase.NAME
         )
+        .fallbackToDestructiveMigration(true)
         .build();
   }
 

@@ -10,6 +10,8 @@ public class BatchCardSummary {
   private final String breedSummary;
   private final int numEggsSet;
   private final LocalDate expectedHatchDate;
+  private final String nextMilestoneLabel;
+  private final LocalDate nextMilestoneDate;
 
   public BatchCardSummary(
       long batchId,
@@ -17,7 +19,9 @@ public class BatchCardSummary {
       String incubatorName,
       String breedSummary,
       int numEggsSet,
-      LocalDate expectedHatchDate
+      LocalDate expectedHatchDate,
+      String nextMilestoneLabel,
+      LocalDate nextMilestoneDate
   ) {
     this.batchId = batchId;
     this.batchNumber = batchNumber;
@@ -25,6 +29,8 @@ public class BatchCardSummary {
     this.breedSummary = breedSummary;
     this.numEggsSet = numEggsSet;
     this.expectedHatchDate = expectedHatchDate;
+    this.nextMilestoneLabel = nextMilestoneLabel;
+    this.nextMilestoneDate = nextMilestoneDate;
   }
 
   public long getBatchId() {
@@ -49,5 +55,13 @@ public class BatchCardSummary {
 
   public LocalDate getExpectedHatchDate() {
     return expectedHatchDate;
+  }
+
+  public String getNextMilestoneLabel() {
+    return nextMilestoneLabel;
+  }
+
+  public LocalDate getNextMilestoneDate() {
+    return nextMilestoneDate;
   }
 }

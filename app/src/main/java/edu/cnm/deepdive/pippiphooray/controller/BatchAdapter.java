@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.pippiphooray.databinding.ItemBatchBinding;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchCardSummary;
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class BatchAdapter extends ListAdapter<BatchCardSummary, BatchAdapter.ViewHolder> {
 
+  private static final DateTimeFormatter DATE_FORMATTER =
+      DateTimeFormatter.ofPattern("MMM d, uuuu");
   private final OnBatchClickListener listener;
 
   public BatchAdapter(OnBatchClickListener listener) {
@@ -88,12 +91,15 @@ public class BatchAdapter extends ListAdapter<BatchCardSummary, BatchAdapter.Vie
     }
 
     private String formatNextMilestone(BatchCardSummary batch) {
-      return "Next: Expected Hatch Day";
+      String label = batch.getNextMilestoneLabel();
+      return (label != null && !label.isBlank())
+          ? label
+          : "Next milestone unavailable";
     }
 
     private String formatNextMilestoneDate(BatchCardSummary batch) {
-      LocalDate date = batch.getExpectedHatchDate();
-      return (date != null) ? date.toString() : "";
+      LocalDate date = batch.getNextMilestoneDate();
+      return (date != null) ? DATE_FORMATTER.format(date) : "";
     }
   }
 
@@ -112,6 +118,8 @@ public class BatchAdapter extends ListAdapter<BatchCardSummary, BatchAdapter.Vie
               && Objects.equals(oldItem.getIncubatorName(), newItem.getIncubatorName())
               && Objects.equals(oldItem.getBreedSummary(), newItem.getBreedSummary())
               && Objects.equals(oldItem.getExpectedHatchDate(), newItem.getExpectedHatchDate())
+              && Objects.equals(oldItem.getNextMilestoneLabel(), newItem.getNextMilestoneLabel())
+              && Objects.equals(oldItem.getNextMilestoneDate(), newItem.getNextMilestoneDate())
               && oldItem.getNumEggsSet() == newItem.getNumEggsSet();
         }
       };
