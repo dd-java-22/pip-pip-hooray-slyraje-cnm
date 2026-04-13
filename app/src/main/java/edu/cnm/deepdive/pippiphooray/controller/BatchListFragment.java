@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentBatchListBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
+
 @AndroidEntryPoint
 public class BatchListFragment extends Fragment {
 
@@ -23,8 +24,11 @@ public class BatchListFragment extends Fragment {
 
   @Nullable
   @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
+  public View onCreateView(
+      @NonNull LayoutInflater inflater,
+      @Nullable ViewGroup container,
+      @Nullable Bundle savedInstanceState
+  ) {
     binding = FragmentBatchListBinding.inflate(inflater, container, false);
 
     adapter = new BatchAdapter(batchId -> {
@@ -45,7 +49,10 @@ public class BatchListFragment extends Fragment {
 
     batchViewModel = new ViewModelProvider(requireActivity()).get(BatchViewModel.class);
 
-    batchViewModel.getBatchSummaries().observe(getViewLifecycleOwner(), adapter::submitList);
+    batchViewModel.getBatchCardSummaries().observe(
+        getViewLifecycleOwner(),
+        summaries -> adapter.submitList(summaries)
+    );
 
     binding.addBatch.setOnClickListener(v ->
         new AddBatchDialogFragment().show(getChildFragmentManager(), null)

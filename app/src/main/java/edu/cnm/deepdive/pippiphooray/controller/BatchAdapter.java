@@ -6,14 +6,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-import edu.cnm.deepdive.pippiphooray.controller.BatchAdapter.ViewHolder;
 import edu.cnm.deepdive.pippiphooray.databinding.ItemBatchBinding;
-import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithIncubator;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchCardSummary;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class BatchAdapter extends ListAdapter<BatchWithIncubator, ViewHolder> {
+public class BatchAdapter extends ListAdapter<BatchCardSummary, BatchAdapter.ViewHolder> {
 
+  private static final DateTimeFormatter DATE_FORMATTER =
+      DateTimeFormatter.ofPattern("MMM d, uuuu");
   private final OnBatchClickListener listener;
 
   public BatchAdapter(OnBatchClickListener listener) {
@@ -31,9 +33,9 @@ public class BatchAdapter extends ListAdapter<BatchWithIncubator, ViewHolder> {
 
   @Override
   public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    BatchWithIncubator batch = getItem(position);
+    BatchCardSummary batch = getItem(position);
     holder.bind(batch);
-    holder.itemView.setOnClickListener(v -> listener.onBatchClick(batch.getId()));
+    holder.itemView.setOnClickListener(v -> listener.onBatchClick(batch.getBatchId()));
   }
 
   @FunctionalInterface
@@ -50,64 +52,78 @@ public class BatchAdapter extends ListAdapter<BatchWithIncubator, ViewHolder> {
       this.binding = binding;
     }
 
-    void bind(@NonNull BatchWithIncubator batch) {
+    void bind(@NonNull BatchCardSummary batch) {
       binding.batchTitle.setText(formatTitle(batch));
+      binding.batchBreedSummary.setText(formatBreedSummary(batch));
       binding.batchIncubator.setText(formatIncubator(batch));
       binding.batchViability.setText(formatViability(batch));
       binding.batchNextMilestone.setText(formatNextMilestone(batch));
       binding.batchNextMilestoneDate.setText(formatNextMilestoneDate(batch));
     }
 
-    private String formatTitle(BatchWithIncubator batch) {
-      // temporary until breed summary is available
+    private String formatTitle(BatchCardSummary batch) {
       Integer batchNumber = batch.getBatchNumber();
       return (batchNumber != null)
           ? "Batch #" + batchNumber
           : "Batch";
     }
 
-    private String formatIncubator(BatchWithIncubator batch) {
+    private String formatBreedSummary(BatchCardSummary batch) {
+      String summary = batch.getBreedSummary();
+      return (summary != null && !summary.isBlank())
+          ? summary
+          : "Breed pending";
+    }
+
+    private String formatIncubator(BatchCardSummary batch) {
       String name = batch.getIncubatorName();
       return (name != null && !name.isBlank())
           ? "Incubator: " + name
           : "Incubator: Unassigned";
     }
 
-    private String formatViability(BatchWithIncubator batch) {
-      int eggsSet = batch.getNumEggsSet();
-      if (eggsSet <= 0) {
-        return "0/0 viable";
-      }
-      // temporary placeholder until egg status aggregation is added
-      return eggsSet + "/" + eggsSet + " viable (100.0%)";
+    private String formatViability(BatchCardSummary batch) {
+      return String.format(
+          "%d/%d viable (%.1f%%)",
+          batch.getViableCount(),
+          batch.getTotalEggCount(),
+          batch.getViabilityRate() * 100.0
+      );
     }
 
-    private String formatNextMilestone(BatchWithIncubator batch) {
-      // temporary approximation based on dates currently available
-      return "Next: Expected Hatch Day";
+    private String formatNextMilestone(BatchCardSummary batch) {
+      String label = batch.getNextMilestoneLabel();
+      return (label != null && !label.isBlank())
+          ? label
+          : "Next milestone unavailable";
     }
 
-    private String formatNextMilestoneDate(BatchWithIncubator batch) {
-      LocalDate date = batch.getExpectedHatchDate();
-      return (date != null) ? date.toString() : "";
+    private String formatNextMilestoneDate(BatchCardSummary batch) {
+      LocalDate date = batch.getNextMilestoneDate();
+      return (date != null) ? DATE_FORMATTER.format(date) : "";
     }
   }
 
-  private static final DiffUtil.ItemCallback<BatchWithIncubator> DIFF_CALLBACK =
+  private static final DiffUtil.ItemCallback<BatchCardSummary> DIFF_CALLBACK =
       new DiffUtil.ItemCallback<>() {
         @Override
-        public boolean areItemsTheSame(@NonNull BatchWithIncubator oldItem,
-            @NonNull BatchWithIncubator newItem) {
-          return oldItem.getId() == newItem.getId();
+        public boolean areItemsTheSame(@NonNull BatchCardSummary oldItem,
+            @NonNull BatchCardSummary newItem) {
+          return oldItem.getBatchId() == newItem.getBatchId();
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull BatchWithIncubator oldItem,
-            @NonNull BatchWithIncubator newItem) {
+        public boolean areContentsTheSame(@NonNull BatchCardSummary oldItem,
+            @NonNull BatchCardSummary newItem) {
           return Objects.equals(oldItem.getBatchNumber(), newItem.getBatchNumber())
               && Objects.equals(oldItem.getIncubatorName(), newItem.getIncubatorName())
+              && Objects.equals(oldItem.getBreedSummary(), newItem.getBreedSummary())
+              && oldItem.getViableCount() == newItem.getViableCount()
+              && oldItem.getTotalEggCount() == newItem.getTotalEggCount()
+              && Double.compare(oldItem.getViabilityRate(), newItem.getViabilityRate()) == 0
               && Objects.equals(oldItem.getExpectedHatchDate(), newItem.getExpectedHatchDate())
-              && oldItem.getNumEggsSet() == newItem.getNumEggsSet();
+              && Objects.equals(oldItem.getNextMilestoneLabel(), newItem.getNextMilestoneLabel())
+              && Objects.equals(oldItem.getNextMilestoneDate(), newItem.getNextMilestoneDate());
         }
       };
 }

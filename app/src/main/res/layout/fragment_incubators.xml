@@ -45,6 +45,7 @@
     android:id="@+id/add_incubator"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/full_dynamic_spacing"
     android:contentDescription="@string/title_add_incubator"
     app:srcCompat="@drawable/ic_add"
     app:layout_constraintEnd_toEndOf="parent"

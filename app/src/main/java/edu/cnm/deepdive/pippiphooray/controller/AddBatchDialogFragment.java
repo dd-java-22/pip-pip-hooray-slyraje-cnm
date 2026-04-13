@@ -16,10 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.R;
 import edu.cnm.deepdive.pippiphooray.databinding.DialogAddBatchBinding;
 import edu.cnm.deepdive.pippiphooray.model.entity.Batch;
-import edu.cnm.deepdive.pippiphooray.model.entity.EggGroup;
 import edu.cnm.deepdive.pippiphooray.model.entity.Incubator;
 import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
-import edu.cnm.deepdive.pippiphooray.viewmodel.EggGroupViewModel;
 import edu.cnm.deepdive.pippiphooray.viewmodel.IncubatorViewModel;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -27,7 +25,6 @@ import java.time.ZoneId;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 @AndroidEntryPoint
@@ -35,7 +32,6 @@ public class AddBatchDialogFragment extends DialogFragment {
 
   private DialogAddBatchBinding binding;
   private BatchViewModel batchViewModel;
-  private EggGroupViewModel eggGroupViewModel;
   private IncubatorViewModel incubatorViewModel;
 
   private final List<Incubator> incubators = new ArrayList<>();
@@ -46,7 +42,6 @@ public class AddBatchDialogFragment extends DialogFragment {
     binding = DialogAddBatchBinding.inflate(LayoutInflater.from(requireContext()));
 
     batchViewModel = new ViewModelProvider(requireActivity()).get(BatchViewModel.class);
-    eggGroupViewModel = new ViewModelProvider(requireActivity()).get(EggGroupViewModel.class);
     incubatorViewModel = new ViewModelProvider(requireActivity()).get(IncubatorViewModel.class);
 
     setupIncubatorDropdown();
@@ -199,16 +194,8 @@ public class AddBatchDialogFragment extends DialogFragment {
     batch.setNotes(notes.isBlank() ? null : notes);
     batch.setBatchStatus("ACTIVE");
 
-    batchViewModel.save(batch)
-        .thenCompose(batchId -> {
-          EggGroup eggGroup = new EggGroup();
-          eggGroup.setBatchId(batchId);
-          eggGroup.setBreed(breed);
-          eggGroup.setInitialEggCount(numEggsSet);
-          eggGroup.setNotes(null);
-          return eggGroupViewModel.save(eggGroup);
-        })
-        .thenAccept(id -> {
+    batchViewModel.saveWithInitialEggGroups(batch, breed)
+        .thenAccept(batchId -> {
           if (isAdded()) {
             requireActivity().runOnUiThread(this::dismiss);
           }

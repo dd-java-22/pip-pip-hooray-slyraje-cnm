@@ -13,6 +13,7 @@ import java.time.LocalDate;
           b.incubator_id,
           b.batch_number,
           b.date_set,
+          b.lockdown_date,
           b.expected_hatch_date,
           b.num_eggs_set,
           b.batch_status,
@@ -40,6 +41,9 @@ public class BatchWithIncubator {
 
   @ColumnInfo(name = "expected_hatch_date")
   private LocalDate expectedHatchDate;
+
+  @ColumnInfo(name = "lockdown_date")
+  private LocalDate lockdownDate;
 
   @ColumnInfo(name = "num_eggs_set")
   private int numEggsSet;
@@ -85,6 +89,14 @@ public class BatchWithIncubator {
 
   public void setDateSet(LocalDate dateSet) {
     this.dateSet = dateSet;
+  }
+
+  public LocalDate getLockdownDate() {
+    return lockdownDate;
+  }
+
+  public void setLockdownDate(LocalDate lockdownDate) {
+    this.lockdownDate = lockdownDate;
   }
 
   public LocalDate getExpectedHatchDate() {

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <PreferenceCategory
+    app:title="@string/settings_category_defaults">
+
+    <EditTextPreference
+      app:key="pref_default_target_temp"
+      app:title="@string/settings_title_default_target_temp"
+      app:summary="@string/settings_summary_default_target_temp"
+      app:defaultValue="99.5"
+      app:useSimpleSummaryProvider="true" />
+
+    <EditTextPreference
+      app:key="pref_default_target_humidity"
+      app:title="@string/settings_title_default_target_humidity"
+      app:summary="@string/settings_summary_default_target_humidity"
+      app:defaultValue="45"
+      app:useSimpleSummaryProvider="true" />
+
+    <ListPreference
+      app:key="pref_temperature_scale"
+      app:title="@string/settings_title_temperature_scale"
+      app:summary="@string/settings_summary_temperature_scale"
+      app:defaultValue="F"
+      app:entries="@array/settings_temperature_scale_entries"
+      app:entryValues="@array/settings_temperature_scale_values"
+      app:useSimpleSummaryProvider="true" />
+
+  </PreferenceCategory>
+
+  <PreferenceCategory
+    app:title="@string/settings_category_features">
+
+    <SwitchPreferenceCompat
+      app:key="pref_notifications_enabled"
+      app:title="@string/settings_title_notifications_enabled"
+      app:summary="@string/settings_summary_notifications_enabled"
+      app:defaultValue="false" />
+
+  </PreferenceCategory>
+
+  <PreferenceCategory
+    app:title="@string/settings_category_data">
+
+    <Preference
+      app:key="pref_export_batch_csv"
+      app:title="@string/settings_title_export_batch_csv"
+      app:summary="@string/settings_summary_export_batch_csv" />
+
+    <Preference
+      app:key="pref_sign_out"
+      app:title="@string/sign_out"
+      app:summary="@string/settings_summary_sign_out" />
+
+  </PreferenceCategory>
+
+</PreferenceScreen>

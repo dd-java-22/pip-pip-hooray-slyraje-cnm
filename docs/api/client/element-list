@@ -1,0 +1,8 @@
+edu.cnm.deepdive.pippiphooray
+edu.cnm.deepdive.pippiphooray.controller
+edu.cnm.deepdive.pippiphooray.model.dao
+edu.cnm.deepdive.pippiphooray.model.entity
+edu.cnm.deepdive.pippiphooray.model.pojo
+edu.cnm.deepdive.pippiphooray.service.database
+edu.cnm.deepdive.pippiphooray.service.repository
+edu.cnm.deepdive.pippiphooray.viewmodel
