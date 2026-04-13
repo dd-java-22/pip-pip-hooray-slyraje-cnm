@@ -114,4 +114,57 @@
   <string name="message_bulk_candling_save_failed">Unable to save bulk candling.</string>
   <string name="value_viability_dynamic">%1$d/%2$d viable (%3$.1f%%)</string>
 
+  <!-- Settings categories -->
+  <string name="settings_category_defaults">Defaults</string>
+  <string name="settings_category_features">Features</string>
+  <string name="settings_category_data">Data</string>
+
+  <!-- Settings: defaults -->
+  <string name="settings_title_default_target_temp">Default target temperature</string>
+  <string name="settings_summary_default_target_temp">
+    Used as the default incubator temperature for future setup screens.
+  </string>
+
+  <string name="settings_title_default_target_humidity">Default target humidity</string>
+  <string name="settings_summary_default_target_humidity">
+    Used as the default incubator humidity for future setup screens.
+  </string>
+
+  <string name="settings_title_temperature_scale">Temperature scale</string>
+  <string name="settings_summary_temperature_scale">
+    Choose whether temperatures are shown in Fahrenheit or Celsius.
+  </string>
+
+  <!-- Settings: features -->
+  <string name="settings_title_notifications_enabled">Enable notifications</string>
+  <string name="settings_summary_notifications_enabled">
+    Placeholder toggle for future reminders and milestone alerts.
+  </string>
+
+  <!-- Settings: data -->
+  <string name="settings_title_export_batch_csv">Export batch data to CSV</string>
+  <string name="settings_summary_export_batch_csv">
+    Export batch data as a CSV file. Placeholder for now.
+  </string>
+
+  <string name="settings_summary_sign_out">Sign out of Pip Pip Hooray.</string>
+
+  <!-- Settings: list entries -->
+  <string-array name="settings_temperature_scale_entries">
+    <item>Fahrenheit</item>
+    <item>Celsius</item>
+  </string-array>
+
+  <string-array name="settings_temperature_scale_values">
+    <item>F</item>
+    <item>C</item>
+  </string-array>
+
+  <!-- Settings: placeholder / validation -->
+  <string name="message_export_csv_placeholder">
+    CSV export not implemented yet.
+  </string>
+  <string name="error_invalid_temperature">Enter a valid temperature.</string>
+  <string name="error_invalid_humidity">Enter a humidity between 0 and 100.</string>
+
 </resources>

@@ -1,48 +1,73 @@
 package edu.cnm.deepdive.pippiphooray.controller;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavOptions;
-import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.EditTextPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.R;
-import edu.cnm.deepdive.pippiphooray.databinding.FragmentSettingsBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.SignInViewModel;
 
 @AndroidEntryPoint
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends PreferenceFragmentCompat {
 
-  private FragmentSettingsBinding binding;
+  private static final String KEY_DEFAULT_TARGET_TEMP = "pref_default_target_temp";
+  private static final String KEY_DEFAULT_TARGET_HUMIDITY = "pref_default_target_humidity";
+  private static final String KEY_EXPORT_BATCH_CSV = "pref_export_batch_csv";
+  private static final String KEY_SIGN_OUT = "pref_sign_out";
+
   private SignInViewModel signInViewModel;
 
-  @Nullable
   @Override
-  public View onCreateView(
-      @NonNull LayoutInflater inflater,
-      @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState
-  ) {
-    binding = FragmentSettingsBinding.inflate(inflater, container, false);
-    return binding.getRoot();
+  public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+    setPreferencesFromResource(R.xml.root_preferences, rootKey);
+
+    EditTextPreference defaultTempPreference = findPreference(KEY_DEFAULT_TARGET_TEMP);
+    EditTextPreference defaultHumidityPreference = findPreference(KEY_DEFAULT_TARGET_HUMIDITY);
+    Preference exportPreference = findPreference(KEY_EXPORT_BATCH_CSV);
+    Preference signOutPreference = findPreference(KEY_SIGN_OUT);
+
+    if (defaultTempPreference != null) {
+      defaultTempPreference.setOnPreferenceChangeListener((preference, newValue) ->
+          isValidTemperature(newValue)
+      );
+    }
+
+    if (defaultHumidityPreference != null) {
+      defaultHumidityPreference.setOnPreferenceChangeListener((preference, newValue) ->
+          isValidHumidity(newValue)
+      );
+    }
+
+    if (exportPreference != null) {
+      exportPreference.setOnPreferenceClickListener((preference) -> {
+        Toast.makeText(requireContext(), R.string.message_export_csv_placeholder, Toast.LENGTH_SHORT)
+            .show();
+        return true;
+      });
+    }
+
+    if (signOutPreference != null) {
+      signOutPreference.setOnPreferenceClickListener((preference) -> {
+        if (signInViewModel != null) {
+          signInViewModel.signOut();
+        }
+        return true;
+      });
+    }
   }
 
   @Override
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+  public void onViewCreated(@NonNull android.view.View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    signInViewModel = new ViewModelProvider(requireActivity())
-        .get(SignInViewModel.class);
-
-    binding.signOutButton.setOnClickListener((v) -> {
-      binding.signOutButton.setEnabled(false);
-      signInViewModel.signOut();
-    });
+    signInViewModel = new ViewModelProvider(requireActivity()).get(SignInViewModel.class);
 
     signInViewModel
         .getCredential()
@@ -51,10 +76,8 @@ public class SettingsFragment extends Fragment {
             NavOptions options = new NavOptions.Builder()
                 .setPopUpTo(R.id.sign_in_fragment, true)
                 .build();
-            Navigation.findNavController(binding.getRoot())
+            NavHostFragment.findNavController(this)
                 .navigate(R.id.sign_in_fragment, null, options);
-          } else {
-            binding.signOutButton.setEnabled(true);
           }
         });
 
@@ -62,16 +85,49 @@ public class SettingsFragment extends Fragment {
         .getThrowable()
         .observe(getViewLifecycleOwner(), (throwable) -> {
           if (throwable != null) {
-            binding.signOutButton.setEnabled(true);
-            // TODO show a Snackbar or error text.
+            Toast.makeText(requireContext(), throwable.getLocalizedMessage(), Toast.LENGTH_SHORT)
+                .show();
           }
         });
   }
 
-  @Override
-  public void onDestroyView() {
-    binding = null;
-    super.onDestroyView();
+  private boolean isValidTemperature(Object newValue) {
+    String value = (newValue != null) ? newValue.toString().trim() : "";
+    if (value.isEmpty()) {
+      Toast.makeText(requireContext(), R.string.error_invalid_temperature, Toast.LENGTH_SHORT)
+          .show();
+      return false;
+    }
+    try {
+      Double.parseDouble(value);
+      return true;
+    } catch (NumberFormatException e) {
+      Toast.makeText(requireContext(), R.string.error_invalid_temperature, Toast.LENGTH_SHORT)
+          .show();
+      return false;
+    }
+  }
+
+  private boolean isValidHumidity(Object newValue) {
+    String value = (newValue != null) ? newValue.toString().trim() : "";
+    if (value.isEmpty()) {
+      Toast.makeText(requireContext(), R.string.error_invalid_humidity, Toast.LENGTH_SHORT)
+          .show();
+      return false;
+    }
+    try {
+      double humidity = Double.parseDouble(value);
+      if (humidity < 0 || humidity > 100) {
+        Toast.makeText(requireContext(), R.string.error_invalid_humidity, Toast.LENGTH_SHORT)
+            .show();
+        return false;
+      }
+      return true;
+    } catch (NumberFormatException e) {
+      Toast.makeText(requireContext(), R.string.error_invalid_humidity, Toast.LENGTH_SHORT)
+          .show();
+      return false;
+    }
   }
 
 }
