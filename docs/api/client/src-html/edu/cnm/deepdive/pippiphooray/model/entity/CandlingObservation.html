@@ -22,99 +22,163 @@
 <span class="source-line-no">009</span><span id="line-9">import androidx.room.PrimaryKey;</span>
 <span class="source-line-no">010</span><span id="line-10">import java.time.Instant;</span>
 <span class="source-line-no">011</span><span id="line-11"></span>
-<span class="source-line-no">012</span><span id="line-12">@Entity(</span>
-<span class="source-line-no">013</span><span id="line-13">    tableName = "candling_observation",</span>
-<span class="source-line-no">014</span><span id="line-14">    foreignKeys = {</span>
-<span class="source-line-no">015</span><span id="line-15">        @ForeignKey(</span>
-<span class="source-line-no">016</span><span id="line-16">            entity = Egg.class,</span>
-<span class="source-line-no">017</span><span id="line-17">            parentColumns = "egg_id",</span>
-<span class="source-line-no">018</span><span id="line-18">            childColumns = "egg_id",</span>
-<span class="source-line-no">019</span><span id="line-19">            onDelete = ForeignKey.CASCADE</span>
-<span class="source-line-no">020</span><span id="line-20">        )</span>
-<span class="source-line-no">021</span><span id="line-21"></span>
-<span class="source-line-no">022</span><span id="line-22">    },</span>
-<span class="source-line-no">023</span><span id="line-23">    indices = {</span>
-<span class="source-line-no">024</span><span id="line-24">        @Index(value = {"egg_id"}),</span>
-<span class="source-line-no">025</span><span id="line-25">    }</span>
-<span class="source-line-no">026</span><span id="line-26">)</span>
+<span class="source-line-no">012</span><span id="line-12">/**</span>
+<span class="source-line-no">013</span><span id="line-13"> * Represents a candling observation recorded for a specific egg.</span>
+<span class="source-line-no">014</span><span id="line-14"> *</span>
+<span class="source-line-no">015</span><span id="line-15"> * &lt;p&gt;Each observation stores the day of incubation, a development status,</span>
+<span class="source-line-no">016</span><span id="line-16"> * optional notes, and the time the observation was recorded.</span>
+<span class="source-line-no">017</span><span id="line-17"> */</span>
+<span class="source-line-no">018</span><span id="line-18">@Entity(</span>
+<span class="source-line-no">019</span><span id="line-19">    tableName = "candling_observation",</span>
+<span class="source-line-no">020</span><span id="line-20">    foreignKeys = {</span>
+<span class="source-line-no">021</span><span id="line-21">        @ForeignKey(</span>
+<span class="source-line-no">022</span><span id="line-22">            entity = Egg.class,</span>
+<span class="source-line-no">023</span><span id="line-23">            parentColumns = "egg_id",</span>
+<span class="source-line-no">024</span><span id="line-24">            childColumns = "egg_id",</span>
+<span class="source-line-no">025</span><span id="line-25">            onDelete = ForeignKey.CASCADE</span>
+<span class="source-line-no">026</span><span id="line-26">        )</span>
 <span class="source-line-no">027</span><span id="line-27"></span>
-<span class="source-line-no">028</span><span id="line-28">public class CandlingObservation {</span>
-<span class="source-line-no">029</span><span id="line-29"></span>
-<span class="source-line-no">030</span><span id="line-30">  @PrimaryKey(autoGenerate = true)</span>
-<span class="source-line-no">031</span><span id="line-31">  @ColumnInfo(name = "observation_id")</span>
-<span class="source-line-no">032</span><span id="line-32">  private long id;</span>
-<span class="source-line-no">033</span><span id="line-33"></span>
-<span class="source-line-no">034</span><span id="line-34">  @ColumnInfo(name = "egg_id")</span>
-<span class="source-line-no">035</span><span id="line-35">  private long eggId;</span>
-<span class="source-line-no">036</span><span id="line-36"></span>
-<span class="source-line-no">037</span><span id="line-37">  @ColumnInfo(name = "day_number")</span>
-<span class="source-line-no">038</span><span id="line-38">  private int dayNumber;</span>
-<span class="source-line-no">039</span><span id="line-39"></span>
-<span class="source-line-no">040</span><span id="line-40">  @ColumnInfo(name = "development_status")</span>
-<span class="source-line-no">041</span><span id="line-41">  @Nullable</span>
-<span class="source-line-no">042</span><span id="line-42">  private String developmentStatus;</span>
-<span class="source-line-no">043</span><span id="line-43"></span>
-<span class="source-line-no">044</span><span id="line-44">  @ColumnInfo(name = "notes")</span>
-<span class="source-line-no">045</span><span id="line-45">  @Nullable</span>
-<span class="source-line-no">046</span><span id="line-46">  private String notes;</span>
-<span class="source-line-no">047</span><span id="line-47"></span>
+<span class="source-line-no">028</span><span id="line-28">    },</span>
+<span class="source-line-no">029</span><span id="line-29">    indices = {</span>
+<span class="source-line-no">030</span><span id="line-30">        @Index(value = {"egg_id"}),</span>
+<span class="source-line-no">031</span><span id="line-31">    }</span>
+<span class="source-line-no">032</span><span id="line-32">)</span>
+<span class="source-line-no">033</span><span id="line-33">public class CandlingObservation {</span>
+<span class="source-line-no">034</span><span id="line-34"></span>
+<span class="source-line-no">035</span><span id="line-35">  @PrimaryKey(autoGenerate = true)</span>
+<span class="source-line-no">036</span><span id="line-36">  @ColumnInfo(name = "observation_id")</span>
+<span class="source-line-no">037</span><span id="line-37">  private long id;</span>
+<span class="source-line-no">038</span><span id="line-38"></span>
+<span class="source-line-no">039</span><span id="line-39">  @ColumnInfo(name = "egg_id")</span>
+<span class="source-line-no">040</span><span id="line-40">  private long eggId;</span>
+<span class="source-line-no">041</span><span id="line-41"></span>
+<span class="source-line-no">042</span><span id="line-42">  @ColumnInfo(name = "day_number")</span>
+<span class="source-line-no">043</span><span id="line-43">  private int dayNumber;</span>
+<span class="source-line-no">044</span><span id="line-44"></span>
+<span class="source-line-no">045</span><span id="line-45">  @ColumnInfo(name = "development_status")</span>
+<span class="source-line-no">046</span><span id="line-46">  @Nullable</span>
+<span class="source-line-no">047</span><span id="line-47">  private String developmentStatus;</span>
 <span class="source-line-no">048</span><span id="line-48"></span>
-<span class="source-line-no">049</span><span id="line-49">  @SuppressWarnings("NotNullFieldNotInitialized")</span>
-<span class="source-line-no">050</span><span id="line-50">  @ColumnInfo(name = "timestamp")</span>
-<span class="source-line-no">051</span><span id="line-51">  @NonNull</span>
-<span class="source-line-no">052</span><span id="line-52">  private Instant timestamp;</span>
-<span class="source-line-no">053</span><span id="line-53"></span>
-<span class="source-line-no">054</span><span id="line-54">  public long getId() {</span>
-<span class="source-line-no">055</span><span id="line-55">    return id;</span>
-<span class="source-line-no">056</span><span id="line-56">  }</span>
+<span class="source-line-no">049</span><span id="line-49">  @ColumnInfo(name = "notes")</span>
+<span class="source-line-no">050</span><span id="line-50">  @Nullable</span>
+<span class="source-line-no">051</span><span id="line-51">  private String notes;</span>
+<span class="source-line-no">052</span><span id="line-52"></span>
+<span class="source-line-no">053</span><span id="line-53">  @SuppressWarnings("NotNullFieldNotInitialized")</span>
+<span class="source-line-no">054</span><span id="line-54">  @ColumnInfo(name = "timestamp")</span>
+<span class="source-line-no">055</span><span id="line-55">  @NonNull</span>
+<span class="source-line-no">056</span><span id="line-56">  private Instant timestamp;</span>
 <span class="source-line-no">057</span><span id="line-57"></span>
-<span class="source-line-no">058</span><span id="line-58">  public void setId(long id) {</span>
-<span class="source-line-no">059</span><span id="line-59">    this.id = id;</span>
-<span class="source-line-no">060</span><span id="line-60">  }</span>
-<span class="source-line-no">061</span><span id="line-61"></span>
-<span class="source-line-no">062</span><span id="line-62">  public long getEggId() {</span>
-<span class="source-line-no">063</span><span id="line-63">    return eggId;</span>
-<span class="source-line-no">064</span><span id="line-64">  }</span>
-<span class="source-line-no">065</span><span id="line-65"></span>
-<span class="source-line-no">066</span><span id="line-66">  public void setEggId(long eggId) {</span>
-<span class="source-line-no">067</span><span id="line-67">    this.eggId = eggId;</span>
-<span class="source-line-no">068</span><span id="line-68">  }</span>
-<span class="source-line-no">069</span><span id="line-69"></span>
-<span class="source-line-no">070</span><span id="line-70">  public int getDayNumber() {</span>
-<span class="source-line-no">071</span><span id="line-71">    return dayNumber;</span>
-<span class="source-line-no">072</span><span id="line-72">  }</span>
-<span class="source-line-no">073</span><span id="line-73"></span>
-<span class="source-line-no">074</span><span id="line-74">  public void setDayNumber(int dayNumber) {</span>
-<span class="source-line-no">075</span><span id="line-75">    this.dayNumber = dayNumber;</span>
-<span class="source-line-no">076</span><span id="line-76">  }</span>
-<span class="source-line-no">077</span><span id="line-77"></span>
-<span class="source-line-no">078</span><span id="line-78">  @Nullable</span>
-<span class="source-line-no">079</span><span id="line-79">  public String getDevelopmentStatus() {</span>
-<span class="source-line-no">080</span><span id="line-80">    return developmentStatus;</span>
-<span class="source-line-no">081</span><span id="line-81">  }</span>
-<span class="source-line-no">082</span><span id="line-82"></span>
-<span class="source-line-no">083</span><span id="line-83">  public void setDevelopmentStatus(@Nullable String developmentStatus) {</span>
-<span class="source-line-no">084</span><span id="line-84">    this.developmentStatus = developmentStatus;</span>
-<span class="source-line-no">085</span><span id="line-85">  }</span>
-<span class="source-line-no">086</span><span id="line-86"></span>
-<span class="source-line-no">087</span><span id="line-87">  @Nullable</span>
-<span class="source-line-no">088</span><span id="line-88">  public String getNotes() {</span>
-<span class="source-line-no">089</span><span id="line-89">    return notes;</span>
-<span class="source-line-no">090</span><span id="line-90">  }</span>
-<span class="source-line-no">091</span><span id="line-91"></span>
-<span class="source-line-no">092</span><span id="line-92">  public void setNotes(@Nullable String notes) {</span>
-<span class="source-line-no">093</span><span id="line-93">    this.notes = notes;</span>
-<span class="source-line-no">094</span><span id="line-94">  }</span>
-<span class="source-line-no">095</span><span id="line-95"></span>
-<span class="source-line-no">096</span><span id="line-96">  @NonNull</span>
-<span class="source-line-no">097</span><span id="line-97">  public Instant getTimestamp() {</span>
-<span class="source-line-no">098</span><span id="line-98">    return timestamp;</span>
-<span class="source-line-no">099</span><span id="line-99">  }</span>
-<span class="source-line-no">100</span><span id="line-100"></span>
-<span class="source-line-no">101</span><span id="line-101">  public void setTimestamp(@NonNull Instant timestamp) {</span>
-<span class="source-line-no">102</span><span id="line-102">    this.timestamp = timestamp;</span>
-<span class="source-line-no">103</span><span id="line-103">  }</span>
-<span class="source-line-no">104</span><span id="line-104">}</span>
+<span class="source-line-no">058</span><span id="line-58">  /**</span>
+<span class="source-line-no">059</span><span id="line-59">   * Returns the unique ID of this observation.</span>
+<span class="source-line-no">060</span><span id="line-60">   *</span>
+<span class="source-line-no">061</span><span id="line-61">   * @return observation ID.</span>
+<span class="source-line-no">062</span><span id="line-62">   */</span>
+<span class="source-line-no">063</span><span id="line-63">  public long getId() {</span>
+<span class="source-line-no">064</span><span id="line-64">    return id;</span>
+<span class="source-line-no">065</span><span id="line-65">  }</span>
+<span class="source-line-no">066</span><span id="line-66"></span>
+<span class="source-line-no">067</span><span id="line-67">  /**</span>
+<span class="source-line-no">068</span><span id="line-68">   * Sets the unique ID of this observation.</span>
+<span class="source-line-no">069</span><span id="line-69">   *</span>
+<span class="source-line-no">070</span><span id="line-70">   * @param id observation ID.</span>
+<span class="source-line-no">071</span><span id="line-71">   */</span>
+<span class="source-line-no">072</span><span id="line-72">  public void setId(long id) {</span>
+<span class="source-line-no">073</span><span id="line-73">    this.id = id;</span>
+<span class="source-line-no">074</span><span id="line-74">  }</span>
+<span class="source-line-no">075</span><span id="line-75"></span>
+<span class="source-line-no">076</span><span id="line-76">  /**</span>
+<span class="source-line-no">077</span><span id="line-77">   * Returns the ID of the egg associated with this observation.</span>
+<span class="source-line-no">078</span><span id="line-78">   *</span>
+<span class="source-line-no">079</span><span id="line-79">   * @return related egg ID.</span>
+<span class="source-line-no">080</span><span id="line-80">   */</span>
+<span class="source-line-no">081</span><span id="line-81">  public long getEggId() {</span>
+<span class="source-line-no">082</span><span id="line-82">    return eggId;</span>
+<span class="source-line-no">083</span><span id="line-83">  }</span>
+<span class="source-line-no">084</span><span id="line-84"></span>
+<span class="source-line-no">085</span><span id="line-85">  /**</span>
+<span class="source-line-no">086</span><span id="line-86">   * Sets the ID of the egg associated with this observation.</span>
+<span class="source-line-no">087</span><span id="line-87">   *</span>
+<span class="source-line-no">088</span><span id="line-88">   * @param eggId related egg ID.</span>
+<span class="source-line-no">089</span><span id="line-89">   */</span>
+<span class="source-line-no">090</span><span id="line-90">  public void setEggId(long eggId) {</span>
+<span class="source-line-no">091</span><span id="line-91">    this.eggId = eggId;</span>
+<span class="source-line-no">092</span><span id="line-92">  }</span>
+<span class="source-line-no">093</span><span id="line-93"></span>
+<span class="source-line-no">094</span><span id="line-94">  /**</span>
+<span class="source-line-no">095</span><span id="line-95">   * Returns the day number of incubation for this observation.</span>
+<span class="source-line-no">096</span><span id="line-96">   *</span>
+<span class="source-line-no">097</span><span id="line-97">   * @return incubation day number.</span>
+<span class="source-line-no">098</span><span id="line-98">   */</span>
+<span class="source-line-no">099</span><span id="line-99">  public int getDayNumber() {</span>
+<span class="source-line-no">100</span><span id="line-100">    return dayNumber;</span>
+<span class="source-line-no">101</span><span id="line-101">  }</span>
+<span class="source-line-no">102</span><span id="line-102"></span>
+<span class="source-line-no">103</span><span id="line-103">  /**</span>
+<span class="source-line-no">104</span><span id="line-104">   * Sets the day number of incubation for this observation.</span>
+<span class="source-line-no">105</span><span id="line-105">   *</span>
+<span class="source-line-no">106</span><span id="line-106">   * @param dayNumber incubation day number.</span>
+<span class="source-line-no">107</span><span id="line-107">   */</span>
+<span class="source-line-no">108</span><span id="line-108">  public void setDayNumber(int dayNumber) {</span>
+<span class="source-line-no">109</span><span id="line-109">    this.dayNumber = dayNumber;</span>
+<span class="source-line-no">110</span><span id="line-110">  }</span>
+<span class="source-line-no">111</span><span id="line-111"></span>
+<span class="source-line-no">112</span><span id="line-112">  /**</span>
+<span class="source-line-no">113</span><span id="line-113">   * Returns the recorded development status for the egg.</span>
+<span class="source-line-no">114</span><span id="line-114">   *</span>
+<span class="source-line-no">115</span><span id="line-115">   * @return development status, or {@code null} if not specified.</span>
+<span class="source-line-no">116</span><span id="line-116">   */</span>
+<span class="source-line-no">117</span><span id="line-117">  @Nullable</span>
+<span class="source-line-no">118</span><span id="line-118">  public String getDevelopmentStatus() {</span>
+<span class="source-line-no">119</span><span id="line-119">    return developmentStatus;</span>
+<span class="source-line-no">120</span><span id="line-120">  }</span>
+<span class="source-line-no">121</span><span id="line-121"></span>
+<span class="source-line-no">122</span><span id="line-122">  /**</span>
+<span class="source-line-no">123</span><span id="line-123">   * Sets the recorded development status for the egg.</span>
+<span class="source-line-no">124</span><span id="line-124">   *</span>
+<span class="source-line-no">125</span><span id="line-125">   * @param developmentStatus development status, or {@code null}.</span>
+<span class="source-line-no">126</span><span id="line-126">   */</span>
+<span class="source-line-no">127</span><span id="line-127">  public void setDevelopmentStatus(@Nullable String developmentStatus) {</span>
+<span class="source-line-no">128</span><span id="line-128">    this.developmentStatus = developmentStatus;</span>
+<span class="source-line-no">129</span><span id="line-129">  }</span>
+<span class="source-line-no">130</span><span id="line-130"></span>
+<span class="source-line-no">131</span><span id="line-131">  /**</span>
+<span class="source-line-no">132</span><span id="line-132">   * Returns any notes recorded for this observation.</span>
+<span class="source-line-no">133</span><span id="line-133">   *</span>
+<span class="source-line-no">134</span><span id="line-134">   * @return observation notes, or {@code null} if none were recorded.</span>
+<span class="source-line-no">135</span><span id="line-135">   */</span>
+<span class="source-line-no">136</span><span id="line-136">  @Nullable</span>
+<span class="source-line-no">137</span><span id="line-137">  public String getNotes() {</span>
+<span class="source-line-no">138</span><span id="line-138">    return notes;</span>
+<span class="source-line-no">139</span><span id="line-139">  }</span>
+<span class="source-line-no">140</span><span id="line-140"></span>
+<span class="source-line-no">141</span><span id="line-141">  /**</span>
+<span class="source-line-no">142</span><span id="line-142">   * Sets the notes recorded for this observation.</span>
+<span class="source-line-no">143</span><span id="line-143">   *</span>
+<span class="source-line-no">144</span><span id="line-144">   * @param notes observation notes, or {@code null}.</span>
+<span class="source-line-no">145</span><span id="line-145">   */</span>
+<span class="source-line-no">146</span><span id="line-146">  public void setNotes(@Nullable String notes) {</span>
+<span class="source-line-no">147</span><span id="line-147">    this.notes = notes;</span>
+<span class="source-line-no">148</span><span id="line-148">  }</span>
+<span class="source-line-no">149</span><span id="line-149"></span>
+<span class="source-line-no">150</span><span id="line-150">  /**</span>
+<span class="source-line-no">151</span><span id="line-151">   * Returns the timestamp when this observation was recorded.</span>
+<span class="source-line-no">152</span><span id="line-152">   *</span>
+<span class="source-line-no">153</span><span id="line-153">   * @return observation timestamp.</span>
+<span class="source-line-no">154</span><span id="line-154">   */</span>
+<span class="source-line-no">155</span><span id="line-155">  @NonNull</span>
+<span class="source-line-no">156</span><span id="line-156">  public Instant getTimestamp() {</span>
+<span class="source-line-no">157</span><span id="line-157">    return timestamp;</span>
+<span class="source-line-no">158</span><span id="line-158">  }</span>
+<span class="source-line-no">159</span><span id="line-159"></span>
+<span class="source-line-no">160</span><span id="line-160">  /**</span>
+<span class="source-line-no">161</span><span id="line-161">   * Sets the timestamp when this observation was recorded.</span>
+<span class="source-line-no">162</span><span id="line-162">   *</span>
+<span class="source-line-no">163</span><span id="line-163">   * @param timestamp observation timestamp.</span>
+<span class="source-line-no">164</span><span id="line-164">   */</span>
+<span class="source-line-no">165</span><span id="line-165">  public void setTimestamp(@NonNull Instant timestamp) {</span>
+<span class="source-line-no">166</span><span id="line-166">    this.timestamp = timestamp;</span>
+<span class="source-line-no">167</span><span id="line-167">  }</span>
+<span class="source-line-no">168</span><span id="line-168">}</span>
 
 
 

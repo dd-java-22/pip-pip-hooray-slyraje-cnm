@@ -79,7 +79,8 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-9">EggRepository</a></span></div>
+<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-12">EggRepository</a></span></div>
+<div class="block">Abstraction for accessing and modifying <a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity"><code>Egg</code></a> entities and related aggregate data.</div>
 </div>
 </section>
 <section class="summary">
@@ -97,26 +98,40 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#fetchByEggGroupId(long)" class="member-name-link">fetchByEggGroupId</a><wbr>(long&nbsp;eggGroupId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Fetches all eggs for a given egg group asynchronously.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#get(long)" class="member-name-link">get</a><wbr>(long&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns a single egg by ID.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getByEggGroupId(long)" class="member-name-link">getByEggGroupId</a><wbr>(long&nbsp;eggGroupId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns all eggs belonging to a given egg group.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/pojo/BatchEggAggregate.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchEggAggregate</a>&gt;&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getViabilityPerBatch()" class="member-name-link">getViabilityPerBatch</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns aggregate viability data grouped by batch.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#save(edu.cnm.deepdive.pippiphooray.model.entity.Egg)" class="member-name-link">save</a><wbr>(<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&nbsp;egg)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Inserts or updates an egg.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#saveAll(java.util.List)" class="member-name-link">saveAll</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&nbsp;eggs)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Inserts or updates multiple eggs.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#seedEggsForGroup(long,int)" class="member-name-link">seedEggsForGroup</a><wbr>(long&nbsp;eggGroupId,
  int&nbsp;initialEggCount)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Creates the initial egg records for a given egg group.</div>
+</div>
 </div>
 </div>
 </div>
@@ -135,7 +150,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getByEggGroupId(long)">
 <h3>getByEggGroupId</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-11">getByEggGroupId</a></span><wbr><span class="parameters">(long&nbsp;eggGroupId)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-20">getByEggGroupId</a></span><wbr><span class="parameters">(long&nbsp;eggGroupId)</span></div>
+<div class="block">Returns all eggs belonging to a given egg group.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggGroupId</code> - egg-group ID.</dd>
+<dt>Returns:</dt>
+<dd>live list of eggs for the specified egg group.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -143,7 +165,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="get(long)">
 <h3>get</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-13">get</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-28">get</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="block">Returns a single egg by ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - egg ID.</dd>
+<dt>Returns:</dt>
+<dd>live egg with the specified ID.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -151,7 +180,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getViabilityPerBatch()">
 <h3>getViabilityPerBatch</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/pojo/BatchEggAggregate.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchEggAggregate</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-15">getViabilityPerBatch</a></span>()</div>
+<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/pojo/BatchEggAggregate.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchEggAggregate</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-35">getViabilityPerBatch</a></span>()</div>
+<div class="block">Returns aggregate viability data grouped by batch.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>live list of batch egg aggregates.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -159,7 +193,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="fetchByEggGroupId(long)">
 <h3>fetchByEggGroupId</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-17">fetchByEggGroupId</a></span><wbr><span class="parameters">(long&nbsp;eggGroupId)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-43">fetchByEggGroupId</a></span><wbr><span class="parameters">(long&nbsp;eggGroupId)</span></div>
+<div class="block">Fetches all eggs for a given egg group asynchronously.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggGroupId</code> - egg-group ID.</dd>
+<dt>Returns:</dt>
+<dd>future completing with the eggs in the specified egg group.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -167,7 +208,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="save(edu.cnm.deepdive.pippiphooray.model.entity.Egg)">
 <h3>save</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-19">save</a></span><wbr><span class="parameters">(<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&nbsp;egg)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-51">save</a></span><wbr><span class="parameters">(<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&nbsp;egg)</span></div>
+<div class="block">Inserts or updates an egg.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>egg</code> - egg to save.</dd>
+<dt>Returns:</dt>
+<dd>future completing with the saved egg ID.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -175,7 +223,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="saveAll(java.util.List)">
 <h3>saveAll</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-21">saveAll</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&nbsp;eggs)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-59">saveAll</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&nbsp;eggs)</span></div>
+<div class="block">Inserts or updates multiple eggs.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggs</code> - eggs to save.</dd>
+<dt>Returns:</dt>
+<dd>future completing when all eggs have been saved.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -183,8 +238,16 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="seedEggsForGroup(long,int)">
 <h3>seedEggsForGroup</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-23">seedEggsForGroup</a></span><wbr><span class="parameters">(long&nbsp;eggGroupId,
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/EggRepository.html#line-68">seedEggsForGroup</a></span><wbr><span class="parameters">(long&nbsp;eggGroupId,
  int&nbsp;initialEggCount)</span></div>
+<div class="block">Creates the initial egg records for a given egg group.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggGroupId</code> - egg-group ID.</dd>
+<dd><code>initialEggCount</code> - number of eggs to create in the group.</dd>
+<dt>Returns:</dt>
+<dd>future completing when the egg records have been created.</dd>
+</dl>
 </div>
 </section>
 </li>

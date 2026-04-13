@@ -86,8 +86,12 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-21">PipPipDatabase</a></span>
+<div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-27">PipPipDatabase</a></span>
 <span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/room/RoomDatabase.html" title="class or interface in androidx.room" class="external-link">RoomDatabase</a></span></div>
+<div class="block">Main Room database for the Pip Pip Hooray application.
+
+<p>This database stores batches, incubators, egg groups, eggs, and candling
+observations, and exposes DAO access methods for each entity type.</div>
 </div>
 </section>
 <section class="summary">
@@ -103,7 +107,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="PipPipDatabase.Converters.html" class="type-name-link" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase.Converters</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Type converters used by Room for unsupported Java time types.</div>
+</div>
 </div>
 <div class="inherited-list">
 <h3 id="nested-classes-inherited-from-class-androidx.room.RoomDatabase">Nested classes/interfaces inherited from class&nbsp;<a href="https://developer.android.com/reference/androidx/room/RoomDatabase.html#nested-class-summary" title="class or interface in androidx.room" class="external-link">RoomDatabase</a></h3>
@@ -145,19 +151,29 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="../../model/dao/BatchDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">BatchDao</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getBatchDao()" class="member-name-link">getBatchDao</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns the DAO used for batch persistence operations.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="../../model/dao/CandlingObservationDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">CandlingObservationDao</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getCandlingObservationDao()" class="member-name-link">getCandlingObservationDao</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns the DAO used for candling observation persistence operations.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="../../model/dao/EggDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggDao</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getEggDao()" class="member-name-link">getEggDao</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns the DAO used for egg persistence operations.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="../../model/dao/EggGroupDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggGroupDao</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getEggGroupDao()" class="member-name-link">getEggGroupDao</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns the DAO used for egg-group persistence operations.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="../../model/dao/IncubatorDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">IncubatorDao</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getIncubatorDao()" class="member-name-link">getIncubatorDao</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns the DAO used for incubator persistence operations.</div>
+</div>
 </div>
 </div>
 </div>
@@ -182,7 +198,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>PipPipDatabase</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-36">PipPipDatabase</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-41">PipPipDatabase</a></span>()</div>
 </div>
 </section>
 </li>
@@ -198,7 +214,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getBatchDao()">
 <h3>getBatchDao</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/BatchDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">BatchDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-41">getBatchDao</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/BatchDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">BatchDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-51">getBatchDao</a></span>()</div>
+<div class="block">Returns the DAO used for batch persistence operations.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>batch DAO.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -206,7 +227,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getCandlingObservationDao()">
 <h3>getCandlingObservationDao</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/CandlingObservationDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">CandlingObservationDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-43">getCandlingObservationDao</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/CandlingObservationDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">CandlingObservationDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-58">getCandlingObservationDao</a></span>()</div>
+<div class="block">Returns the DAO used for candling observation persistence operations.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>candling observation DAO.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -214,7 +240,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getEggDao()">
 <h3>getEggDao</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/EggDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-45">getEggDao</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/EggDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-65">getEggDao</a></span>()</div>
+<div class="block">Returns the DAO used for egg persistence operations.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>egg DAO.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -222,7 +253,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getEggGroupDao()">
 <h3>getEggGroupDao</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/EggGroupDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggGroupDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-47">getEggGroupDao</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/EggGroupDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggGroupDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-72">getEggGroupDao</a></span>()</div>
+<div class="block">Returns the DAO used for egg-group persistence operations.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>egg-group DAO.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -230,7 +266,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getIncubatorDao()">
 <h3>getIncubatorDao</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/IncubatorDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">IncubatorDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-49">getIncubatorDao</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="../../model/dao/IncubatorDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">IncubatorDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/PipPipDatabase.html#line-79">getIncubatorDao</a></span>()</div>
+<div class="block">Returns the DAO used for incubator persistence operations.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>incubator DAO.</dd>
+</dl>
 </div>
 </section>
 </li>

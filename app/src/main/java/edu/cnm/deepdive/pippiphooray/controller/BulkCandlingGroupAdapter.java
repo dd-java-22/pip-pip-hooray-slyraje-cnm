@@ -16,21 +16,48 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Adapter used to display egg groups and collect bulk candling input values.
+ *
+ * <p>Each row shows an egg group and lets the user enter the number of viable
+ * eggs observed for that group.
+ */
 public class BulkCandlingGroupAdapter
     extends ListAdapter<EggGroup, BulkCandlingGroupAdapter.ViewHolder> {
 
+  /**
+   * Listener notified when an input field should receive focus and show the keyboard.
+   */
   public interface OnInputFocusListener {
+
+    /**
+     * Requests focus handling for the provided input field.
+     *
+     * @param editText input field that should receive focus.
+     */
     void onInputFocused(@NonNull EditText editText);
   }
 
   private final Map<Long, String> enteredValues = new HashMap<>();
   private final OnInputFocusListener focusListener;
 
+  /**
+   * Creates a new adapter instance.
+   *
+   * @param focusListener listener used when an input field gains focus.
+   */
   public BulkCandlingGroupAdapter(@NonNull OnInputFocusListener focusListener) {
     super(DIFF_CALLBACK);
     this.focusListener = focusListener;
   }
 
+  /**
+   * Creates a new view holder for an egg-group row.
+   *
+   * @param parent parent view group.
+   * @param viewType view type identifier.
+   * @return new view holder instance.
+   */
   @NonNull
   @Override
   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,11 +66,22 @@ public class BulkCandlingGroupAdapter
     return new ViewHolder(binding);
   }
 
+  /**
+   * Binds an egg-group item to the specified view holder.
+   *
+   * @param holder target view holder.
+   * @param position adapter position.
+   */
   @Override
   public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     holder.bind(getItem(position));
   }
 
+  /**
+   * Returns whether the user has entered at least one non-blank viable-count value.
+   *
+   * @return {@code true} if any value has been entered; otherwise {@code false}.
+   */
   public boolean hasAnyEnteredValue() {
     for (EggGroup group : getCurrentList()) {
       String raw = enteredValues.get(group.getId());
@@ -54,6 +92,13 @@ public class BulkCandlingGroupAdapter
     return false;
   }
 
+  /**
+   * Collects valid entered values as viable counts keyed by egg-group ID.
+   *
+   * <p>Values are clamped to the range from 0 to the group's initial egg count.
+   *
+   * @return map of egg-group IDs to validated viable counts.
+   */
   @NonNull
   public Map<Long, Integer> collectValidCounts() {
     Map<Long, Integer> counts = new HashMap<>();
@@ -70,6 +115,12 @@ public class BulkCandlingGroupAdapter
     return counts;
   }
 
+  /**
+   * Validates all entered viable-count values.
+   *
+   * @return {@code true} if all entered values are numeric and within range;
+   *     otherwise {@code false}.
+   */
   public boolean validateInputs() {
     boolean valid = true;
     for (int i = 0; i < getCurrentList().size(); i++) {

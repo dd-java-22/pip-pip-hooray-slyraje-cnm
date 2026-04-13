@@ -72,8 +72,9 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/NextMilestoneHelper.html#line-9">NextMilestoneHelper</a></span>
+<div class="type-signature"><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/NextMilestoneHelper.html#line-12">NextMilestoneHelper</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Utility class for computing the next incubation milestone and its date.</div>
 </div>
 </section>
 <section class="summary">
@@ -94,7 +95,9 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;lockdownDate,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;expectedHatchDate,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;today)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Computes the next milestone for a batch given its key dates and today's date.</div>
+</div>
 </div>
 </div>
 </div>
@@ -117,7 +120,7 @@ loadScripts(document, 'script');</script>
 <h3>computeNextMilestone</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="NextMilestoneSummary.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">NextMilestoneSummary</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/NextMilestoneHelper.html#line-19">computeNextMilestone</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
+</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="NextMilestoneSummary.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">NextMilestoneSummary</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/NextMilestoneHelper.html#line-42">computeNextMilestone</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;dateSet,
  <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;lockdownDate,
@@ -125,6 +128,27 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;expectedHatchDate,
  <a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;today)</span></div>
+<div class="block">Computes the next milestone for a batch given its key dates and today's date.
+
+<p>The candidate milestones are:
+<ul>
+  <li>Day 7 candling,</li>
+  <li>Day 14 candling,</li>
+  <li>Day 18 candling/lockdown, and</li>
+  <li>expected hatch day.</li>
+</ul>
+The first candidate whose date is today or in the future is returned;
+if all milestones are in the past, the last available one is returned,
+and if no dates are available, a fallback "unavailable" milestone is produced.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>dateSet</code> - date the batch was set; may be <code>null</code>.</dd>
+<dd><code>lockdownDate</code> - explicit lockdown date, if any.</dd>
+<dd><code>expectedHatchDate</code> - expected hatch date, if any.</dd>
+<dd><code>today</code> - current date used for comparison.</dd>
+<dt>Returns:</dt>
+<dd>summary describing the next applicable milestone.</dd>
+</dl>
 </div>
 </section>
 </li>

@@ -84,8 +84,9 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-13">SignInViewModel</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-16">SignInViewModel</a></span>
 <span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/lifecycle/ViewModel.html" title="class or interface in androidx.lifecycle" class="external-link">ViewModel</a></span></div>
+<div class="block">ViewModel for managing Google authentication and user sign-in/sign-out operations.</div>
 </div>
 </section>
 <section class="summary">
@@ -99,7 +100,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(edu.cnm.deepdive.pippiphooray.service.repository.GoogleAuthRepository)" class="member-name-link">SignInViewModel</a><wbr>(<a href="../service/repository/GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a>&nbsp;repository)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a SignInViewModel with the specified authentication repository.</div>
+</div>
 </div>
 </section>
 </li>
@@ -116,19 +119,29 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCredential()" class="member-name-link">getCredential</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the current user credential as LiveData.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Throwable.html" title="class or interface in java.lang" class="external-link">Throwable</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getThrowable()" class="member-name-link">getThrowable</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets any errors from authentication operations as LiveData.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#signIn(android.app.Activity)" class="member-name-link">signIn</a><wbr>(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Initiates a sign-in flow with user interaction.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#signInQuickly(android.app.Activity)" class="member-name-link">signInQuickly</a><wbr>(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Attempts to sign in quickly using cached credentials.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#signOut()" class="member-name-link">signOut</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Signs out the current user.</div>
+</div>
 </div>
 </div>
 </div>
@@ -154,7 +167,12 @@ loadScripts(document, 'script');</script>
 <h3>SignInViewModel</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations">@Inject
-</span><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-20">SignInViewModel</a></span><wbr><span class="parameters">(<a href="../service/repository/GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a>&nbsp;repository)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-28">SignInViewModel</a></span><wbr><span class="parameters">(<a href="../service/repository/GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a>&nbsp;repository)</span></div>
+<div class="block">Constructs a SignInViewModel with the specified authentication repository.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>repository</code> - the repository for Google authentication operations</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -170,7 +188,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getCredential()">
 <h3>getCredential</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-27">getCredential</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-40">getCredential</a></span>()</div>
+<div class="block">Gets the current user credential as LiveData.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>a LiveData containing the Google ID token credential, or null if not signed in</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -178,7 +201,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getThrowable()">
 <h3>getThrowable</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Throwable.html" title="class or interface in java.lang" class="external-link">Throwable</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-31">getThrowable</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Throwable.html" title="class or interface in java.lang" class="external-link">Throwable</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-49">getThrowable</a></span>()</div>
+<div class="block">Gets any errors from authentication operations as LiveData.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>a LiveData containing any throwable exceptions from auth operations</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -186,7 +214,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="signInQuickly(android.app.Activity)">
 <h3>signInQuickly</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-35">signInQuickly</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-58">signInQuickly</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</span></div>
+<div class="block">Attempts to sign in quickly using cached credentials.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>activity</code> - the activity context for the sign-in operation</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -194,7 +227,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="signIn(android.app.Activity)">
 <h3>signIn</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-41">signIn</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-69">signIn</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</span></div>
+<div class="block">Initiates a sign-in flow with user interaction.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>activity</code> - the activity context for the sign-in operation</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -202,7 +240,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="signOut()">
 <h3>signOut</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-47">signOut</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/SignInViewModel.html#line-78">signOut</a></span>()</div>
+<div class="block">Signs out the current user.</div>
 </div>
 </section>
 </li>

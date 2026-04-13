@@ -72,7 +72,8 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-11">IncubatorDao</a></span></div>
+<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-14">IncubatorDao</a></span></div>
+<div class="block">Room Data Access Object (DAO) for Incubator entity operations.</div>
 </div>
 </section>
 <section class="summary">
@@ -90,16 +91,24 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#insert(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)" class="member-name-link">insert</a><wbr>(<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Inserts a single incubator into the database.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#select(long)" class="member-name-link">select</a><wbr>(long&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Retrieves a specific incubator by ID as LiveData.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#selectAll()" class="member-name-link">selectAll</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Retrieves all active incubators ordered by name as LiveData.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#update(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)" class="member-name-link">update</a><wbr>(<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Updates an existing incubator in the database.</div>
+</div>
 </div>
 </div>
 </div>
@@ -118,7 +127,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="insert(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)">
 <h3>insert</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-14">insert</a></span><wbr><span class="parameters">(<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</span></div>
+<div class="member-signature"><span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-23">insert</a></span><wbr><span class="parameters">(<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</span></div>
+<div class="block">Inserts a single incubator into the database.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>incubator</code> - the incubator to insert</dd>
+<dt>Returns:</dt>
+<dd>the generated incubator ID</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -126,7 +142,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="update(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)">
 <h3>update</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-17">update</a></span><wbr><span class="parameters">(<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-31">update</a></span><wbr><span class="parameters">(<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</span></div>
+<div class="block">Updates an existing incubator in the database.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>incubator</code> - the incubator to update</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -134,7 +155,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="selectAll()">
 <h3>selectAll</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-22">selectAll</a></span>()</div>
+<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-41">selectAll</a></span>()</div>
+<div class="block">Retrieves all active incubators ordered by name as LiveData.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>a LiveData list of all active incubators</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -142,7 +168,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="select(long)">
 <h3>select</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-25">select</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/IncubatorDao.html#line-50">select</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="block">Retrieves a specific incubator by ID as LiveData.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - the ID of the incubator to retrieve</dd>
+<dt>Returns:</dt>
+<dd>a LiveData containing the incubator with the specified ID</dd>
+</dl>
 </div>
 </section>
 </li>

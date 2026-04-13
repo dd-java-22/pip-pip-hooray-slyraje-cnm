@@ -75,8 +75,8 @@ loadScripts(document, 'script');</script>
 <h1 title="Class IncubatorAdapter" class="title">Class IncubatorAdapter</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">androidx.recyclerview.widget.RecyclerView.Adapter</a>&lt;edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder&gt;
-<div class="inheritance"><a href="https://developer.android.com/reference/androidx/recyclerview/widget/ListAdapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">androidx.recyclerview.widget.ListAdapter</a>&lt;<a href="../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>, edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder&gt;
+<div class="inheritance"><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">androidx.recyclerview.widget.RecyclerView.Adapter</a>&lt;<a href="IncubatorAdapter.ViewHolder.html" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a>&gt;
+<div class="inheritance"><a href="https://developer.android.com/reference/androidx/recyclerview/widget/ListAdapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">androidx.recyclerview.widget.ListAdapter</a>&lt;<a href="../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>, <a href="IncubatorAdapter.ViewHolder.html" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a>&gt;
 <div class="inheritance">edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter</div>
 </div>
 </div>
@@ -84,8 +84,9 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorAdapter.html#line-13">IncubatorAdapter</a></span>
-<span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/recyclerview/widget/ListAdapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">ListAdapter</a>&lt;<a href="../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>, edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder&gt;</span></div>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorAdapter.html#line-16">IncubatorAdapter</a></span>
+<span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/recyclerview/widget/ListAdapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">ListAdapter</a>&lt;<a href="../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>, <a href="IncubatorAdapter.ViewHolder.html" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a>&gt;</span></div>
+<div class="block">RecyclerView adapter for displaying incubator items in a list.</div>
 </div>
 </section>
 <section class="summary">
@@ -101,7 +102,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static interface&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="IncubatorAdapter.OnIncubatorClickListener.html" class="type-name-link" title="interface in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.OnIncubatorClickListener</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Functional interface for handling incubator item click events.</div>
+</div>
+<div class="col-first odd-row-color"><code>static class&nbsp;</code></div>
+<div class="col-second odd-row-color"><code><a href="IncubatorAdapter.ViewHolder.html" class="type-name-link" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">ViewHolder for displaying an incubator item.</div>
+</div>
 </div>
 <div class="inherited-list">
 <h3 id="nested-classes-inherited-from-class-androidx.recyclerview.widget.RecyclerView.Adapter">Nested classes/interfaces inherited from class&nbsp;<a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html#nested-class-summary" title="class or interface in androidx.recyclerview.widget" class="external-link">RecyclerView.Adapter</a></h3>
@@ -117,7 +125,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.OnIncubatorClickListener)" class="member-name-link">IncubatorAdapter</a><wbr>(<a href="IncubatorAdapter.OnIncubatorClickListener.html" title="interface in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.OnIncubatorClickListener</a>&nbsp;listener)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs an IncubatorAdapter with the specified click listener.</div>
+</div>
 </div>
 </section>
 </li>
@@ -133,10 +143,10 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onBindViewHolder(edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder,int)" class="member-name-link">onBindViewHolder</a><wbr>(edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder&nbsp;holder,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onBindViewHolder(edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder,int)" class="member-name-link">onBindViewHolder</a><wbr>(<a href="IncubatorAdapter.ViewHolder.html" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a>&nbsp;holder,
  int&nbsp;position)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="IncubatorAdapter.ViewHolder.html" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onCreateViewHolder(android.view.ViewGroup,int)" class="member-name-link">onCreateViewHolder</a><wbr>(<a href="https://developer.android.com/reference/android/view/ViewGroup.html" title="class or interface in android.view" class="external-link">ViewGroup</a>&nbsp;parent,
  int&nbsp;viewType)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
@@ -167,7 +177,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.OnIncubatorClickListener)">
 <h3>IncubatorAdapter</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorAdapter.html#line-17">IncubatorAdapter</a></span><wbr><span class="parameters">(<a href="IncubatorAdapter.OnIncubatorClickListener.html" title="interface in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.OnIncubatorClickListener</a>&nbsp;listener)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorAdapter.html#line-25">IncubatorAdapter</a></span><wbr><span class="parameters">(<a href="IncubatorAdapter.OnIncubatorClickListener.html" title="interface in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.OnIncubatorClickListener</a>&nbsp;listener)</span></div>
+<div class="block">Constructs an IncubatorAdapter with the specified click listener.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>listener</code> - the listener to handle incubator item clicks</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -184,12 +199,12 @@ loadScripts(document, 'script');</script>
 <h3>onCreateViewHolder</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorAdapter.html#line-22">onCreateViewHolder</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="IncubatorAdapter.ViewHolder.html" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorAdapter.html#line-30">onCreateViewHolder</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="https://developer.android.com/reference/android/view/ViewGroup.html" title="class or interface in android.view" class="external-link">ViewGroup</a>&nbsp;parent,
  int&nbsp;viewType)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html#onCreateViewHolder-android.view.ViewGroup-int-" title="class or interface in androidx.recyclerview.widget" class="external-link">onCreateViewHolder</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">RecyclerView.Adapter</a>&lt;edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder&gt;</code></dd>
+<dd><code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html#onCreateViewHolder-android.view.ViewGroup-int-" title="class or interface in androidx.recyclerview.widget" class="external-link">onCreateViewHolder</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">RecyclerView.Adapter</a>&lt;<a href="IncubatorAdapter.ViewHolder.html" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a>&gt;</code></dd>
 </dl>
 </div>
 </section>
@@ -198,12 +213,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onBindViewHolder(edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder,int)">
 <h3>onBindViewHolder</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorAdapter.html#line-30">onBindViewHolder</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
- edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder&nbsp;holder,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorAdapter.html#line-38">onBindViewHolder</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+ <a href="IncubatorAdapter.ViewHolder.html" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a>&nbsp;holder,
  int&nbsp;position)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html#onBindViewHolder-VH-int-" title="class or interface in androidx.recyclerview.widget" class="external-link">onBindViewHolder</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">RecyclerView.Adapter</a>&lt;edu.cnm.deepdive.pippiphooray.controller.IncubatorAdapter.ViewHolder&gt;</code></dd>
+<dd><code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html#onBindViewHolder-VH-int-" title="class or interface in androidx.recyclerview.widget" class="external-link">onBindViewHolder</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">RecyclerView.Adapter</a>&lt;<a href="IncubatorAdapter.ViewHolder.html" title="class in edu.cnm.deepdive.pippiphooray.controller">IncubatorAdapter.ViewHolder</a>&gt;</code></dd>
 </dl>
 </div>
 </section>

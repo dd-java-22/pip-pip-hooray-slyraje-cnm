@@ -89,8 +89,12 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-12">CandlingObservation</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-18">CandlingObservation</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Represents a candling observation recorded for a specific egg.
+
+<p>Each observation stores the day of incubation, a development status,
+optional notes, and the time the observation was recorded.</div>
 </div>
 </section>
 <section class="summary">
@@ -121,40 +125,64 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDayNumber()" class="member-name-link">getDayNumber</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the day number of incubation for this observation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDevelopmentStatus()" class="member-name-link">getDevelopmentStatus</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the recorded development status for the egg.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getEggId()" class="member-name-link">getEggId</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the ID of the egg associated with this observation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getId()" class="member-name-link">getId</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the unique ID of this observation.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getNotes()" class="member-name-link">getNotes</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns any notes recorded for this observation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTimestamp()" class="member-name-link">getTimestamp</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the timestamp when this observation was recorded.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDayNumber(int)" class="member-name-link">setDayNumber</a><wbr>(int&nbsp;dayNumber)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the day number of incubation for this observation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDevelopmentStatus(java.lang.String)" class="member-name-link">setDevelopmentStatus</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;developmentStatus)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the recorded development status for the egg.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setEggId(long)" class="member-name-link">setEggId</a><wbr>(long&nbsp;eggId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the ID of the egg associated with this observation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setId(long)" class="member-name-link">setId</a><wbr>(long&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the unique ID of this observation.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setNotes(java.lang.String)" class="member-name-link">setNotes</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;notes)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the notes recorded for this observation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTimestamp(java.time.Instant)" class="member-name-link">setTimestamp</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a>&nbsp;timestamp)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the timestamp when this observation was recorded.</div>
+</div>
 </div>
 </div>
 </div>
@@ -176,7 +204,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>CandlingObservation</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-28">CandlingObservation</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-33">CandlingObservation</a></span>()</div>
 </div>
 </section>
 </li>
@@ -192,7 +220,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getId()">
 <h3>getId</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-54">getId</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-63">getId</a></span>()</div>
+<div class="block">Returns the unique ID of this observation.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>observation ID.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -200,7 +233,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setId(long)">
 <h3>setId</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-58">setId</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-72">setId</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="block">Sets the unique ID of this observation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - observation ID.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -208,7 +246,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getEggId()">
 <h3>getEggId</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-62">getEggId</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-81">getEggId</a></span>()</div>
+<div class="block">Returns the ID of the egg associated with this observation.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>related egg ID.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -216,7 +259,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setEggId(long)">
 <h3>setEggId</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-66">setEggId</a></span><wbr><span class="parameters">(long&nbsp;eggId)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-90">setEggId</a></span><wbr><span class="parameters">(long&nbsp;eggId)</span></div>
+<div class="block">Sets the ID of the egg associated with this observation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggId</code> - related egg ID.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -224,7 +272,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getDayNumber()">
 <h3>getDayNumber</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-70">getDayNumber</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-99">getDayNumber</a></span>()</div>
+<div class="block">Returns the day number of incubation for this observation.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>incubation day number.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -232,7 +285,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setDayNumber(int)">
 <h3>setDayNumber</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-74">setDayNumber</a></span><wbr><span class="parameters">(int&nbsp;dayNumber)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-108">setDayNumber</a></span><wbr><span class="parameters">(int&nbsp;dayNumber)</span></div>
+<div class="block">Sets the day number of incubation for this observation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>dayNumber</code> - incubation day number.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -241,7 +299,12 @@ loadScripts(document, 'script');</script>
 <h3>getDevelopmentStatus</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-78">getDevelopmentStatus</a></span>()</div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-117">getDevelopmentStatus</a></span>()</div>
+<div class="block">Returns the recorded development status for the egg.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>development status, or <code>null</code> if not specified.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -249,8 +312,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setDevelopmentStatus(java.lang.String)">
 <h3>setDevelopmentStatus</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-83">setDevelopmentStatus</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-127">setDevelopmentStatus</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;developmentStatus)</span></div>
+<div class="block">Sets the recorded development status for the egg.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>developmentStatus</code> - development status, or <code>null</code>.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -259,7 +327,12 @@ loadScripts(document, 'script');</script>
 <h3>getNotes</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-87">getNotes</a></span>()</div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-136">getNotes</a></span>()</div>
+<div class="block">Returns any notes recorded for this observation.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>observation notes, or <code>null</code> if none were recorded.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -267,8 +340,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setNotes(java.lang.String)">
 <h3>setNotes</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-92">setNotes</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-146">setNotes</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;notes)</span></div>
+<div class="block">Sets the notes recorded for this observation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>notes</code> - observation notes, or <code>null</code>.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -277,7 +355,12 @@ loadScripts(document, 'script');</script>
 <h3>getTimestamp</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-96">getTimestamp</a></span>()</div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-155">getTimestamp</a></span>()</div>
+<div class="block">Returns the timestamp when this observation was recorded.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>observation timestamp.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -285,8 +368,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setTimestamp(java.time.Instant)">
 <h3>setTimestamp</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-101">setTimestamp</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/entity/CandlingObservation.html#line-165">setTimestamp</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a>&nbsp;timestamp)</span></div>
+<div class="block">Sets the timestamp when this observation was recorded.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>timestamp</code> - observation timestamp.</dd>
+</dl>
 </div>
 </section>
 </li>

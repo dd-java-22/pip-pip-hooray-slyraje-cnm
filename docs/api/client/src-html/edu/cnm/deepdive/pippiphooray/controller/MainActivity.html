@@ -28,50 +28,66 @@
 <span class="source-line-no">015</span><span id="line-15">import edu.cnm.deepdive.pippiphooray.R;</span>
 <span class="source-line-no">016</span><span id="line-16">import edu.cnm.deepdive.pippiphooray.databinding.ActivityMainBinding;</span>
 <span class="source-line-no">017</span><span id="line-17"></span>
-<span class="source-line-no">018</span><span id="line-18">@AndroidEntryPoint</span>
-<span class="source-line-no">019</span><span id="line-19">public class MainActivity extends AppCompatActivity {</span>
-<span class="source-line-no">020</span><span id="line-20"></span>
-<span class="source-line-no">021</span><span id="line-21">  private ActivityMainBinding binding;</span>
-<span class="source-line-no">022</span><span id="line-22">  private AppBarConfiguration appBarConfiguration;</span>
-<span class="source-line-no">023</span><span id="line-23"></span>
-<span class="source-line-no">024</span><span id="line-24">  @Override</span>
-<span class="source-line-no">025</span><span id="line-25">  protected void onCreate(Bundle savedInstanceState) {</span>
-<span class="source-line-no">026</span><span id="line-26">    EdgeToEdge.enable(this);</span>
-<span class="source-line-no">027</span><span id="line-27">    super.onCreate(savedInstanceState);</span>
-<span class="source-line-no">028</span><span id="line-28">    binding = ActivityMainBinding.inflate(getLayoutInflater());</span>
-<span class="source-line-no">029</span><span id="line-29">    setContentView(binding.getRoot());</span>
-<span class="source-line-no">030</span><span id="line-30">    ViewCompat.setOnApplyWindowInsetsListener(binding.navHostFragment, (v, insets) -&gt; {</span>
-<span class="source-line-no">031</span><span id="line-31">      Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());</span>
-<span class="source-line-no">032</span><span id="line-32">      v.setPadding(0, 0, 0, systemBars.bottom);</span>
-<span class="source-line-no">033</span><span id="line-33">      return insets;</span>
-<span class="source-line-no">034</span><span id="line-34">    });</span>
-<span class="source-line-no">035</span><span id="line-35">    setSupportActionBar(binding.toolbar);</span>
-<span class="source-line-no">036</span><span id="line-36">    NavHostFragment navHostFragment = (NavHostFragment)</span>
-<span class="source-line-no">037</span><span id="line-37">        getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);</span>
-<span class="source-line-no">038</span><span id="line-38">    NavController navController = navHostFragment.getNavController();</span>
-<span class="source-line-no">039</span><span id="line-39">    appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();</span>
-<span class="source-line-no">040</span><span id="line-40">    NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);</span>
-<span class="source-line-no">041</span><span id="line-41">    NavigationUI.setupWithNavController(binding.bottomNav, navController);</span>
-<span class="source-line-no">042</span><span id="line-42">    navController.addOnDestinationChangedListener((controller, destination, arguments) -&gt; {</span>
-<span class="source-line-no">043</span><span id="line-43">      if (destination.getId() == R.id.sign_in_fragment) {</span>
-<span class="source-line-no">044</span><span id="line-44">        binding.bottomNav.setVisibility(View.GONE);</span>
-<span class="source-line-no">045</span><span id="line-45">      } else {</span>
-<span class="source-line-no">046</span><span id="line-46">        binding.bottomNav.setVisibility(View.VISIBLE);</span>
-<span class="source-line-no">047</span><span id="line-47">      }</span>
-<span class="source-line-no">048</span><span id="line-48">    });</span>
-<span class="source-line-no">049</span><span id="line-49"></span>
-<span class="source-line-no">050</span><span id="line-50">  }</span>
-<span class="source-line-no">051</span><span id="line-51"></span>
-<span class="source-line-no">052</span><span id="line-52">  @Override</span>
-<span class="source-line-no">053</span><span id="line-53">  public boolean onSupportNavigateUp() {</span>
-<span class="source-line-no">054</span><span id="line-54">    NavHostFragment navHostFragment = (NavHostFragment)</span>
-<span class="source-line-no">055</span><span id="line-55">        getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);</span>
-<span class="source-line-no">056</span><span id="line-56">    NavController navController = navHostFragment.getNavController();</span>
-<span class="source-line-no">057</span><span id="line-57">    return NavigationUI.navigateUp(navController, appBarConfiguration)</span>
-<span class="source-line-no">058</span><span id="line-58">        || super.onSupportNavigateUp();</span>
-<span class="source-line-no">059</span><span id="line-59">  }</span>
+<span class="source-line-no">018</span><span id="line-18">/**</span>
+<span class="source-line-no">019</span><span id="line-19"> * Main activity hosting the application's navigation graph and top-level UI.</span>
+<span class="source-line-no">020</span><span id="line-20"> *</span>
+<span class="source-line-no">021</span><span id="line-21"> * &lt;p&gt;This activity sets up edge-to-edge display, the toolbar, the bottom</span>
+<span class="source-line-no">022</span><span id="line-22"> * navigation bar, and Navigation component integration.</span>
+<span class="source-line-no">023</span><span id="line-23"> */</span>
+<span class="source-line-no">024</span><span id="line-24">@AndroidEntryPoint</span>
+<span class="source-line-no">025</span><span id="line-25">public class MainActivity extends AppCompatActivity {</span>
+<span class="source-line-no">026</span><span id="line-26"></span>
+<span class="source-line-no">027</span><span id="line-27">  private ActivityMainBinding binding;</span>
+<span class="source-line-no">028</span><span id="line-28">  private AppBarConfiguration appBarConfiguration;</span>
+<span class="source-line-no">029</span><span id="line-29"></span>
+<span class="source-line-no">030</span><span id="line-30">  /**</span>
+<span class="source-line-no">031</span><span id="line-31">   * Initializes the activity UI and configures navigation behavior.</span>
+<span class="source-line-no">032</span><span id="line-32">   *</span>
+<span class="source-line-no">033</span><span id="line-33">   * @param savedInstanceState saved instance state, if any.</span>
+<span class="source-line-no">034</span><span id="line-34">   */</span>
+<span class="source-line-no">035</span><span id="line-35">  @Override</span>
+<span class="source-line-no">036</span><span id="line-36">  protected void onCreate(Bundle savedInstanceState) {</span>
+<span class="source-line-no">037</span><span id="line-37">    EdgeToEdge.enable(this);</span>
+<span class="source-line-no">038</span><span id="line-38">    super.onCreate(savedInstanceState);</span>
+<span class="source-line-no">039</span><span id="line-39">    binding = ActivityMainBinding.inflate(getLayoutInflater());</span>
+<span class="source-line-no">040</span><span id="line-40">    setContentView(binding.getRoot());</span>
+<span class="source-line-no">041</span><span id="line-41">    ViewCompat.setOnApplyWindowInsetsListener(binding.navHostFragment, (v, insets) -&gt; {</span>
+<span class="source-line-no">042</span><span id="line-42">      Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());</span>
+<span class="source-line-no">043</span><span id="line-43">      v.setPadding(0, 0, 0, systemBars.bottom);</span>
+<span class="source-line-no">044</span><span id="line-44">      return insets;</span>
+<span class="source-line-no">045</span><span id="line-45">    });</span>
+<span class="source-line-no">046</span><span id="line-46">    setSupportActionBar(binding.toolbar);</span>
+<span class="source-line-no">047</span><span id="line-47">    NavHostFragment navHostFragment = (NavHostFragment)</span>
+<span class="source-line-no">048</span><span id="line-48">        getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);</span>
+<span class="source-line-no">049</span><span id="line-49">    NavController navController = navHostFragment.getNavController();</span>
+<span class="source-line-no">050</span><span id="line-50">    appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();</span>
+<span class="source-line-no">051</span><span id="line-51">    NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);</span>
+<span class="source-line-no">052</span><span id="line-52">    NavigationUI.setupWithNavController(binding.bottomNav, navController);</span>
+<span class="source-line-no">053</span><span id="line-53">    navController.addOnDestinationChangedListener((controller, destination, arguments) -&gt; {</span>
+<span class="source-line-no">054</span><span id="line-54">      if (destination.getId() == R.id.sign_in_fragment) {</span>
+<span class="source-line-no">055</span><span id="line-55">        binding.bottomNav.setVisibility(View.GONE);</span>
+<span class="source-line-no">056</span><span id="line-56">      } else {</span>
+<span class="source-line-no">057</span><span id="line-57">        binding.bottomNav.setVisibility(View.VISIBLE);</span>
+<span class="source-line-no">058</span><span id="line-58">      }</span>
+<span class="source-line-no">059</span><span id="line-59">    });</span>
 <span class="source-line-no">060</span><span id="line-60"></span>
-<span class="source-line-no">061</span><span id="line-61">}</span>
+<span class="source-line-no">061</span><span id="line-61">  }</span>
+<span class="source-line-no">062</span><span id="line-62"></span>
+<span class="source-line-no">063</span><span id="line-63">  /**</span>
+<span class="source-line-no">064</span><span id="line-64">   * Handles Up navigation through the Navigation component.</span>
+<span class="source-line-no">065</span><span id="line-65">   *</span>
+<span class="source-line-no">066</span><span id="line-66">   * @return {@code true} if navigation was handled; otherwise {@code false}.</span>
+<span class="source-line-no">067</span><span id="line-67">   */</span>
+<span class="source-line-no">068</span><span id="line-68">  @Override</span>
+<span class="source-line-no">069</span><span id="line-69">  public boolean onSupportNavigateUp() {</span>
+<span class="source-line-no">070</span><span id="line-70">    NavHostFragment navHostFragment = (NavHostFragment)</span>
+<span class="source-line-no">071</span><span id="line-71">        getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);</span>
+<span class="source-line-no">072</span><span id="line-72">    NavController navController = navHostFragment.getNavController();</span>
+<span class="source-line-no">073</span><span id="line-73">    return NavigationUI.navigateUp(navController, appBarConfiguration)</span>
+<span class="source-line-no">074</span><span id="line-74">        || super.onSupportNavigateUp();</span>
+<span class="source-line-no">075</span><span id="line-75">  }</span>
+<span class="source-line-no">076</span><span id="line-76"></span>
+<span class="source-line-no">077</span><span id="line-77">}</span>
 
 
 

@@ -79,9 +79,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-10">IncubatorRepositoryImpl</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-13">IncubatorRepositoryImpl</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="IncubatorRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepository</a></span></div>
+<div class="block">Repository implementation for incubator data access and operations.</div>
 </div>
 </section>
 <section class="summary">
@@ -99,16 +100,24 @@ implements <a href="IncubatorRepository.html" title="interface in edu.cnm.deepdi
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deactivate(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)" class="member-name-link">deactivate</a><wbr>(<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Marks the given incubator as inactive (soft delete).</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#get(long)" class="member-name-link">get</a><wbr>(long&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns a single incubator by ID.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getActiveIncubators()" class="member-name-link">getActiveIncubators</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns all incubators that are currently marked as active.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#save(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)" class="member-name-link">save</a><wbr>(<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Inserts or updates an incubator.</div>
+</div>
 </div>
 </div>
 </div>
@@ -130,10 +139,14 @@ implements <a href="IncubatorRepository.html" title="interface in edu.cnm.deepdi
 <section class="detail" id="getActiveIncubators()">
 <h3>getActiveIncubators</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-19">getActiveIncubators</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-27">getActiveIncubators</a></span>()</div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="IncubatorRepository.html#getActiveIncubators()">IncubatorRepository</a></code></span></div>
+<div class="block">Returns all incubators that are currently marked as active.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="IncubatorRepository.html#getActiveIncubators()">getActiveIncubators</a></code>&nbsp;in interface&nbsp;<code><a href="IncubatorRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepository</a></code></dd>
+<dt>Returns:</dt>
+<dd>live list of active incubators.</dd>
 </dl>
 </div>
 </section>
@@ -142,10 +155,16 @@ implements <a href="IncubatorRepository.html" title="interface in edu.cnm.deepdi
 <section class="detail" id="get(long)">
 <h3>get</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-24">get</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-32">get</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="IncubatorRepository.html#get(long)">IncubatorRepository</a></code></span></div>
+<div class="block">Returns a single incubator by ID.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="IncubatorRepository.html#get(long)">get</a></code>&nbsp;in interface&nbsp;<code><a href="IncubatorRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepository</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>id</code> - incubator ID.</dd>
+<dt>Returns:</dt>
+<dd>live incubator with the specified ID.</dd>
 </dl>
 </div>
 </section>
@@ -154,10 +173,16 @@ implements <a href="IncubatorRepository.html" title="interface in edu.cnm.deepdi
 <section class="detail" id="save(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)">
 <h3>save</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-29">save</a></span><wbr><span class="parameters">(<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-37">save</a></span><wbr><span class="parameters">(<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="IncubatorRepository.html#save(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)">IncubatorRepository</a></code></span></div>
+<div class="block">Inserts or updates an incubator.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="IncubatorRepository.html#save(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)">save</a></code>&nbsp;in interface&nbsp;<code><a href="IncubatorRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepository</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>incubator</code> - incubator to save.</dd>
+<dt>Returns:</dt>
+<dd>future completing with the saved incubator ID.</dd>
 </dl>
 </div>
 </section>
@@ -166,10 +191,16 @@ implements <a href="IncubatorRepository.html" title="interface in edu.cnm.deepdi
 <section class="detail" id="deactivate(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)">
 <h3>deactivate</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-43">deactivate</a></span><wbr><span class="parameters">(<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/IncubatorRepositoryImpl.html#line-51">deactivate</a></span><wbr><span class="parameters">(<a href="../../model/entity/Incubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Incubator</a>&nbsp;incubator)</span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="IncubatorRepository.html#deactivate(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)">IncubatorRepository</a></code></span></div>
+<div class="block">Marks the given incubator as inactive (soft delete).</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="IncubatorRepository.html#deactivate(edu.cnm.deepdive.pippiphooray.model.entity.Incubator)">deactivate</a></code>&nbsp;in interface&nbsp;<code><a href="IncubatorRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepository</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>incubator</code> - incubator to deactivate.</dd>
+<dt>Returns:</dt>
+<dd>future completing when the incubator has been deactivated.</dd>
 </dl>
 </div>
 </section>

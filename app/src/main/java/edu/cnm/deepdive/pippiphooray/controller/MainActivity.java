@@ -15,12 +15,23 @@ import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.R;
 import edu.cnm.deepdive.pippiphooray.databinding.ActivityMainBinding;
 
+/**
+ * Main activity hosting the application's navigation graph and top-level UI.
+ *
+ * <p>This activity sets up edge-to-edge display, the toolbar, the bottom
+ * navigation bar, and Navigation component integration.
+ */
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
   private ActivityMainBinding binding;
   private AppBarConfiguration appBarConfiguration;
 
+  /**
+   * Initializes the activity UI and configures navigation behavior.
+   *
+   * @param savedInstanceState saved instance state, if any.
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     EdgeToEdge.enable(this);
@@ -49,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
   }
 
+  /**
+   * Handles Up navigation through the Navigation component.
+   *
+   * @return {@code true} if navigation was handled; otherwise {@code false}.
+   */
   @Override
   public boolean onSupportNavigateUp() {
     NavHostFragment navHostFragment = (NavHostFragment)

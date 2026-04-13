@@ -21,26 +21,44 @@
 <span class="source-line-no">008</span><span id="line-8">import androidx.fragment.app.DialogFragment;</span>
 <span class="source-line-no">009</span><span id="line-9">import java.util.Calendar;</span>
 <span class="source-line-no">010</span><span id="line-10"></span>
-<span class="source-line-no">011</span><span id="line-11">public class DatePickerFragment extends DialogFragment</span>
-<span class="source-line-no">012</span><span id="line-12">    implements DatePickerDialog.OnDateSetListener {</span>
-<span class="source-line-no">013</span><span id="line-13"></span>
-<span class="source-line-no">014</span><span id="line-14">  @NonNull</span>
-<span class="source-line-no">015</span><span id="line-15">  @Override</span>
-<span class="source-line-no">016</span><span id="line-16">  public Dialog onCreateDialog(Bundle savedInstanceState) {</span>
-<span class="source-line-no">017</span><span id="line-17">    // Use the current date as the default date in the picker.</span>
-<span class="source-line-no">018</span><span id="line-18">    final Calendar c = Calendar.getInstance();</span>
-<span class="source-line-no">019</span><span id="line-19">    int year = c.get(Calendar.YEAR);</span>
-<span class="source-line-no">020</span><span id="line-20">    int month = c.get(Calendar.MONTH);</span>
-<span class="source-line-no">021</span><span id="line-21">    int day = c.get(Calendar.DAY_OF_MONTH);</span>
-<span class="source-line-no">022</span><span id="line-22"></span>
-<span class="source-line-no">023</span><span id="line-23">    // Create a new instance of DatePickerDialog and return it.</span>
-<span class="source-line-no">024</span><span id="line-24">    return new DatePickerDialog(requireContext(), this, year, month, day);</span>
-<span class="source-line-no">025</span><span id="line-25">  }</span>
-<span class="source-line-no">026</span><span id="line-26"></span>
-<span class="source-line-no">027</span><span id="line-27">  public void onDateSet(DatePicker view, int year, int month, int day) {</span>
-<span class="source-line-no">028</span><span id="line-28">    // Do something with the date the user picks.</span>
-<span class="source-line-no">029</span><span id="line-29">  }</span>
-<span class="source-line-no">030</span><span id="line-30">}</span>
+<span class="source-line-no">011</span><span id="line-11">/**</span>
+<span class="source-line-no">012</span><span id="line-12"> * Dialog fragment that displays a date picker.</span>
+<span class="source-line-no">013</span><span id="line-13"> */</span>
+<span class="source-line-no">014</span><span id="line-14">public class DatePickerFragment extends DialogFragment</span>
+<span class="source-line-no">015</span><span id="line-15">    implements DatePickerDialog.OnDateSetListener {</span>
+<span class="source-line-no">016</span><span id="line-16"></span>
+<span class="source-line-no">017</span><span id="line-17">  /**</span>
+<span class="source-line-no">018</span><span id="line-18">   * Creates the date picker dialog using the current date as the default selection.</span>
+<span class="source-line-no">019</span><span id="line-19">   *</span>
+<span class="source-line-no">020</span><span id="line-20">   * @param savedInstanceState saved instance state, if any.</span>
+<span class="source-line-no">021</span><span id="line-21">   * @return configured date picker dialog.</span>
+<span class="source-line-no">022</span><span id="line-22">   */</span>
+<span class="source-line-no">023</span><span id="line-23">  @NonNull</span>
+<span class="source-line-no">024</span><span id="line-24">  @Override</span>
+<span class="source-line-no">025</span><span id="line-25">  public Dialog onCreateDialog(Bundle savedInstanceState) {</span>
+<span class="source-line-no">026</span><span id="line-26">    // Use the current date as the default date in the picker.</span>
+<span class="source-line-no">027</span><span id="line-27">    final Calendar c = Calendar.getInstance();</span>
+<span class="source-line-no">028</span><span id="line-28">    int year = c.get(Calendar.YEAR);</span>
+<span class="source-line-no">029</span><span id="line-29">    int month = c.get(Calendar.MONTH);</span>
+<span class="source-line-no">030</span><span id="line-30">    int day = c.get(Calendar.DAY_OF_MONTH);</span>
+<span class="source-line-no">031</span><span id="line-31"></span>
+<span class="source-line-no">032</span><span id="line-32">    // Create a new instance of DatePickerDialog and return it.</span>
+<span class="source-line-no">033</span><span id="line-33">    return new DatePickerDialog(requireContext(), this, year, month, day);</span>
+<span class="source-line-no">034</span><span id="line-34">  }</span>
+<span class="source-line-no">035</span><span id="line-35"></span>
+<span class="source-line-no">036</span><span id="line-36">  /**</span>
+<span class="source-line-no">037</span><span id="line-37">   * Receives the date selected by the user.</span>
+<span class="source-line-no">038</span><span id="line-38">   *</span>
+<span class="source-line-no">039</span><span id="line-39">   * @param view date picker view.</span>
+<span class="source-line-no">040</span><span id="line-40">   * @param year selected year.</span>
+<span class="source-line-no">041</span><span id="line-41">   * @param month selected month, zero-based.</span>
+<span class="source-line-no">042</span><span id="line-42">   * @param day selected day of month.</span>
+<span class="source-line-no">043</span><span id="line-43">   */</span>
+<span class="source-line-no">044</span><span id="line-44">  @Override</span>
+<span class="source-line-no">045</span><span id="line-45">  public void onDateSet(DatePicker view, int year, int month, int day) {</span>
+<span class="source-line-no">046</span><span id="line-46">    // Do something with the date the user picks.</span>
+<span class="source-line-no">047</span><span id="line-47">  }</span>
+<span class="source-line-no">048</span><span id="line-48">}</span>
 
 
 

@@ -84,8 +84,10 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Module.html" title="class or interface in dagger" class="external-link">@Module</a>
-</span><span class="modifiers">public abstract class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-9">RepositoryModule</a></span>
+</span><span class="modifiers">public abstract class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-13">RepositoryModule</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Dagger module that provides bindings for repository implementations.
+All repository implementations are bound as singletons for application-wide use.</div>
 </div>
 </section>
 <section class="summary">
@@ -116,22 +118,34 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="BatchRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">BatchRepository</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#bindBatchRepository(edu.cnm.deepdive.pippiphooray.service.repository.BatchRepositoryImpl)" class="member-name-link">bindBatchRepository</a><wbr>(<a href="BatchRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">BatchRepositoryImpl</a>&nbsp;impl)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Binds the BatchRepository interface to its implementation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="CandlingObservationRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">CandlingObservationRepository</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#bindCandlingObservationRepository(edu.cnm.deepdive.pippiphooray.service.repository.CandlingObservationRepositoryImpl)" class="member-name-link">bindCandlingObservationRepository</a><wbr>(<a href="CandlingObservationRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">CandlingObservationRepositoryImpl</a>&nbsp;impl)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Binds the CandlingObservationRepository interface to its implementation.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="EggGroupRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">EggGroupRepository</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#bindEggGroupRepository(edu.cnm.deepdive.pippiphooray.service.repository.EggGroupRepositoryImpl)" class="member-name-link">bindEggGroupRepository</a><wbr>(<a href="EggGroupRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">EggGroupRepositoryImpl</a>&nbsp;impl)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Binds the EggGroupRepository interface to its implementation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="EggRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">EggRepository</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#bindEggRepository(edu.cnm.deepdive.pippiphooray.service.repository.EggRepositoryImpl)" class="member-name-link">bindEggRepository</a><wbr>(<a href="EggRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">EggRepositoryImpl</a>&nbsp;impl)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Binds the EggRepository interface to its implementation.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#bindGoogleAuthRepository(edu.cnm.deepdive.pippiphooray.service.repository.GoogleAuthRepositoryImpl)" class="member-name-link">bindGoogleAuthRepository</a><wbr>(<a href="GoogleAuthRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepositoryImpl</a>&nbsp;impl)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Binds the GoogleAuthRepository interface to its implementation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="IncubatorRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepository</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#bindIncubatorRepository(edu.cnm.deepdive.pippiphooray.service.repository.IncubatorRepositoryImpl)" class="member-name-link">bindIncubatorRepository</a><wbr>(<a href="IncubatorRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepositoryImpl</a>&nbsp;impl)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Binds the IncubatorRepository interface to its implementation.</div>
+</div>
 </div>
 </div>
 </div>
@@ -153,7 +167,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>RepositoryModule</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-11">RepositoryModule</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-15">RepositoryModule</a></span>()</div>
 </div>
 </section>
 </li>
@@ -171,7 +185,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Binds.html" title="class or interface in dagger" class="external-link">@Binds</a>
 @Singleton
-</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="IncubatorRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-13">bindIncubatorRepository</a></span><wbr><span class="parameters">(<a href="IncubatorRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepositoryImpl</a>&nbsp;impl)</span></div>
+</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="IncubatorRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-23">bindIncubatorRepository</a></span><wbr><span class="parameters">(<a href="IncubatorRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">IncubatorRepositoryImpl</a>&nbsp;impl)</span></div>
+<div class="block">Binds the IncubatorRepository interface to its implementation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>impl</code> - the implementation to bind</dd>
+<dt>Returns:</dt>
+<dd>the bound IncubatorRepository</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -181,7 +202,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Binds.html" title="class or interface in dagger" class="external-link">@Binds</a>
 @Singleton
-</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="BatchRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">BatchRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-17">bindBatchRepository</a></span><wbr><span class="parameters">(<a href="BatchRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">BatchRepositoryImpl</a>&nbsp;impl)</span></div>
+</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="BatchRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">BatchRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-33">bindBatchRepository</a></span><wbr><span class="parameters">(<a href="BatchRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">BatchRepositoryImpl</a>&nbsp;impl)</span></div>
+<div class="block">Binds the BatchRepository interface to its implementation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>impl</code> - the implementation to bind</dd>
+<dt>Returns:</dt>
+<dd>the bound BatchRepository</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -191,7 +219,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Binds.html" title="class or interface in dagger" class="external-link">@Binds</a>
 @Singleton
-</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="EggGroupRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">EggGroupRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-21">bindEggGroupRepository</a></span><wbr><span class="parameters">(<a href="EggGroupRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">EggGroupRepositoryImpl</a>&nbsp;impl)</span></div>
+</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="EggGroupRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">EggGroupRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-43">bindEggGroupRepository</a></span><wbr><span class="parameters">(<a href="EggGroupRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">EggGroupRepositoryImpl</a>&nbsp;impl)</span></div>
+<div class="block">Binds the EggGroupRepository interface to its implementation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>impl</code> - the implementation to bind</dd>
+<dt>Returns:</dt>
+<dd>the bound EggGroupRepository</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -201,7 +236,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Binds.html" title="class or interface in dagger" class="external-link">@Binds</a>
 @Singleton
-</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="EggRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">EggRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-25">bindEggRepository</a></span><wbr><span class="parameters">(<a href="EggRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">EggRepositoryImpl</a>&nbsp;impl)</span></div>
+</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="EggRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">EggRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-53">bindEggRepository</a></span><wbr><span class="parameters">(<a href="EggRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">EggRepositoryImpl</a>&nbsp;impl)</span></div>
+<div class="block">Binds the EggRepository interface to its implementation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>impl</code> - the implementation to bind</dd>
+<dt>Returns:</dt>
+<dd>the bound EggRepository</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -211,7 +253,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Binds.html" title="class or interface in dagger" class="external-link">@Binds</a>
 @Singleton
-</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="CandlingObservationRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">CandlingObservationRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-29">bindCandlingObservationRepository</a></span><wbr><span class="parameters">(<a href="CandlingObservationRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">CandlingObservationRepositoryImpl</a>&nbsp;impl)</span></div>
+</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="CandlingObservationRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">CandlingObservationRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-63">bindCandlingObservationRepository</a></span><wbr><span class="parameters">(<a href="CandlingObservationRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">CandlingObservationRepositoryImpl</a>&nbsp;impl)</span></div>
+<div class="block">Binds the CandlingObservationRepository interface to its implementation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>impl</code> - the implementation to bind</dd>
+<dt>Returns:</dt>
+<dd>the bound CandlingObservationRepository</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -221,7 +270,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Binds.html" title="class or interface in dagger" class="external-link">@Binds</a>
 @Singleton
-</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-34">bindGoogleAuthRepository</a></span><wbr><span class="parameters">(<a href="GoogleAuthRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepositoryImpl</a>&nbsp;impl)</span></div>
+</span><span class="modifiers">public abstract</span>&nbsp;<span class="return-type"><a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/RepositoryModule.html#line-74">bindGoogleAuthRepository</a></span><wbr><span class="parameters">(<a href="GoogleAuthRepositoryImpl.html" title="class in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepositoryImpl</a>&nbsp;impl)</span></div>
+<div class="block">Binds the GoogleAuthRepository interface to its implementation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>impl</code> - the implementation to bind</dd>
+<dt>Returns:</dt>
+<dd>the bound GoogleAuthRepository</dd>
+</dl>
 </div>
 </section>
 </li>

@@ -23,6 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Dialog fragment that applies bulk candling results to all egg groups in a batch.
+ *
+ * <p>The user can enter viable egg counts for each group and save the results
+ * in one operation.
+ */
 @AndroidEntryPoint
 public class BulkCandlingDialogFragment extends DialogFragment {
 
@@ -31,6 +37,12 @@ public class BulkCandlingDialogFragment extends DialogFragment {
   private BulkCandlingGroupAdapter adapter;
   private long batchId;
 
+  /**
+   * Creates a new dialog instance for the specified batch.
+   *
+   * @param batchId ID of the batch to update.
+   * @return configured dialog fragment instance.
+   */
   public static BulkCandlingDialogFragment newInstance(long batchId) {
     BulkCandlingDialogFragment fragment = new BulkCandlingDialogFragment();
     Bundle args = new Bundle();
@@ -39,6 +51,14 @@ public class BulkCandlingDialogFragment extends DialogFragment {
     return fragment;
   }
 
+  /**
+   * Inflates the bulk-candling dialog layout.
+   *
+   * @param inflater layout inflater.
+   * @param container optional parent container.
+   * @param savedInstanceState saved instance state, if any.
+   * @return root view for the dialog.
+   */
   @Nullable
   @Override
   public View onCreateView(
@@ -50,6 +70,12 @@ public class BulkCandlingDialogFragment extends DialogFragment {
     return binding.getRoot();
   }
 
+  /**
+   * Completes initialization of the dialog UI, observers, and click handlers.
+   *
+   * @param view root view returned from {@link #onCreateView}.
+   * @param savedInstanceState saved instance state, if any.
+   */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
@@ -60,7 +86,7 @@ public class BulkCandlingDialogFragment extends DialogFragment {
     adapter = new BulkCandlingGroupAdapter(this::focusAndShowKeyboard);
     binding.groupList.setLayoutManager(new LinearLayoutManager(requireContext()));
     binding.groupList.setAdapter(adapter);
-    
+
     batchViewModel.getSelectedBatchWithGroups().observe(getViewLifecycleOwner(), batchWithGroups -> {
       List<EggGroup> groups = (batchWithGroups != null && batchWithGroups.getGroups() != null)
           ? batchWithGroups.getGroups()
@@ -116,6 +142,9 @@ public class BulkCandlingDialogFragment extends DialogFragment {
     });
   }
 
+  /**
+   * Adjusts the dialog window size when the dialog becomes visible.
+   */
   @Override
   public void onStart() {
     super.onStart();
@@ -138,6 +167,9 @@ public class BulkCandlingDialogFragment extends DialogFragment {
     });
   }
 
+  /**
+   * Clears the view binding reference when the dialog view is destroyed.
+   */
   @Override
   public void onDestroyView() {
     binding = null;

@@ -89,8 +89,12 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/AddBatchDialogFragment.html#line-30">AddBatchDialogFragment</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/AddBatchDialogFragment.html#line-36">AddBatchDialogFragment</a></span>
 <span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html" title="class or interface in androidx.fragment.app" class="external-link">DialogFragment</a></span></div>
+<div class="block">Dialog fragment that collects user input for creating a new incubation batch.
+
+<p>This dialog allows the user to select an incubator, enter batch details,
+choose milestone dates, and save the batch through the <a href="../viewmodel/BatchViewModel.html" title="class in edu.cnm.deepdive.pippiphooray.viewmodel"><code>BatchViewModel</code></a>.</div>
 </div>
 </section>
 <section class="summary">
@@ -142,10 +146,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/android/app/Dialog.html" title="class or interface in android.app" class="external-link">Dialog</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onCreateDialog(android.os.Bundle)" class="member-name-link">onCreateDialog</a><wbr>(<a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates and configures the dialog used to enter a new batch.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onDestroyView()" class="member-name-link">onDestroyView</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Clears the view binding reference when the fragment view is destroyed.</div>
+</div>
 </div>
 </div>
 </div>
@@ -173,7 +181,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>AddBatchDialogFragment</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/AddBatchDialogFragment.html#line-31">AddBatchDialogFragment</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/AddBatchDialogFragment.html#line-37">AddBatchDialogFragment</a></span>()</div>
 </div>
 </section>
 </li>
@@ -190,11 +198,16 @@ loadScripts(document, 'script');</script>
 <h3>onCreateDialog</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/android/app/Dialog.html" title="class or interface in android.app" class="external-link">Dialog</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/AddBatchDialogFragment.html#line-39">onCreateDialog</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/android/app/Dialog.html" title="class or interface in android.app" class="external-link">Dialog</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/AddBatchDialogFragment.html#line-51">onCreateDialog</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</span></div>
+<div class="block">Creates and configures the dialog used to enter a new batch.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html#onCreateDialog-android.os.Bundle-" title="class or interface in androidx.fragment.app" class="external-link">onCreateDialog</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html" title="class or interface in androidx.fragment.app" class="external-link">DialogFragment</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>savedInstanceState</code> - saved instance state, if any.</dd>
+<dt>Returns:</dt>
+<dd>configured dialog for batch creation.</dd>
 </dl>
 </div>
 </section>
@@ -203,7 +216,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onDestroyView()">
 <h3>onDestroyView</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/AddBatchDialogFragment.html#line-266">onDestroyView</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/AddBatchDialogFragment.html#line-281">onDestroyView</a></span>()</div>
+<div class="block">Clears the view binding reference when the fragment view is destroyed.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html#onDestroyView--" title="class or interface in androidx.fragment.app" class="external-link">onDestroyView</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html" title="class or interface in androidx.fragment.app" class="external-link">DialogFragment</a></code></dd>

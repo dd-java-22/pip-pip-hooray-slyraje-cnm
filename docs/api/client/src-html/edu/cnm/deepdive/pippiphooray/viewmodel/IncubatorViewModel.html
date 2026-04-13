@@ -22,31 +22,56 @@
 <span class="source-line-no">009</span><span id="line-9">import java.util.concurrent.CompletableFuture;</span>
 <span class="source-line-no">010</span><span id="line-10">import javax.inject.Inject;</span>
 <span class="source-line-no">011</span><span id="line-11"></span>
-<span class="source-line-no">012</span><span id="line-12">@HiltViewModel</span>
-<span class="source-line-no">013</span><span id="line-13">public class IncubatorViewModel extends ViewModel {</span>
-<span class="source-line-no">014</span><span id="line-14"></span>
-<span class="source-line-no">015</span><span id="line-15">  private final IncubatorRepository incubatorRepository;</span>
-<span class="source-line-no">016</span><span id="line-16">  private final LiveData&lt;List&lt;Incubator&gt;&gt; activeIncubators;</span>
+<span class="source-line-no">012</span><span id="line-12">/**</span>
+<span class="source-line-no">013</span><span id="line-13"> * ViewModel for managing incubator data and operations.</span>
+<span class="source-line-no">014</span><span id="line-14"> */</span>
+<span class="source-line-no">015</span><span id="line-15">@HiltViewModel</span>
+<span class="source-line-no">016</span><span id="line-16">public class IncubatorViewModel extends ViewModel {</span>
 <span class="source-line-no">017</span><span id="line-17"></span>
-<span class="source-line-no">018</span><span id="line-18">  @Inject</span>
-<span class="source-line-no">019</span><span id="line-19">  IncubatorViewModel(IncubatorRepository incubatorRepository) {</span>
-<span class="source-line-no">020</span><span id="line-20">    this.incubatorRepository = incubatorRepository;</span>
-<span class="source-line-no">021</span><span id="line-21">    this.activeIncubators = incubatorRepository.getActiveIncubators();</span>
-<span class="source-line-no">022</span><span id="line-22">  }</span>
-<span class="source-line-no">023</span><span id="line-23"></span>
-<span class="source-line-no">024</span><span id="line-24">  public LiveData&lt;List&lt;Incubator&gt;&gt; getActiveIncubators() {</span>
-<span class="source-line-no">025</span><span id="line-25">    return activeIncubators;</span>
-<span class="source-line-no">026</span><span id="line-26">  }</span>
-<span class="source-line-no">027</span><span id="line-27"></span>
-<span class="source-line-no">028</span><span id="line-28">  public CompletableFuture&lt;Long&gt; save(Incubator incubator) {</span>
-<span class="source-line-no">029</span><span id="line-29">    return incubatorRepository.save(incubator);</span>
+<span class="source-line-no">018</span><span id="line-18">  private final IncubatorRepository incubatorRepository;</span>
+<span class="source-line-no">019</span><span id="line-19">  private final LiveData&lt;List&lt;Incubator&gt;&gt; activeIncubators;</span>
+<span class="source-line-no">020</span><span id="line-20"></span>
+<span class="source-line-no">021</span><span id="line-21">  /**</span>
+<span class="source-line-no">022</span><span id="line-22">   * Constructs an IncubatorViewModel with the specified repository.</span>
+<span class="source-line-no">023</span><span id="line-23">   *</span>
+<span class="source-line-no">024</span><span id="line-24">   * @param incubatorRepository the repository for incubator data access</span>
+<span class="source-line-no">025</span><span id="line-25">   */</span>
+<span class="source-line-no">026</span><span id="line-26">  @Inject</span>
+<span class="source-line-no">027</span><span id="line-27">  IncubatorViewModel(IncubatorRepository incubatorRepository) {</span>
+<span class="source-line-no">028</span><span id="line-28">    this.incubatorRepository = incubatorRepository;</span>
+<span class="source-line-no">029</span><span id="line-29">    this.activeIncubators = incubatorRepository.getActiveIncubators();</span>
 <span class="source-line-no">030</span><span id="line-30">  }</span>
 <span class="source-line-no">031</span><span id="line-31"></span>
-<span class="source-line-no">032</span><span id="line-32">  public CompletableFuture&lt;Void&gt; deactivate(Incubator incubator) {</span>
-<span class="source-line-no">033</span><span id="line-33">    return incubatorRepository.deactivate(incubator);</span>
-<span class="source-line-no">034</span><span id="line-34">  }</span>
-<span class="source-line-no">035</span><span id="line-35"></span>
-<span class="source-line-no">036</span><span id="line-36">}</span>
+<span class="source-line-no">032</span><span id="line-32">  /**</span>
+<span class="source-line-no">033</span><span id="line-33">   * Gets the list of all active incubators as LiveData.</span>
+<span class="source-line-no">034</span><span id="line-34">   *</span>
+<span class="source-line-no">035</span><span id="line-35">   * @return a LiveData list of active incubators</span>
+<span class="source-line-no">036</span><span id="line-36">   */</span>
+<span class="source-line-no">037</span><span id="line-37">  public LiveData&lt;List&lt;Incubator&gt;&gt; getActiveIncubators() {</span>
+<span class="source-line-no">038</span><span id="line-38">    return activeIncubators;</span>
+<span class="source-line-no">039</span><span id="line-39">  }</span>
+<span class="source-line-no">040</span><span id="line-40"></span>
+<span class="source-line-no">041</span><span id="line-41">  /**</span>
+<span class="source-line-no">042</span><span id="line-42">   * Saves an incubator asynchronously.</span>
+<span class="source-line-no">043</span><span id="line-43">   *</span>
+<span class="source-line-no">044</span><span id="line-44">   * @param incubator the incubator to save</span>
+<span class="source-line-no">045</span><span id="line-45">   * @return a CompletableFuture containing the ID of the saved incubator</span>
+<span class="source-line-no">046</span><span id="line-46">   */</span>
+<span class="source-line-no">047</span><span id="line-47">  public CompletableFuture&lt;Long&gt; save(Incubator incubator) {</span>
+<span class="source-line-no">048</span><span id="line-48">    return incubatorRepository.save(incubator);</span>
+<span class="source-line-no">049</span><span id="line-49">  }</span>
+<span class="source-line-no">050</span><span id="line-50"></span>
+<span class="source-line-no">051</span><span id="line-51">  /**</span>
+<span class="source-line-no">052</span><span id="line-52">   * Deactivates an incubator asynchronously.</span>
+<span class="source-line-no">053</span><span id="line-53">   *</span>
+<span class="source-line-no">054</span><span id="line-54">   * @param incubator the incubator to deactivate</span>
+<span class="source-line-no">055</span><span id="line-55">   * @return a CompletableFuture that completes when the operation finishes</span>
+<span class="source-line-no">056</span><span id="line-56">   */</span>
+<span class="source-line-no">057</span><span id="line-57">  public CompletableFuture&lt;Void&gt; deactivate(Incubator incubator) {</span>
+<span class="source-line-no">058</span><span id="line-58">    return incubatorRepository.deactivate(incubator);</span>
+<span class="source-line-no">059</span><span id="line-59">  }</span>
+<span class="source-line-no">060</span><span id="line-60"></span>
+<span class="source-line-no">061</span><span id="line-61">}</span>
 
 
 

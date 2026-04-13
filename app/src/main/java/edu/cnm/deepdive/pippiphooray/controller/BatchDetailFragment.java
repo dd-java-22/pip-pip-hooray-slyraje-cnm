@@ -27,6 +27,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * Fragment that displays detailed information about a single batch.
+ *
+ * <p>This includes batch metadata, incubator and breed information, key milestone
+ * dates, and current viability statistics.
+ */
 @AndroidEntryPoint
 public class BatchDetailFragment extends Fragment {
 
@@ -37,6 +43,14 @@ public class BatchDetailFragment extends Fragment {
   private BatchViewModel batchViewModel;
   private long batchId;
 
+  /**
+   * Inflates the batch-detail layout and initializes view binding.
+   *
+   * @param inflater           layout inflater.
+   * @param container          optional parent container.
+   * @param savedInstanceState saved instance state, if any.
+   * @return root view for this fragment.
+   */
   @Nullable
   @Override
   public View onCreateView(
@@ -48,6 +62,12 @@ public class BatchDetailFragment extends Fragment {
     return binding.getRoot();
   }
 
+  /**
+   * Completes view initialization, wiring ViewModel observers and UI event handlers.
+   *
+   * @param view               root view returned from {@link #onCreateView}.
+   * @param savedInstanceState saved instance state, if any.
+   */
   @Override
   public void onViewCreated(
       @NonNull View view,
@@ -65,11 +85,12 @@ public class BatchDetailFragment extends Fragment {
       }
     });
 
-    batchViewModel.getSelectedBatchWithGroups().observe(getViewLifecycleOwner(), batchWithGroups -> {
-      if (batchWithGroups != null) {
-        bindBatchWithGroups(batchWithGroups);
-      }
-    });
+    batchViewModel.getSelectedBatchWithGroups()
+        .observe(getViewLifecycleOwner(), batchWithGroups -> {
+          if (batchWithGroups != null) {
+            bindBatchWithGroups(batchWithGroups);
+          }
+        });
 
     installMenu();
 
@@ -203,7 +224,8 @@ public class BatchDetailFragment extends Fragment {
 
     if (total > 0) {
       binding.viableValue.setText(
-          getString(R.string.value_viability_dynamic, viable, total, summary.getViableRate() * 100.0)
+          getString(R.string.value_viability_dynamic, viable, total,
+              summary.getViableRate() * 100.0)
       );
     } else {
       binding.viableValue.setText(R.string.value_viability_zero);
@@ -215,5 +237,4 @@ public class BatchDetailFragment extends Fragment {
     binding = null;
     super.onDestroyView();
   }
-
 }

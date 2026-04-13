@@ -10,10 +10,18 @@ import edu.cnm.deepdive.pippiphooray.databinding.ItemIncubatorBinding;
 import edu.cnm.deepdive.pippiphooray.model.entity.Incubator;
 import java.util.Locale;
 
+/**
+ * RecyclerView adapter for displaying incubator items in a list.
+ */
 public class IncubatorAdapter extends ListAdapter<Incubator, IncubatorAdapter.ViewHolder> {
 
   private final OnIncubatorClickListener listener;
 
+  /**
+   * Constructs an IncubatorAdapter with the specified click listener.
+   *
+   * @param listener the listener to handle incubator item clicks
+   */
   public IncubatorAdapter(OnIncubatorClickListener listener) {
     super(DIFF_CALLBACK);
     this.listener = listener;
@@ -34,22 +42,43 @@ public class IncubatorAdapter extends ListAdapter<Incubator, IncubatorAdapter.Vi
     holder.itemView.setOnClickListener((v) -> listener.onIncubatorClick(incubator));
   }
 
+  /**
+   * Functional interface for handling incubator item click events.
+   */
   @FunctionalInterface
   public interface OnIncubatorClickListener {
 
+    /**
+     * Called when an incubator item is clicked.
+     *
+     * @param incubator the incubator that was clicked
+     */
     void onIncubatorClick(Incubator incubator);
   }
 
-  static class ViewHolder extends RecyclerView.ViewHolder {
+  /**
+   * ViewHolder for displaying an incubator item.
+   */
+  public static class ViewHolder extends RecyclerView.ViewHolder {
 
     private final ItemIncubatorBinding binding;
 
-    ViewHolder(@NonNull ItemIncubatorBinding binding) {
+    /**
+     * Constructs a ViewHolder with the specified binding.
+     *
+     * @param binding the view binding for the incubator item
+     */
+    public ViewHolder(@NonNull ItemIncubatorBinding binding) {
       super(binding.getRoot());
       this.binding = binding;
     }
 
-    void bind(@NonNull Incubator incubator) {
+    /**
+     * Binds an incubator to this ViewHolder's views.
+     *
+     * @param incubator the incubator to display
+     */
+    public void bind(@NonNull Incubator incubator) {
       binding.incubatorName.setText(incubator.getName());
       binding.incubatorModel.setText(incubator.getModel());
       binding.incubatorTemp.setText(

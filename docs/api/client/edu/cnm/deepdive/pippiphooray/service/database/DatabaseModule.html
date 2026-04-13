@@ -84,8 +84,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Module.html" title="class or interface in dagger" class="external-link">@Module</a>
-</span><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-17">DatabaseModule</a></span>
+</span><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-20">DatabaseModule</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Hilt module that provides the Room database and DAO dependencies.</div>
 </div>
 </section>
 <section class="summary">
@@ -116,22 +117,34 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../model/dao/BatchDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">BatchDao</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#provideBatchDao(edu.cnm.deepdive.pippiphooray.service.database.PipPipDatabase)" class="member-name-link">provideBatchDao</a><wbr>(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Provides the batch DAO.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../model/dao/CandlingObservationDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">CandlingObservationDao</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#provideCandlingObservationDao(edu.cnm.deepdive.pippiphooray.service.database.PipPipDatabase)" class="member-name-link">provideCandlingObservationDao</a><wbr>(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Provides the candling observation DAO.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#provideDatabase(android.content.Context)" class="member-name-link">provideDatabase</a><wbr>(<a href="https://developer.android.com/reference/android/content/Context.html" title="class or interface in android.content" class="external-link">Context</a>&nbsp;context)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Provides the application's Room database instance.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../model/dao/EggDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggDao</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#provideEggDao(edu.cnm.deepdive.pippiphooray.service.database.PipPipDatabase)" class="member-name-link">provideEggDao</a><wbr>(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Provides the egg DAO.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../model/dao/EggGroupDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggGroupDao</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#provideEggGroupDao(edu.cnm.deepdive.pippiphooray.service.database.PipPipDatabase)" class="member-name-link">provideEggGroupDao</a><wbr>(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Provides the egg-group DAO.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../model/dao/IncubatorDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">IncubatorDao</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#provideIncubatorDao(edu.cnm.deepdive.pippiphooray.service.database.PipPipDatabase)" class="member-name-link">provideIncubatorDao</a><wbr>(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Provides the incubator DAO.</div>
+</div>
 </div>
 </div>
 </div>
@@ -153,7 +166,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>DatabaseModule</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-19">DatabaseModule</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-22">DatabaseModule</a></span>()</div>
 </div>
 </section>
 </li>
@@ -171,7 +184,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Provides.html" title="class or interface in dagger" class="external-link">@Provides</a>
 @Singleton
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-21">provideDatabase</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/content/Context.html" title="class or interface in android.content" class="external-link">Context</a>&nbsp;context)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-30">provideDatabase</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/content/Context.html" title="class or interface in android.content" class="external-link">Context</a>&nbsp;context)</span></div>
+<div class="block">Provides the application's Room database instance.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>context</code> - application context.</dd>
+<dt>Returns:</dt>
+<dd>singleton database instance.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -181,7 +201,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Provides.html" title="class or interface in dagger" class="external-link">@Provides</a>
 @Singleton
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/BatchDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">BatchDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-33">provideBatchDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/BatchDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">BatchDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-48">provideBatchDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+<div class="block">Provides the batch DAO.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>database</code> - application database.</dd>
+<dt>Returns:</dt>
+<dd>batch DAO.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -191,7 +218,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Provides.html" title="class or interface in dagger" class="external-link">@Provides</a>
 @Singleton
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/CandlingObservationDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">CandlingObservationDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-39">provideCandlingObservationDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/CandlingObservationDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">CandlingObservationDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-60">provideCandlingObservationDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+<div class="block">Provides the candling observation DAO.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>database</code> - application database.</dd>
+<dt>Returns:</dt>
+<dd>candling observation DAO.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -201,7 +235,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Provides.html" title="class or interface in dagger" class="external-link">@Provides</a>
 @Singleton
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/EggDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-45">provideEggDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/EggDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-72">provideEggDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+<div class="block">Provides the egg DAO.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>database</code> - application database.</dd>
+<dt>Returns:</dt>
+<dd>egg DAO.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -211,7 +252,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Provides.html" title="class or interface in dagger" class="external-link">@Provides</a>
 @Singleton
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/EggGroupDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggGroupDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-51">provideEggGroupDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/EggGroupDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">EggGroupDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-84">provideEggGroupDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+<div class="block">Provides the egg-group DAO.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>database</code> - application database.</dd>
+<dt>Returns:</dt>
+<dd>egg-group DAO.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -221,7 +269,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://javadoc.io/doc/com.google.dagger/dagger/2.58/dagger/Provides.html" title="class or interface in dagger" class="external-link">@Provides</a>
 @Singleton
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/IncubatorDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">IncubatorDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-57">provideIncubatorDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../model/dao/IncubatorDao.html" title="interface in edu.cnm.deepdive.pippiphooray.model.dao">IncubatorDao</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/database/DatabaseModule.html#line-96">provideIncubatorDao</a></span><wbr><span class="parameters">(<a href="PipPipDatabase.html" title="class in edu.cnm.deepdive.pippiphooray.service.database">PipPipDatabase</a>&nbsp;database)</span></div>
+<div class="block">Provides the incubator DAO.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>database</code> - application database.</dd>
+<dt>Returns:</dt>
+<dd>incubator DAO.</dd>
+</dl>
 </div>
 </section>
 </li>

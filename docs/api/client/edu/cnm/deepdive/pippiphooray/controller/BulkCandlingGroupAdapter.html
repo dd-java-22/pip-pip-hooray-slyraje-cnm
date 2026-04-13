@@ -87,8 +87,12 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-19">BulkCandlingGroupAdapter</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-25">BulkCandlingGroupAdapter</a></span>
 <span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/recyclerview/widget/ListAdapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">ListAdapter</a>&lt;<a href="../model/entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>, edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder&gt;</span></div>
+<div class="block">Adapter used to display egg groups and collect bulk candling input values.
+
+<p>Each row shows an egg group and lets the user enter the number of viable
+eggs observed for that group.</div>
 </div>
 </section>
 <section class="summary">
@@ -104,7 +108,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static interface&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="BulkCandlingGroupAdapter.OnInputFocusListener.html" class="type-name-link" title="interface in edu.cnm.deepdive.pippiphooray.controller">BulkCandlingGroupAdapter.OnInputFocusListener</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Listener notified when an input field should receive focus and show the keyboard.</div>
+</div>
 </div>
 <div class="inherited-list">
 <h3 id="nested-classes-inherited-from-class-androidx.recyclerview.widget.RecyclerView.Adapter">Nested classes/interfaces inherited from class&nbsp;<a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html#nested-class-summary" title="class or interface in androidx.recyclerview.widget" class="external-link">RecyclerView.Adapter</a></h3>
@@ -120,7 +126,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.OnInputFocusListener)" class="member-name-link">BulkCandlingGroupAdapter</a><wbr>(<a href="BulkCandlingGroupAdapter.OnInputFocusListener.html" title="interface in edu.cnm.deepdive.pippiphooray.controller">BulkCandlingGroupAdapter.OnInputFocusListener</a>&nbsp;focusListener)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a new adapter instance.</div>
+</div>
 </div>
 </section>
 </li>
@@ -137,21 +145,31 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#collectValidCounts()" class="member-name-link">collectValidCounts</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Collects valid entered values as viable counts keyed by egg-group ID.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hasAnyEnteredValue()" class="member-name-link">hasAnyEnteredValue</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns whether the user has entered at least one non-blank viable-count value.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onBindViewHolder(edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder,int)" class="member-name-link">onBindViewHolder</a><wbr>(edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder&nbsp;holder,
  int&nbsp;position)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Binds an egg-group item to the specified view holder.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onCreateViewHolder(android.view.ViewGroup,int)" class="member-name-link">onCreateViewHolder</a><wbr>(<a href="https://developer.android.com/reference/android/view/ViewGroup.html" title="class or interface in android.view" class="external-link">ViewGroup</a>&nbsp;parent,
  int&nbsp;viewType)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new view holder for an egg-group row.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#validateInputs()" class="member-name-link">validateInputs</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Validates all entered viable-count values.</div>
+</div>
 </div>
 </div>
 </div>
@@ -179,8 +197,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.OnInputFocusListener)">
 <h3>BulkCandlingGroupAdapter</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-29">BulkCandlingGroupAdapter</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-49">BulkCandlingGroupAdapter</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="BulkCandlingGroupAdapter.OnInputFocusListener.html" title="interface in edu.cnm.deepdive.pippiphooray.controller">BulkCandlingGroupAdapter.OnInputFocusListener</a>&nbsp;focusListener)</span></div>
+<div class="block">Creates a new adapter instance.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>focusListener</code> - listener used when an input field gains focus.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -197,12 +220,18 @@ loadScripts(document, 'script');</script>
 <h3>onCreateViewHolder</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-34">onCreateViewHolder</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-61">onCreateViewHolder</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="https://developer.android.com/reference/android/view/ViewGroup.html" title="class or interface in android.view" class="external-link">ViewGroup</a>&nbsp;parent,
  int&nbsp;viewType)</span></div>
+<div class="block">Creates a new view holder for an egg-group row.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html#onCreateViewHolder-android.view.ViewGroup-int-" title="class or interface in androidx.recyclerview.widget" class="external-link">onCreateViewHolder</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">RecyclerView.Adapter</a>&lt;edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder&gt;</code></dd>
+<dt>Parameters:</dt>
+<dd><code>parent</code> - parent view group.</dd>
+<dd><code>viewType</code> - view type identifier.</dd>
+<dt>Returns:</dt>
+<dd>new view holder instance.</dd>
 </dl>
 </div>
 </section>
@@ -211,12 +240,16 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onBindViewHolder(edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder,int)">
 <h3>onBindViewHolder</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-42">onBindViewHolder</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-75">onBindViewHolder</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder&nbsp;holder,
  int&nbsp;position)</span></div>
+<div class="block">Binds an egg-group item to the specified view holder.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html#onBindViewHolder-VH-int-" title="class or interface in androidx.recyclerview.widget" class="external-link">onBindViewHolder</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter.html" title="class or interface in androidx.recyclerview.widget" class="external-link">RecyclerView.Adapter</a>&lt;edu.cnm.deepdive.pippiphooray.controller.BulkCandlingGroupAdapter.ViewHolder&gt;</code></dd>
+<dt>Parameters:</dt>
+<dd><code>holder</code> - target view holder.</dd>
+<dd><code>position</code> - adapter position.</dd>
 </dl>
 </div>
 </section>
@@ -225,7 +258,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="hasAnyEnteredValue()">
 <h3>hasAnyEnteredValue</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-47">hasAnyEnteredValue</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-85">hasAnyEnteredValue</a></span>()</div>
+<div class="block">Returns whether the user has entered at least one non-blank viable-count value.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>true</code> if any value has been entered; otherwise <code>false</code>.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -234,7 +272,14 @@ loadScripts(document, 'script');</script>
 <h3>collectValidCounts</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-57">collectValidCounts</a></span>()</div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-102">collectValidCounts</a></span>()</div>
+<div class="block">Collects valid entered values as viable counts keyed by egg-group ID.
+
+<p>Values are clamped to the range from 0 to the group's initial egg count.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>map of egg-group IDs to validated viable counts.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -242,7 +287,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="validateInputs()">
 <h3>validateInputs</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-73">validateInputs</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingGroupAdapter.html#line-124">validateInputs</a></span>()</div>
+<div class="block">Validates all entered viable-count values.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>true</code> if all entered values are numeric and within range;
+    otherwise <code>false</code>.</dd>
+</dl>
 </div>
 </section>
 </li>

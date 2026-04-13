@@ -7,10 +7,18 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
 
+/**
+ * Repository implementation for incubator data access and operations.
+ */
 public class IncubatorRepositoryImpl implements IncubatorRepository {
 
   private final IncubatorDao incubatorDao;
 
+  /**
+   * Constructs an IncubatorRepositoryImpl with the specified DAO.
+   *
+   * @param incubatorDao the data access object for incubator operations
+   */
   @Inject
   IncubatorRepositoryImpl(IncubatorDao incubatorDao) {
     this.incubatorDao = incubatorDao;

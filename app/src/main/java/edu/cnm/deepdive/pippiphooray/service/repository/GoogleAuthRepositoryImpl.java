@@ -25,6 +25,9 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import org.json.JSONObject;
 
+/**
+ * Repository implementation for Google authentication operations.
+ */
 @Singleton
 public class GoogleAuthRepositoryImpl implements GoogleAuthRepository {
 
@@ -34,6 +37,11 @@ public class GoogleAuthRepositoryImpl implements GoogleAuthRepository {
   private final String clientId;
   private final Executor directExecutor = Runnable::run;
 
+  /**
+   * Constructs a GoogleAuthRepositoryImpl with the specified application context.
+   *
+   * @param context the application context for accessing resources and credential manager
+   */
   @Inject
   GoogleAuthRepositoryImpl(@ApplicationContext Context context) {
     credentialManager = CredentialManager.create(context);
@@ -84,6 +92,14 @@ public class GoogleAuthRepositoryImpl implements GoogleAuthRepository {
     });
   }
 
+  /**
+   * Attempts to sign in the user using the credential manager.
+   *
+   * @param activity the activity context for the sign-in flow
+   * @param filterByAuthorizedAccounts whether to filter by authorized accounts
+   * @param autoSelect whether to automatically select if only one account is available
+   * @return a CompletableFuture containing the Google ID token credential
+   */
   private CompletableFuture<GoogleIdTokenCredential> attemptSignIn(
       Activity activity, boolean filterByAuthorizedAccounts, boolean autoSelect) {
 
@@ -140,6 +156,12 @@ public class GoogleAuthRepositoryImpl implements GoogleAuthRepository {
     return future;
   }
 
+  /**
+   * Checks if a JWT token has expired.
+   *
+   * @param idToken the JWT token to check
+   * @return true if the token has expired or cannot be parsed, false otherwise
+   */
   private boolean isTokenExpired(@NonNull String idToken) {
     try {
       String[] parts = idToken.split("\\.");

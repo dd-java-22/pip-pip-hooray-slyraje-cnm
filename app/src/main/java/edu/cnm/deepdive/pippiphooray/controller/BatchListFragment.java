@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentBatchListBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
-
+/**
+ * Manages the list of incubation batches shown on the home screen.
+ */
 @AndroidEntryPoint
 public class BatchListFragment extends Fragment {
 

@@ -80,8 +80,9 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-3">BatchViabilitySummary</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-6">BatchViabilitySummary</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Data transfer object containing viability statistics for a batch.</div>
 </div>
 </section>
 <section class="summary">
@@ -96,7 +97,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,int)" class="member-name-link">BatchViabilitySummary</a><wbr>(int&nbsp;viableCount,
  int&nbsp;totalCount)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a BatchViabilitySummary with viability counts.</div>
+</div>
 </div>
 </section>
 </li>
@@ -113,13 +116,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTotalCount()" class="member-name-link">getTotalCount</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the total count of eggs.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getViableCount()" class="member-name-link">getViableCount</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the count of viable eggs.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getViableRate()" class="member-name-link">getViableRate</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the calculated viability rate.</div>
+</div>
 </div>
 </div>
 </div>
@@ -141,8 +150,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(int,int)">
 <h3>BatchViabilitySummary</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-8">BatchViabilitySummary</a></span><wbr><span class="parameters">(int&nbsp;viableCount,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-17">BatchViabilitySummary</a></span><wbr><span class="parameters">(int&nbsp;viableCount,
  int&nbsp;totalCount)</span></div>
+<div class="block">Constructs a BatchViabilitySummary with viability counts.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>viableCount</code> - the count of viable eggs</dd>
+<dd><code>totalCount</code> - the total count of eggs</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -158,7 +173,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getViableCount()">
 <h3>getViableCount</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-13">getViableCount</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-27">getViableCount</a></span>()</div>
+<div class="block">Gets the count of viable eggs.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the viable egg count</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -166,7 +186,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getTotalCount()">
 <h3>getTotalCount</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-17">getTotalCount</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-36">getTotalCount</a></span>()</div>
+<div class="block">Gets the total count of eggs.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the total egg count</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -174,7 +199,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getViableRate()">
 <h3>getViableRate</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-21">getViableRate</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchViabilitySummary.html#line-45">getViableRate</a></span>()</div>
+<div class="block">Gets the calculated viability rate.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the viability rate as a decimal (0.0 to 1.0), or 0.0 if total is zero</dd>
+</dl>
 </div>
 </section>
 </li>

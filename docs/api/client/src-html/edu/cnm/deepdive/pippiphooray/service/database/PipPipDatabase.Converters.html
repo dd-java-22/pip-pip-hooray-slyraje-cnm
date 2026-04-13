@@ -31,60 +31,117 @@
 <span class="source-line-no">018</span><span id="line-18">import java.time.Instant;</span>
 <span class="source-line-no">019</span><span id="line-19">import java.time.LocalDate;</span>
 <span class="source-line-no">020</span><span id="line-20"></span>
-<span class="source-line-no">021</span><span id="line-21">@TypeConverters(PipPipDatabase.Converters.class)</span>
-<span class="source-line-no">022</span><span id="line-22">@Database(</span>
-<span class="source-line-no">023</span><span id="line-23">    entities = {</span>
-<span class="source-line-no">024</span><span id="line-24">        Egg.class,</span>
-<span class="source-line-no">025</span><span id="line-25">        EggGroup.class,</span>
-<span class="source-line-no">026</span><span id="line-26">        Batch.class,</span>
-<span class="source-line-no">027</span><span id="line-27">        Incubator.class,</span>
-<span class="source-line-no">028</span><span id="line-28">        CandlingObservation.class</span>
-<span class="source-line-no">029</span><span id="line-29">    },</span>
-<span class="source-line-no">030</span><span id="line-30">    views = {</span>
-<span class="source-line-no">031</span><span id="line-31">        BatchWithIncubator.class</span>
-<span class="source-line-no">032</span><span id="line-32">    },</span>
-<span class="source-line-no">033</span><span id="line-33"></span>
-<span class="source-line-no">034</span><span id="line-34">    version = PipPipDatabase.VERSION</span>
-<span class="source-line-no">035</span><span id="line-35">)</span>
-<span class="source-line-no">036</span><span id="line-36">public abstract class PipPipDatabase extends RoomDatabase {</span>
-<span class="source-line-no">037</span><span id="line-37"></span>
-<span class="source-line-no">038</span><span id="line-38">  static final String NAME = "pip_pip_hooray_db";</span>
-<span class="source-line-no">039</span><span id="line-39">  static final int VERSION = 3;</span>
-<span class="source-line-no">040</span><span id="line-40"></span>
-<span class="source-line-no">041</span><span id="line-41">  public abstract BatchDao getBatchDao();</span>
+<span class="source-line-no">021</span><span id="line-21">/**</span>
+<span class="source-line-no">022</span><span id="line-22"> * Main Room database for the Pip Pip Hooray application.</span>
+<span class="source-line-no">023</span><span id="line-23"> *</span>
+<span class="source-line-no">024</span><span id="line-24"> * &lt;p&gt;This database stores batches, incubators, egg groups, eggs, and candling</span>
+<span class="source-line-no">025</span><span id="line-25"> * observations, and exposes DAO access methods for each entity type.</span>
+<span class="source-line-no">026</span><span id="line-26"> */</span>
+<span class="source-line-no">027</span><span id="line-27">@TypeConverters(PipPipDatabase.Converters.class)</span>
+<span class="source-line-no">028</span><span id="line-28">@Database(</span>
+<span class="source-line-no">029</span><span id="line-29">    entities = {</span>
+<span class="source-line-no">030</span><span id="line-30">        Egg.class,</span>
+<span class="source-line-no">031</span><span id="line-31">        EggGroup.class,</span>
+<span class="source-line-no">032</span><span id="line-32">        Batch.class,</span>
+<span class="source-line-no">033</span><span id="line-33">        Incubator.class,</span>
+<span class="source-line-no">034</span><span id="line-34">        CandlingObservation.class</span>
+<span class="source-line-no">035</span><span id="line-35">    },</span>
+<span class="source-line-no">036</span><span id="line-36">    views = {</span>
+<span class="source-line-no">037</span><span id="line-37">        BatchWithIncubator.class</span>
+<span class="source-line-no">038</span><span id="line-38">    },</span>
+<span class="source-line-no">039</span><span id="line-39">    version = PipPipDatabase.VERSION</span>
+<span class="source-line-no">040</span><span id="line-40">)</span>
+<span class="source-line-no">041</span><span id="line-41">public abstract class PipPipDatabase extends RoomDatabase {</span>
 <span class="source-line-no">042</span><span id="line-42"></span>
-<span class="source-line-no">043</span><span id="line-43">  public abstract CandlingObservationDao getCandlingObservationDao();</span>
-<span class="source-line-no">044</span><span id="line-44"></span>
-<span class="source-line-no">045</span><span id="line-45">  public abstract EggDao getEggDao();</span>
-<span class="source-line-no">046</span><span id="line-46"></span>
-<span class="source-line-no">047</span><span id="line-47">  public abstract EggGroupDao getEggGroupDao();</span>
-<span class="source-line-no">048</span><span id="line-48"></span>
-<span class="source-line-no">049</span><span id="line-49">  public abstract IncubatorDao getIncubatorDao();</span>
-<span class="source-line-no">050</span><span id="line-50"></span>
-<span class="source-line-no">051</span><span id="line-51">  public static class Converters {</span>
+<span class="source-line-no">043</span><span id="line-43">  static final String NAME = "pip_pip_hooray_db";</span>
+<span class="source-line-no">044</span><span id="line-44">  static final int VERSION = 3;</span>
+<span class="source-line-no">045</span><span id="line-45"></span>
+<span class="source-line-no">046</span><span id="line-46">  /**</span>
+<span class="source-line-no">047</span><span id="line-47">   * Returns the DAO used for batch persistence operations.</span>
+<span class="source-line-no">048</span><span id="line-48">   *</span>
+<span class="source-line-no">049</span><span id="line-49">   * @return batch DAO.</span>
+<span class="source-line-no">050</span><span id="line-50">   */</span>
+<span class="source-line-no">051</span><span id="line-51">  public abstract BatchDao getBatchDao();</span>
 <span class="source-line-no">052</span><span id="line-52"></span>
-<span class="source-line-no">053</span><span id="line-53">    @TypeConverter</span>
-<span class="source-line-no">054</span><span id="line-54">    public static Long toLongFromInstant(Instant value) {</span>
-<span class="source-line-no">055</span><span id="line-55">      return (value != null) ? value.toEpochMilli() : null;</span>
-<span class="source-line-no">056</span><span id="line-56">    }</span>
-<span class="source-line-no">057</span><span id="line-57"></span>
-<span class="source-line-no">058</span><span id="line-58">    @TypeConverter</span>
-<span class="source-line-no">059</span><span id="line-59">    public static Instant toInstant(Long value) {</span>
-<span class="source-line-no">060</span><span id="line-60">      return (value != null) ? Instant.ofEpochMilli(value) : null;</span>
-<span class="source-line-no">061</span><span id="line-61">    }</span>
-<span class="source-line-no">062</span><span id="line-62"></span>
-<span class="source-line-no">063</span><span id="line-63">    @TypeConverter</span>
-<span class="source-line-no">064</span><span id="line-64">    public static Long toLong(LocalDate value) {</span>
-<span class="source-line-no">065</span><span id="line-65">      return (value != null) ? value.toEpochDay() : null;</span>
-<span class="source-line-no">066</span><span id="line-66">    }</span>
-<span class="source-line-no">067</span><span id="line-67"></span>
-<span class="source-line-no">068</span><span id="line-68">    @TypeConverter</span>
-<span class="source-line-no">069</span><span id="line-69">    public static LocalDate toLocalDate(Long value) {</span>
-<span class="source-line-no">070</span><span id="line-70">      return (value != null) ? LocalDate.ofEpochDay(value) : null;</span>
-<span class="source-line-no">071</span><span id="line-71">    }</span>
-<span class="source-line-no">072</span><span id="line-72">  }</span>
+<span class="source-line-no">053</span><span id="line-53">  /**</span>
+<span class="source-line-no">054</span><span id="line-54">   * Returns the DAO used for candling observation persistence operations.</span>
+<span class="source-line-no">055</span><span id="line-55">   *</span>
+<span class="source-line-no">056</span><span id="line-56">   * @return candling observation DAO.</span>
+<span class="source-line-no">057</span><span id="line-57">   */</span>
+<span class="source-line-no">058</span><span id="line-58">  public abstract CandlingObservationDao getCandlingObservationDao();</span>
+<span class="source-line-no">059</span><span id="line-59"></span>
+<span class="source-line-no">060</span><span id="line-60">  /**</span>
+<span class="source-line-no">061</span><span id="line-61">   * Returns the DAO used for egg persistence operations.</span>
+<span class="source-line-no">062</span><span id="line-62">   *</span>
+<span class="source-line-no">063</span><span id="line-63">   * @return egg DAO.</span>
+<span class="source-line-no">064</span><span id="line-64">   */</span>
+<span class="source-line-no">065</span><span id="line-65">  public abstract EggDao getEggDao();</span>
+<span class="source-line-no">066</span><span id="line-66"></span>
+<span class="source-line-no">067</span><span id="line-67">  /**</span>
+<span class="source-line-no">068</span><span id="line-68">   * Returns the DAO used for egg-group persistence operations.</span>
+<span class="source-line-no">069</span><span id="line-69">   *</span>
+<span class="source-line-no">070</span><span id="line-70">   * @return egg-group DAO.</span>
+<span class="source-line-no">071</span><span id="line-71">   */</span>
+<span class="source-line-no">072</span><span id="line-72">  public abstract EggGroupDao getEggGroupDao();</span>
 <span class="source-line-no">073</span><span id="line-73"></span>
-<span class="source-line-no">074</span><span id="line-74">}</span>
+<span class="source-line-no">074</span><span id="line-74">  /**</span>
+<span class="source-line-no">075</span><span id="line-75">   * Returns the DAO used for incubator persistence operations.</span>
+<span class="source-line-no">076</span><span id="line-76">   *</span>
+<span class="source-line-no">077</span><span id="line-77">   * @return incubator DAO.</span>
+<span class="source-line-no">078</span><span id="line-78">   */</span>
+<span class="source-line-no">079</span><span id="line-79">  public abstract IncubatorDao getIncubatorDao();</span>
+<span class="source-line-no">080</span><span id="line-80"></span>
+<span class="source-line-no">081</span><span id="line-81">  /**</span>
+<span class="source-line-no">082</span><span id="line-82">   * Type converters used by Room for unsupported Java time types.</span>
+<span class="source-line-no">083</span><span id="line-83">   */</span>
+<span class="source-line-no">084</span><span id="line-84">  public static class Converters {</span>
+<span class="source-line-no">085</span><span id="line-85"></span>
+<span class="source-line-no">086</span><span id="line-86">    /**</span>
+<span class="source-line-no">087</span><span id="line-87">     * Converts an {@link Instant} to epoch milliseconds for database storage.</span>
+<span class="source-line-no">088</span><span id="line-88">     *</span>
+<span class="source-line-no">089</span><span id="line-89">     * @param value instant value to convert.</span>
+<span class="source-line-no">090</span><span id="line-90">     * @return epoch milliseconds, or {@code null} if the input is null.</span>
+<span class="source-line-no">091</span><span id="line-91">     */</span>
+<span class="source-line-no">092</span><span id="line-92">    @TypeConverter</span>
+<span class="source-line-no">093</span><span id="line-93">    public static Long toLongFromInstant(Instant value) {</span>
+<span class="source-line-no">094</span><span id="line-94">      return (value != null) ? value.toEpochMilli() : null;</span>
+<span class="source-line-no">095</span><span id="line-95">    }</span>
+<span class="source-line-no">096</span><span id="line-96"></span>
+<span class="source-line-no">097</span><span id="line-97">    /**</span>
+<span class="source-line-no">098</span><span id="line-98">     * Converts stored epoch milliseconds to an {@link Instant}.</span>
+<span class="source-line-no">099</span><span id="line-99">     *</span>
+<span class="source-line-no">100</span><span id="line-100">     * @param value epoch milliseconds value.</span>
+<span class="source-line-no">101</span><span id="line-101">     * @return instant represented by the value, or {@code null} if the input is null.</span>
+<span class="source-line-no">102</span><span id="line-102">     */</span>
+<span class="source-line-no">103</span><span id="line-103">    @TypeConverter</span>
+<span class="source-line-no">104</span><span id="line-104">    public static Instant toInstant(Long value) {</span>
+<span class="source-line-no">105</span><span id="line-105">      return (value != null) ? Instant.ofEpochMilli(value) : null;</span>
+<span class="source-line-no">106</span><span id="line-106">    }</span>
+<span class="source-line-no">107</span><span id="line-107"></span>
+<span class="source-line-no">108</span><span id="line-108">    /**</span>
+<span class="source-line-no">109</span><span id="line-109">     * Converts a {@link LocalDate} to epoch-day form for database storage.</span>
+<span class="source-line-no">110</span><span id="line-110">     *</span>
+<span class="source-line-no">111</span><span id="line-111">     * @param value local date to convert.</span>
+<span class="source-line-no">112</span><span id="line-112">     * @return epoch day value, or {@code null} if the input is null.</span>
+<span class="source-line-no">113</span><span id="line-113">     */</span>
+<span class="source-line-no">114</span><span id="line-114">    @TypeConverter</span>
+<span class="source-line-no">115</span><span id="line-115">    public static Long toLong(LocalDate value) {</span>
+<span class="source-line-no">116</span><span id="line-116">      return (value != null) ? value.toEpochDay() : null;</span>
+<span class="source-line-no">117</span><span id="line-117">    }</span>
+<span class="source-line-no">118</span><span id="line-118"></span>
+<span class="source-line-no">119</span><span id="line-119">    /**</span>
+<span class="source-line-no">120</span><span id="line-120">     * Converts an epoch-day value to a {@link LocalDate}.</span>
+<span class="source-line-no">121</span><span id="line-121">     *</span>
+<span class="source-line-no">122</span><span id="line-122">     * @param value epoch-day value.</span>
+<span class="source-line-no">123</span><span id="line-123">     * @return local date represented by the value, or {@code null} if the input is null.</span>
+<span class="source-line-no">124</span><span id="line-124">     */</span>
+<span class="source-line-no">125</span><span id="line-125">    @TypeConverter</span>
+<span class="source-line-no">126</span><span id="line-126">    public static LocalDate toLocalDate(Long value) {</span>
+<span class="source-line-no">127</span><span id="line-127">      return (value != null) ? LocalDate.ofEpochDay(value) : null;</span>
+<span class="source-line-no">128</span><span id="line-128">    }</span>
+<span class="source-line-no">129</span><span id="line-129">  }</span>
+<span class="source-line-no">130</span><span id="line-130"></span>
+<span class="source-line-no">131</span><span id="line-131">}</span>
 
 
 

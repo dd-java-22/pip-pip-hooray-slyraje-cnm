@@ -12,12 +12,20 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+/**
+ * RecyclerView adapter for displaying batch card summaries in a list.
+ */
 public class BatchAdapter extends ListAdapter<BatchCardSummary, BatchAdapter.ViewHolder> {
 
   private static final DateTimeFormatter DATE_FORMATTER =
       DateTimeFormatter.ofPattern("MMM d, uuuu");
   private final OnBatchClickListener listener;
 
+  /**
+   * Constructs a BatchAdapter with the specified click listener.
+   *
+   * @param listener the listener to handle batch item clicks
+   */
   public BatchAdapter(OnBatchClickListener listener) {
     super(DIFF_CALLBACK);
     this.listener = listener;
@@ -38,21 +46,43 @@ public class BatchAdapter extends ListAdapter<BatchCardSummary, BatchAdapter.Vie
     holder.itemView.setOnClickListener(v -> listener.onBatchClick(batch.getBatchId()));
   }
 
+  /**
+   * Functional interface for handling batch item click events.
+   */
   @FunctionalInterface
   public interface OnBatchClickListener {
+
+    /**
+     * Called when a batch item is clicked.
+     *
+     * @param batchId the ID of the clicked batch
+     */
     void onBatchClick(long batchId);
   }
 
-  static class ViewHolder extends RecyclerView.ViewHolder {
+  /**
+   * ViewHolder for displaying a batch card summary.
+   */
+  public static class ViewHolder extends RecyclerView.ViewHolder {
 
     private final ItemBatchBinding binding;
 
-    ViewHolder(@NonNull ItemBatchBinding binding) {
+    /**
+     * Constructs a ViewHolder with the specified binding.
+     *
+     * @param binding the view binding for the batch item
+     */
+    public ViewHolder(@NonNull ItemBatchBinding binding) {
       super(binding.getRoot());
       this.binding = binding;
     }
 
-    void bind(@NonNull BatchCardSummary batch) {
+    /**
+     * Binds a batch card summary to this ViewHolder's views.
+     *
+     * @param batch the batch card summary to display
+     */
+    public void bind(@NonNull BatchCardSummary batch) {
       binding.batchTitle.setText(formatTitle(batch));
       binding.batchBreedSummary.setText(formatBreedSummary(batch));
       binding.batchIncubator.setText(formatIncubator(batch));

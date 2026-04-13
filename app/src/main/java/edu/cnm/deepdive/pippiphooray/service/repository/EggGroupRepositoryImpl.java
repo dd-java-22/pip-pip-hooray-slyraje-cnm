@@ -8,10 +8,18 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
 
+/**
+ * Repository implementation for egg group data access and operations.
+ */
 public class EggGroupRepositoryImpl implements EggGroupRepository {
 
   private final EggGroupDao eggGroupDao;
 
+  /**
+   * Constructs an EggGroupRepositoryImpl with the specified DAO.
+   *
+   * @param eggGroupDao the data access object for egg group operations
+   */
   @Inject
   EggGroupRepositoryImpl(EggGroupDao eggGroupDao) {
     this.eggGroupDao = eggGroupDao;

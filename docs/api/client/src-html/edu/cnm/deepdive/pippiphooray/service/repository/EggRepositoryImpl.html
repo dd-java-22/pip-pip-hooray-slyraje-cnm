@@ -22,105 +22,113 @@
 <span class="source-line-no">009</span><span id="line-9">import java.util.concurrent.CompletableFuture;</span>
 <span class="source-line-no">010</span><span id="line-10">import javax.inject.Inject;</span>
 <span class="source-line-no">011</span><span id="line-11"></span>
-<span class="source-line-no">012</span><span id="line-12">public class EggRepositoryImpl implements EggRepository {</span>
-<span class="source-line-no">013</span><span id="line-13"></span>
-<span class="source-line-no">014</span><span id="line-14">  private final EggDao eggDao;</span>
-<span class="source-line-no">015</span><span id="line-15"></span>
-<span class="source-line-no">016</span><span id="line-16">  @Inject</span>
-<span class="source-line-no">017</span><span id="line-17">  EggRepositoryImpl(EggDao eggDao) {</span>
-<span class="source-line-no">018</span><span id="line-18">    this.eggDao = eggDao;</span>
-<span class="source-line-no">019</span><span id="line-19">  }</span>
-<span class="source-line-no">020</span><span id="line-20"></span>
-<span class="source-line-no">021</span><span id="line-21">  @Override</span>
-<span class="source-line-no">022</span><span id="line-22">  public LiveData&lt;List&lt;BatchEggAggregate&gt;&gt; getViabilityPerBatch() {</span>
-<span class="source-line-no">023</span><span id="line-23">    return eggDao.selectViabilityPerBatch();</span>
-<span class="source-line-no">024</span><span id="line-24">  }</span>
-<span class="source-line-no">025</span><span id="line-25"></span>
-<span class="source-line-no">026</span><span id="line-26">  @Override</span>
-<span class="source-line-no">027</span><span id="line-27">  public LiveData&lt;List&lt;Egg&gt;&gt; getByEggGroupId(long eggGroupId) {</span>
-<span class="source-line-no">028</span><span id="line-28">    return eggDao.selectByEggGroup(eggGroupId);</span>
-<span class="source-line-no">029</span><span id="line-29">  }</span>
-<span class="source-line-no">030</span><span id="line-30"></span>
-<span class="source-line-no">031</span><span id="line-31">  @Override</span>
-<span class="source-line-no">032</span><span id="line-32">  public LiveData&lt;Egg&gt; get(long id) {</span>
-<span class="source-line-no">033</span><span id="line-33">    return eggDao.select(id);</span>
-<span class="source-line-no">034</span><span id="line-34">  }</span>
-<span class="source-line-no">035</span><span id="line-35"></span>
-<span class="source-line-no">036</span><span id="line-36">  @Override</span>
-<span class="source-line-no">037</span><span id="line-37">  public CompletableFuture&lt;List&lt;Egg&gt;&gt; fetchByEggGroupId(long eggGroupId) {</span>
-<span class="source-line-no">038</span><span id="line-38">    return CompletableFuture.supplyAsync(() -&gt; eggDao.fetchByEggGroup(eggGroupId));</span>
-<span class="source-line-no">039</span><span id="line-39">  }</span>
-<span class="source-line-no">040</span><span id="line-40"></span>
-<span class="source-line-no">041</span><span id="line-41">  @Override</span>
-<span class="source-line-no">042</span><span id="line-42">  public CompletableFuture&lt;Long&gt; save(Egg egg) {</span>
-<span class="source-line-no">043</span><span id="line-43">    return CompletableFuture.supplyAsync(() -&gt; {</span>
-<span class="source-line-no">044</span><span id="line-44">      if (egg.getId() == 0L) {</span>
-<span class="source-line-no">045</span><span id="line-45">        long id = eggDao.insert(egg);</span>
-<span class="source-line-no">046</span><span id="line-46">        egg.setId(id);</span>
-<span class="source-line-no">047</span><span id="line-47">        return id;</span>
-<span class="source-line-no">048</span><span id="line-48">      } else {</span>
-<span class="source-line-no">049</span><span id="line-49">        eggDao.update(egg);</span>
-<span class="source-line-no">050</span><span id="line-50">        return egg.getId();</span>
-<span class="source-line-no">051</span><span id="line-51">      }</span>
-<span class="source-line-no">052</span><span id="line-52">    });</span>
-<span class="source-line-no">053</span><span id="line-53">  }</span>
-<span class="source-line-no">054</span><span id="line-54"></span>
-<span class="source-line-no">055</span><span id="line-55">  @Override</span>
-<span class="source-line-no">056</span><span id="line-56">  public CompletableFuture&lt;Void&gt; saveAll(List&lt;Egg&gt; eggs) {</span>
-<span class="source-line-no">057</span><span id="line-57">    return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="source-line-no">058</span><span id="line-58">      if (eggs == null || eggs.isEmpty()) {</span>
-<span class="source-line-no">059</span><span id="line-59">        return;</span>
-<span class="source-line-no">060</span><span id="line-60">      }</span>
-<span class="source-line-no">061</span><span id="line-61"></span>
-<span class="source-line-no">062</span><span id="line-62">      boolean allNew = true;</span>
-<span class="source-line-no">063</span><span id="line-63">      for (Egg egg : eggs) {</span>
-<span class="source-line-no">064</span><span id="line-64">        if (egg.getId() != 0L) {</span>
-<span class="source-line-no">065</span><span id="line-65">          allNew = false;</span>
-<span class="source-line-no">066</span><span id="line-66">          break;</span>
-<span class="source-line-no">067</span><span id="line-67">        }</span>
+<span class="source-line-no">012</span><span id="line-12">/**</span>
+<span class="source-line-no">013</span><span id="line-13"> * Repository implementation for egg data access and operations.</span>
+<span class="source-line-no">014</span><span id="line-14"> */</span>
+<span class="source-line-no">015</span><span id="line-15">public class EggRepositoryImpl implements EggRepository {</span>
+<span class="source-line-no">016</span><span id="line-16"></span>
+<span class="source-line-no">017</span><span id="line-17">  private final EggDao eggDao;</span>
+<span class="source-line-no">018</span><span id="line-18"></span>
+<span class="source-line-no">019</span><span id="line-19">  /**</span>
+<span class="source-line-no">020</span><span id="line-20">   * Constructs an EggRepositoryImpl with the specified DAO.</span>
+<span class="source-line-no">021</span><span id="line-21">   *</span>
+<span class="source-line-no">022</span><span id="line-22">   * @param eggDao the data access object for egg operations</span>
+<span class="source-line-no">023</span><span id="line-23">   */</span>
+<span class="source-line-no">024</span><span id="line-24">  @Inject</span>
+<span class="source-line-no">025</span><span id="line-25">  EggRepositoryImpl(EggDao eggDao) {</span>
+<span class="source-line-no">026</span><span id="line-26">    this.eggDao = eggDao;</span>
+<span class="source-line-no">027</span><span id="line-27">  }</span>
+<span class="source-line-no">028</span><span id="line-28"></span>
+<span class="source-line-no">029</span><span id="line-29">  @Override</span>
+<span class="source-line-no">030</span><span id="line-30">  public LiveData&lt;List&lt;BatchEggAggregate&gt;&gt; getViabilityPerBatch() {</span>
+<span class="source-line-no">031</span><span id="line-31">    return eggDao.selectViabilityPerBatch();</span>
+<span class="source-line-no">032</span><span id="line-32">  }</span>
+<span class="source-line-no">033</span><span id="line-33"></span>
+<span class="source-line-no">034</span><span id="line-34">  @Override</span>
+<span class="source-line-no">035</span><span id="line-35">  public LiveData&lt;List&lt;Egg&gt;&gt; getByEggGroupId(long eggGroupId) {</span>
+<span class="source-line-no">036</span><span id="line-36">    return eggDao.selectByEggGroup(eggGroupId);</span>
+<span class="source-line-no">037</span><span id="line-37">  }</span>
+<span class="source-line-no">038</span><span id="line-38"></span>
+<span class="source-line-no">039</span><span id="line-39">  @Override</span>
+<span class="source-line-no">040</span><span id="line-40">  public LiveData&lt;Egg&gt; get(long id) {</span>
+<span class="source-line-no">041</span><span id="line-41">    return eggDao.select(id);</span>
+<span class="source-line-no">042</span><span id="line-42">  }</span>
+<span class="source-line-no">043</span><span id="line-43"></span>
+<span class="source-line-no">044</span><span id="line-44">  @Override</span>
+<span class="source-line-no">045</span><span id="line-45">  public CompletableFuture&lt;List&lt;Egg&gt;&gt; fetchByEggGroupId(long eggGroupId) {</span>
+<span class="source-line-no">046</span><span id="line-46">    return CompletableFuture.supplyAsync(() -&gt; eggDao.fetchByEggGroup(eggGroupId));</span>
+<span class="source-line-no">047</span><span id="line-47">  }</span>
+<span class="source-line-no">048</span><span id="line-48"></span>
+<span class="source-line-no">049</span><span id="line-49">  @Override</span>
+<span class="source-line-no">050</span><span id="line-50">  public CompletableFuture&lt;Long&gt; save(Egg egg) {</span>
+<span class="source-line-no">051</span><span id="line-51">    return CompletableFuture.supplyAsync(() -&gt; {</span>
+<span class="source-line-no">052</span><span id="line-52">      if (egg.getId() == 0L) {</span>
+<span class="source-line-no">053</span><span id="line-53">        long id = eggDao.insert(egg);</span>
+<span class="source-line-no">054</span><span id="line-54">        egg.setId(id);</span>
+<span class="source-line-no">055</span><span id="line-55">        return id;</span>
+<span class="source-line-no">056</span><span id="line-56">      } else {</span>
+<span class="source-line-no">057</span><span id="line-57">        eggDao.update(egg);</span>
+<span class="source-line-no">058</span><span id="line-58">        return egg.getId();</span>
+<span class="source-line-no">059</span><span id="line-59">      }</span>
+<span class="source-line-no">060</span><span id="line-60">    });</span>
+<span class="source-line-no">061</span><span id="line-61">  }</span>
+<span class="source-line-no">062</span><span id="line-62"></span>
+<span class="source-line-no">063</span><span id="line-63">  @Override</span>
+<span class="source-line-no">064</span><span id="line-64">  public CompletableFuture&lt;Void&gt; saveAll(List&lt;Egg&gt; eggs) {</span>
+<span class="source-line-no">065</span><span id="line-65">    return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="source-line-no">066</span><span id="line-66">      if (eggs == null || eggs.isEmpty()) {</span>
+<span class="source-line-no">067</span><span id="line-67">        return;</span>
 <span class="source-line-no">068</span><span id="line-68">      }</span>
 <span class="source-line-no">069</span><span id="line-69"></span>
-<span class="source-line-no">070</span><span id="line-70">      if (allNew) {</span>
-<span class="source-line-no">071</span><span id="line-71">        List&lt;Long&gt; ids = eggDao.insertAll(eggs);</span>
-<span class="source-line-no">072</span><span id="line-72">        for (int i = 0; i &lt; eggs.size() &amp;&amp; i &lt; ids.size(); i++) {</span>
-<span class="source-line-no">073</span><span id="line-73">          Long id = ids.get(i);</span>
-<span class="source-line-no">074</span><span id="line-74">          if (id != null) {</span>
-<span class="source-line-no">075</span><span id="line-75">            eggs.get(i).setId(id);</span>
-<span class="source-line-no">076</span><span id="line-76">          }</span>
-<span class="source-line-no">077</span><span id="line-77">        }</span>
-<span class="source-line-no">078</span><span id="line-78">      } else {</span>
-<span class="source-line-no">079</span><span id="line-79">        eggDao.update(eggs);</span>
-<span class="source-line-no">080</span><span id="line-80">      }</span>
-<span class="source-line-no">081</span><span id="line-81">    });</span>
-<span class="source-line-no">082</span><span id="line-82">  }</span>
-<span class="source-line-no">083</span><span id="line-83"></span>
-<span class="source-line-no">084</span><span id="line-84">  @Override</span>
-<span class="source-line-no">085</span><span id="line-85">  public CompletableFuture&lt;Void&gt; seedEggsForGroup(long eggGroupId, int initialEggCount) {</span>
-<span class="source-line-no">086</span><span id="line-86">    return CompletableFuture.runAsync(() -&gt; {</span>
-<span class="source-line-no">087</span><span id="line-87">      if (initialEggCount &lt;= 0) {</span>
-<span class="source-line-no">088</span><span id="line-88">        return;</span>
-<span class="source-line-no">089</span><span id="line-89">      }</span>
-<span class="source-line-no">090</span><span id="line-90"></span>
-<span class="source-line-no">091</span><span id="line-91">      List&lt;Egg&gt; eggs = new ArrayList&lt;&gt;();</span>
-<span class="source-line-no">092</span><span id="line-92">      for (int eggNumber = 1; eggNumber &lt;= initialEggCount; eggNumber++) {</span>
-<span class="source-line-no">093</span><span id="line-93">        Egg egg = new Egg();</span>
-<span class="source-line-no">094</span><span id="line-94">        egg.setEggGroupId(eggGroupId);</span>
-<span class="source-line-no">095</span><span id="line-95">        egg.setEggNumber(eggNumber);</span>
-<span class="source-line-no">096</span><span id="line-96">        egg.setHatchStatus(null);</span>
-<span class="source-line-no">097</span><span id="line-97">        egg.setFinalNotes(null);</span>
-<span class="source-line-no">098</span><span id="line-98">        eggs.add(egg);</span>
-<span class="source-line-no">099</span><span id="line-99">      }</span>
-<span class="source-line-no">100</span><span id="line-100"></span>
-<span class="source-line-no">101</span><span id="line-101">      List&lt;Long&gt; ids = eggDao.insertAll(eggs);</span>
-<span class="source-line-no">102</span><span id="line-102">      for (int i = 0; i &lt; eggs.size() &amp;&amp; i &lt; ids.size(); i++) {</span>
-<span class="source-line-no">103</span><span id="line-103">        Long id = ids.get(i);</span>
-<span class="source-line-no">104</span><span id="line-104">        if (id != null) {</span>
-<span class="source-line-no">105</span><span id="line-105">          eggs.get(i).setId(id);</span>
-<span class="source-line-no">106</span><span id="line-106">        }</span>
+<span class="source-line-no">070</span><span id="line-70">      boolean allNew = true;</span>
+<span class="source-line-no">071</span><span id="line-71">      for (Egg egg : eggs) {</span>
+<span class="source-line-no">072</span><span id="line-72">        if (egg.getId() != 0L) {</span>
+<span class="source-line-no">073</span><span id="line-73">          allNew = false;</span>
+<span class="source-line-no">074</span><span id="line-74">          break;</span>
+<span class="source-line-no">075</span><span id="line-75">        }</span>
+<span class="source-line-no">076</span><span id="line-76">      }</span>
+<span class="source-line-no">077</span><span id="line-77"></span>
+<span class="source-line-no">078</span><span id="line-78">      if (allNew) {</span>
+<span class="source-line-no">079</span><span id="line-79">        List&lt;Long&gt; ids = eggDao.insertAll(eggs);</span>
+<span class="source-line-no">080</span><span id="line-80">        for (int i = 0; i &lt; eggs.size() &amp;&amp; i &lt; ids.size(); i++) {</span>
+<span class="source-line-no">081</span><span id="line-81">          Long id = ids.get(i);</span>
+<span class="source-line-no">082</span><span id="line-82">          if (id != null) {</span>
+<span class="source-line-no">083</span><span id="line-83">            eggs.get(i).setId(id);</span>
+<span class="source-line-no">084</span><span id="line-84">          }</span>
+<span class="source-line-no">085</span><span id="line-85">        }</span>
+<span class="source-line-no">086</span><span id="line-86">      } else {</span>
+<span class="source-line-no">087</span><span id="line-87">        eggDao.update(eggs);</span>
+<span class="source-line-no">088</span><span id="line-88">      }</span>
+<span class="source-line-no">089</span><span id="line-89">    });</span>
+<span class="source-line-no">090</span><span id="line-90">  }</span>
+<span class="source-line-no">091</span><span id="line-91"></span>
+<span class="source-line-no">092</span><span id="line-92">  @Override</span>
+<span class="source-line-no">093</span><span id="line-93">  public CompletableFuture&lt;Void&gt; seedEggsForGroup(long eggGroupId, int initialEggCount) {</span>
+<span class="source-line-no">094</span><span id="line-94">    return CompletableFuture.runAsync(() -&gt; {</span>
+<span class="source-line-no">095</span><span id="line-95">      if (initialEggCount &lt;= 0) {</span>
+<span class="source-line-no">096</span><span id="line-96">        return;</span>
+<span class="source-line-no">097</span><span id="line-97">      }</span>
+<span class="source-line-no">098</span><span id="line-98"></span>
+<span class="source-line-no">099</span><span id="line-99">      List&lt;Egg&gt; eggs = new ArrayList&lt;&gt;();</span>
+<span class="source-line-no">100</span><span id="line-100">      for (int eggNumber = 1; eggNumber &lt;= initialEggCount; eggNumber++) {</span>
+<span class="source-line-no">101</span><span id="line-101">        Egg egg = new Egg();</span>
+<span class="source-line-no">102</span><span id="line-102">        egg.setEggGroupId(eggGroupId);</span>
+<span class="source-line-no">103</span><span id="line-103">        egg.setEggNumber(eggNumber);</span>
+<span class="source-line-no">104</span><span id="line-104">        egg.setHatchStatus(null);</span>
+<span class="source-line-no">105</span><span id="line-105">        egg.setFinalNotes(null);</span>
+<span class="source-line-no">106</span><span id="line-106">        eggs.add(egg);</span>
 <span class="source-line-no">107</span><span id="line-107">      }</span>
-<span class="source-line-no">108</span><span id="line-108">    });</span>
-<span class="source-line-no">109</span><span id="line-109">  }</span>
-<span class="source-line-no">110</span><span id="line-110">}</span>
+<span class="source-line-no">108</span><span id="line-108"></span>
+<span class="source-line-no">109</span><span id="line-109">      List&lt;Long&gt; ids = eggDao.insertAll(eggs);</span>
+<span class="source-line-no">110</span><span id="line-110">      for (int i = 0; i &lt; eggs.size() &amp;&amp; i &lt; ids.size(); i++) {</span>
+<span class="source-line-no">111</span><span id="line-111">        Long id = ids.get(i);</span>
+<span class="source-line-no">112</span><span id="line-112">        if (id != null) {</span>
+<span class="source-line-no">113</span><span id="line-113">          eggs.get(i).setId(id);</span>
+<span class="source-line-no">114</span><span id="line-114">        }</span>
+<span class="source-line-no">115</span><span id="line-115">      }</span>
+<span class="source-line-no">116</span><span id="line-116">    });</span>
+<span class="source-line-no">117</span><span id="line-117">  }</span>
+<span class="source-line-no">118</span><span id="line-118">}</span>
 
 
 

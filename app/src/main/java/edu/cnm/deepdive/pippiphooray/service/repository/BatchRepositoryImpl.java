@@ -11,12 +11,22 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
 
+/**
+ * Repository implementation for batch data access and operations.
+ */
 public class BatchRepositoryImpl implements BatchRepository {
 
   private final BatchDao batchDao;
   private final EggGroupRepository eggGroupRepository;
   private final EggRepository eggRepository;
 
+  /**
+   * Constructs a BatchRepositoryImpl with the specified repositories and DAO.
+   *
+   * @param batchDao the data access object for batch operations
+   * @param eggGroupRepository the repository for egg group operations
+   * @param eggRepository the repository for egg operations
+   */
   @Inject
   BatchRepositoryImpl(
       BatchDao batchDao,
@@ -105,6 +115,14 @@ public class BatchRepositoryImpl implements BatchRepository {
     });
   }
 
+  /**
+   * Builds initial egg groups for a batch.
+   *
+   * @param batchId the ID of the batch
+   * @param breed the breed for the egg group
+   * @param eggCount the number of eggs in the group
+   * @return a list containing a single egg group with the specified parameters
+   */
   private List<EggGroup> buildInitialEggGroups(long batchId, String breed, int eggCount) {
     List<EggGroup> groups = new ArrayList<>();
 
@@ -118,6 +136,12 @@ public class BatchRepositoryImpl implements BatchRepository {
     return groups;
   }
 
+  /**
+   * Seeds eggs for all groups in the provided list.
+   *
+   * @param groups the list of egg groups to seed
+   * @return a CompletableFuture that completes when all eggs have been seeded
+   */
   private CompletableFuture<Void> seedEggsForGroups(List<EggGroup> groups) {
     CompletableFuture<Void> chain = CompletableFuture.completedFuture(null);
 

@@ -17,11 +17,24 @@ import edu.cnm.deepdive.pippiphooray.viewmodel.IncubatorViewModel;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Dialog fragment used to create or edit an incubator record.
+ *
+ * <p>The dialog supports both adding a new incubator and editing an existing one,
+ * including optional target temperature and humidity values.
+ */
 @AndroidEntryPoint
 public class AddIncubatorDialogFragment extends DialogFragment {
 
+  /** Argument key used to pass the incubator ID into the dialog. */
   static final String INCUBATOR_ID_KEY = "incubator_id";
 
+  /**
+   * Creates a new dialog fragment instance for editing an existing incubator.
+   *
+   * @param incubatorId ID of the incubator to edit.
+   * @return configured dialog fragment instance.
+   */
   public static AddIncubatorDialogFragment newInstance(long incubatorId) {
     AddIncubatorDialogFragment fragment = new AddIncubatorDialogFragment();
     Bundle args = new Bundle();
@@ -30,6 +43,12 @@ public class AddIncubatorDialogFragment extends DialogFragment {
     return fragment;
   }
 
+  /**
+   * Creates and configures the dialog for adding or editing an incubator.
+   *
+   * @param savedInstanceState saved instance state, if any.
+   * @return configured dialog instance.
+   */
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

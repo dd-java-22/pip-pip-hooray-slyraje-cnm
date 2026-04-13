@@ -16,24 +16,45 @@
 <span class="source-line-no">003</span><span id="line-3">import androidx.annotation.Nullable;</span>
 <span class="source-line-no">004</span><span id="line-4">import java.time.LocalDate;</span>
 <span class="source-line-no">005</span><span id="line-5"></span>
-<span class="source-line-no">006</span><span id="line-6">public class NextMilestoneSummary {</span>
-<span class="source-line-no">007</span><span id="line-7"></span>
-<span class="source-line-no">008</span><span id="line-8">  private final String label;</span>
-<span class="source-line-no">009</span><span id="line-9">  private final LocalDate date;</span>
-<span class="source-line-no">010</span><span id="line-10"></span>
-<span class="source-line-no">011</span><span id="line-11">  public NextMilestoneSummary(String label, @Nullable LocalDate date) {</span>
-<span class="source-line-no">012</span><span id="line-12">    this.label = label;</span>
-<span class="source-line-no">013</span><span id="line-13">    this.date = date;</span>
-<span class="source-line-no">014</span><span id="line-14">  }</span>
+<span class="source-line-no">006</span><span id="line-6">/**</span>
+<span class="source-line-no">007</span><span id="line-7"> * Simple value object that describes the next incubation milestone.</span>
+<span class="source-line-no">008</span><span id="line-8"> *</span>
+<span class="source-line-no">009</span><span id="line-9"> * &lt;p&gt;Each instance contains a human-readable label and an optional date.</span>
+<span class="source-line-no">010</span><span id="line-10"> */</span>
+<span class="source-line-no">011</span><span id="line-11">public class NextMilestoneSummary {</span>
+<span class="source-line-no">012</span><span id="line-12"></span>
+<span class="source-line-no">013</span><span id="line-13">  private final String label;</span>
+<span class="source-line-no">014</span><span id="line-14">  private final LocalDate date;</span>
 <span class="source-line-no">015</span><span id="line-15"></span>
-<span class="source-line-no">016</span><span id="line-16">  public String getLabel() {</span>
-<span class="source-line-no">017</span><span id="line-17">    return label;</span>
-<span class="source-line-no">018</span><span id="line-18">  }</span>
-<span class="source-line-no">019</span><span id="line-19"></span>
-<span class="source-line-no">020</span><span id="line-20">  public LocalDate getDate() {</span>
-<span class="source-line-no">021</span><span id="line-21">    return date;</span>
-<span class="source-line-no">022</span><span id="line-22">  }</span>
-<span class="source-line-no">023</span><span id="line-23">}</span>
+<span class="source-line-no">016</span><span id="line-16">  /**</span>
+<span class="source-line-no">017</span><span id="line-17">   * Creates a new milestone summary.</span>
+<span class="source-line-no">018</span><span id="line-18">   *</span>
+<span class="source-line-no">019</span><span id="line-19">   * @param label human-readable milestone label.</span>
+<span class="source-line-no">020</span><span id="line-20">   * @param date milestone date, or {@code null} if unavailable.</span>
+<span class="source-line-no">021</span><span id="line-21">   */</span>
+<span class="source-line-no">022</span><span id="line-22">  public NextMilestoneSummary(String label, @Nullable LocalDate date) {</span>
+<span class="source-line-no">023</span><span id="line-23">    this.label = label;</span>
+<span class="source-line-no">024</span><span id="line-24">    this.date = date;</span>
+<span class="source-line-no">025</span><span id="line-25">  }</span>
+<span class="source-line-no">026</span><span id="line-26"></span>
+<span class="source-line-no">027</span><span id="line-27">  /**</span>
+<span class="source-line-no">028</span><span id="line-28">   * Returns the milestone label.</span>
+<span class="source-line-no">029</span><span id="line-29">   *</span>
+<span class="source-line-no">030</span><span id="line-30">   * @return milestone label.</span>
+<span class="source-line-no">031</span><span id="line-31">   */</span>
+<span class="source-line-no">032</span><span id="line-32">  public String getLabel() {</span>
+<span class="source-line-no">033</span><span id="line-33">    return label;</span>
+<span class="source-line-no">034</span><span id="line-34">  }</span>
+<span class="source-line-no">035</span><span id="line-35"></span>
+<span class="source-line-no">036</span><span id="line-36">  /**</span>
+<span class="source-line-no">037</span><span id="line-37">   * Returns the milestone date.</span>
+<span class="source-line-no">038</span><span id="line-38">   *</span>
+<span class="source-line-no">039</span><span id="line-39">   * @return milestone date, or {@code null} if unavailable.</span>
+<span class="source-line-no">040</span><span id="line-40">   */</span>
+<span class="source-line-no">041</span><span id="line-41">  public LocalDate getDate() {</span>
+<span class="source-line-no">042</span><span id="line-42">    return date;</span>
+<span class="source-line-no">043</span><span id="line-43">  }</span>
+<span class="source-line-no">044</span><span id="line-44">}</span>
 
 
 

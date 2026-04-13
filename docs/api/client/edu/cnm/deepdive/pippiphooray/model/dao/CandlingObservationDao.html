@@ -71,7 +71,8 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/CandlingObservationDao.html#line-10">CandlingObservationDao</a></span></div>
+<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/CandlingObservationDao.html#line-13">CandlingObservationDao</a></span></div>
+<div class="block">Provides database access methods for <a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity"><code>CandlingObservation</code></a> entities.</div>
 </div>
 </section>
 <section class="summary">
@@ -89,13 +90,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#insert(edu.cnm.deepdive.pippiphooray.model.entity.CandlingObservation)" class="member-name-link">insert</a><wbr>(<a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">CandlingObservation</a>&nbsp;observation)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Inserts a candling observation into the database.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">CandlingObservation</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#select(long)" class="member-name-link">select</a><wbr>(long&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns a single candling observation by ID.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">CandlingObservation</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#selectByEgg(long)" class="member-name-link">selectByEgg</a><wbr>(long&nbsp;eggId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Returns all candling observations recorded for a specific egg.</div>
+</div>
 </div>
 </div>
 </div>
@@ -114,7 +121,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="insert(edu.cnm.deepdive.pippiphooray.model.entity.CandlingObservation)">
 <h3>insert</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/CandlingObservationDao.html#line-13">insert</a></span><wbr><span class="parameters">(<a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">CandlingObservation</a>&nbsp;observation)</span></div>
+<div class="member-signature"><span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/CandlingObservationDao.html#line-22">insert</a></span><wbr><span class="parameters">(<a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">CandlingObservation</a>&nbsp;observation)</span></div>
+<div class="block">Inserts a candling observation into the database.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>observation</code> - candling observation to insert.</dd>
+<dt>Returns:</dt>
+<dd>row ID of the inserted observation.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -122,7 +136,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="selectByEgg(long)">
 <h3>selectByEgg</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">CandlingObservation</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/CandlingObservationDao.html#line-16">selectByEgg</a></span><wbr><span class="parameters">(long&nbsp;eggId)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">CandlingObservation</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/CandlingObservationDao.html#line-31">selectByEgg</a></span><wbr><span class="parameters">(long&nbsp;eggId)</span></div>
+<div class="block">Returns all candling observations recorded for a specific egg.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggId</code> - ID of the egg.</dd>
+<dt>Returns:</dt>
+<dd>live list of observations for the specified egg, ordered by incubation day.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -130,7 +151,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="select(long)">
 <h3>select</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">CandlingObservation</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/CandlingObservationDao.html#line-19">select</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../entity/CandlingObservation.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">CandlingObservation</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/CandlingObservationDao.html#line-40">select</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="block">Returns a single candling observation by ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - observation ID.</dd>
+<dt>Returns:</dt>
+<dd>live observation matching the specified ID.</dd>
+</dl>
 </div>
 </section>
 </li>

@@ -6,6 +6,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class for computing the next incubation milestone and its date.
+ */
 public final class NextMilestoneHelper {
 
   private static final String LABEL_DAY_7 = "Next: Day 7 Candling Observation";
@@ -16,6 +19,26 @@ public final class NextMilestoneHelper {
   private NextMilestoneHelper() {
   }
 
+  /**
+   * Computes the next milestone for a batch given its key dates and today's date.
+   *
+   * <p>The candidate milestones are:
+   * <ul>
+   *   <li>Day 7 candling,</li>
+   *   <li>Day 14 candling,</li>
+   *   <li>Day 18 candling/lockdown, and</li>
+   *   <li>expected hatch day.</li>
+   * </ul>
+   * The first candidate whose date is today or in the future is returned;
+   * if all milestones are in the past, the last available one is returned,
+   * and if no dates are available, a fallback "unavailable" milestone is produced.
+   *
+   * @param dateSet date the batch was set; may be {@code null}.
+   * @param lockdownDate explicit lockdown date, if any.
+   * @param expectedHatchDate expected hatch date, if any.
+   * @param today current date used for comparison.
+   * @return summary describing the next applicable milestone.
+   */
   @NonNull
   public static NextMilestoneSummary computeNextMilestone(
       @Nullable LocalDate dateSet,

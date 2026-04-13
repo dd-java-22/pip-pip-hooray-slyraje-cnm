@@ -8,10 +8,18 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
 
+/**
+ * Repository implementation for candling observation data access and operations.
+ */
 public class CandlingObservationRepositoryImpl implements CandlingObservationRepository {
 
   private final CandlingObservationDao observationDao;
 
+  /**
+   * Constructs a CandlingObservationRepositoryImpl with the specified DAO.
+   *
+   * @param observationDao the data access object for candling observation operations
+   */
   @Inject
   CandlingObservationRepositoryImpl(CandlingObservationDao observationDao) {
     this.observationDao = observationDao;

@@ -89,8 +89,12 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/SettingsFragment.html#line-17">SettingsFragment</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/SettingsFragment.html#line-23">SettingsFragment</a></span>
 <span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/preference/PreferenceFragmentCompat.html" title="class or interface in androidx.preference" class="external-link">PreferenceFragmentCompat</a></span></div>
+<div class="block">Preference screen for application settings and account actions.
+
+<p>This fragment manages default incubator settings, CSV export access,
+and sign-out behavior.</div>
 </div>
 </section>
 <section class="summary">
@@ -146,11 +150,15 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onCreatePreferences(android.os.Bundle,java.lang.String)" class="member-name-link">onCreatePreferences</a><wbr>(<a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;rootKey)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Loads the preference hierarchy and configures preference listeners.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onViewCreated(android.view.View,android.os.Bundle)" class="member-name-link">onViewCreated</a><wbr>(<a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a>&nbsp;view,
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Completes setup after the preference view has been created.</div>
+</div>
 </div>
 </div>
 </div>
@@ -178,7 +186,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>SettingsFragment</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/SettingsFragment.html#line-18">SettingsFragment</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/SettingsFragment.html#line-24">SettingsFragment</a></span>()</div>
 </div>
 </section>
 </li>
@@ -194,13 +202,17 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onCreatePreferences(android.os.Bundle,java.lang.String)">
 <h3>onCreatePreferences</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/SettingsFragment.html#line-27">onCreatePreferences</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/SettingsFragment.html#line-39">onCreatePreferences</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState,
  <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;rootKey)</span></div>
+<div class="block">Loads the preference hierarchy and configures preference listeners.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/preference/PreferenceFragmentCompat.html#onCreatePreferences-android.os.Bundle-java.lang.String-" title="class or interface in androidx.preference" class="external-link">onCreatePreferences</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/preference/PreferenceFragmentCompat.html" title="class or interface in androidx.preference" class="external-link">PreferenceFragmentCompat</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>savedInstanceState</code> - saved instance state, if any.</dd>
+<dd><code>rootKey</code> - root preference key, if a subset of preferences is shown.</dd>
 </dl>
 </div>
 </section>
@@ -209,13 +221,20 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onViewCreated(android.view.View,android.os.Bundle)">
 <h3>onViewCreated</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/SettingsFragment.html#line-66">onViewCreated</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/SettingsFragment.html#line-87">onViewCreated</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a>&nbsp;view,
  <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</span></div>
+<div class="block">Completes setup after the preference view has been created.
+
+<p>This method connects the fragment to the sign-in state so the user can
+be redirected to the sign-in screen after signing out or after an auth error.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/preference/PreferenceFragmentCompat.html#onViewCreated-android.view.View-android.os.Bundle-" title="class or interface in androidx.preference" class="external-link">onViewCreated</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/preference/PreferenceFragmentCompat.html" title="class or interface in androidx.preference" class="external-link">PreferenceFragmentCompat</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>view</code> - fragment root view.</dd>
+<dd><code>savedInstanceState</code> - saved instance state, if any.</dd>
 </dl>
 </div>
 </section>

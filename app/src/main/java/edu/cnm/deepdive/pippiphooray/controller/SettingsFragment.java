@@ -14,6 +14,12 @@ import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.R;
 import edu.cnm.deepdive.pippiphooray.viewmodel.SignInViewModel;
 
+/**
+ * Preference screen for application settings and account actions.
+ *
+ * <p>This fragment manages default incubator settings, CSV export access,
+ * and sign-out behavior.
+ */
 @AndroidEntryPoint
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -24,6 +30,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
   private SignInViewModel signInViewModel;
 
+  /**
+   * Loads the preference hierarchy and configures preference listeners.
+   *
+   * @param savedInstanceState saved instance state, if any.
+   * @param rootKey root preference key, if a subset of preferences is shown.
+   */
   @Override
   public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
     setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -63,6 +75,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
   }
 
+  /**
+   * Completes setup after the preference view has been created.
+   *
+   * <p>This method connects the fragment to the sign-in state so the user can
+   * be redirected to the sign-in screen after signing out or after an auth error.
+   *
+   * @param view fragment root view.
+   * @param savedInstanceState saved instance state, if any.
+   */
   @Override
   public void onViewCreated(@NonNull android.view.View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);

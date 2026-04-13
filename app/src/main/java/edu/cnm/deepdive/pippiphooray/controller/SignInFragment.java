@@ -14,12 +14,26 @@ import edu.cnm.deepdive.pippiphooray.R;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentSignInBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.SignInViewModel;
 
+/**
+ * Fragment that handles user authentication with Google Sign-In.
+ *
+ * <p>This screen initiates interactive sign-in, observes authentication state,
+ * and attempts silent sign-in when possible.
+ */
 @AndroidEntryPoint
 public class SignInFragment extends Fragment {
 
   private FragmentSignInBinding binding;
   private SignInViewModel signInViewModel;
 
+  /**
+   * Inflates the sign-in layout and configures the sign-in button.
+   *
+   * @param inflater layout inflater.
+   * @param container optional parent container.
+   * @param savedInstanceState saved instance state, if any.
+   * @return root view for this fragment.
+   */
   @Nullable
   @Override
   public View onCreateView(
@@ -36,6 +50,12 @@ public class SignInFragment extends Fragment {
     return binding.getRoot();
   }
 
+  /**
+   * Completes fragment setup by connecting the UI to the sign-in ViewModel.
+   *
+   * @param view root view returned from {@link #onCreateView}.
+   * @param savedInstanceState saved instance state, if any.
+   */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
@@ -67,6 +87,9 @@ public class SignInFragment extends Fragment {
     signInViewModel.signInQuickly(requireActivity());
   }
 
+  /**
+   * Clears the view binding reference when the fragment view is destroyed.
+   */
   @Override
   public void onDestroyView() {
     binding = null;

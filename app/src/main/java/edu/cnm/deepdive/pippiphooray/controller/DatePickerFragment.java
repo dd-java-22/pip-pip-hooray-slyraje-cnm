@@ -8,9 +8,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import java.util.Calendar;
 
+/**
+ * Dialog fragment that displays a date picker.
+ */
 public class DatePickerFragment extends DialogFragment
     implements DatePickerDialog.OnDateSetListener {
 
+  /**
+   * Creates the date picker dialog using the current date as the default selection.
+   *
+   * @param savedInstanceState saved instance state, if any.
+   * @return configured date picker dialog.
+   */
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -24,6 +33,15 @@ public class DatePickerFragment extends DialogFragment
     return new DatePickerDialog(requireContext(), this, year, month, day);
   }
 
+  /**
+   * Receives the date selected by the user.
+   *
+   * @param view date picker view.
+   * @param year selected year.
+   * @param month selected month, zero-based.
+   * @param day selected day of month.
+   */
+  @Override
   public void onDateSet(DatePicker view, int year, int month, int day) {
     // Do something with the date the user picks.
   }

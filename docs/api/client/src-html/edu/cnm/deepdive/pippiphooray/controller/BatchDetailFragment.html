@@ -40,196 +40,217 @@
 <span class="source-line-no">027</span><span id="line-27">import java.time.format.DateTimeFormatter;</span>
 <span class="source-line-no">028</span><span id="line-28">import java.util.List;</span>
 <span class="source-line-no">029</span><span id="line-29"></span>
-<span class="source-line-no">030</span><span id="line-30">@AndroidEntryPoint</span>
-<span class="source-line-no">031</span><span id="line-31">public class BatchDetailFragment extends Fragment {</span>
-<span class="source-line-no">032</span><span id="line-32"></span>
-<span class="source-line-no">033</span><span id="line-33">  private static final DateTimeFormatter DATE_FORMATTER =</span>
-<span class="source-line-no">034</span><span id="line-34">      DateTimeFormatter.ofPattern("MMM d, uuuu");</span>
-<span class="source-line-no">035</span><span id="line-35"></span>
-<span class="source-line-no">036</span><span id="line-36">  private FragmentBatchDetailBinding binding;</span>
-<span class="source-line-no">037</span><span id="line-37">  private BatchViewModel batchViewModel;</span>
-<span class="source-line-no">038</span><span id="line-38">  private long batchId;</span>
-<span class="source-line-no">039</span><span id="line-39"></span>
-<span class="source-line-no">040</span><span id="line-40">  @Nullable</span>
-<span class="source-line-no">041</span><span id="line-41">  @Override</span>
-<span class="source-line-no">042</span><span id="line-42">  public View onCreateView(</span>
-<span class="source-line-no">043</span><span id="line-43">      @NonNull LayoutInflater inflater,</span>
-<span class="source-line-no">044</span><span id="line-44">      @Nullable ViewGroup container,</span>
-<span class="source-line-no">045</span><span id="line-45">      @Nullable Bundle savedInstanceState</span>
-<span class="source-line-no">046</span><span id="line-46">  ) {</span>
-<span class="source-line-no">047</span><span id="line-47">    binding = FragmentBatchDetailBinding.inflate(inflater, container, false);</span>
-<span class="source-line-no">048</span><span id="line-48">    return binding.getRoot();</span>
-<span class="source-line-no">049</span><span id="line-49">  }</span>
-<span class="source-line-no">050</span><span id="line-50"></span>
-<span class="source-line-no">051</span><span id="line-51">  @Override</span>
-<span class="source-line-no">052</span><span id="line-52">  public void onViewCreated(</span>
-<span class="source-line-no">053</span><span id="line-53">      @NonNull View view,</span>
-<span class="source-line-no">054</span><span id="line-54">      @Nullable Bundle savedInstanceState</span>
-<span class="source-line-no">055</span><span id="line-55">  ) {</span>
-<span class="source-line-no">056</span><span id="line-56">    super.onViewCreated(view, savedInstanceState);</span>
-<span class="source-line-no">057</span><span id="line-57"></span>
-<span class="source-line-no">058</span><span id="line-58">    batchViewModel = new ViewModelProvider(requireActivity()).get(BatchViewModel.class);</span>
-<span class="source-line-no">059</span><span id="line-59">    batchId = BatchDetailFragmentArgs.fromBundle(requireArguments()).getBatchId();</span>
-<span class="source-line-no">060</span><span id="line-60"></span>
-<span class="source-line-no">061</span><span id="line-61">    batchViewModel.setSelectedBatchId(batchId);</span>
-<span class="source-line-no">062</span><span id="line-62">    batchViewModel.getSelectedBatchViability().observe(getViewLifecycleOwner(), summary -&gt; {</span>
-<span class="source-line-no">063</span><span id="line-63">      if (summary != null) {</span>
-<span class="source-line-no">064</span><span id="line-64">        bindViability(summary);</span>
-<span class="source-line-no">065</span><span id="line-65">      }</span>
-<span class="source-line-no">066</span><span id="line-66">    });</span>
-<span class="source-line-no">067</span><span id="line-67"></span>
-<span class="source-line-no">068</span><span id="line-68">    batchViewModel.getSelectedBatchWithGroups().observe(getViewLifecycleOwner(), batchWithGroups -&gt; {</span>
-<span class="source-line-no">069</span><span id="line-69">      if (batchWithGroups != null) {</span>
-<span class="source-line-no">070</span><span id="line-70">        bindBatchWithGroups(batchWithGroups);</span>
-<span class="source-line-no">071</span><span id="line-71">      }</span>
-<span class="source-line-no">072</span><span id="line-72">    });</span>
-<span class="source-line-no">073</span><span id="line-73"></span>
-<span class="source-line-no">074</span><span id="line-74">    installMenu();</span>
-<span class="source-line-no">075</span><span id="line-75"></span>
-<span class="source-line-no">076</span><span id="line-76">    batchViewModel.get(batchId).observe(getViewLifecycleOwner(), batch -&gt; {</span>
-<span class="source-line-no">077</span><span id="line-77">      if (batch != null) {</span>
-<span class="source-line-no">078</span><span id="line-78">        bindBatch(batch);</span>
-<span class="source-line-no">079</span><span id="line-79">      }</span>
-<span class="source-line-no">080</span><span id="line-80">    });</span>
-<span class="source-line-no">081</span><span id="line-81"></span>
-<span class="source-line-no">082</span><span id="line-82">    binding.bulkCandlingButton.setOnClickListener(v -&gt;</span>
-<span class="source-line-no">083</span><span id="line-83">        BulkCandlingDialogFragment.newInstance(batchId)</span>
-<span class="source-line-no">084</span><span id="line-84">            .show(getChildFragmentManager(), BulkCandlingDialogFragment.class.getSimpleName())</span>
-<span class="source-line-no">085</span><span id="line-85">    );</span>
-<span class="source-line-no">086</span><span id="line-86"></span>
-<span class="source-line-no">087</span><span id="line-87">//    binding.perEggCandlingButton.setOnClickListener(v -&gt;</span>
-<span class="source-line-no">088</span><span id="line-88">//        Toast.makeText(</span>
-<span class="source-line-no">089</span><span id="line-89">//            requireContext(),</span>
-<span class="source-line-no">090</span><span id="line-90">//            R.string.message_per_egg_candling_placeholder,</span>
-<span class="source-line-no">091</span><span id="line-91">//            Toast.LENGTH_SHORT</span>
-<span class="source-line-no">092</span><span id="line-92">//        ).show()</span>
-<span class="source-line-no">093</span><span id="line-93">//    );</span>
-<span class="source-line-no">094</span><span id="line-94">  }</span>
-<span class="source-line-no">095</span><span id="line-95"></span>
-<span class="source-line-no">096</span><span id="line-96">  private void installMenu() {</span>
-<span class="source-line-no">097</span><span id="line-97">    MenuHost menuHost = requireActivity();</span>
-<span class="source-line-no">098</span><span id="line-98">    menuHost.addMenuProvider(new MenuProvider() {</span>
-<span class="source-line-no">099</span><span id="line-99">      @Override</span>
-<span class="source-line-no">100</span><span id="line-100">      public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {</span>
-<span class="source-line-no">101</span><span id="line-101">        menuInflater.inflate(R.menu.menu_batch_detail, menu);</span>
-<span class="source-line-no">102</span><span id="line-102">      }</span>
-<span class="source-line-no">103</span><span id="line-103"></span>
-<span class="source-line-no">104</span><span id="line-104">      @Override</span>
-<span class="source-line-no">105</span><span id="line-105">      public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {</span>
-<span class="source-line-no">106</span><span id="line-106">        if (menuItem.getItemId() == R.id.action_edit_batch) {</span>
-<span class="source-line-no">107</span><span id="line-107">          Toast.makeText(</span>
-<span class="source-line-no">108</span><span id="line-108">              requireContext(),</span>
-<span class="source-line-no">109</span><span id="line-109">              R.string.message_edit_batch_placeholder,</span>
-<span class="source-line-no">110</span><span id="line-110">              Toast.LENGTH_SHORT</span>
-<span class="source-line-no">111</span><span id="line-111">          ).show();</span>
-<span class="source-line-no">112</span><span id="line-112">          return true;</span>
-<span class="source-line-no">113</span><span id="line-113">        }</span>
-<span class="source-line-no">114</span><span id="line-114">        return false;</span>
-<span class="source-line-no">115</span><span id="line-115">      }</span>
-<span class="source-line-no">116</span><span id="line-116">    }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);</span>
-<span class="source-line-no">117</span><span id="line-117">  }</span>
-<span class="source-line-no">118</span><span id="line-118"></span>
-<span class="source-line-no">119</span><span id="line-119">  private void bindBatch(@NonNull Batch batch) {</span>
-<span class="source-line-no">120</span><span id="line-120">    if (batch.getBatchNumber() != null) {</span>
-<span class="source-line-no">121</span><span id="line-121">      binding.batchTitle.setText(</span>
-<span class="source-line-no">122</span><span id="line-122">          getString(R.string.format_batch_title, batch.getBatchNumber()));</span>
-<span class="source-line-no">123</span><span id="line-123">    } else {</span>
-<span class="source-line-no">124</span><span id="line-124">      binding.batchTitle.setText(R.string.label_batch_detail);</span>
-<span class="source-line-no">125</span><span id="line-125">    }</span>
-<span class="source-line-no">126</span><span id="line-126"></span>
-<span class="source-line-no">127</span><span id="line-127">    binding.batchNumberValue.setText(</span>
-<span class="source-line-no">128</span><span id="line-128">        (batch.getBatchNumber() != null)</span>
-<span class="source-line-no">129</span><span id="line-129">            ? String.valueOf(batch.getBatchNumber())</span>
-<span class="source-line-no">130</span><span id="line-130">            : getString(R.string.value_unknown));</span>
-<span class="source-line-no">131</span><span id="line-131"></span>
-<span class="source-line-no">132</span><span id="line-132">    binding.incubatorValue.setText(</span>
-<span class="source-line-no">133</span><span id="line-133">        (batch.getIncubatorId() != null)</span>
-<span class="source-line-no">134</span><span id="line-134">            ? getString(R.string.value_incubator_selected)</span>
-<span class="source-line-no">135</span><span id="line-135">            : getString(R.string.value_unassigned));</span>
-<span class="source-line-no">136</span><span id="line-136"></span>
-<span class="source-line-no">137</span><span id="line-137">    binding.eggsSetValue.setText(String.valueOf(batch.getNumEggsSet()));</span>
-<span class="source-line-no">138</span><span id="line-138"></span>
-<span class="source-line-no">139</span><span id="line-139">    binding.dateSetValue.setText(formatDate(batch.getDateSet()));</span>
-<span class="source-line-no">140</span><span id="line-140">    binding.lockdownDateValue.setText(formatDate(getLockdownDate(batch)));</span>
-<span class="source-line-no">141</span><span id="line-141">    binding.expectedHatchDateValue.setText(formatDate(batch.getExpectedHatchDate()));</span>
-<span class="source-line-no">142</span><span id="line-142"></span>
-<span class="source-line-no">143</span><span id="line-143">    LocalDate dateSet = batch.getDateSet();</span>
-<span class="source-line-no">144</span><span id="line-144">    binding.day7Date.setText(formatDate(offsetDays(dateSet, 7)));</span>
-<span class="source-line-no">145</span><span id="line-145">    binding.day14Date.setText(formatDate(offsetDays(dateSet, 14)));</span>
-<span class="source-line-no">146</span><span id="line-146">    binding.day18Date.setText(formatDate(getLockdownDate(batch)));</span>
-<span class="source-line-no">147</span><span id="line-147">    binding.hatchDate.setText(formatDate(batch.getExpectedHatchDate()));</span>
-<span class="source-line-no">148</span><span id="line-148">  }</span>
-<span class="source-line-no">149</span><span id="line-149"></span>
-<span class="source-line-no">150</span><span id="line-150">  private void bindBatchWithGroups(@NonNull BatchWithEggGroups batchWithGroups) {</span>
-<span class="source-line-no">151</span><span id="line-151">    binding.breedsValue.setText(formatBreedSummary(batchWithGroups.getGroups()));</span>
-<span class="source-line-no">152</span><span id="line-152">  }</span>
-<span class="source-line-no">153</span><span id="line-153"></span>
-<span class="source-line-no">154</span><span id="line-154">  @Nullable</span>
-<span class="source-line-no">155</span><span id="line-155">  private LocalDate getLockdownDate(@NonNull Batch batch) {</span>
-<span class="source-line-no">156</span><span id="line-156">    if (batch.getLockdownDate() != null) {</span>
-<span class="source-line-no">157</span><span id="line-157">      return batch.getLockdownDate();</span>
-<span class="source-line-no">158</span><span id="line-158">    }</span>
-<span class="source-line-no">159</span><span id="line-159">    if (batch.getExpectedHatchDate() != null) {</span>
-<span class="source-line-no">160</span><span id="line-160">      return batch.getExpectedHatchDate().minusDays(3);</span>
-<span class="source-line-no">161</span><span id="line-161">    }</span>
-<span class="source-line-no">162</span><span id="line-162">    return offsetDays(batch.getDateSet(), 18);</span>
-<span class="source-line-no">163</span><span id="line-163">  }</span>
-<span class="source-line-no">164</span><span id="line-164"></span>
-<span class="source-line-no">165</span><span id="line-165">  @Nullable</span>
-<span class="source-line-no">166</span><span id="line-166">  private LocalDate offsetDays(@Nullable LocalDate date, long days) {</span>
-<span class="source-line-no">167</span><span id="line-167">    return (date != null) ? date.plusDays(days) : null;</span>
-<span class="source-line-no">168</span><span id="line-168">  }</span>
-<span class="source-line-no">169</span><span id="line-169"></span>
-<span class="source-line-no">170</span><span id="line-170">  @NonNull</span>
-<span class="source-line-no">171</span><span id="line-171">  private String formatDate(@Nullable LocalDate date) {</span>
-<span class="source-line-no">172</span><span id="line-172">    return (date != null)</span>
-<span class="source-line-no">173</span><span id="line-173">        ? DATE_FORMATTER.format(date)</span>
-<span class="source-line-no">174</span><span id="line-174">        : getString(R.string.value_unknown);</span>
-<span class="source-line-no">175</span><span id="line-175">  }</span>
-<span class="source-line-no">176</span><span id="line-176"></span>
-<span class="source-line-no">177</span><span id="line-177">  @NonNull</span>
-<span class="source-line-no">178</span><span id="line-178">  private String formatBreedSummary(@Nullable List&lt;EggGroup&gt; groups) {</span>
-<span class="source-line-no">179</span><span id="line-179">    if (groups == null || groups.isEmpty()) {</span>
-<span class="source-line-no">180</span><span id="line-180">      return getString(R.string.value_unknown);</span>
-<span class="source-line-no">181</span><span id="line-181">    }</span>
-<span class="source-line-no">182</span><span id="line-182"></span>
-<span class="source-line-no">183</span><span id="line-183">    StringBuilder summary = new StringBuilder();</span>
-<span class="source-line-no">184</span><span id="line-184">    for (int i = 0; i &lt; groups.size(); i++) {</span>
-<span class="source-line-no">185</span><span id="line-185">      EggGroup group = groups.get(i);</span>
-<span class="source-line-no">186</span><span id="line-186">      if (group.getBreed() == null || group.getBreed().isBlank()) {</span>
-<span class="source-line-no">187</span><span id="line-187">        continue;</span>
-<span class="source-line-no">188</span><span id="line-188">      }</span>
-<span class="source-line-no">189</span><span id="line-189">      if (summary.length() &gt; 0) {</span>
-<span class="source-line-no">190</span><span id="line-190">        summary.append(", ");</span>
-<span class="source-line-no">191</span><span id="line-191">      }</span>
-<span class="source-line-no">192</span><span id="line-192">      summary.append(group.getBreed());</span>
-<span class="source-line-no">193</span><span id="line-193">    }</span>
-<span class="source-line-no">194</span><span id="line-194"></span>
-<span class="source-line-no">195</span><span id="line-195">    return (summary.length() &gt; 0)</span>
-<span class="source-line-no">196</span><span id="line-196">        ? summary.toString()</span>
-<span class="source-line-no">197</span><span id="line-197">        : getString(R.string.value_unknown);</span>
-<span class="source-line-no">198</span><span id="line-198">  }</span>
-<span class="source-line-no">199</span><span id="line-199"></span>
-<span class="source-line-no">200</span><span id="line-200">  private void bindViability(@NonNull BatchViabilitySummary summary) {</span>
-<span class="source-line-no">201</span><span id="line-201">    int total = summary.getTotalCount();</span>
-<span class="source-line-no">202</span><span id="line-202">    int viable = summary.getViableCount();</span>
+<span class="source-line-no">030</span><span id="line-30">/**</span>
+<span class="source-line-no">031</span><span id="line-31"> * Fragment that displays detailed information about a single batch.</span>
+<span class="source-line-no">032</span><span id="line-32"> *</span>
+<span class="source-line-no">033</span><span id="line-33"> * &lt;p&gt;This includes batch metadata, incubator and breed information, key milestone</span>
+<span class="source-line-no">034</span><span id="line-34"> * dates, and current viability statistics.</span>
+<span class="source-line-no">035</span><span id="line-35"> */</span>
+<span class="source-line-no">036</span><span id="line-36">@AndroidEntryPoint</span>
+<span class="source-line-no">037</span><span id="line-37">public class BatchDetailFragment extends Fragment {</span>
+<span class="source-line-no">038</span><span id="line-38"></span>
+<span class="source-line-no">039</span><span id="line-39">  private static final DateTimeFormatter DATE_FORMATTER =</span>
+<span class="source-line-no">040</span><span id="line-40">      DateTimeFormatter.ofPattern("MMM d, uuuu");</span>
+<span class="source-line-no">041</span><span id="line-41"></span>
+<span class="source-line-no">042</span><span id="line-42">  private FragmentBatchDetailBinding binding;</span>
+<span class="source-line-no">043</span><span id="line-43">  private BatchViewModel batchViewModel;</span>
+<span class="source-line-no">044</span><span id="line-44">  private long batchId;</span>
+<span class="source-line-no">045</span><span id="line-45"></span>
+<span class="source-line-no">046</span><span id="line-46">  /**</span>
+<span class="source-line-no">047</span><span id="line-47">   * Inflates the batch-detail layout and initializes view binding.</span>
+<span class="source-line-no">048</span><span id="line-48">   *</span>
+<span class="source-line-no">049</span><span id="line-49">   * @param inflater           layout inflater.</span>
+<span class="source-line-no">050</span><span id="line-50">   * @param container          optional parent container.</span>
+<span class="source-line-no">051</span><span id="line-51">   * @param savedInstanceState saved instance state, if any.</span>
+<span class="source-line-no">052</span><span id="line-52">   * @return root view for this fragment.</span>
+<span class="source-line-no">053</span><span id="line-53">   */</span>
+<span class="source-line-no">054</span><span id="line-54">  @Nullable</span>
+<span class="source-line-no">055</span><span id="line-55">  @Override</span>
+<span class="source-line-no">056</span><span id="line-56">  public View onCreateView(</span>
+<span class="source-line-no">057</span><span id="line-57">      @NonNull LayoutInflater inflater,</span>
+<span class="source-line-no">058</span><span id="line-58">      @Nullable ViewGroup container,</span>
+<span class="source-line-no">059</span><span id="line-59">      @Nullable Bundle savedInstanceState</span>
+<span class="source-line-no">060</span><span id="line-60">  ) {</span>
+<span class="source-line-no">061</span><span id="line-61">    binding = FragmentBatchDetailBinding.inflate(inflater, container, false);</span>
+<span class="source-line-no">062</span><span id="line-62">    return binding.getRoot();</span>
+<span class="source-line-no">063</span><span id="line-63">  }</span>
+<span class="source-line-no">064</span><span id="line-64"></span>
+<span class="source-line-no">065</span><span id="line-65">  /**</span>
+<span class="source-line-no">066</span><span id="line-66">   * Completes view initialization, wiring ViewModel observers and UI event handlers.</span>
+<span class="source-line-no">067</span><span id="line-67">   *</span>
+<span class="source-line-no">068</span><span id="line-68">   * @param view               root view returned from {@link #onCreateView}.</span>
+<span class="source-line-no">069</span><span id="line-69">   * @param savedInstanceState saved instance state, if any.</span>
+<span class="source-line-no">070</span><span id="line-70">   */</span>
+<span class="source-line-no">071</span><span id="line-71">  @Override</span>
+<span class="source-line-no">072</span><span id="line-72">  public void onViewCreated(</span>
+<span class="source-line-no">073</span><span id="line-73">      @NonNull View view,</span>
+<span class="source-line-no">074</span><span id="line-74">      @Nullable Bundle savedInstanceState</span>
+<span class="source-line-no">075</span><span id="line-75">  ) {</span>
+<span class="source-line-no">076</span><span id="line-76">    super.onViewCreated(view, savedInstanceState);</span>
+<span class="source-line-no">077</span><span id="line-77"></span>
+<span class="source-line-no">078</span><span id="line-78">    batchViewModel = new ViewModelProvider(requireActivity()).get(BatchViewModel.class);</span>
+<span class="source-line-no">079</span><span id="line-79">    batchId = BatchDetailFragmentArgs.fromBundle(requireArguments()).getBatchId();</span>
+<span class="source-line-no">080</span><span id="line-80"></span>
+<span class="source-line-no">081</span><span id="line-81">    batchViewModel.setSelectedBatchId(batchId);</span>
+<span class="source-line-no">082</span><span id="line-82">    batchViewModel.getSelectedBatchViability().observe(getViewLifecycleOwner(), summary -&gt; {</span>
+<span class="source-line-no">083</span><span id="line-83">      if (summary != null) {</span>
+<span class="source-line-no">084</span><span id="line-84">        bindViability(summary);</span>
+<span class="source-line-no">085</span><span id="line-85">      }</span>
+<span class="source-line-no">086</span><span id="line-86">    });</span>
+<span class="source-line-no">087</span><span id="line-87"></span>
+<span class="source-line-no">088</span><span id="line-88">    batchViewModel.getSelectedBatchWithGroups()</span>
+<span class="source-line-no">089</span><span id="line-89">        .observe(getViewLifecycleOwner(), batchWithGroups -&gt; {</span>
+<span class="source-line-no">090</span><span id="line-90">          if (batchWithGroups != null) {</span>
+<span class="source-line-no">091</span><span id="line-91">            bindBatchWithGroups(batchWithGroups);</span>
+<span class="source-line-no">092</span><span id="line-92">          }</span>
+<span class="source-line-no">093</span><span id="line-93">        });</span>
+<span class="source-line-no">094</span><span id="line-94"></span>
+<span class="source-line-no">095</span><span id="line-95">    installMenu();</span>
+<span class="source-line-no">096</span><span id="line-96"></span>
+<span class="source-line-no">097</span><span id="line-97">    batchViewModel.get(batchId).observe(getViewLifecycleOwner(), batch -&gt; {</span>
+<span class="source-line-no">098</span><span id="line-98">      if (batch != null) {</span>
+<span class="source-line-no">099</span><span id="line-99">        bindBatch(batch);</span>
+<span class="source-line-no">100</span><span id="line-100">      }</span>
+<span class="source-line-no">101</span><span id="line-101">    });</span>
+<span class="source-line-no">102</span><span id="line-102"></span>
+<span class="source-line-no">103</span><span id="line-103">    binding.bulkCandlingButton.setOnClickListener(v -&gt;</span>
+<span class="source-line-no">104</span><span id="line-104">        BulkCandlingDialogFragment.newInstance(batchId)</span>
+<span class="source-line-no">105</span><span id="line-105">            .show(getChildFragmentManager(), BulkCandlingDialogFragment.class.getSimpleName())</span>
+<span class="source-line-no">106</span><span id="line-106">    );</span>
+<span class="source-line-no">107</span><span id="line-107"></span>
+<span class="source-line-no">108</span><span id="line-108">//    binding.perEggCandlingButton.setOnClickListener(v -&gt;</span>
+<span class="source-line-no">109</span><span id="line-109">//        Toast.makeText(</span>
+<span class="source-line-no">110</span><span id="line-110">//            requireContext(),</span>
+<span class="source-line-no">111</span><span id="line-111">//            R.string.message_per_egg_candling_placeholder,</span>
+<span class="source-line-no">112</span><span id="line-112">//            Toast.LENGTH_SHORT</span>
+<span class="source-line-no">113</span><span id="line-113">//        ).show()</span>
+<span class="source-line-no">114</span><span id="line-114">//    );</span>
+<span class="source-line-no">115</span><span id="line-115">  }</span>
+<span class="source-line-no">116</span><span id="line-116"></span>
+<span class="source-line-no">117</span><span id="line-117">  private void installMenu() {</span>
+<span class="source-line-no">118</span><span id="line-118">    MenuHost menuHost = requireActivity();</span>
+<span class="source-line-no">119</span><span id="line-119">    menuHost.addMenuProvider(new MenuProvider() {</span>
+<span class="source-line-no">120</span><span id="line-120">      @Override</span>
+<span class="source-line-no">121</span><span id="line-121">      public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {</span>
+<span class="source-line-no">122</span><span id="line-122">        menuInflater.inflate(R.menu.menu_batch_detail, menu);</span>
+<span class="source-line-no">123</span><span id="line-123">      }</span>
+<span class="source-line-no">124</span><span id="line-124"></span>
+<span class="source-line-no">125</span><span id="line-125">      @Override</span>
+<span class="source-line-no">126</span><span id="line-126">      public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {</span>
+<span class="source-line-no">127</span><span id="line-127">        if (menuItem.getItemId() == R.id.action_edit_batch) {</span>
+<span class="source-line-no">128</span><span id="line-128">          Toast.makeText(</span>
+<span class="source-line-no">129</span><span id="line-129">              requireContext(),</span>
+<span class="source-line-no">130</span><span id="line-130">              R.string.message_edit_batch_placeholder,</span>
+<span class="source-line-no">131</span><span id="line-131">              Toast.LENGTH_SHORT</span>
+<span class="source-line-no">132</span><span id="line-132">          ).show();</span>
+<span class="source-line-no">133</span><span id="line-133">          return true;</span>
+<span class="source-line-no">134</span><span id="line-134">        }</span>
+<span class="source-line-no">135</span><span id="line-135">        return false;</span>
+<span class="source-line-no">136</span><span id="line-136">      }</span>
+<span class="source-line-no">137</span><span id="line-137">    }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);</span>
+<span class="source-line-no">138</span><span id="line-138">  }</span>
+<span class="source-line-no">139</span><span id="line-139"></span>
+<span class="source-line-no">140</span><span id="line-140">  private void bindBatch(@NonNull Batch batch) {</span>
+<span class="source-line-no">141</span><span id="line-141">    if (batch.getBatchNumber() != null) {</span>
+<span class="source-line-no">142</span><span id="line-142">      binding.batchTitle.setText(</span>
+<span class="source-line-no">143</span><span id="line-143">          getString(R.string.format_batch_title, batch.getBatchNumber()));</span>
+<span class="source-line-no">144</span><span id="line-144">    } else {</span>
+<span class="source-line-no">145</span><span id="line-145">      binding.batchTitle.setText(R.string.label_batch_detail);</span>
+<span class="source-line-no">146</span><span id="line-146">    }</span>
+<span class="source-line-no">147</span><span id="line-147"></span>
+<span class="source-line-no">148</span><span id="line-148">    binding.batchNumberValue.setText(</span>
+<span class="source-line-no">149</span><span id="line-149">        (batch.getBatchNumber() != null)</span>
+<span class="source-line-no">150</span><span id="line-150">            ? String.valueOf(batch.getBatchNumber())</span>
+<span class="source-line-no">151</span><span id="line-151">            : getString(R.string.value_unknown));</span>
+<span class="source-line-no">152</span><span id="line-152"></span>
+<span class="source-line-no">153</span><span id="line-153">    binding.incubatorValue.setText(</span>
+<span class="source-line-no">154</span><span id="line-154">        (batch.getIncubatorId() != null)</span>
+<span class="source-line-no">155</span><span id="line-155">            ? getString(R.string.value_incubator_selected)</span>
+<span class="source-line-no">156</span><span id="line-156">            : getString(R.string.value_unassigned));</span>
+<span class="source-line-no">157</span><span id="line-157"></span>
+<span class="source-line-no">158</span><span id="line-158">    binding.eggsSetValue.setText(String.valueOf(batch.getNumEggsSet()));</span>
+<span class="source-line-no">159</span><span id="line-159"></span>
+<span class="source-line-no">160</span><span id="line-160">    binding.dateSetValue.setText(formatDate(batch.getDateSet()));</span>
+<span class="source-line-no">161</span><span id="line-161">    binding.lockdownDateValue.setText(formatDate(getLockdownDate(batch)));</span>
+<span class="source-line-no">162</span><span id="line-162">    binding.expectedHatchDateValue.setText(formatDate(batch.getExpectedHatchDate()));</span>
+<span class="source-line-no">163</span><span id="line-163"></span>
+<span class="source-line-no">164</span><span id="line-164">    LocalDate dateSet = batch.getDateSet();</span>
+<span class="source-line-no">165</span><span id="line-165">    binding.day7Date.setText(formatDate(offsetDays(dateSet, 7)));</span>
+<span class="source-line-no">166</span><span id="line-166">    binding.day14Date.setText(formatDate(offsetDays(dateSet, 14)));</span>
+<span class="source-line-no">167</span><span id="line-167">    binding.day18Date.setText(formatDate(getLockdownDate(batch)));</span>
+<span class="source-line-no">168</span><span id="line-168">    binding.hatchDate.setText(formatDate(batch.getExpectedHatchDate()));</span>
+<span class="source-line-no">169</span><span id="line-169">  }</span>
+<span class="source-line-no">170</span><span id="line-170"></span>
+<span class="source-line-no">171</span><span id="line-171">  private void bindBatchWithGroups(@NonNull BatchWithEggGroups batchWithGroups) {</span>
+<span class="source-line-no">172</span><span id="line-172">    binding.breedsValue.setText(formatBreedSummary(batchWithGroups.getGroups()));</span>
+<span class="source-line-no">173</span><span id="line-173">  }</span>
+<span class="source-line-no">174</span><span id="line-174"></span>
+<span class="source-line-no">175</span><span id="line-175">  @Nullable</span>
+<span class="source-line-no">176</span><span id="line-176">  private LocalDate getLockdownDate(@NonNull Batch batch) {</span>
+<span class="source-line-no">177</span><span id="line-177">    if (batch.getLockdownDate() != null) {</span>
+<span class="source-line-no">178</span><span id="line-178">      return batch.getLockdownDate();</span>
+<span class="source-line-no">179</span><span id="line-179">    }</span>
+<span class="source-line-no">180</span><span id="line-180">    if (batch.getExpectedHatchDate() != null) {</span>
+<span class="source-line-no">181</span><span id="line-181">      return batch.getExpectedHatchDate().minusDays(3);</span>
+<span class="source-line-no">182</span><span id="line-182">    }</span>
+<span class="source-line-no">183</span><span id="line-183">    return offsetDays(batch.getDateSet(), 18);</span>
+<span class="source-line-no">184</span><span id="line-184">  }</span>
+<span class="source-line-no">185</span><span id="line-185"></span>
+<span class="source-line-no">186</span><span id="line-186">  @Nullable</span>
+<span class="source-line-no">187</span><span id="line-187">  private LocalDate offsetDays(@Nullable LocalDate date, long days) {</span>
+<span class="source-line-no">188</span><span id="line-188">    return (date != null) ? date.plusDays(days) : null;</span>
+<span class="source-line-no">189</span><span id="line-189">  }</span>
+<span class="source-line-no">190</span><span id="line-190"></span>
+<span class="source-line-no">191</span><span id="line-191">  @NonNull</span>
+<span class="source-line-no">192</span><span id="line-192">  private String formatDate(@Nullable LocalDate date) {</span>
+<span class="source-line-no">193</span><span id="line-193">    return (date != null)</span>
+<span class="source-line-no">194</span><span id="line-194">        ? DATE_FORMATTER.format(date)</span>
+<span class="source-line-no">195</span><span id="line-195">        : getString(R.string.value_unknown);</span>
+<span class="source-line-no">196</span><span id="line-196">  }</span>
+<span class="source-line-no">197</span><span id="line-197"></span>
+<span class="source-line-no">198</span><span id="line-198">  @NonNull</span>
+<span class="source-line-no">199</span><span id="line-199">  private String formatBreedSummary(@Nullable List&lt;EggGroup&gt; groups) {</span>
+<span class="source-line-no">200</span><span id="line-200">    if (groups == null || groups.isEmpty()) {</span>
+<span class="source-line-no">201</span><span id="line-201">      return getString(R.string.value_unknown);</span>
+<span class="source-line-no">202</span><span id="line-202">    }</span>
 <span class="source-line-no">203</span><span id="line-203"></span>
-<span class="source-line-no">204</span><span id="line-204">    if (total &gt; 0) {</span>
-<span class="source-line-no">205</span><span id="line-205">      binding.viableValue.setText(</span>
-<span class="source-line-no">206</span><span id="line-206">          getString(R.string.value_viability_dynamic, viable, total, summary.getViableRate() * 100.0)</span>
-<span class="source-line-no">207</span><span id="line-207">      );</span>
-<span class="source-line-no">208</span><span id="line-208">    } else {</span>
-<span class="source-line-no">209</span><span id="line-209">      binding.viableValue.setText(R.string.value_viability_zero);</span>
-<span class="source-line-no">210</span><span id="line-210">    }</span>
-<span class="source-line-no">211</span><span id="line-211">  }</span>
-<span class="source-line-no">212</span><span id="line-212"></span>
-<span class="source-line-no">213</span><span id="line-213">  @Override</span>
-<span class="source-line-no">214</span><span id="line-214">  public void onDestroyView() {</span>
-<span class="source-line-no">215</span><span id="line-215">    binding = null;</span>
-<span class="source-line-no">216</span><span id="line-216">    super.onDestroyView();</span>
-<span class="source-line-no">217</span><span id="line-217">  }</span>
-<span class="source-line-no">218</span><span id="line-218"></span>
-<span class="source-line-no">219</span><span id="line-219">}</span>
+<span class="source-line-no">204</span><span id="line-204">    StringBuilder summary = new StringBuilder();</span>
+<span class="source-line-no">205</span><span id="line-205">    for (int i = 0; i &lt; groups.size(); i++) {</span>
+<span class="source-line-no">206</span><span id="line-206">      EggGroup group = groups.get(i);</span>
+<span class="source-line-no">207</span><span id="line-207">      if (group.getBreed() == null || group.getBreed().isBlank()) {</span>
+<span class="source-line-no">208</span><span id="line-208">        continue;</span>
+<span class="source-line-no">209</span><span id="line-209">      }</span>
+<span class="source-line-no">210</span><span id="line-210">      if (summary.length() &gt; 0) {</span>
+<span class="source-line-no">211</span><span id="line-211">        summary.append(", ");</span>
+<span class="source-line-no">212</span><span id="line-212">      }</span>
+<span class="source-line-no">213</span><span id="line-213">      summary.append(group.getBreed());</span>
+<span class="source-line-no">214</span><span id="line-214">    }</span>
+<span class="source-line-no">215</span><span id="line-215"></span>
+<span class="source-line-no">216</span><span id="line-216">    return (summary.length() &gt; 0)</span>
+<span class="source-line-no">217</span><span id="line-217">        ? summary.toString()</span>
+<span class="source-line-no">218</span><span id="line-218">        : getString(R.string.value_unknown);</span>
+<span class="source-line-no">219</span><span id="line-219">  }</span>
+<span class="source-line-no">220</span><span id="line-220"></span>
+<span class="source-line-no">221</span><span id="line-221">  private void bindViability(@NonNull BatchViabilitySummary summary) {</span>
+<span class="source-line-no">222</span><span id="line-222">    int total = summary.getTotalCount();</span>
+<span class="source-line-no">223</span><span id="line-223">    int viable = summary.getViableCount();</span>
+<span class="source-line-no">224</span><span id="line-224"></span>
+<span class="source-line-no">225</span><span id="line-225">    if (total &gt; 0) {</span>
+<span class="source-line-no">226</span><span id="line-226">      binding.viableValue.setText(</span>
+<span class="source-line-no">227</span><span id="line-227">          getString(R.string.value_viability_dynamic, viable, total,</span>
+<span class="source-line-no">228</span><span id="line-228">              summary.getViableRate() * 100.0)</span>
+<span class="source-line-no">229</span><span id="line-229">      );</span>
+<span class="source-line-no">230</span><span id="line-230">    } else {</span>
+<span class="source-line-no">231</span><span id="line-231">      binding.viableValue.setText(R.string.value_viability_zero);</span>
+<span class="source-line-no">232</span><span id="line-232">    }</span>
+<span class="source-line-no">233</span><span id="line-233">  }</span>
+<span class="source-line-no">234</span><span id="line-234"></span>
+<span class="source-line-no">235</span><span id="line-235">  @Override</span>
+<span class="source-line-no">236</span><span id="line-236">  public void onDestroyView() {</span>
+<span class="source-line-no">237</span><span id="line-237">    binding = null;</span>
+<span class="source-line-no">238</span><span id="line-238">    super.onDestroyView();</span>
+<span class="source-line-no">239</span><span id="line-239">  }</span>
+<span class="source-line-no">240</span><span id="line-240">}</span>
 
 
 

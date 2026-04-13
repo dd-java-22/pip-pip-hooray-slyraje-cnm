@@ -83,8 +83,12 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-5">BatchEggAggregate</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-11">BatchEggAggregate</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Projection that aggregates egg counts for a single batch.
+
+<p>Each instance contains the batch ID, the total number of eggs,
+and the number of eggs currently marked as viable.</div>
 </div>
 </section>
 <section class="summary">
@@ -115,22 +119,34 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBatchId()" class="member-name-link">getBatchId</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the ID of the batch for this aggregate.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTotalCount()" class="member-name-link">getTotalCount</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the total number of eggs in the batch.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getViableCount()" class="member-name-link">getViableCount</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the number of viable eggs in the batch.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setBatchId(long)" class="member-name-link">setBatchId</a><wbr>(long&nbsp;batchId)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the ID of the batch for this aggregate.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTotalCount(int)" class="member-name-link">setTotalCount</a><wbr>(int&nbsp;totalCount)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the total number of eggs in the batch.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setViableCount(int)" class="member-name-link">setViableCount</a><wbr>(int&nbsp;viableCount)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the number of viable eggs in the batch.</div>
+</div>
 </div>
 </div>
 </div>
@@ -152,7 +168,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>BatchEggAggregate</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-5">BatchEggAggregate</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-11">BatchEggAggregate</a></span>()</div>
 </div>
 </section>
 </li>
@@ -168,7 +184,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getBatchId()">
 <h3>getBatchId</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-16">getBatchId</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-27">getBatchId</a></span>()</div>
+<div class="block">Returns the ID of the batch for this aggregate.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>batch ID.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -176,7 +197,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setBatchId(long)">
 <h3>setBatchId</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-17">setBatchId</a></span><wbr><span class="parameters">(long&nbsp;batchId)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-34">setBatchId</a></span><wbr><span class="parameters">(long&nbsp;batchId)</span></div>
+<div class="block">Sets the ID of the batch for this aggregate.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>batchId</code> - batch ID.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -184,7 +210,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getTotalCount()">
 <h3>getTotalCount</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-19">getTotalCount</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-41">getTotalCount</a></span>()</div>
+<div class="block">Returns the total number of eggs in the batch.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>total egg count.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -192,7 +223,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setTotalCount(int)">
 <h3>setTotalCount</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-20">setTotalCount</a></span><wbr><span class="parameters">(int&nbsp;totalCount)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-48">setTotalCount</a></span><wbr><span class="parameters">(int&nbsp;totalCount)</span></div>
+<div class="block">Sets the total number of eggs in the batch.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>totalCount</code> - total egg count.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -200,7 +236,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getViableCount()">
 <h3>getViableCount</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-22">getViableCount</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-55">getViableCount</a></span>()</div>
+<div class="block">Returns the number of viable eggs in the batch.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>viable egg count.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -208,7 +249,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setViableCount(int)">
 <h3>setViableCount</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-23">setViableCount</a></span><wbr><span class="parameters">(int&nbsp;viableCount)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/pojo/BatchEggAggregate.html#line-62">setViableCount</a></span><wbr><span class="parameters">(int&nbsp;viableCount)</span></div>
+<div class="block">Sets the number of viable eggs in the batch.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>viableCount</code> - viable egg count.</dd>
+</dl>
 </div>
 </section>
 </li>

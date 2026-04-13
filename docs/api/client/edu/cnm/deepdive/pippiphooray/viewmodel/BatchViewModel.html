@@ -90,8 +90,9 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-28">BatchViewModel</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-31">BatchViewModel</a></span>
 <span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/lifecycle/ViewModel.html" title="class or interface in androidx.lifecycle" class="external-link">ViewModel</a></span></div>
+<div class="block">ViewModel for managing batch data, sorting, and egg viability operations.</div>
 </div>
 </section>
 <section class="summary">
@@ -107,7 +108,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static enum&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="BatchViewModel.SortOrder.html" class="type-name-link" title="enum class in edu.cnm.deepdive.pippiphooray.viewmodel">BatchViewModel.SortOrder</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Enumeration defining available sort orders for batches.</div>
+</div>
 </div>
 </section>
 </li>
@@ -124,53 +127,85 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#applyBulkCandling(java.util.Map)" class="member-name-link">applyBulkCandling</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;&nbsp;viableCountsByGroupId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Applies bulk candling to a batch by marking eggs as viable or not viable.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#delete(edu.cnm.deepdive.pippiphooray.model.entity.Batch)" class="member-name-link">delete</a><wbr>(<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&nbsp;batch)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Deletes a batch asynchronously.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#get(long)" class="member-name-link">get</a><wbr>(long&nbsp;id)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets a specific batch by ID as LiveData.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&gt;&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAll()" class="member-name-link">getAll</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets all batches as LiveData.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/pojo/BatchWithIncubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithIncubator</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAllWithIncubator()" class="member-name-link">getAllWithIncubator</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets all batches with incubator information as LiveData.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/pojo/BatchCardSummary.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchCardSummary</a>&gt;&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBatchCardSummaries()" class="member-name-link">getBatchCardSummaries</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets all batch card summaries for display in the UI as LiveData.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/pojo/BatchWithIncubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithIncubator</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBatchSummaries()" class="member-name-link">getBatchSummaries</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets all batches sorted according to the current sort order as LiveData.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&gt;&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getByIncubator(long)" class="member-name-link">getByIncubator</a><wbr>(long&nbsp;incubatorId)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets all batches for a specific incubator as LiveData.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getEggsByGroup(long)" class="member-name-link">getEggsByGroup</a><wbr>(long&nbsp;eggGroupId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets all eggs for a specific egg group as LiveData.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="../model/pojo/BatchViabilitySummary.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchViabilitySummary</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSelectedBatchViability()" class="member-name-link">getSelectedBatchViability</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the viability summary for the selected batch as LiveData.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="../model/pojo/BatchWithEggGroups.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithEggGroups</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSelectedBatchWithGroups()" class="member-name-link">getSelectedBatchWithGroups</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the selected batch with its egg groups as LiveData.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="../model/pojo/BatchWithEggGroups.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithEggGroups</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWithGroups(long)" class="member-name-link">getWithGroups</a><wbr>(long&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets a specific batch with its egg groups as LiveData.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#save(edu.cnm.deepdive.pippiphooray.model.entity.Batch)" class="member-name-link">save</a><wbr>(<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&nbsp;batch)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Saves a batch asynchronously.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#saveWithInitialEggGroups(edu.cnm.deepdive.pippiphooray.model.entity.Batch,java.lang.String)" class="member-name-link">saveWithInitialEggGroups</a><wbr>(<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&nbsp;batch,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;breed)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Saves a batch with an initial egg group asynchronously.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setSelectedBatchId(long)" class="member-name-link">setSelectedBatchId</a><wbr>(long&nbsp;batchId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the selected batch by ID.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setSortOrder(edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel.SortOrder)" class="member-name-link">setSortOrder</a><wbr>(<a href="BatchViewModel.SortOrder.html" title="enum class in edu.cnm.deepdive.pippiphooray.viewmodel">BatchViewModel.SortOrder</a>&nbsp;order)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the sort order for batches.</div>
+</div>
 </div>
 </div>
 </div>
@@ -195,7 +230,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getAll()">
 <h3>getAll</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-114">getAll</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-135">getAll</a></span>()</div>
+<div class="block">Gets all batches as LiveData.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>a LiveData list of all batches</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -203,7 +243,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="get(long)">
 <h3>get</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-118">get</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-145">get</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="block">Gets a specific batch by ID as LiveData.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - the batch ID</dd>
+<dt>Returns:</dt>
+<dd>a LiveData containing the batch with the specified ID</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -211,7 +258,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getByIncubator(long)">
 <h3>getByIncubator</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-122">getByIncubator</a></span><wbr><span class="parameters">(long&nbsp;incubatorId)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-155">getByIncubator</a></span><wbr><span class="parameters">(long&nbsp;incubatorId)</span></div>
+<div class="block">Gets all batches for a specific incubator as LiveData.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>incubatorId</code> - the incubator ID</dd>
+<dt>Returns:</dt>
+<dd>a LiveData list of batches for the specified incubator</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -219,7 +273,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getWithGroups(long)">
 <h3>getWithGroups</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../model/pojo/BatchWithEggGroups.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithEggGroups</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-126">getWithGroups</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../model/pojo/BatchWithEggGroups.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithEggGroups</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-165">getWithGroups</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="block">Gets a specific batch with its egg groups as LiveData.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - the batch ID</dd>
+<dt>Returns:</dt>
+<dd>a LiveData containing the batch with its egg groups</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -227,7 +288,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getAllWithIncubator()">
 <h3>getAllWithIncubator</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/pojo/BatchWithIncubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithIncubator</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-130">getAllWithIncubator</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/pojo/BatchWithIncubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithIncubator</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-174">getAllWithIncubator</a></span>()</div>
+<div class="block">Gets all batches with incubator information as LiveData.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>a LiveData list of all batches with incubator details</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -235,7 +301,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getBatchSummaries()">
 <h3>getBatchSummaries</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/pojo/BatchWithIncubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithIncubator</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-134">getBatchSummaries</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/pojo/BatchWithIncubator.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithIncubator</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-183">getBatchSummaries</a></span>()</div>
+<div class="block">Gets all batches sorted according to the current sort order as LiveData.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>a LiveData list of sorted batches with incubator details</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -243,7 +314,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getBatchCardSummaries()">
 <h3>getBatchCardSummaries</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/pojo/BatchCardSummary.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchCardSummary</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-138">getBatchCardSummaries</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/pojo/BatchCardSummary.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchCardSummary</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-192">getBatchCardSummaries</a></span>()</div>
+<div class="block">Gets all batch card summaries for display in the UI as LiveData.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>a LiveData list of batch card summaries</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -251,7 +327,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setSortOrder(edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel.SortOrder)">
 <h3>setSortOrder</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-142">setSortOrder</a></span><wbr><span class="parameters">(<a href="BatchViewModel.SortOrder.html" title="enum class in edu.cnm.deepdive.pippiphooray.viewmodel">BatchViewModel.SortOrder</a>&nbsp;order)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-201">setSortOrder</a></span><wbr><span class="parameters">(<a href="BatchViewModel.SortOrder.html" title="enum class in edu.cnm.deepdive.pippiphooray.viewmodel">BatchViewModel.SortOrder</a>&nbsp;order)</span></div>
+<div class="block">Sets the sort order for batches.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>order</code> - the sort order to apply</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -259,7 +340,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="save(edu.cnm.deepdive.pippiphooray.model.entity.Batch)">
 <h3>save</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-146">save</a></span><wbr><span class="parameters">(<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&nbsp;batch)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-211">save</a></span><wbr><span class="parameters">(<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&nbsp;batch)</span></div>
+<div class="block">Saves a batch asynchronously.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>batch</code> - the batch to save</dd>
+<dt>Returns:</dt>
+<dd>a CompletableFuture containing the ID of the saved batch</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -267,8 +355,16 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="saveWithInitialEggGroups(edu.cnm.deepdive.pippiphooray.model.entity.Batch,java.lang.String)">
 <h3>saveWithInitialEggGroups</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-150">saveWithInitialEggGroups</a></span><wbr><span class="parameters">(<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&nbsp;batch,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-222">saveWithInitialEggGroups</a></span><wbr><span class="parameters">(<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&nbsp;batch,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;breed)</span></div>
+<div class="block">Saves a batch with an initial egg group asynchronously.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>batch</code> - the batch to save</dd>
+<dd><code>breed</code> - the breed for the initial egg group</dd>
+<dt>Returns:</dt>
+<dd>a CompletableFuture containing the ID of the saved batch</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -276,7 +372,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="delete(edu.cnm.deepdive.pippiphooray.model.entity.Batch)">
 <h3>delete</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-154">delete</a></span><wbr><span class="parameters">(<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&nbsp;batch)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-232">delete</a></span><wbr><span class="parameters">(<a href="../model/entity/Batch.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Batch</a>&nbsp;batch)</span></div>
+<div class="block">Deletes a batch asynchronously.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>batch</code> - the batch to delete</dd>
+<dt>Returns:</dt>
+<dd>a CompletableFuture that completes when the deletion finishes</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -284,7 +387,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setSelectedBatchId(long)">
 <h3>setSelectedBatchId</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-193">setSelectedBatchId</a></span><wbr><span class="parameters">(long&nbsp;batchId)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-241">setSelectedBatchId</a></span><wbr><span class="parameters">(long&nbsp;batchId)</span></div>
+<div class="block">Sets the selected batch by ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>batchId</code> - the ID of the batch to select</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -292,7 +400,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getSelectedBatchWithGroups()">
 <h3>getSelectedBatchWithGroups</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../model/pojo/BatchWithEggGroups.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithEggGroups</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-197">getSelectedBatchWithGroups</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../model/pojo/BatchWithEggGroups.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchWithEggGroups</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-250">getSelectedBatchWithGroups</a></span>()</div>
+<div class="block">Gets the selected batch with its egg groups as LiveData.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>a LiveData containing the selected batch with its egg groups</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -300,7 +413,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getEggsByGroup(long)">
 <h3>getEggsByGroup</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-201">getEggsByGroup</a></span><wbr><span class="parameters">(long&nbsp;eggGroupId)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/entity/Egg.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">Egg</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-260">getEggsByGroup</a></span><wbr><span class="parameters">(long&nbsp;eggGroupId)</span></div>
+<div class="block">Gets all eggs for a specific egg group as LiveData.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggGroupId</code> - the egg group ID</dd>
+<dt>Returns:</dt>
+<dd>a LiveData list of eggs in the specified group</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -308,7 +428,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="applyBulkCandling(java.util.Map)">
 <h3>applyBulkCandling</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-205">applyBulkCandling</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;&nbsp;viableCountsByGroupId)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-270">applyBulkCandling</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;&nbsp;viableCountsByGroupId)</span></div>
+<div class="block">Applies bulk candling to a batch by marking eggs as viable or not viable.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>viableCountsByGroupId</code> - a map of egg group IDs to viable egg counts</dd>
+<dt>Returns:</dt>
+<dd>a CompletableFuture that completes when the operation finishes</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -316,7 +443,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getSelectedBatchViability()">
 <h3>getSelectedBatchViability</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../model/pojo/BatchViabilitySummary.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchViabilitySummary</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-244">getSelectedBatchViability</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../model/pojo/BatchViabilitySummary.html" title="class in edu.cnm.deepdive.pippiphooray.model.pojo">BatchViabilitySummary</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/viewmodel/BatchViewModel.html#line-314">getSelectedBatchViability</a></span>()</div>
+<div class="block">Gets the viability summary for the selected batch as LiveData.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>a LiveData containing the batch viability summary</dd>
+</dl>
 </div>
 </section>
 </li>

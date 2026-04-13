@@ -92,8 +92,12 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-26">BulkCandlingDialogFragment</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-32">BulkCandlingDialogFragment</a></span>
 <span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html" title="class or interface in androidx.fragment.app" class="external-link">DialogFragment</a></span></div>
+<div class="block">Dialog fragment that applies bulk candling results to all egg groups in a batch.
+
+<p>The user can enter viable egg counts for each group and save the results
+in one operation.</div>
 </div>
 </section>
 <section class="summary">
@@ -145,22 +149,32 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="BulkCandlingDialogFragment.html" title="class in edu.cnm.deepdive.pippiphooray.controller">BulkCandlingDialogFragment</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newInstance(long)" class="member-name-link">newInstance</a><wbr>(long&nbsp;batchId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a new dialog instance for the specified batch.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)" class="member-name-link">onCreateView</a><wbr>(<a href="https://developer.android.com/reference/android/view/LayoutInflater.html" title="class or interface in android.view" class="external-link">LayoutInflater</a>&nbsp;inflater,
  <a href="https://developer.android.com/reference/android/view/ViewGroup.html" title="class or interface in android.view" class="external-link">ViewGroup</a>&nbsp;container,
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Inflates the bulk-candling dialog layout.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onDestroyView()" class="member-name-link">onDestroyView</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Clears the view binding reference when the dialog view is destroyed.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onStart()" class="member-name-link">onStart</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Adjusts the dialog window size when the dialog becomes visible.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onViewCreated(android.view.View,android.os.Bundle)" class="member-name-link">onViewCreated</a><wbr>(<a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a>&nbsp;view,
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Completes initialization of the dialog UI, observers, and click handlers.</div>
+</div>
 </div>
 </div>
 </div>
@@ -188,7 +202,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>BulkCandlingDialogFragment</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-27">BulkCandlingDialogFragment</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-33">BulkCandlingDialogFragment</a></span>()</div>
 </div>
 </section>
 </li>
@@ -204,7 +218,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="newInstance(long)">
 <h3>newInstance</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="BulkCandlingDialogFragment.html" title="class in edu.cnm.deepdive.pippiphooray.controller">BulkCandlingDialogFragment</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-34">newInstance</a></span><wbr><span class="parameters">(long&nbsp;batchId)</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="BulkCandlingDialogFragment.html" title="class in edu.cnm.deepdive.pippiphooray.controller">BulkCandlingDialogFragment</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-46">newInstance</a></span><wbr><span class="parameters">(long&nbsp;batchId)</span></div>
+<div class="block">Creates a new dialog instance for the specified batch.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>batchId</code> - ID of the batch to update.</dd>
+<dt>Returns:</dt>
+<dd>configured dialog fragment instance.</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -213,15 +234,22 @@ loadScripts(document, 'script');</script>
 <h3>onCreateView</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-42">onCreateView</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-62">onCreateView</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="https://developer.android.com/reference/android/view/LayoutInflater.html" title="class or interface in android.view" class="external-link">LayoutInflater</a>&nbsp;inflater,
  <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://developer.android.com/reference/android/view/ViewGroup.html" title="class or interface in android.view" class="external-link">ViewGroup</a>&nbsp;container,
  <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</span></div>
+<div class="block">Inflates the bulk-candling dialog layout.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html#onCreateView-android.view.LayoutInflater-android.view.ViewGroup-android.os.Bundle-" title="class or interface in androidx.fragment.app" class="external-link">onCreateView</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html" title="class or interface in androidx.fragment.app" class="external-link">Fragment</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>inflater</code> - layout inflater.</dd>
+<dd><code>container</code> - optional parent container.</dd>
+<dd><code>savedInstanceState</code> - saved instance state, if any.</dd>
+<dt>Returns:</dt>
+<dd>root view for the dialog.</dd>
 </dl>
 </div>
 </section>
@@ -230,13 +258,17 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onViewCreated(android.view.View,android.os.Bundle)">
 <h3>onViewCreated</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-53">onViewCreated</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-79">onViewCreated</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a>&nbsp;view,
  <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</span></div>
+<div class="block">Completes initialization of the dialog UI, observers, and click handlers.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html#onViewCreated-android.view.View-android.os.Bundle-" title="class or interface in androidx.fragment.app" class="external-link">onViewCreated</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html" title="class or interface in androidx.fragment.app" class="external-link">Fragment</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>view</code> - root view returned from <a href="#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)"><code>onCreateView(LayoutInflater, ViewGroup, Bundle)</code></a>.</dd>
+<dd><code>savedInstanceState</code> - saved instance state, if any.</dd>
 </dl>
 </div>
 </section>
@@ -245,7 +277,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onStart()">
 <h3>onStart</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-119">onStart</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-148">onStart</a></span>()</div>
+<div class="block">Adjusts the dialog window size when the dialog becomes visible.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html#onStart--" title="class or interface in androidx.fragment.app" class="external-link">onStart</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html" title="class or interface in androidx.fragment.app" class="external-link">DialogFragment</a></code></dd>
@@ -257,7 +290,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onDestroyView()">
 <h3>onDestroyView</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-141">onDestroyView</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/BulkCandlingDialogFragment.html#line-173">onDestroyView</a></span>()</div>
+<div class="block">Clears the view binding reference when the dialog view is destroyed.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html#onDestroyView--" title="class or interface in androidx.fragment.app" class="external-link">onDestroyView</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/DialogFragment.html" title="class or interface in androidx.fragment.app" class="external-link">DialogFragment</a></code></dd>

@@ -12,12 +12,26 @@ import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.pippiphooray.databinding.FragmentEggDetailBinding;
 import edu.cnm.deepdive.pippiphooray.viewmodel.BatchViewModel;
 
+/**
+ * Fragment intended to display details for a single egg.
+ *
+ * <p>This screen is currently a placeholder for future egg-specific detail
+ * and candling-observation functionality.
+ */
 @AndroidEntryPoint
 public class EggDetailFragment extends Fragment {
 
   private FragmentEggDetailBinding binding;
   private BatchViewModel batchViewModel;
 
+  /**
+   * Inflates the egg-detail layout and initializes view binding.
+   *
+   * @param inflater layout inflater.
+   * @param container optional parent container.
+   * @param savedInstanceState saved instance state, if any.
+   * @return root view for this fragment.
+   */
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -26,6 +40,12 @@ public class EggDetailFragment extends Fragment {
     return binding.getRoot();
   }
 
+  /**
+   * Completes fragment setup after the view has been created.
+   *
+   * @param view root view returned from {@link #onCreateView}.
+   * @param savedInstanceState saved instance state, if any.
+   */
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
@@ -46,6 +66,9 @@ public class EggDetailFragment extends Fragment {
     }
   }
 
+  /**
+   * Clears the view binding reference when the fragment view is destroyed.
+   */
   @Override
   public void onDestroyView() {
     binding = null;

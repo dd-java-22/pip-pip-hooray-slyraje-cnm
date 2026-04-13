@@ -88,8 +88,12 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-16">IncubatorsFragment</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-22">IncubatorsFragment</a></span>
 <span class="extends-implements">extends <a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html" title="class or interface in androidx.fragment.app" class="external-link">Fragment</a></span></div>
+<div class="block">Fragment that displays the list of active incubators.
+
+<p>This screen allows the user to view existing incubators and open the dialog
+for creating or editing an incubator.</div>
 </div>
 </section>
 <section class="summary">
@@ -140,14 +144,21 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)" class="member-name-link">onCreateView</a><wbr>(<a href="https://developer.android.com/reference/android/view/LayoutInflater.html" title="class or interface in android.view" class="external-link">LayoutInflater</a>&nbsp;inflater,
  <a href="https://developer.android.com/reference/android/view/ViewGroup.html" title="class or interface in android.view" class="external-link">ViewGroup</a>&nbsp;container,
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Inflates the incubators layout, initializes the recycler view,
+and configures the incubator adapter.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onDestroyView()" class="member-name-link">onDestroyView</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Clears the view binding reference when the fragment view is destroyed.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onViewCreated(android.view.View,android.os.Bundle)" class="member-name-link">onViewCreated</a><wbr>(<a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a>&nbsp;view,
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Completes fragment setup by connecting the ViewModel and UI event handlers.</div>
+</div>
 </div>
 </div>
 </div>
@@ -172,7 +183,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>IncubatorsFragment</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-17">IncubatorsFragment</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-23">IncubatorsFragment</a></span>()</div>
 </div>
 </section>
 </li>
@@ -189,15 +200,23 @@ loadScripts(document, 'script');</script>
 <h3>onCreateView</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-23">onCreateView</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-38">onCreateView</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="https://developer.android.com/reference/android/view/LayoutInflater.html" title="class or interface in android.view" class="external-link">LayoutInflater</a>&nbsp;inflater,
  <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://developer.android.com/reference/android/view/ViewGroup.html" title="class or interface in android.view" class="external-link">ViewGroup</a>&nbsp;container,
  <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</span></div>
+<div class="block">Inflates the incubators layout, initializes the recycler view,
+and configures the incubator adapter.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html#onCreateView-android.view.LayoutInflater-android.view.ViewGroup-android.os.Bundle-" title="class or interface in androidx.fragment.app" class="external-link">onCreateView</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html" title="class or interface in androidx.fragment.app" class="external-link">Fragment</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>inflater</code> - layout inflater.</dd>
+<dd><code>container</code> - optional parent container.</dd>
+<dd><code>savedInstanceState</code> - saved instance state, if any.</dd>
+<dt>Returns:</dt>
+<dd>root view for this fragment.</dd>
 </dl>
 </div>
 </section>
@@ -206,13 +225,17 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onViewCreated(android.view.View,android.os.Bundle)">
 <h3>onViewCreated</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-37">onViewCreated</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-58">onViewCreated</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/androidx/annotation/NonNull.html" title="class or interface in androidx.annotation" class="external-link">@NonNull</a>
  <a href="https://developer.android.com/reference/android/view/View.html" title="class or interface in android.view" class="external-link">View</a>&nbsp;view,
  <a href="https://developer.android.com/reference/androidx/annotation/Nullable.html" title="class or interface in androidx.annotation" class="external-link">@Nullable</a>
  <a href="https://developer.android.com/reference/android/os/Bundle.html" title="class or interface in android.os" class="external-link">Bundle</a>&nbsp;savedInstanceState)</span></div>
+<div class="block">Completes fragment setup by connecting the ViewModel and UI event handlers.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html#onViewCreated-android.view.View-android.os.Bundle-" title="class or interface in androidx.fragment.app" class="external-link">onViewCreated</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html" title="class or interface in androidx.fragment.app" class="external-link">Fragment</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>view</code> - root view returned from <a href="#onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)"><code>onCreateView(LayoutInflater, ViewGroup, Bundle)</code></a>.</dd>
+<dd><code>savedInstanceState</code> - saved instance state, if any.</dd>
 </dl>
 </div>
 </section>
@@ -221,7 +244,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="onDestroyView()">
 <h3>onDestroyView</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-52">onDestroyView</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/edu/cnm/deepdive/pippiphooray/controller/IncubatorsFragment.html#line-76">onDestroyView</a></span>()</div>
+<div class="block">Clears the view binding reference when the fragment view is destroyed.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html#onDestroyView--" title="class or interface in androidx.fragment.app" class="external-link">onDestroyView</a></code>&nbsp;in class&nbsp;<code><a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html" title="class or interface in androidx.fragment.app" class="external-link">Fragment</a></code></dd>

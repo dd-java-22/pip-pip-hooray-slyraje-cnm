@@ -27,6 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Dialog fragment that collects user input for creating a new incubation batch.
+ *
+ * <p>This dialog allows the user to select an incubator, enter batch details,
+ * choose milestone dates, and save the batch through the {@link BatchViewModel}.
+ */
 @AndroidEntryPoint
 public class AddBatchDialogFragment extends DialogFragment {
 
@@ -36,6 +42,12 @@ public class AddBatchDialogFragment extends DialogFragment {
 
   private final List<Incubator> incubators = new ArrayList<>();
 
+  /**
+   * Creates and configures the dialog used to enter a new batch.
+   *
+   * @param savedInstanceState saved instance state, if any.
+   * @return configured dialog for batch creation.
+   */
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -263,6 +275,9 @@ public class AddBatchDialogFragment extends DialogFragment {
     return null;
   }
 
+  /**
+   * Clears the view binding reference when the fragment view is destroyed.
+   */
   @Override
   public void onDestroyView() {
     binding = null;

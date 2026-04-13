@@ -25,13 +25,23 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
 
+/**
+ * ViewModel for managing batch data, sorting, and egg viability operations.
+ */
 @HiltViewModel
 public class BatchViewModel extends ViewModel {
 
+  /**
+   * Enumeration defining available sort orders for batches.
+   */
   public enum SortOrder {
+    /** Sort by next milestone date */
     NEXT_MILESTONE,
+    /** Sort by expected hatch date */
     EXPECTED_HATCH_DATE,
+    /** Sort by batch number */
     BATCH_NUMBER,
+    /** Sort by incubator name */
     INCUBATOR
   }
 
@@ -58,6 +68,12 @@ public class BatchViewModel extends ViewModel {
   private final Map<Long, List<Egg>> eggsByGroup = new HashMap<>();
   private LiveData<BatchWithEggGroups> selectedBatchSource;
 
+  /**
+   * Constructs a BatchViewModel with the specified repositories.
+   *
+   * @param batchRepository the repository for batch data access
+   * @param eggRepository the repository for egg data access
+   */
   @Inject
   BatchViewModel(BatchRepository batchRepository, EggRepository eggRepository) {
     this.batchRepository = batchRepository;
@@ -111,97 +127,146 @@ public class BatchViewModel extends ViewModel {
     });
   }
 
+  /**
+   * Gets all batches as LiveData.
+   *
+   * @return a LiveData list of all batches
+   */
   public LiveData<List<Batch>> getAll() {
     return batchRepository.getAll();
   }
 
+  /**
+   * Gets a specific batch by ID as LiveData.
+   *
+   * @param id the batch ID
+   * @return a LiveData containing the batch with the specified ID
+   */
   public LiveData<Batch> get(long id) {
     return batchRepository.get(id);
   }
 
+  /**
+   * Gets all batches for a specific incubator as LiveData.
+   *
+   * @param incubatorId the incubator ID
+   * @return a LiveData list of batches for the specified incubator
+   */
   public LiveData<List<Batch>> getByIncubator(long incubatorId) {
     return batchRepository.getByIncubator(incubatorId);
   }
 
+  /**
+   * Gets a specific batch with its egg groups as LiveData.
+   *
+   * @param id the batch ID
+   * @return a LiveData containing the batch with its egg groups
+   */
   public LiveData<BatchWithEggGroups> getWithGroups(long id) {
     return batchRepository.getWithGroups(id);
   }
 
+  /**
+   * Gets all batches with incubator information as LiveData.
+   *
+   * @return a LiveData list of all batches with incubator details
+   */
   public LiveData<List<BatchWithIncubator>> getAllWithIncubator() {
     return allWithIncubator;
   }
 
+  /**
+   * Gets all batches sorted according to the current sort order as LiveData.
+   *
+   * @return a LiveData list of sorted batches with incubator details
+   */
   public LiveData<List<BatchWithIncubator>> getBatchSummaries() {
     return sortedBatches;
   }
 
+  /**
+   * Gets all batch card summaries for display in the UI as LiveData.
+   *
+   * @return a LiveData list of batch card summaries
+   */
   public LiveData<List<BatchCardSummary>> getBatchCardSummaries() {
     return batchCardSummaries;
   }
 
+  /**
+   * Sets the sort order for batches.
+   *
+   * @param order the sort order to apply
+   */
   public void setSortOrder(SortOrder order) {
     sortOrder.setValue(order);
   }
 
+  /**
+   * Saves a batch asynchronously.
+   *
+   * @param batch the batch to save
+   * @return a CompletableFuture containing the ID of the saved batch
+   */
   public CompletableFuture<Long> save(Batch batch) {
     return batchRepository.save(batch);
   }
 
+  /**
+   * Saves a batch with an initial egg group asynchronously.
+   *
+   * @param batch the batch to save
+   * @param breed the breed for the initial egg group
+   * @return a CompletableFuture containing the ID of the saved batch
+   */
   public CompletableFuture<Long> saveWithInitialEggGroups(Batch batch, String breed) {
     return batchRepository.saveWithInitialEggGroups(batch, breed);
   }
 
+  /**
+   * Deletes a batch asynchronously.
+   *
+   * @param batch the batch to delete
+   * @return a CompletableFuture that completes when the deletion finishes
+   */
   public CompletableFuture<Void> delete(Batch batch) {
     return batchRepository.delete(batch);
   }
 
-  private void recomputeSortedBatches(List<BatchWithIncubator> batches, SortOrder order) {
-    if (batches == null || order == null) {
-      sortedBatches.setValue(batches);
-      return;
-    }
-
-    List<BatchWithIncubator> copy = new ArrayList<>(batches);
-
-    Comparator<BatchWithIncubator> comparator = switch (order) {
-      case EXPECTED_HATCH_DATE, NEXT_MILESTONE -> Comparator.comparing(
-          BatchWithIncubator::getExpectedHatchDate,
-          Comparator.nullsLast(Comparator.naturalOrder())
-      );
-
-      case BATCH_NUMBER -> Comparator.comparing(
-          BatchWithIncubator::getBatchNumber,
-          Comparator.nullsLast(Comparator.naturalOrder())
-      ).thenComparing(
-          BatchWithIncubator::getDateSet,
-          Comparator.nullsLast(Comparator.reverseOrder())
-      );
-
-      case INCUBATOR -> Comparator.comparing(
-          BatchWithIncubator::getIncubatorName,
-          Comparator.nullsLast(String::compareToIgnoreCase)
-      ).thenComparing(
-          BatchWithIncubator::getDateSet,
-          Comparator.nullsLast(Comparator.reverseOrder())
-      );
-    };
-
-    copy.sort(comparator);
-    sortedBatches.setValue(copy);
-  }
-
+  /**
+   * Sets the selected batch by ID.
+   *
+   * @param batchId the ID of the batch to select
+   */
   public void setSelectedBatchId(long batchId) {
     selectedBatchId.setValue(batchId);
   }
 
+  /**
+   * Gets the selected batch with its egg groups as LiveData.
+   *
+   * @return a LiveData containing the selected batch with its egg groups
+   */
   public LiveData<BatchWithEggGroups> getSelectedBatchWithGroups() {
     return selectedBatchWithGroups;
   }
 
+  /**
+   * Gets all eggs for a specific egg group as LiveData.
+   *
+   * @param eggGroupId the egg group ID
+   * @return a LiveData list of eggs in the specified group
+   */
   public LiveData<List<Egg>> getEggsByGroup(long eggGroupId) {
     return eggRepository.getByEggGroupId(eggGroupId);
   }
 
+  /**
+   * Applies bulk candling to a batch by marking eggs as viable or not viable.
+   *
+   * @param viableCountsByGroupId a map of egg group IDs to viable egg counts
+   * @return a CompletableFuture that completes when the operation finishes
+   */
   public CompletableFuture<Void> applyBulkCandling(Map<Long, Integer> viableCountsByGroupId) {
     BatchWithEggGroups batchWithGroups = selectedBatchWithGroups.getValue();
     if (batchWithGroups == null || batchWithGroups.getGroups() == null
@@ -241,8 +306,48 @@ public class BatchViewModel extends ViewModel {
     return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
   }
 
+  /**
+   * Gets the viability summary for the selected batch as LiveData.
+   *
+   * @return a LiveData containing the batch viability summary
+   */
   public LiveData<BatchViabilitySummary> getSelectedBatchViability() {
     return selectedBatchViability;
+  }
+
+  private void recomputeSortedBatches(List<BatchWithIncubator> batches, SortOrder order) {
+    if (batches == null || order == null) {
+      sortedBatches.setValue(batches);
+      return;
+    }
+
+    List<BatchWithIncubator> copy = new ArrayList<>(batches);
+
+    Comparator<BatchWithIncubator> comparator = switch (order) {
+      case EXPECTED_HATCH_DATE, NEXT_MILESTONE -> Comparator.comparing(
+          BatchWithIncubator::getExpectedHatchDate,
+          Comparator.nullsLast(Comparator.naturalOrder())
+      );
+
+      case BATCH_NUMBER -> Comparator.comparing(
+          BatchWithIncubator::getBatchNumber,
+          Comparator.nullsLast(Comparator.naturalOrder())
+      ).thenComparing(
+          BatchWithIncubator::getDateSet,
+          Comparator.nullsLast(Comparator.reverseOrder())
+      );
+
+      case INCUBATOR -> Comparator.comparing(
+          BatchWithIncubator::getIncubatorName,
+          Comparator.nullsLast(String::compareToIgnoreCase)
+      ).thenComparing(
+          BatchWithIncubator::getDateSet,
+          Comparator.nullsLast(Comparator.reverseOrder())
+      );
+    };
+
+    copy.sort(comparator);
+    sortedBatches.setValue(copy);
   }
 
   private void attachViabilitySources(BatchWithEggGroups batchWithGroups) {

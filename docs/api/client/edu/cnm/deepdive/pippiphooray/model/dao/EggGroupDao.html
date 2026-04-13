@@ -73,7 +73,8 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <hr>
 <div class="horizontal-scroll">
-<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-11">EggGroupDao</a></span></div>
+<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-14">EggGroupDao</a></span></div>
+<div class="block">Room Data Access Object (DAO) for EggGroup entity operations.</div>
 </div>
 </section>
 <section class="summary">
@@ -91,19 +92,29 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#insert(edu.cnm.deepdive.pippiphooray.model.entity.EggGroup)" class="member-name-link">insert</a><wbr>(<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&nbsp;eggGroup)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Inserts a single egg group into the database.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#insertAll(java.util.List)" class="member-name-link">insertAll</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&gt;&nbsp;eggGroups)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Inserts multiple egg groups into the database.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#select(long)" class="member-name-link">select</a><wbr>(long&nbsp;id)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Retrieves a specific egg group by ID as LiveData.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&gt;&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#selectByBatch(long)" class="member-name-link">selectByBatch</a><wbr>(long&nbsp;batchId)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Retrieves all egg groups for a specific batch as LiveData.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#update(edu.cnm.deepdive.pippiphooray.model.entity.EggGroup)" class="member-name-link">update</a><wbr>(<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&nbsp;eggGroup)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Updates an existing egg group in the database.</div>
+</div>
 </div>
 </div>
 </div>
@@ -122,7 +133,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="insert(edu.cnm.deepdive.pippiphooray.model.entity.EggGroup)">
 <h3>insert</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-14">insert</a></span><wbr><span class="parameters">(<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&nbsp;eggGroup)</span></div>
+<div class="member-signature"><span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-23">insert</a></span><wbr><span class="parameters">(<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&nbsp;eggGroup)</span></div>
+<div class="block">Inserts a single egg group into the database.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggGroup</code> - the egg group to insert</dd>
+<dt>Returns:</dt>
+<dd>the generated egg group ID</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -130,7 +148,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="insertAll(java.util.List)">
 <h3>insertAll</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-17">insertAll</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&gt;&nbsp;eggGroups)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-32">insertAll</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&gt;&nbsp;eggGroups)</span></div>
+<div class="block">Inserts multiple egg groups into the database.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggGroups</code> - the list of egg groups to insert</dd>
+<dt>Returns:</dt>
+<dd>a list of generated egg group IDs</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -138,7 +163,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="update(edu.cnm.deepdive.pippiphooray.model.entity.EggGroup)">
 <h3>update</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-20">update</a></span><wbr><span class="parameters">(<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&nbsp;eggGroup)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-40">update</a></span><wbr><span class="parameters">(<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&nbsp;eggGroup)</span></div>
+<div class="block">Updates an existing egg group in the database.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>eggGroup</code> - the egg group to update</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -146,7 +176,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="selectByBatch(long)">
 <h3>selectByBatch</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-23">selectByBatch</a></span><wbr><span class="parameters">(long&nbsp;batchId)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-49">selectByBatch</a></span><wbr><span class="parameters">(long&nbsp;batchId)</span></div>
+<div class="block">Retrieves all egg groups for a specific batch as LiveData.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>batchId</code> - the ID of the batch</dd>
+<dt>Returns:</dt>
+<dd>a LiveData list of egg groups in the specified batch</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -154,7 +191,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="select(long)">
 <h3>select</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-26">select</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://developer.android.com/reference/androidx/lifecycle/LiveData.html" title="class or interface in androidx.lifecycle" class="external-link">LiveData</a>&lt;<a href="../entity/EggGroup.html" title="class in edu.cnm.deepdive.pippiphooray.model.entity">EggGroup</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/model/dao/EggGroupDao.html#line-58">select</a></span><wbr><span class="parameters">(long&nbsp;id)</span></div>
+<div class="block">Retrieves a specific egg group by ID as LiveData.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - the ID of the egg group to retrieve</dd>
+<dt>Returns:</dt>
+<dd>a LiveData containing the egg group with the specified ID</dd>
+</dl>
 </div>
 </section>
 </li>

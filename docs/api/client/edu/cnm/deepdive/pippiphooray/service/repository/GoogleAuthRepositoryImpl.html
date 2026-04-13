@@ -81,9 +81,10 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="annotations">@Singleton
-</span><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-28">GoogleAuthRepositoryImpl</a></span>
+</span><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-31">GoogleAuthRepositoryImpl</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a></span></div>
+<div class="block">Repository implementation for Google authentication operations.</div>
 </div>
 </section>
 <section class="summary">
@@ -111,16 +112,24 @@ implements <a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepd
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#refreshToken(android.app.Activity,com.google.android.libraries.identity.googleid.GoogleIdTokenCredential)" class="member-name-link">refreshToken</a><wbr>(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity,
  com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&nbsp;credential)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Refreshes an existing Google ID token credential.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#signIn(android.app.Activity)" class="member-name-link">signIn</a><wbr>(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Initiates a full sign-in flow requiring user interaction.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#signInQuickly(android.app.Activity)" class="member-name-link">signInQuickly</a><wbr>(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Attempts a quick sign-in using cached credentials without user interaction.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#signOut()" class="member-name-link">signOut</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Signs out the current user.</div>
+</div>
 </div>
 </div>
 </div>
@@ -142,10 +151,16 @@ implements <a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepd
 <section class="detail" id="signInQuickly(android.app.Activity)">
 <h3>signInQuickly</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-43">signInQuickly</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-51">signInQuickly</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="GoogleAuthRepository.html#signInQuickly(android.app.Activity)">GoogleAuthRepository</a></code></span></div>
+<div class="block">Attempts a quick sign-in using cached credentials without user interaction.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GoogleAuthRepository.html#signInQuickly(android.app.Activity)">signInQuickly</a></code>&nbsp;in interface&nbsp;<code><a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>activity</code> - the activity context for the sign-in operation</dd>
+<dt>Returns:</dt>
+<dd>a CompletableFuture containing the Google ID token credential</dd>
 </dl>
 </div>
 </section>
@@ -154,10 +169,16 @@ implements <a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepd
 <section class="detail" id="signIn(android.app.Activity)">
 <h3>signIn</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-48">signIn</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-56">signIn</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity)</span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="GoogleAuthRepository.html#signIn(android.app.Activity)">GoogleAuthRepository</a></code></span></div>
+<div class="block">Initiates a full sign-in flow requiring user interaction.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GoogleAuthRepository.html#signIn(android.app.Activity)">signIn</a></code>&nbsp;in interface&nbsp;<code><a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>activity</code> - the activity context for the sign-in operation</dd>
+<dt>Returns:</dt>
+<dd>a CompletableFuture containing the Google ID token credential</dd>
 </dl>
 </div>
 </section>
@@ -166,11 +187,18 @@ implements <a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepd
 <section class="detail" id="refreshToken(android.app.Activity,com.google.android.libraries.identity.googleid.GoogleIdTokenCredential)">
 <h3>refreshToken</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-53">refreshToken</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-61">refreshToken</a></span><wbr><span class="parameters">(<a href="https://developer.android.com/reference/android/app/Activity.html" title="class or interface in android.app" class="external-link">Activity</a>&nbsp;activity,
  com.google.android.libraries.identity.googleid.GoogleIdTokenCredential&nbsp;credential)</span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="GoogleAuthRepository.html#refreshToken(android.app.Activity,com.google.android.libraries.identity.googleid.GoogleIdTokenCredential)">GoogleAuthRepository</a></code></span></div>
+<div class="block">Refreshes an existing Google ID token credential.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GoogleAuthRepository.html#refreshToken(android.app.Activity,com.google.android.libraries.identity.googleid.GoogleIdTokenCredential)">refreshToken</a></code>&nbsp;in interface&nbsp;<code><a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>activity</code> - the activity context for the refresh operation</dd>
+<dd><code>credential</code> - the credential to refresh</dd>
+<dt>Returns:</dt>
+<dd>a CompletableFuture containing the refreshed credential</dd>
 </dl>
 </div>
 </section>
@@ -179,10 +207,14 @@ implements <a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepd
 <section class="detail" id="signOut()">
 <h3>signOut</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-62">signOut</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/edu/cnm/deepdive/pippiphooray/service/repository/GoogleAuthRepositoryImpl.html#line-70">signOut</a></span>()</div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="GoogleAuthRepository.html#signOut()">GoogleAuthRepository</a></code></span></div>
+<div class="block">Signs out the current user.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GoogleAuthRepository.html#signOut()">signOut</a></code>&nbsp;in interface&nbsp;<code><a href="GoogleAuthRepository.html" title="interface in edu.cnm.deepdive.pippiphooray.service.repository">GoogleAuthRepository</a></code></dd>
+<dt>Returns:</dt>
+<dd>a CompletableFuture that completes when the sign-out finishes</dd>
 </dl>
 </div>
 </section>

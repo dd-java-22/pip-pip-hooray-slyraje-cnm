@@ -22,41 +22,89 @@
 <span class="source-line-no">009</span><span id="line-9">import edu.cnm.deepdive.pippiphooray.model.pojo.BatchEggAggregate;</span>
 <span class="source-line-no">010</span><span id="line-10">import java.util.List;</span>
 <span class="source-line-no">011</span><span id="line-11"></span>
-<span class="source-line-no">012</span><span id="line-12">@Dao</span>
-<span class="source-line-no">013</span><span id="line-13">public interface EggDao {</span>
-<span class="source-line-no">014</span><span id="line-14"></span>
-<span class="source-line-no">015</span><span id="line-15">  @Insert</span>
-<span class="source-line-no">016</span><span id="line-16">  long insert(Egg egg);</span>
+<span class="source-line-no">012</span><span id="line-12">/**</span>
+<span class="source-line-no">013</span><span id="line-13"> * Room Data Access Object (DAO) for Egg entity operations.</span>
+<span class="source-line-no">014</span><span id="line-14"> */</span>
+<span class="source-line-no">015</span><span id="line-15">@Dao</span>
+<span class="source-line-no">016</span><span id="line-16">public interface EggDao {</span>
 <span class="source-line-no">017</span><span id="line-17"></span>
-<span class="source-line-no">018</span><span id="line-18">  @Insert</span>
-<span class="source-line-no">019</span><span id="line-19">  List&lt;Long&gt; insertAll(List&lt;Egg&gt; eggs);</span>
-<span class="source-line-no">020</span><span id="line-20"></span>
-<span class="source-line-no">021</span><span id="line-21">  @Update</span>
-<span class="source-line-no">022</span><span id="line-22">  void update(Egg egg);</span>
-<span class="source-line-no">023</span><span id="line-23"></span>
-<span class="source-line-no">024</span><span id="line-24">  @Update</span>
-<span class="source-line-no">025</span><span id="line-25">  void update(List&lt;Egg&gt; eggs);</span>
+<span class="source-line-no">018</span><span id="line-18">  /**</span>
+<span class="source-line-no">019</span><span id="line-19">   * Inserts a single egg into the database.</span>
+<span class="source-line-no">020</span><span id="line-20">   *</span>
+<span class="source-line-no">021</span><span id="line-21">   * @param egg the egg to insert</span>
+<span class="source-line-no">022</span><span id="line-22">   * @return the generated egg ID</span>
+<span class="source-line-no">023</span><span id="line-23">   */</span>
+<span class="source-line-no">024</span><span id="line-24">  @Insert</span>
+<span class="source-line-no">025</span><span id="line-25">  long insert(Egg egg);</span>
 <span class="source-line-no">026</span><span id="line-26"></span>
-<span class="source-line-no">027</span><span id="line-27">  @Query("SELECT * FROM egg WHERE egg_group_id = :eggGroupId")</span>
-<span class="source-line-no">028</span><span id="line-28">  LiveData&lt;List&lt;Egg&gt;&gt; selectByEggGroup(long eggGroupId);</span>
-<span class="source-line-no">029</span><span id="line-29"></span>
-<span class="source-line-no">030</span><span id="line-30">  @Query("SELECT * FROM egg WHERE egg_group_id = :eggGroupId ORDER BY egg_number ASC")</span>
-<span class="source-line-no">031</span><span id="line-31">  List&lt;Egg&gt; fetchByEggGroup(long eggGroupId);</span>
-<span class="source-line-no">032</span><span id="line-32"></span>
-<span class="source-line-no">033</span><span id="line-33">  @Query("SELECT * FROM egg WHERE egg_id = :eggId")</span>
-<span class="source-line-no">034</span><span id="line-34">  LiveData&lt;Egg&gt; select(long eggId);</span>
+<span class="source-line-no">027</span><span id="line-27">  /**</span>
+<span class="source-line-no">028</span><span id="line-28">   * Inserts multiple eggs into the database.</span>
+<span class="source-line-no">029</span><span id="line-29">   *</span>
+<span class="source-line-no">030</span><span id="line-30">   * @param eggs the list of eggs to insert</span>
+<span class="source-line-no">031</span><span id="line-31">   * @return a list of generated egg IDs</span>
+<span class="source-line-no">032</span><span id="line-32">   */</span>
+<span class="source-line-no">033</span><span id="line-33">  @Insert</span>
+<span class="source-line-no">034</span><span id="line-34">  List&lt;Long&gt; insertAll(List&lt;Egg&gt; eggs);</span>
 <span class="source-line-no">035</span><span id="line-35"></span>
-<span class="source-line-no">036</span><span id="line-36">  @Query(</span>
-<span class="source-line-no">037</span><span id="line-37">      "SELECT e.egg_group_id AS eggGroupId, " +</span>
-<span class="source-line-no">038</span><span id="line-38">          "       eg.batch_id    AS batchId, " +</span>
-<span class="source-line-no">039</span><span id="line-39">          "       COUNT(*)       AS totalCount, " +</span>
-<span class="source-line-no">040</span><span id="line-40">          "       SUM(CASE WHEN e.hatch_status = 'VIABLE' THEN 1 ELSE 0 END) AS viableCount " +</span>
-<span class="source-line-no">041</span><span id="line-41">          "FROM egg e " +</span>
-<span class="source-line-no">042</span><span id="line-42">          "JOIN egg_group eg ON e.egg_group_id = eg.egg_group_id " +</span>
-<span class="source-line-no">043</span><span id="line-43">          "GROUP BY eg.batch_id"</span>
-<span class="source-line-no">044</span><span id="line-44">  )</span>
-<span class="source-line-no">045</span><span id="line-45">  LiveData&lt;List&lt;BatchEggAggregate&gt;&gt; selectViabilityPerBatch();</span>
-<span class="source-line-no">046</span><span id="line-46">}</span>
+<span class="source-line-no">036</span><span id="line-36">  /**</span>
+<span class="source-line-no">037</span><span id="line-37">   * Updates an existing egg in the database.</span>
+<span class="source-line-no">038</span><span id="line-38">   *</span>
+<span class="source-line-no">039</span><span id="line-39">   * @param egg the egg to update</span>
+<span class="source-line-no">040</span><span id="line-40">   */</span>
+<span class="source-line-no">041</span><span id="line-41">  @Update</span>
+<span class="source-line-no">042</span><span id="line-42">  void update(Egg egg);</span>
+<span class="source-line-no">043</span><span id="line-43"></span>
+<span class="source-line-no">044</span><span id="line-44">  /**</span>
+<span class="source-line-no">045</span><span id="line-45">   * Updates multiple existing eggs in the database.</span>
+<span class="source-line-no">046</span><span id="line-46">   *</span>
+<span class="source-line-no">047</span><span id="line-47">   * @param eggs the list of eggs to update</span>
+<span class="source-line-no">048</span><span id="line-48">   */</span>
+<span class="source-line-no">049</span><span id="line-49">  @Update</span>
+<span class="source-line-no">050</span><span id="line-50">  void update(List&lt;Egg&gt; eggs);</span>
+<span class="source-line-no">051</span><span id="line-51"></span>
+<span class="source-line-no">052</span><span id="line-52">  /**</span>
+<span class="source-line-no">053</span><span id="line-53">   * Retrieves all eggs for a specific egg group as LiveData.</span>
+<span class="source-line-no">054</span><span id="line-54">   *</span>
+<span class="source-line-no">055</span><span id="line-55">   * @param eggGroupId the ID of the egg group</span>
+<span class="source-line-no">056</span><span id="line-56">   * @return a LiveData list of eggs in the specified group</span>
+<span class="source-line-no">057</span><span id="line-57">   */</span>
+<span class="source-line-no">058</span><span id="line-58">  @Query("SELECT * FROM egg WHERE egg_group_id = :eggGroupId")</span>
+<span class="source-line-no">059</span><span id="line-59">  LiveData&lt;List&lt;Egg&gt;&gt; selectByEggGroup(long eggGroupId);</span>
+<span class="source-line-no">060</span><span id="line-60"></span>
+<span class="source-line-no">061</span><span id="line-61">  /**</span>
+<span class="source-line-no">062</span><span id="line-62">   * Fetches all eggs for a specific egg group (non-LiveData).</span>
+<span class="source-line-no">063</span><span id="line-63">   *</span>
+<span class="source-line-no">064</span><span id="line-64">   * @param eggGroupId the ID of the egg group</span>
+<span class="source-line-no">065</span><span id="line-65">   * @return a list of eggs in the specified group, ordered by egg number</span>
+<span class="source-line-no">066</span><span id="line-66">   */</span>
+<span class="source-line-no">067</span><span id="line-67">  @Query("SELECT * FROM egg WHERE egg_group_id = :eggGroupId ORDER BY egg_number ASC")</span>
+<span class="source-line-no">068</span><span id="line-68">  List&lt;Egg&gt; fetchByEggGroup(long eggGroupId);</span>
+<span class="source-line-no">069</span><span id="line-69"></span>
+<span class="source-line-no">070</span><span id="line-70">  /**</span>
+<span class="source-line-no">071</span><span id="line-71">   * Retrieves a specific egg by ID as LiveData.</span>
+<span class="source-line-no">072</span><span id="line-72">   *</span>
+<span class="source-line-no">073</span><span id="line-73">   * @param eggId the ID of the egg to retrieve</span>
+<span class="source-line-no">074</span><span id="line-74">   * @return a LiveData containing the egg with the specified ID</span>
+<span class="source-line-no">075</span><span id="line-75">   */</span>
+<span class="source-line-no">076</span><span id="line-76">  @Query("SELECT * FROM egg WHERE egg_id = :eggId")</span>
+<span class="source-line-no">077</span><span id="line-77">  LiveData&lt;Egg&gt; select(long eggId);</span>
+<span class="source-line-no">078</span><span id="line-78"></span>
+<span class="source-line-no">079</span><span id="line-79">  /**</span>
+<span class="source-line-no">080</span><span id="line-80">   * Retrieves viability statistics aggregated by batch.</span>
+<span class="source-line-no">081</span><span id="line-81">   *</span>
+<span class="source-line-no">082</span><span id="line-82">   * @return a LiveData list of BatchEggAggregate objects containing viability counts per batch</span>
+<span class="source-line-no">083</span><span id="line-83">   */</span>
+<span class="source-line-no">084</span><span id="line-84">  @Query(</span>
+<span class="source-line-no">085</span><span id="line-85">      "SELECT e.egg_group_id AS eggGroupId, " +</span>
+<span class="source-line-no">086</span><span id="line-86">          "       eg.batch_id    AS batchId, " +</span>
+<span class="source-line-no">087</span><span id="line-87">          "       COUNT(*)       AS totalCount, " +</span>
+<span class="source-line-no">088</span><span id="line-88">          "       SUM(CASE WHEN e.hatch_status = 'VIABLE' THEN 1 ELSE 0 END) AS viableCount " +</span>
+<span class="source-line-no">089</span><span id="line-89">          "FROM egg e " +</span>
+<span class="source-line-no">090</span><span id="line-90">          "JOIN egg_group eg ON e.egg_group_id = eg.egg_group_id " +</span>
+<span class="source-line-no">091</span><span id="line-91">          "GROUP BY eg.batch_id"</span>
+<span class="source-line-no">092</span><span id="line-92">  )</span>
+<span class="source-line-no">093</span><span id="line-93">  LiveData&lt;List&lt;BatchEggAggregate&gt;&gt; selectViabilityPerBatch();</span>
+<span class="source-line-no">094</span><span id="line-94">}</span>
 
 
 

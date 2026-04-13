@@ -18,52 +18,70 @@
 <span class="source-line-no">005</span><span id="line-5">import java.util.List;</span>
 <span class="source-line-no">006</span><span id="line-6">import java.util.Set;</span>
 <span class="source-line-no">007</span><span id="line-7"></span>
-<span class="source-line-no">008</span><span id="line-8">public final class BatchCardSummaryFormatter {</span>
-<span class="source-line-no">009</span><span id="line-9"></span>
-<span class="source-line-no">010</span><span id="line-10">  private static final String BREED_PENDING = "Breed pending";</span>
-<span class="source-line-no">011</span><span id="line-11">  private static final int MAX_VISIBLE_BREEDS = 2;</span>
+<span class="source-line-no">008</span><span id="line-8">/**</span>
+<span class="source-line-no">009</span><span id="line-9"> * Utility class for formatting breed summaries used on batch cards.</span>
+<span class="source-line-no">010</span><span id="line-10"> */</span>
+<span class="source-line-no">011</span><span id="line-11">public final class BatchCardSummaryFormatter {</span>
 <span class="source-line-no">012</span><span id="line-12"></span>
-<span class="source-line-no">013</span><span id="line-13">  private BatchCardSummaryFormatter() {</span>
-<span class="source-line-no">014</span><span id="line-14">  }</span>
+<span class="source-line-no">013</span><span id="line-13">  private static final String BREED_PENDING = "Breed pending";</span>
+<span class="source-line-no">014</span><span id="line-14">  private static final int MAX_VISIBLE_BREEDS = 2;</span>
 <span class="source-line-no">015</span><span id="line-15"></span>
-<span class="source-line-no">016</span><span id="line-16">  public static String buildBreedSummary(List&lt;EggGroup&gt; groups) {</span>
-<span class="source-line-no">017</span><span id="line-17">    if (groups == null || groups.isEmpty()) {</span>
-<span class="source-line-no">018</span><span id="line-18">      return BREED_PENDING;</span>
-<span class="source-line-no">019</span><span id="line-19">    }</span>
-<span class="source-line-no">020</span><span id="line-20"></span>
-<span class="source-line-no">021</span><span id="line-21">    Set&lt;String&gt; distinctBreeds = new LinkedHashSet&lt;&gt;();</span>
-<span class="source-line-no">022</span><span id="line-22"></span>
-<span class="source-line-no">023</span><span id="line-23">    for (EggGroup group : groups) {</span>
-<span class="source-line-no">024</span><span id="line-24">      if (group == null) {</span>
-<span class="source-line-no">025</span><span id="line-25">        continue;</span>
-<span class="source-line-no">026</span><span id="line-26">      }</span>
-<span class="source-line-no">027</span><span id="line-27">      String breed = group.getBreed();</span>
-<span class="source-line-no">028</span><span id="line-28">      if (breed != null) {</span>
-<span class="source-line-no">029</span><span id="line-29">        String normalized = breed.trim();</span>
-<span class="source-line-no">030</span><span id="line-30">        if (!normalized.isBlank()) {</span>
-<span class="source-line-no">031</span><span id="line-31">          distinctBreeds.add(normalized);</span>
-<span class="source-line-no">032</span><span id="line-32">        }</span>
-<span class="source-line-no">033</span><span id="line-33">      }</span>
-<span class="source-line-no">034</span><span id="line-34">    }</span>
-<span class="source-line-no">035</span><span id="line-35"></span>
-<span class="source-line-no">036</span><span id="line-36">    if (distinctBreeds.isEmpty()) {</span>
-<span class="source-line-no">037</span><span id="line-37">      return BREED_PENDING;</span>
-<span class="source-line-no">038</span><span id="line-38">    }</span>
-<span class="source-line-no">039</span><span id="line-39"></span>
-<span class="source-line-no">040</span><span id="line-40">    List&lt;String&gt; breeds = List.copyOf(distinctBreeds);</span>
-<span class="source-line-no">041</span><span id="line-41"></span>
-<span class="source-line-no">042</span><span id="line-42">    if (breeds.size() == 1) {</span>
-<span class="source-line-no">043</span><span id="line-43">      return breeds.get(0);</span>
-<span class="source-line-no">044</span><span id="line-44">    }</span>
-<span class="source-line-no">045</span><span id="line-45"></span>
-<span class="source-line-no">046</span><span id="line-46">    if (breeds.size() &lt;= MAX_VISIBLE_BREEDS) {</span>
-<span class="source-line-no">047</span><span id="line-47">      return String.join(", ", breeds);</span>
-<span class="source-line-no">048</span><span id="line-48">    }</span>
-<span class="source-line-no">049</span><span id="line-49"></span>
-<span class="source-line-no">050</span><span id="line-50">    int remaining = breeds.size() - MAX_VISIBLE_BREEDS;</span>
-<span class="source-line-no">051</span><span id="line-51">    return breeds.get(0) + ", " + breeds.get(1) + " +" + remaining;</span>
-<span class="source-line-no">052</span><span id="line-52">  }</span>
-<span class="source-line-no">053</span><span id="line-53">}</span>
+<span class="source-line-no">016</span><span id="line-16">  private BatchCardSummaryFormatter() {</span>
+<span class="source-line-no">017</span><span id="line-17">  }</span>
+<span class="source-line-no">018</span><span id="line-18"></span>
+<span class="source-line-no">019</span><span id="line-19">  /**</span>
+<span class="source-line-no">020</span><span id="line-20">   * Builds a short, human-readable summary of the breeds in the given egg groups.</span>
+<span class="source-line-no">021</span><span id="line-21">   *</span>
+<span class="source-line-no">022</span><span id="line-22">   * &lt;p&gt;Distinct, non-blank breed names are collected in insertion order and then</span>
+<span class="source-line-no">023</span><span id="line-23">   * formatted as:</span>
+<span class="source-line-no">024</span><span id="line-24">   * &lt;ul&gt;</span>
+<span class="source-line-no">025</span><span id="line-25">   *   &lt;li&gt;{@code "Breed pending"} if no valid breeds are found,&lt;/li&gt;</span>
+<span class="source-line-no">026</span><span id="line-26">   *   &lt;li&gt;{@code "Breed"} for a single breed,&lt;/li&gt;</span>
+<span class="source-line-no">027</span><span id="line-27">   *   &lt;li&gt;{@code "Breed A, Breed B"} for up to two breeds, or&lt;/li&gt;</span>
+<span class="source-line-no">028</span><span id="line-28">   *   &lt;li&gt;{@code "Breed A, Breed B +N"} when more than two breeds exist.&lt;/li&gt;</span>
+<span class="source-line-no">029</span><span id="line-29">   * &lt;/ul&gt;</span>
+<span class="source-line-no">030</span><span id="line-30">   *</span>
+<span class="source-line-no">031</span><span id="line-31">   * @param groups egg groups associated with a batch; may be {@code null} or empty.</span>
+<span class="source-line-no">032</span><span id="line-32">   * @return formatted breed summary string.</span>
+<span class="source-line-no">033</span><span id="line-33">   */</span>
+<span class="source-line-no">034</span><span id="line-34">  public static String buildBreedSummary(List&lt;EggGroup&gt; groups) {</span>
+<span class="source-line-no">035</span><span id="line-35">    if (groups == null || groups.isEmpty()) {</span>
+<span class="source-line-no">036</span><span id="line-36">      return BREED_PENDING;</span>
+<span class="source-line-no">037</span><span id="line-37">    }</span>
+<span class="source-line-no">038</span><span id="line-38"></span>
+<span class="source-line-no">039</span><span id="line-39">    Set&lt;String&gt; distinctBreeds = new LinkedHashSet&lt;&gt;();</span>
+<span class="source-line-no">040</span><span id="line-40"></span>
+<span class="source-line-no">041</span><span id="line-41">    for (EggGroup group : groups) {</span>
+<span class="source-line-no">042</span><span id="line-42">      if (group == null) {</span>
+<span class="source-line-no">043</span><span id="line-43">        continue;</span>
+<span class="source-line-no">044</span><span id="line-44">      }</span>
+<span class="source-line-no">045</span><span id="line-45">      String breed = group.getBreed();</span>
+<span class="source-line-no">046</span><span id="line-46">      if (breed != null) {</span>
+<span class="source-line-no">047</span><span id="line-47">        String normalized = breed.trim();</span>
+<span class="source-line-no">048</span><span id="line-48">        if (!normalized.isBlank()) {</span>
+<span class="source-line-no">049</span><span id="line-49">          distinctBreeds.add(normalized);</span>
+<span class="source-line-no">050</span><span id="line-50">        }</span>
+<span class="source-line-no">051</span><span id="line-51">      }</span>
+<span class="source-line-no">052</span><span id="line-52">    }</span>
+<span class="source-line-no">053</span><span id="line-53"></span>
+<span class="source-line-no">054</span><span id="line-54">    if (distinctBreeds.isEmpty()) {</span>
+<span class="source-line-no">055</span><span id="line-55">      return BREED_PENDING;</span>
+<span class="source-line-no">056</span><span id="line-56">    }</span>
+<span class="source-line-no">057</span><span id="line-57"></span>
+<span class="source-line-no">058</span><span id="line-58">    List&lt;String&gt; breeds = List.copyOf(distinctBreeds);</span>
+<span class="source-line-no">059</span><span id="line-59"></span>
+<span class="source-line-no">060</span><span id="line-60">    if (breeds.size() == 1) {</span>
+<span class="source-line-no">061</span><span id="line-61">      return breeds.get(0);</span>
+<span class="source-line-no">062</span><span id="line-62">    }</span>
+<span class="source-line-no">063</span><span id="line-63"></span>
+<span class="source-line-no">064</span><span id="line-64">    if (breeds.size() &lt;= MAX_VISIBLE_BREEDS) {</span>
+<span class="source-line-no">065</span><span id="line-65">      return String.join(", ", breeds);</span>
+<span class="source-line-no">066</span><span id="line-66">    }</span>
+<span class="source-line-no">067</span><span id="line-67"></span>
+<span class="source-line-no">068</span><span id="line-68">    int remaining = breeds.size() - MAX_VISIBLE_BREEDS;</span>
+<span class="source-line-no">069</span><span id="line-69">    return breeds.get(0) + ", " + breeds.get(1) + " +" + remaining;</span>
+<span class="source-line-no">070</span><span id="line-70">  }</span>
+<span class="source-line-no">071</span><span id="line-71">}</span>
 
 
 

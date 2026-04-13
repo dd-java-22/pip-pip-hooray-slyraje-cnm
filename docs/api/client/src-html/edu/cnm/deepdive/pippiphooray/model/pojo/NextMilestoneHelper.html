@@ -19,66 +19,89 @@
 <span class="source-line-no">006</span><span id="line-6">import java.util.ArrayList;</span>
 <span class="source-line-no">007</span><span id="line-7">import java.util.List;</span>
 <span class="source-line-no">008</span><span id="line-8"></span>
-<span class="source-line-no">009</span><span id="line-9">public final class NextMilestoneHelper {</span>
-<span class="source-line-no">010</span><span id="line-10"></span>
-<span class="source-line-no">011</span><span id="line-11">  private static final String LABEL_DAY_7 = "Next: Day 7 Candling Observation";</span>
-<span class="source-line-no">012</span><span id="line-12">  private static final String LABEL_DAY_14 = "Next: Day 14 Candling Observation";</span>
-<span class="source-line-no">013</span><span id="line-13">  private static final String LABEL_DAY_18 = "Next: Day 18 Candling / Lockdown";</span>
-<span class="source-line-no">014</span><span id="line-14">  private static final String LABEL_HATCH = "Next: Expected Hatch Day";</span>
-<span class="source-line-no">015</span><span id="line-15"></span>
-<span class="source-line-no">016</span><span id="line-16">  private NextMilestoneHelper() {</span>
-<span class="source-line-no">017</span><span id="line-17">  }</span>
+<span class="source-line-no">009</span><span id="line-9">/**</span>
+<span class="source-line-no">010</span><span id="line-10"> * Utility class for computing the next incubation milestone and its date.</span>
+<span class="source-line-no">011</span><span id="line-11"> */</span>
+<span class="source-line-no">012</span><span id="line-12">public final class NextMilestoneHelper {</span>
+<span class="source-line-no">013</span><span id="line-13"></span>
+<span class="source-line-no">014</span><span id="line-14">  private static final String LABEL_DAY_7 = "Next: Day 7 Candling Observation";</span>
+<span class="source-line-no">015</span><span id="line-15">  private static final String LABEL_DAY_14 = "Next: Day 14 Candling Observation";</span>
+<span class="source-line-no">016</span><span id="line-16">  private static final String LABEL_DAY_18 = "Next: Day 18 Candling / Lockdown";</span>
+<span class="source-line-no">017</span><span id="line-17">  private static final String LABEL_HATCH = "Next: Expected Hatch Day";</span>
 <span class="source-line-no">018</span><span id="line-18"></span>
-<span class="source-line-no">019</span><span id="line-19">  @NonNull</span>
-<span class="source-line-no">020</span><span id="line-20">  public static NextMilestoneSummary computeNextMilestone(</span>
-<span class="source-line-no">021</span><span id="line-21">      @Nullable LocalDate dateSet,</span>
-<span class="source-line-no">022</span><span id="line-22">      @Nullable LocalDate lockdownDate,</span>
-<span class="source-line-no">023</span><span id="line-23">      @Nullable LocalDate expectedHatchDate,</span>
-<span class="source-line-no">024</span><span id="line-24">      @NonNull LocalDate today</span>
-<span class="source-line-no">025</span><span id="line-25">  ) {</span>
-<span class="source-line-no">026</span><span id="line-26">    LocalDate day7 = (dateSet != null) ? dateSet.plusDays(7) : null;</span>
-<span class="source-line-no">027</span><span id="line-27">    LocalDate day14 = (dateSet != null) ? dateSet.plusDays(14) : null;</span>
-<span class="source-line-no">028</span><span id="line-28">    LocalDate day18 = computeLockdownDate(dateSet, lockdownDate, expectedHatchDate);</span>
-<span class="source-line-no">029</span><span id="line-29"></span>
-<span class="source-line-no">030</span><span id="line-30">    List&lt;NextMilestoneSummary&gt; candidates = new ArrayList&lt;&gt;();</span>
-<span class="source-line-no">031</span><span id="line-31">    candidates.add(new NextMilestoneSummary(LABEL_DAY_7, day7));</span>
-<span class="source-line-no">032</span><span id="line-32">    candidates.add(new NextMilestoneSummary(LABEL_DAY_14, day14));</span>
-<span class="source-line-no">033</span><span id="line-33">    candidates.add(new NextMilestoneSummary(LABEL_DAY_18, day18));</span>
-<span class="source-line-no">034</span><span id="line-34">    candidates.add(new NextMilestoneSummary(LABEL_HATCH, expectedHatchDate));</span>
-<span class="source-line-no">035</span><span id="line-35"></span>
-<span class="source-line-no">036</span><span id="line-36">    NextMilestoneSummary fallback = null;</span>
-<span class="source-line-no">037</span><span id="line-37"></span>
-<span class="source-line-no">038</span><span id="line-38">    for (NextMilestoneSummary candidate : candidates) {</span>
-<span class="source-line-no">039</span><span id="line-39">      LocalDate date = candidate.getDate();</span>
-<span class="source-line-no">040</span><span id="line-40">      if (date == null) {</span>
-<span class="source-line-no">041</span><span id="line-41">        continue;</span>
-<span class="source-line-no">042</span><span id="line-42">      }</span>
-<span class="source-line-no">043</span><span id="line-43">      fallback = candidate;</span>
-<span class="source-line-no">044</span><span id="line-44">      if (!date.isBefore(today)) {</span>
-<span class="source-line-no">045</span><span id="line-45">        return candidate;</span>
-<span class="source-line-no">046</span><span id="line-46">      }</span>
-<span class="source-line-no">047</span><span id="line-47">    }</span>
-<span class="source-line-no">048</span><span id="line-48"></span>
-<span class="source-line-no">049</span><span id="line-49">    return (fallback != null)</span>
-<span class="source-line-no">050</span><span id="line-50">        ? fallback</span>
-<span class="source-line-no">051</span><span id="line-51">        : new NextMilestoneSummary("Next milestone unavailable", null);</span>
-<span class="source-line-no">052</span><span id="line-52">  }</span>
-<span class="source-line-no">053</span><span id="line-53"></span>
-<span class="source-line-no">054</span><span id="line-54">  @Nullable</span>
-<span class="source-line-no">055</span><span id="line-55">  private static LocalDate computeLockdownDate(</span>
-<span class="source-line-no">056</span><span id="line-56">      @Nullable LocalDate dateSet,</span>
-<span class="source-line-no">057</span><span id="line-57">      @Nullable LocalDate lockdownDate,</span>
-<span class="source-line-no">058</span><span id="line-58">      @Nullable LocalDate expectedHatchDate</span>
-<span class="source-line-no">059</span><span id="line-59">  ) {</span>
-<span class="source-line-no">060</span><span id="line-60">    if (lockdownDate != null) {</span>
-<span class="source-line-no">061</span><span id="line-61">      return lockdownDate;</span>
-<span class="source-line-no">062</span><span id="line-62">    }</span>
-<span class="source-line-no">063</span><span id="line-63">    if (expectedHatchDate != null) {</span>
-<span class="source-line-no">064</span><span id="line-64">      return expectedHatchDate.minusDays(3);</span>
-<span class="source-line-no">065</span><span id="line-65">    }</span>
-<span class="source-line-no">066</span><span id="line-66">    return (dateSet != null) ? dateSet.plusDays(18) : null;</span>
-<span class="source-line-no">067</span><span id="line-67">  }</span>
-<span class="source-line-no">068</span><span id="line-68">}</span>
+<span class="source-line-no">019</span><span id="line-19">  private NextMilestoneHelper() {</span>
+<span class="source-line-no">020</span><span id="line-20">  }</span>
+<span class="source-line-no">021</span><span id="line-21"></span>
+<span class="source-line-no">022</span><span id="line-22">  /**</span>
+<span class="source-line-no">023</span><span id="line-23">   * Computes the next milestone for a batch given its key dates and today's date.</span>
+<span class="source-line-no">024</span><span id="line-24">   *</span>
+<span class="source-line-no">025</span><span id="line-25">   * &lt;p&gt;The candidate milestones are:</span>
+<span class="source-line-no">026</span><span id="line-26">   * &lt;ul&gt;</span>
+<span class="source-line-no">027</span><span id="line-27">   *   &lt;li&gt;Day 7 candling,&lt;/li&gt;</span>
+<span class="source-line-no">028</span><span id="line-28">   *   &lt;li&gt;Day 14 candling,&lt;/li&gt;</span>
+<span class="source-line-no">029</span><span id="line-29">   *   &lt;li&gt;Day 18 candling/lockdown, and&lt;/li&gt;</span>
+<span class="source-line-no">030</span><span id="line-30">   *   &lt;li&gt;expected hatch day.&lt;/li&gt;</span>
+<span class="source-line-no">031</span><span id="line-31">   * &lt;/ul&gt;</span>
+<span class="source-line-no">032</span><span id="line-32">   * The first candidate whose date is today or in the future is returned;</span>
+<span class="source-line-no">033</span><span id="line-33">   * if all milestones are in the past, the last available one is returned,</span>
+<span class="source-line-no">034</span><span id="line-34">   * and if no dates are available, a fallback "unavailable" milestone is produced.</span>
+<span class="source-line-no">035</span><span id="line-35">   *</span>
+<span class="source-line-no">036</span><span id="line-36">   * @param dateSet date the batch was set; may be {@code null}.</span>
+<span class="source-line-no">037</span><span id="line-37">   * @param lockdownDate explicit lockdown date, if any.</span>
+<span class="source-line-no">038</span><span id="line-38">   * @param expectedHatchDate expected hatch date, if any.</span>
+<span class="source-line-no">039</span><span id="line-39">   * @param today current date used for comparison.</span>
+<span class="source-line-no">040</span><span id="line-40">   * @return summary describing the next applicable milestone.</span>
+<span class="source-line-no">041</span><span id="line-41">   */</span>
+<span class="source-line-no">042</span><span id="line-42">  @NonNull</span>
+<span class="source-line-no">043</span><span id="line-43">  public static NextMilestoneSummary computeNextMilestone(</span>
+<span class="source-line-no">044</span><span id="line-44">      @Nullable LocalDate dateSet,</span>
+<span class="source-line-no">045</span><span id="line-45">      @Nullable LocalDate lockdownDate,</span>
+<span class="source-line-no">046</span><span id="line-46">      @Nullable LocalDate expectedHatchDate,</span>
+<span class="source-line-no">047</span><span id="line-47">      @NonNull LocalDate today</span>
+<span class="source-line-no">048</span><span id="line-48">  ) {</span>
+<span class="source-line-no">049</span><span id="line-49">    LocalDate day7 = (dateSet != null) ? dateSet.plusDays(7) : null;</span>
+<span class="source-line-no">050</span><span id="line-50">    LocalDate day14 = (dateSet != null) ? dateSet.plusDays(14) : null;</span>
+<span class="source-line-no">051</span><span id="line-51">    LocalDate day18 = computeLockdownDate(dateSet, lockdownDate, expectedHatchDate);</span>
+<span class="source-line-no">052</span><span id="line-52"></span>
+<span class="source-line-no">053</span><span id="line-53">    List&lt;NextMilestoneSummary&gt; candidates = new ArrayList&lt;&gt;();</span>
+<span class="source-line-no">054</span><span id="line-54">    candidates.add(new NextMilestoneSummary(LABEL_DAY_7, day7));</span>
+<span class="source-line-no">055</span><span id="line-55">    candidates.add(new NextMilestoneSummary(LABEL_DAY_14, day14));</span>
+<span class="source-line-no">056</span><span id="line-56">    candidates.add(new NextMilestoneSummary(LABEL_DAY_18, day18));</span>
+<span class="source-line-no">057</span><span id="line-57">    candidates.add(new NextMilestoneSummary(LABEL_HATCH, expectedHatchDate));</span>
+<span class="source-line-no">058</span><span id="line-58"></span>
+<span class="source-line-no">059</span><span id="line-59">    NextMilestoneSummary fallback = null;</span>
+<span class="source-line-no">060</span><span id="line-60"></span>
+<span class="source-line-no">061</span><span id="line-61">    for (NextMilestoneSummary candidate : candidates) {</span>
+<span class="source-line-no">062</span><span id="line-62">      LocalDate date = candidate.getDate();</span>
+<span class="source-line-no">063</span><span id="line-63">      if (date == null) {</span>
+<span class="source-line-no">064</span><span id="line-64">        continue;</span>
+<span class="source-line-no">065</span><span id="line-65">      }</span>
+<span class="source-line-no">066</span><span id="line-66">      fallback = candidate;</span>
+<span class="source-line-no">067</span><span id="line-67">      if (!date.isBefore(today)) {</span>
+<span class="source-line-no">068</span><span id="line-68">        return candidate;</span>
+<span class="source-line-no">069</span><span id="line-69">      }</span>
+<span class="source-line-no">070</span><span id="line-70">    }</span>
+<span class="source-line-no">071</span><span id="line-71"></span>
+<span class="source-line-no">072</span><span id="line-72">    return (fallback != null)</span>
+<span class="source-line-no">073</span><span id="line-73">        ? fallback</span>
+<span class="source-line-no">074</span><span id="line-74">        : new NextMilestoneSummary("Next milestone unavailable", null);</span>
+<span class="source-line-no">075</span><span id="line-75">  }</span>
+<span class="source-line-no">076</span><span id="line-76"></span>
+<span class="source-line-no">077</span><span id="line-77">  @Nullable</span>
+<span class="source-line-no">078</span><span id="line-78">  private static LocalDate computeLockdownDate(</span>
+<span class="source-line-no">079</span><span id="line-79">      @Nullable LocalDate dateSet,</span>
+<span class="source-line-no">080</span><span id="line-80">      @Nullable LocalDate lockdownDate,</span>
+<span class="source-line-no">081</span><span id="line-81">      @Nullable LocalDate expectedHatchDate</span>
+<span class="source-line-no">082</span><span id="line-82">  ) {</span>
+<span class="source-line-no">083</span><span id="line-83">    if (lockdownDate != null) {</span>
+<span class="source-line-no">084</span><span id="line-84">      return lockdownDate;</span>
+<span class="source-line-no">085</span><span id="line-85">    }</span>
+<span class="source-line-no">086</span><span id="line-86">    if (expectedHatchDate != null) {</span>
+<span class="source-line-no">087</span><span id="line-87">      return expectedHatchDate.minusDays(3);</span>
+<span class="source-line-no">088</span><span id="line-88">    }</span>
+<span class="source-line-no">089</span><span id="line-89">    return (dateSet != null) ? dateSet.plusDays(18) : null;</span>
+<span class="source-line-no">090</span><span id="line-90">  }</span>
+<span class="source-line-no">091</span><span id="line-91">}</span>
 
 
 

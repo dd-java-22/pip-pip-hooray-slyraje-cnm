@@ -23,6 +23,9 @@ import androidx.room.PrimaryKey;
     }
 )
 
+/**
+ * Room entity representing a single egg in an incubation batch.
+ */
 public class Egg {
 
   @PrimaryKey(autoGenerate = true)
@@ -43,44 +46,94 @@ public class Egg {
   @Nullable
   private String finalNotes;
 
+  /**
+   * Gets the unique identifier for this egg.
+   *
+   * @return the egg ID
+   */
   public long getId() {
     return id;
   }
 
+  /**
+   * Sets the unique identifier for this egg.
+   *
+   * @param id the egg ID to set
+   */
   public void setId(long id) {
     this.id = id;
   }
 
+  /**
+   * Gets the ID of the egg group this egg belongs to.
+   *
+   * @return the egg group ID
+   */
   public long getEggGroupId() {
     return eggGroupId;
   }
 
+  /**
+   * Sets the ID of the egg group this egg belongs to.
+   *
+   * @param eggGroupId the egg group ID to set
+   */
   public void setEggGroupId(long eggGroupId) {
     this.eggGroupId = eggGroupId;
   }
 
+  /**
+   * Gets the sequence number of this egg within its group.
+   *
+   * @return the egg number
+   */
   public int getEggNumber() {
     return eggNumber;
   }
 
+  /**
+   * Sets the sequence number of this egg within its group.
+   *
+   * @param eggNumber the egg number to set
+   */
   public void setEggNumber(int eggNumber) {
     this.eggNumber = eggNumber;
   }
 
+  /**
+   * Gets the hatch status of this egg.
+   *
+   * @return the hatch status, or null if not yet determined
+   */
   @Nullable
   public String getHatchStatus() {
     return hatchStatus;
   }
 
+  /**
+   * Sets the hatch status of this egg.
+   *
+   * @param hatchStatus the hatch status to set
+   */
   public void setHatchStatus(@Nullable String hatchStatus) {
     this.hatchStatus = hatchStatus;
   }
 
+  /**
+   * Gets any final notes associated with this egg.
+   *
+   * @return the final notes, or null if none recorded
+   */
   @Nullable
   public String getFinalNotes() {
     return finalNotes;
   }
 
+  /**
+   * Sets final notes associated with this egg.
+   *
+   * @param finalNotes the final notes to set
+   */
   public void setFinalNotes(@Nullable String finalNotes) {
     this.finalNotes = finalNotes;
   }
