@@ -3,6 +3,7 @@ package edu.cnm.deepdive.pippiphooray.service.repository;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.pippiphooray.model.dao.EggDao;
 import edu.cnm.deepdive.pippiphooray.model.entity.Egg;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchEggAggregate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -15,6 +16,11 @@ public class EggRepositoryImpl implements EggRepository {
   @Inject
   EggRepositoryImpl(EggDao eggDao) {
     this.eggDao = eggDao;
+  }
+
+  @Override
+  public LiveData<List<BatchEggAggregate>> getViabilityPerBatch() {
+    return eggDao.selectViabilityPerBatch();
   }
 
   @Override

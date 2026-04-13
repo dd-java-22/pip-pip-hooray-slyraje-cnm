@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.pippiphooray.model.entity.Egg;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchEggAggregate;
 import java.util.List;
 
 @Dao
@@ -31,4 +32,15 @@ public interface EggDao {
 
   @Query("SELECT * FROM egg WHERE egg_id = :eggId")
   LiveData<Egg> select(long eggId);
+
+  @Query(
+      "SELECT e.egg_group_id AS eggGroupId, " +
+          "       eg.batch_id    AS batchId, " +
+          "       COUNT(*)       AS totalCount, " +
+          "       SUM(CASE WHEN e.hatch_status = 'VIABLE' THEN 1 ELSE 0 END) AS viableCount " +
+          "FROM egg e " +
+          "JOIN egg_group eg ON e.egg_group_id = eg.egg_group_id " +
+          "GROUP BY eg.batch_id"
+  )
+  LiveData<List<BatchEggAggregate>> selectViabilityPerBatch();
 }

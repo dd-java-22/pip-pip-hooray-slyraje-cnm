@@ -10,6 +10,7 @@ import edu.cnm.deepdive.pippiphooray.model.entity.Egg;
 import edu.cnm.deepdive.pippiphooray.model.entity.EggGroup;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchCardSummary;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchCardSummaryFormatter;
+import edu.cnm.deepdive.pippiphooray.model.pojo.BatchEggAggregate;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchViabilitySummary;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithEggGroups;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchWithIncubator;
@@ -23,7 +24,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import javax.inject.Inject;
-
 
 @HiltViewModel
 public class BatchViewModel extends ViewModel {
@@ -43,6 +43,7 @@ public class BatchViewModel extends ViewModel {
 
   private final LiveData<List<BatchWithIncubator>> allWithIncubator;
   private final LiveData<List<BatchWithEggGroups>> allWithGroups;
+  private final LiveData<List<BatchEggAggregate>> viabilityPerBatch;
   private final MutableLiveData<SortOrder> sortOrder = new MutableLiveData<>(
       SortOrder.NEXT_MILESTONE);
   private final MediatorLiveData<List<BatchWithIncubator>> sortedBatches = new MediatorLiveData<>();
@@ -57,13 +58,13 @@ public class BatchViewModel extends ViewModel {
   private final Map<Long, List<Egg>> eggsByGroup = new HashMap<>();
   private LiveData<BatchWithEggGroups> selectedBatchSource;
 
-
   @Inject
   BatchViewModel(BatchRepository batchRepository, EggRepository eggRepository) {
     this.batchRepository = batchRepository;
     this.eggRepository = eggRepository;
     this.allWithIncubator = batchRepository.getAllWithIncubator();
     this.allWithGroups = batchRepository.getAllWithGroups();
+    this.viabilityPerBatch = eggRepository.getViabilityPerBatch();
 
     sortedBatches.addSource(allWithIncubator, batches ->
         recomputeSortedBatches(batches, sortOrder.getValue()));
@@ -72,13 +73,23 @@ public class BatchViewModel extends ViewModel {
 
     batchCardSummaries.addSource(allWithIncubator, ignored ->
         recomputeBatchCardSummaries(
-            allWithIncubator.getValue(), allWithGroups.getValue(), sortOrder.getValue()));
+            allWithIncubator.getValue(), allWithGroups.getValue(),
+            sortOrder.getValue(), viabilityPerBatch.getValue()));
     batchCardSummaries.addSource(allWithGroups, ignored ->
         recomputeBatchCardSummaries(
-            allWithIncubator.getValue(), allWithGroups.getValue(), sortOrder.getValue()));
+            allWithIncubator.getValue(), allWithGroups.getValue(),
+            sortOrder.getValue(), viabilityPerBatch.getValue()));
     batchCardSummaries.addSource(sortOrder, ignored ->
         recomputeBatchCardSummaries(
-            allWithIncubator.getValue(), allWithGroups.getValue(), sortOrder.getValue()));
+            allWithIncubator.getValue(), allWithGroups.getValue(),
+            sortOrder.getValue(), viabilityPerBatch.getValue()));
+    batchCardSummaries.addSource(viabilityPerBatch, ignored ->
+        recomputeBatchCardSummaries(
+            allWithIncubator.getValue(),
+            allWithGroups.getValue(),
+            sortOrder.getValue(),
+            viabilityPerBatch.getValue()
+        ));
 
     selectedBatchWithGroups.addSource(selectedBatchId, id -> {
       if (selectedBatchSource != null) {
@@ -281,7 +292,8 @@ public class BatchViewModel extends ViewModel {
   private void recomputeBatchCardSummaries(
       List<BatchWithIncubator> incubatorBatches,
       List<BatchWithEggGroups> groupBatches,
-      SortOrder order
+      SortOrder order,
+      List<BatchEggAggregate> viabilityAggregates
   ) {
     if (incubatorBatches == null) {
       batchCardSummaries.setValue(null);
@@ -290,10 +302,17 @@ public class BatchViewModel extends ViewModel {
 
     Map<Long, BatchWithEggGroups> groupsByBatchId = new HashMap<>();
     if (groupBatches != null) {
-      for (BatchWithEggGroups batchWithGroups : groupBatches) {
-        if (batchWithGroups != null && batchWithGroups.getBatch() != null) {
-          groupsByBatchId.put(batchWithGroups.getBatch().getId(), batchWithGroups);
+      for (BatchWithEggGroups bwg : groupBatches) {
+        if (bwg != null && bwg.getBatch() != null) {
+          groupsByBatchId.put(bwg.getBatch().getId(), bwg);
         }
+      }
+    }
+
+    Map<Long, BatchEggAggregate> viabilityByBatchId = new HashMap<>();
+    if (viabilityAggregates != null) {
+      for (BatchEggAggregate agg : viabilityAggregates) {
+        viabilityByBatchId.put(agg.getBatchId(), agg);
       }
     }
 
@@ -306,18 +325,24 @@ public class BatchViewModel extends ViewModel {
           ? BatchCardSummaryFormatter.buildBreedSummary(withGroups.getGroups())
           : "Breed pending";
 
-      String nextMilestoneLabel = computeNextMilestoneLabel(batch, today);
-      LocalDate nextMilestoneDate = computeNextMilestoneDate(batch, today);
+      BatchEggAggregate agg = viabilityByBatchId.get(batch.getId());
+      int totalEggCount = (agg != null) ? agg.getTotalCount() : 0;
+      int viableCount   = (agg != null) ? agg.getViableCount() : 0;
+      double viabilityRate = (totalEggCount > 0)
+          ? ((double) viableCount / totalEggCount)
+          : 0.0;
 
       summaries.add(new BatchCardSummary(
           batch.getId(),
           batch.getBatchNumber(),
           batch.getIncubatorName(),
           breedSummary,
-          batch.getNumEggsSet(),
+          viableCount,
+          totalEggCount,
+          viabilityRate,
           batch.getExpectedHatchDate(),
-          nextMilestoneLabel,
-          nextMilestoneDate
+          computeNextMilestoneLabel(batch, today),
+          computeNextMilestoneDate(batch, today)
       ));
     }
 

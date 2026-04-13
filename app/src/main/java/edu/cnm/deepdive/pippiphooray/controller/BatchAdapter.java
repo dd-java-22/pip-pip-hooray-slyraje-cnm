@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.pippiphooray.databinding.ItemBatchBinding;
 import edu.cnm.deepdive.pippiphooray.model.pojo.BatchCardSummary;
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class BatchAdapter extends ListAdapter<BatchCardSummary, BatchAdapter.ViewHolder> {
@@ -83,11 +83,12 @@ public class BatchAdapter extends ListAdapter<BatchCardSummary, BatchAdapter.Vie
     }
 
     private String formatViability(BatchCardSummary batch) {
-      int eggsSet = batch.getNumEggsSet();
-      if (eggsSet <= 0) {
-        return "0/0 viable";
-      }
-      return eggsSet + "/" + eggsSet + " viable (100.0%)";
+      return String.format(
+          "%d/%d viable (%.1f%%)",
+          batch.getViableCount(),
+          batch.getTotalEggCount(),
+          batch.getViabilityRate() * 100.0
+      );
     }
 
     private String formatNextMilestone(BatchCardSummary batch) {
@@ -117,10 +118,12 @@ public class BatchAdapter extends ListAdapter<BatchCardSummary, BatchAdapter.Vie
           return Objects.equals(oldItem.getBatchNumber(), newItem.getBatchNumber())
               && Objects.equals(oldItem.getIncubatorName(), newItem.getIncubatorName())
               && Objects.equals(oldItem.getBreedSummary(), newItem.getBreedSummary())
+              && oldItem.getViableCount() == newItem.getViableCount()
+              && oldItem.getTotalEggCount() == newItem.getTotalEggCount()
+              && Double.compare(oldItem.getViabilityRate(), newItem.getViabilityRate()) == 0
               && Objects.equals(oldItem.getExpectedHatchDate(), newItem.getExpectedHatchDate())
               && Objects.equals(oldItem.getNextMilestoneLabel(), newItem.getNextMilestoneLabel())
-              && Objects.equals(oldItem.getNextMilestoneDate(), newItem.getNextMilestoneDate())
-              && oldItem.getNumEggsSet() == newItem.getNumEggsSet();
+              && Objects.equals(oldItem.getNextMilestoneDate(), newItem.getNextMilestoneDate());
         }
       };
 }
