@@ -1,10 +1,10 @@
 ---
-title: Technical Requirements & Dependencies
-description: "Tech stack & setup"
-order: 10
+title: Tech stack & setup
+description: "Technical Requirements & Dependencies"
+order: 5
 ---
 
-## Technical Requirements \& Dependencies
+## Technical Requirements & Dependencies
 
 ### Android versions, devices, and constraints
 

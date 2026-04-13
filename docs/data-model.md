@@ -1,7 +1,7 @@
 ---
 title: Data Model
 description: "UML class diagram, entity-relationship diagram, and DDL."
-order: 10
+order: 15
 content_dir: data-model
 ---
 
