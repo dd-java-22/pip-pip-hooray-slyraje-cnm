@@ -1,3 +1,9 @@
+---
+title: Current app status
+description: "Summary of current state of the app."
+order: 10
+---
+
 ## Summary of Current State of the App
 
 ### Overall readiness

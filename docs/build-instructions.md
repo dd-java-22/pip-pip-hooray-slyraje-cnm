@@ -1,3 +1,9 @@
+---
+title: Build Instructions
+description: "How to build"
+order: 10
+---
+
 ## Build Instructions
 
 Follow these steps to build the project in IntelliJ IDEA.

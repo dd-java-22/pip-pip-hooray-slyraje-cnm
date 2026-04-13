@@ -1,3 +1,9 @@
+---
+title: Basic User Instructions
+description: "Using the app."
+order: 10
+---
+
 ## Basic User Instructions
 
 ### Launching and signing in
