@@ -84,13 +84,13 @@ public class BatchDetailFragment extends Fragment {
             .show(getChildFragmentManager(), BulkCandlingDialogFragment.class.getSimpleName())
     );
 
-    binding.perEggCandlingButton.setOnClickListener(v ->
-        Toast.makeText(
-            requireContext(),
-            R.string.message_per_egg_candling_placeholder,
-            Toast.LENGTH_SHORT
-        ).show()
-    );
+//    binding.perEggCandlingButton.setOnClickListener(v ->
+//        Toast.makeText(
+//            requireContext(),
+//            R.string.message_per_egg_candling_placeholder,
+//            Toast.LENGTH_SHORT
+//        ).show()
+//    );
   }
 
   private void installMenu() {
