@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS batch
 (
     batch_id            INTEGER PRIMARY KEY AUTOINCREMENT,
     incubator_id        INTEGER,
+    batch_number        INTEGER NOT NULL,
     date_set            INTEGER NOT NULL,
     lockdown_date       INTEGER,
     expected_hatch_date INTEGER,
@@ -49,6 +50,7 @@ CREATE TABLE IF NOT EXISTS egg
 (
     egg_id       INTEGER PRIMARY KEY AUTOINCREMENT,
     egg_group_id INTEGER NOT NULL,
+    egg_number   INTEGER NOT NULL,
     hatch_status TEXT,
     final_notes  TEXT,
     FOREIGN KEY (egg_group_id) REFERENCES egg_group (egg_group_id)
