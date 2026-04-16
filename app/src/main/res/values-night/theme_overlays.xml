@@ -46,6 +46,18 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer_mediumContrast</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh_mediumContrast</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest_mediumContrast</item>
+        <item name="colorEggMint">@color/colorEggMint_mediumContrast</item>
+        <item name="colorOnEggMint">@color/colorOnEggMint_mediumContrast</item>
+        <item name="colorEggMintContainer">@color/colorEggMintContainer_mediumContrast</item>
+        <item name="colorOnEggMintContainer">@color/colorOnEggMintContainer_mediumContrast</item>
+        <item name="colorEggBlue">@color/colorEggBlue_mediumContrast</item>
+        <item name="colorOnEggBlue">@color/colorOnEggBlue_mediumContrast</item>
+        <item name="colorEggBlueContainer">@color/colorEggBlueContainer_mediumContrast</item>
+        <item name="colorOnEggBlueContainer">@color/colorOnEggBlueContainer_mediumContrast</item>
+        <item name="colorCustomColor3">@color/colorCustomColor3_mediumContrast</item>
+        <item name="colorOnCustomColor3">@color/colorOnCustomColor3_mediumContrast</item>
+        <item name="colorCustomColor3Container">@color/colorCustomColor3Container_mediumContrast</item>
+        <item name="colorOnCustomColor3Container">@color/colorOnCustomColor3Container_mediumContrast</item>
     </style>
     <style name="ThemeOverlay.AppTheme.HighContrast" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary_highContrast</item>
@@ -94,5 +106,17 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer_highContrast</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh_highContrast</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest_highContrast</item>
+        <item name="colorEggMint">@color/colorEggMint_highContrast</item>
+        <item name="colorOnEggMint">@color/colorOnEggMint_highContrast</item>
+        <item name="colorEggMintContainer">@color/colorEggMintContainer_highContrast</item>
+        <item name="colorOnEggMintContainer">@color/colorOnEggMintContainer_highContrast</item>
+        <item name="colorEggBlue">@color/colorEggBlue_highContrast</item>
+        <item name="colorOnEggBlue">@color/colorOnEggBlue_highContrast</item>
+        <item name="colorEggBlueContainer">@color/colorEggBlueContainer_highContrast</item>
+        <item name="colorOnEggBlueContainer">@color/colorOnEggBlueContainer_highContrast</item>
+        <item name="colorCustomColor3">@color/colorCustomColor3_highContrast</item>
+        <item name="colorOnCustomColor3">@color/colorOnCustomColor3_highContrast</item>
+        <item name="colorCustomColor3Container">@color/colorCustomColor3Container_highContrast</item>
+        <item name="colorOnCustomColor3Container">@color/colorOnCustomColor3Container_highContrast</item>
     </style>
 </resources>

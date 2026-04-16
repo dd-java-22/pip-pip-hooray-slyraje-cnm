@@ -7,8 +7,8 @@
   android:layout_height="wrap_content"
   android:layout_marginHorizontal="16dp"
   android:layout_marginVertical="8dp"
-  android:textColor="?attr/colorOnSecondaryContainer"
-  app:cardBackgroundColor="?attr/colorSecondaryContainer"
+  android:textColor="?attr/colorOnEggBlueContainer"
+  app:cardBackgroundColor="?attr/colorEggBlueContainer"
   app:cardCornerRadius="12dp"
   app:cardUseCompatPadding="true">
 

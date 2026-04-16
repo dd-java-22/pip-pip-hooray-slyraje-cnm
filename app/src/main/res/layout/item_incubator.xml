@@ -7,10 +7,10 @@
   android:layout_height="wrap_content"
   android:layout_marginHorizontal="16dp"
   android:layout_marginVertical="8dp"
-  android:textColor="?attr/colorPrimaryContainer"
+  android:textColor="?attr/colorOnSecondaryContainer"
   app:cardCornerRadius="12dp"
   app:cardUseCompatPadding="true"
-  app:cardBackgroundColor="?attr/colorOnPrimaryContainer">
+  app:cardBackgroundColor="?attr/colorSecondaryContainer">
 
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

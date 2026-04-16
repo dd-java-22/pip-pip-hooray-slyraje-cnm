@@ -10,7 +10,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    app:layout_constraintGuide_percent=".85"/>
+    app:layout_constraintGuide_percent=".87"/>
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/batch_list"
@@ -32,6 +32,8 @@
     android:contentDescription="@string/action_add_batch"
     app:srcCompat="@drawable/ic_add"
     app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
-    app:layout_constraintEnd_toEndOf="parent" />
+    app:layout_constraintEnd_toEndOf="parent"
+    android:backgroundTint="@color/colorEggBlueContainer"
+    android:outlineSpotShadowColor="@color/colorEggBlue"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

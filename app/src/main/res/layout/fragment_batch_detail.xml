@@ -15,7 +15,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/label_batch_detail"
-      android:textAppearance="?attr/textAppearanceHeadlineSmall" />
+      android:textAppearance="?attr/textAppearanceHeadlineSmall"/>
 
     <!-- Summary heading -->
     <TextView
@@ -23,7 +23,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="24dp"
       android:text="@string/label_summary"
-      android:textAppearance="?attr/textAppearanceTitleMedium" />
+      android:textAppearance="?attr/textAppearanceTitleMedium"/>
 
     <!-- Summary rows -->
     <LinearLayout
@@ -43,12 +43,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_batch_number" />
+          android:text="@string/label_batch_number"/>
 
         <TextView
           android:id="@+id/batch_number_value"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Breed(s) -->
@@ -62,12 +62,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_breeds" />
+          android:text="@string/label_breeds"/>
 
         <TextView
           android:id="@+id/breeds_value"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Incubator -->
@@ -81,12 +81,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_incubator" />
+          android:text="@string/label_incubator"/>
 
         <TextView
           android:id="@+id/incubator_value"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Eggs set -->
@@ -100,12 +100,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_eggs_set" />
+          android:text="@string/label_eggs_set"/>
 
         <TextView
           android:id="@+id/eggs_set_value"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Viable count/rate -->
@@ -119,12 +119,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_viable" />
+          android:text="@string/label_viable"/>
 
         <TextView
           android:id="@+id/viable_value"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Date set -->
@@ -138,12 +138,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_date_set" />
+          android:text="@string/label_date_set"/>
 
         <TextView
           android:id="@+id/date_set_value"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Lockdown date -->
@@ -157,12 +157,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_lockdown_date" />
+          android:text="@string/label_lockdown_date"/>
 
         <TextView
           android:id="@+id/lockdown_date_value"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Expected hatch date -->
@@ -176,12 +176,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_expected_hatch_date" />
+          android:text="@string/label_expected_hatch_date"/>
 
         <TextView
           android:id="@+id/expected_hatch_date_value"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
     </LinearLayout>
@@ -192,7 +192,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="24dp"
       android:text="@string/label_milestones"
-      android:textAppearance="?attr/textAppearanceTitleMedium" />
+      android:textAppearance="?attr/textAppearanceTitleMedium"/>
 
     <!-- Milestone list -->
     <LinearLayout
@@ -212,12 +212,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_day_7_candling" />
+          android:text="@string/label_day_7_candling"/>
 
         <TextView
           android:id="@+id/day7_date"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Day 14 -->
@@ -231,12 +231,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_day_14_candling" />
+          android:text="@string/label_day_14_candling"/>
 
         <TextView
           android:id="@+id/day14_date"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Day 18 / Lockdown -->
@@ -250,12 +250,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_day_18_lockdown" />
+          android:text="@string/label_day_18_lockdown"/>
 
         <TextView
           android:id="@+id/day18_date"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
       <!-- Expected hatch -->
@@ -269,12 +269,12 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/label_expected_hatch_day" />
+          android:text="@string/label_expected_hatch_day"/>
 
         <TextView
           android:id="@+id/hatch_date"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"/>
       </LinearLayout>
 
     </LinearLayout>
@@ -283,21 +283,22 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="24dp"
-      android:orientation="vertical">
+      android:orientation="vertical"
+      android:paddingBottom="32dp">
 
       <Button
         android:id="@+id/bulk_candling_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/action_bulk_candling" />
+        android:text="@string/action_bulk_candling"/>
 
-<!--      <Button-->
-<!--        android:id="@+id/per_egg_candling_button"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:text="@string/action_per_egg_candling" />-->
-<!--      Not yet implemented    -->
+      <Button
+      android:id="@+id/per_egg_candling_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="12dp"
+      android:text="@string/action_per_egg_candling" />
+
 
     </LinearLayout>
 

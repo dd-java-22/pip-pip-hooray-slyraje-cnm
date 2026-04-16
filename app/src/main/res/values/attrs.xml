@@ -1,0 +1,14 @@
+<resources>
+    <attr name="colorEggMint" format="color" />
+    <attr name="colorOnEggMint" format="color" />
+    <attr name="colorEggMintContainer" format="color" />
+    <attr name="colorOnEggMintContainer" format="color" />
+    <attr name="colorEggBlue" format="color" />
+    <attr name="colorOnEggBlue" format="color" />
+    <attr name="colorEggBlueContainer" format="color" />
+    <attr name="colorOnEggBlueContainer" format="color" />
+    <attr name="colorCustomColor3" format="color" />
+    <attr name="colorOnCustomColor3" format="color" />
+    <attr name="colorCustomColor3Container" format="color" />
+    <attr name="colorOnCustomColor3Container" format="color" />
+</resources>

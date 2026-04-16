@@ -25,7 +25,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    app:layout_constraintGuide_percent=".85"/>
+    app:layout_constraintGuide_percent=".88"/>
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/incubator_list"
@@ -49,7 +49,9 @@
     android:contentDescription="@string/title_add_incubator"
     app:srcCompat="@drawable/ic_add"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/guideline_bottom"/>
+    app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
+    android:backgroundTint="@color/colorEggBlueContainer"
+    android:outlineAmbientShadowColor="@color/colorEggBlueContainer"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
